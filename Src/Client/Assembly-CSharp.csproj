@@ -61,7 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\MyScripts\Login.cs" />
     <Compile Include="Assets\Scripts\Assets\Resloader.cs" />
     <Compile Include="Assets\Scripts\LoadingManager.cs" />
     <Compile Include="Assets\Scripts\Log\UnityLogger.cs" />
@@ -75,15 +74,18 @@
     <Compile Include="Assets\Scripts\Utilities\GameUtil.cs" />
     <Compile Include="Assets\Scripts\Utilities\MonoSingleton.cs" />
     <Compile Include="Assets\Scripts\Utilities\Singleton.cs" />
+    <Compile Include="Assets\我的脚本\Login.cs" />
     <None Include="Assets\Shader\UITest.shader" />
     <None Include="Assets\Shader\Lightmap\Lightmap.shader" />
     <None Include="Assets\Shader\Particle\ParticleAdditive.shader" />
     <None Include="Assets\References\log4net.xml" />
     <None Include="Assets\Resources\log4net.xml" />
     <None Include="Assets\Shader\DepthBloom.shader" />
+    <None Include="Assets\字体\字体\真正的像素\俐方体11号1.010\OFL.txt" />
     <None Include="Assets\Shader\MyMobile Particles AddNoMask Diff.shader" />
     <None Include="Assets\JsonDotNet\link.xml" />
     <None Include="Assets\Shader\MyMobile VertexLit Diffuse.shader" />
+    <None Include="Assets\字体\字体\真正的像素\字体授权说明.txt" />
     <None Include="Assets\References\protobuf-net.xml" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>E:/Unity_code/mmorpg/mmorpg/Src/Client/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
