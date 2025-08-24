@@ -30,7 +30,7 @@ public class LoadingManager : MonoBehaviour {
         UILogin.SetActive(false);
         yield return new WaitForSeconds(2f);
         UILoading.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2.5f);
         UITips.SetActive(false);
 
         //yield return DataManager.Instance.LoadData();
