@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Services;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,12 +8,22 @@ public class UIRegister : MonoBehaviour {
     public InputField username;
     public InputField password;
     public InputField confirmpassword;
+    public Button buttonYuedu;
     public Button buttonRegister;
 
     // Use this for initialization
-    void Start () {
-		
+    private void Start () {
+        UserService.Instance.OnRegister += OnRegister;
+
 	}
+    private void OnDestroy()
+    {
+        UserService.Instance.OnRegister -= OnRegister;
+    }
+    void OnRegister(SkillBridge.Message.Result result,string msg)
+    {
+        MessageBox.Show(string.Format("结果:{0} msg:{1}", result,msg));
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,10 +32,6 @@ public class UIRegister : MonoBehaviour {
 
     public void OnClickRegister()
     {
-        print("已点击注册");
-        print("账号是" + username.text);
-        print("密码是" + password.text);
-        print("确认密码是" + confirmpassword.text);
         if (string.IsNullOrEmpty(username.text))
         {
             MessageBox.Show("请输入账号");
@@ -45,10 +52,11 @@ public class UIRegister : MonoBehaviour {
             MessageBox.Show("两次输入的密码不一致");
             return;
         }
-        else
+        else if (buttonYuedu.gameObject.activeInHierarchy!=true)
         {
-            MessageBox.Show("注册成功!");
+            MessageBox.Show("请勾选用户协议");
             return;
         }
+        UserService.Instance.SendRegister(username.text, password.text);
     }
 }
