@@ -13,20 +13,24 @@ namespace Services
     class UserService : Singleton<UserService>, IDisposable
     {
         public UnityEngine.Events.UnityAction<Result, string> OnRegister;
+        public UnityEngine.Events.UnityAction<Result, string> OnLogin;
         NetMessage pendingMessage = null;
         bool connected = false;
+        private static bool logInitialized = false;  // 添加这行
 
         public UserService()
         {
             NetClient.Instance.OnConnect += OnGameServerConnect;
             NetClient.Instance.OnDisconnect += OnGameServerDisconnect;
             MessageDistributer.Instance.Subscribe<UserRegisterResponse>(this.OnUserRegister);
-            
+            MessageDistributer.Instance.Subscribe<UserLoginResponse>(this.OnUserLogin);
+
         }
 
         public void Dispose()
         {
             MessageDistributer.Instance.Unsubscribe<UserRegisterResponse>(this.OnUserRegister);
+            MessageDistributer.Instance.Unsubscribe<UserLoginResponse>(this.OnUserLogin);
             NetClient.Instance.OnConnect -= OnGameServerConnect;
             NetClient.Instance.OnDisconnect -= OnGameServerDisconnect;
         }
@@ -38,6 +42,12 @@ namespace Services
 
         public void ConnectToServer()
         {
+            if (!logInitialized)
+            {
+                Common.Log.Init("UserService");
+                logInitialized = true;
+            }
+
             Debug.Log("ConnectToServer() Start ");
             //NetClient.Instance.CryptKey = this.SessionId;
             NetClient.Instance.Init("127.0.0.1", 8000);
@@ -116,6 +126,36 @@ namespace Services
             if (this.OnRegister != null)
             {
                 this.OnRegister(response.Result, response.Errormsg);
+            }
+        }
+        public void SendLogin(string user, string psw)
+        {
+            Debug.LogFormat("UserLoginRequest::user :{0} psw:{1}", user, psw);
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.userLogin = new UserLoginRequest();
+            message.Request.userLogin.User = user;
+            message.Request.userLogin.Passward = psw;
+
+            if (this.connected && NetClient.Instance.Connected)
+            {
+                this.pendingMessage = null;
+                NetClient.Instance.SendMessage(message);
+            }
+            else
+            {
+                this.pendingMessage = message;
+                this.ConnectToServer();
+            }
+        }
+
+        void OnUserLogin(object sender, UserLoginResponse response)
+        {
+            Debug.LogFormat("OnUserLogin:{0} [{1}]", response.Result, response.Errormsg);
+
+            if (this.OnLogin != null)
+            {
+                this.OnLogin(response.Result, response.Errormsg);
             }
         }
     }
