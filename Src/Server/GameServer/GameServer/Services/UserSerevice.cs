@@ -125,9 +125,9 @@ namespace GameServer.Services
                 MapPosX = 5000,
                 MapPosY = 4000,
                 MapPosZ = 820,
-                Player = sender.Session.User.Player
             };
             DBService.Instance.Entities.Characters.Add(character);
+            sender.Session.User.Player.Characters.Add(character);
             DBService.Instance.Entities.SaveChanges();
 
             //处理回发的消息

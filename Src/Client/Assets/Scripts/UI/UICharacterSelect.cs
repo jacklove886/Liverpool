@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class UICharacterSelect : MonoBehaviour
 {
+    public SkillBridge.Message.NCharacterInfo info;
     CharacterClass charClass;//枚举值 获得角色的int值
     public Transform charTransform;//角色信息栏的位置
     [Header("选择/创建面板")]
@@ -47,14 +48,14 @@ public class UICharacterSelect : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        InitCharacterSelect(true);
         DataManager.Instance.Load();//等以后可以卸载LoadManager里
+        InitCharacterSelect(true);
         charTransform.position = new Vector3(-15, 55, 0);
     }
 
     private void OnDestroy()
     {
-        UserService.Instance.OnCharacterCreate -= OnCharacterCreate;
+        //UserService.Instance.OnCharacterCreate -= OnCharacterCreate;
     }
 
     //初始化选择角色页面
@@ -83,10 +84,19 @@ public class UICharacterSelect : MonoBehaviour
 
         for (int i = 0; i < User.Instance.Info.Player.Characters.Count; i++)
         {
+            var cha = User.Instance.Info.Player.Characters[i];
             GameObject go = Instantiate(uiCharacterMessage);
-            go.transform.SetParent(uiCharList, false); 
+            go.transform.SetParent(uiCharList, false);
+            go.name = cha.Name;
             UICharacterMessage charInfo = go.GetComponent<UICharacterMessage>();
             charInfo.SetInfo(User.Instance.Info.Player.Characters[i]);
+
+            Button button = go.GetComponentInChildren<Button>();
+            int idx = i;
+            button.onClick.AddListener(() => {
+                OnClickSelectCharacter(idx);
+            });
+
             uiChars.Add(go);
             go.SetActive(true);
         }
@@ -112,7 +122,10 @@ public class UICharacterSelect : MonoBehaviour
     public void OnClickSelectClass(int charClass)
     {
         this.charClass = (CharacterClass)charClass;
-        uICharacterView.CurrentCharacter = charClass - 1;
+        uICharacterView.UpdateCharacter(new SkillBridge.Message.NCharacterInfo
+        {
+            Class = (CharacterClass)charClass
+        });
         for (int i = 0; i < 3; i++)
         {
             //标题改为相应的职业
@@ -130,12 +143,24 @@ public class UICharacterSelect : MonoBehaviour
     {
         selectCharacterIdx = idx;
         var cha = User.Instance.Info.Player.Characters[idx];
-        Debug.LogFormat("Select Char:[{0}]{1}[{2}]", cha.Id, cha.Name, cha.Class);
         User.Instance.CurrentCharacter = cha;
-        uICharacterView.CurrentCharacter = idx;
+
+        var list = User.Instance.Info.Player.Characters;
+        selectCharacterIdx = idx;
+        cha = list[idx];
+        Debug.LogFormat("Select Char:[{0}] {1} [{2}]", cha.Id, cha.Name, cha.Class);
+        User.Instance.CurrentCharacter = cha;
+        uICharacterView.UpdateCharacter(cha);
+
+
+        for (int i = 0; i < User.Instance.Info.Player.Characters.Count; i++)
+        {
+            UICharacterMessage uICharacterMessage = uiChars[i].GetComponent<UICharacterMessage>();
+            uICharacterMessage.selected=idx==i;
+        }
     }
 
-    //点击创建角色的按钮  创建完返回主菜单
+    //点击创建角色的按钮  创建完角色  进入游戏
     public void OnClickStartGame()
     {
         if (string.IsNullOrEmpty(nameInputField.text))
@@ -147,12 +172,18 @@ public class UICharacterSelect : MonoBehaviour
 
     }
 
-    //创建完角色调用的方法
+    //直接点击开始游戏的按钮
+    public void OnDirectClickStartGame()
+    {
+        //如果选了某个角色 可以进入主城 否则请选择角色
+        MessageBox.Show("进入主城");
+    }
+    //绑定的事件
     void OnCharacterCreate(Result result, string message)
     {
         if (result == Result.Success)
         {
-            print("返回创建界面");
+            MessageBox.Show("进入主城");
             InitCharacterSelect(true);
         }
         else

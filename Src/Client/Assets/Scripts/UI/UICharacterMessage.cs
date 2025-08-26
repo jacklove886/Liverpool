@@ -13,17 +13,18 @@ public class UICharacterMessage : MonoBehaviour {
     public Button charButtonCreate;//添加角色的按钮
     public Image noneImage;//空的图像 然后将角色自拍照添加进去
     public Sprite[] charSprite;//角色自拍照
-    public ScrollRect scrollRect;
-
     public Image highlight;
-    public bool Selected
+    public ScrollRect scrollRect;
+    public bool selected
     {
-        get { return highlight.IsActive(); }
+        get { return highlight.enabled; }
         set
         {
-            highlight.gameObject.SetActive(value);
+            highlight.enabled = value; ;
         }
     }
+   
+    
     // Use this for initialization
     void Start () {
         UpdateUI();
@@ -34,6 +35,8 @@ public class UICharacterMessage : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    
 
     void UpdateUI()
     {
