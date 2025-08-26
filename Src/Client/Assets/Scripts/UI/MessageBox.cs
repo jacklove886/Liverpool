@@ -6,12 +6,14 @@ class MessageBox
 
     public static UIMessageBox Show(string message, string title="", MessageBoxType type = MessageBoxType.Information, string btnOK = "", string btnCancel = "")
     {
-        if(cacheObject==null)
+        if (cacheObject==null)
         {
             cacheObject = Resloader.Load<Object>("UI/UIMessageBox");
         }
 
         GameObject go = (GameObject)GameObject.Instantiate(cacheObject);
+        Canvas canvas = go.GetComponent<Canvas>();
+        canvas.sortingOrder = 10;
         UIMessageBox msgbox = go.GetComponent<UIMessageBox>();
         msgbox.Init(title, message, type, btnOK, btnCancel);
         return msgbox;

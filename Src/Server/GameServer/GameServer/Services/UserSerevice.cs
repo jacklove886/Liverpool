@@ -17,6 +17,7 @@ namespace GameServer.Services
         {
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserRegisterRequest>(this.OnRegister);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserLoginRequest>(this.OnLogin);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserCreateCharacterRequest>(this.OnCharacterCreateRequest);
         }
 
         public void Init()
@@ -24,6 +25,7 @@ namespace GameServer.Services
 
         }
 
+        //注册请求
         void OnRegister(NetConnection<NetSession> sender, UserRegisterRequest request)
         {
             Log.InfoFormat("UserRegisterRequest: User:{0}  Pass:{1}", request.User, request.Passward);
@@ -50,6 +52,7 @@ namespace GameServer.Services
             byte[] data = PackageHandler.PackMessage(message);
             sender.SendData(data, 0, data.Length);
         }
+        //登录请求
         void OnLogin(NetConnection<NetSession> sender, UserLoginRequest request)
         {
             Log.InfoFormat("UserLoginRequest: User:{0}  Pass:{1}", request.User, request.Passward);
@@ -89,6 +92,53 @@ namespace GameServer.Services
             }
 
             byte[] data = PackageHandler.PackMessage(message);
+            sender.SendData(data, 0, data.Length);
+        }
+
+        //创建角色请求
+        void OnCharacterCreateRequest(NetConnection<NetSession> sender, UserCreateCharacterRequest request)
+        {
+            Log.InfoFormat("UserCharacterCreateRequest: Name:{0}  Class:{1}", request.Name,request.Class);
+
+            var existingCharacter = DBService.Instance.Entities.Characters.FirstOrDefault(c => c.Name == request.Name);
+
+            //角色名字已存在
+            if (existingCharacter != null)
+            {
+                NetMessage messageFail = new NetMessage();
+                messageFail.Response = new NetMessageResponse();
+                messageFail.Response.createChar = new UserCreateCharacterResponse();
+                messageFail.Response.createChar.Result = Result.Failed;
+                messageFail.Response.createChar.Errormsg = "角色名已存在,请重新输入";
+                byte[] dataFail = PackageHandler.PackMessage(messageFail);
+                //消息打包成数据流发给客户端
+                sender.SendData(dataFail, 0, dataFail.Length);
+                return;
+            }
+            
+            TCharacter character = new TCharacter()
+            {
+                Name = request.Name,
+                Class = (int)request.Class,
+                TID = (int)request.Class,
+                MapID = 1,
+                MapPosX = 5000,
+                MapPosY = 4000,
+                MapPosZ = 820,
+                Player = sender.Session.User.Player
+            };
+            DBService.Instance.Entities.Characters.Add(character);
+            DBService.Instance.Entities.SaveChanges();
+
+            //处理回发的消息
+            NetMessage message = new NetMessage();
+            message.Response = new NetMessageResponse();
+            message.Response.createChar = new UserCreateCharacterResponse();
+            message.Response.createChar.Result = Result.Success;
+            message.Response.createChar.Errormsg = "None";
+
+            byte[] data = PackageHandler.PackMessage(message);
+            //消息打包成数据流发给客户端
             sender.SendData(data, 0, data.Length);
         }
     }

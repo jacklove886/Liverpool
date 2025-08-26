@@ -14,6 +14,7 @@ namespace Services
     {
         public UnityEngine.Events.UnityAction<Result, string> OnRegister;
         public UnityEngine.Events.UnityAction<Result, string> OnLogin;
+        public UnityEngine.Events.UnityAction<Result, string> OnCharacterCreate;
         NetMessage pendingMessage = null;
         bool connected = false;
         private static bool logInitialized = false;  // 添加这行
@@ -24,6 +25,7 @@ namespace Services
             NetClient.Instance.OnDisconnect += OnGameServerDisconnect;
             MessageDistributer.Instance.Subscribe<UserRegisterResponse>(this.OnUserRegister);
             MessageDistributer.Instance.Subscribe<UserLoginResponse>(this.OnUserLogin);
+            MessageDistributer.Instance.Subscribe<UserCreateCharacterResponse>(this.OnUserCharacterCreate);
 
         }
 
@@ -31,6 +33,7 @@ namespace Services
         {
             MessageDistributer.Instance.Unsubscribe<UserRegisterResponse>(this.OnUserRegister);
             MessageDistributer.Instance.Unsubscribe<UserLoginResponse>(this.OnUserLogin);
+            MessageDistributer.Instance.Unsubscribe<UserCreateCharacterResponse>(this.OnUserCharacterCreate);
             NetClient.Instance.OnConnect -= OnGameServerConnect;
             NetClient.Instance.OnDisconnect -= OnGameServerDisconnect;
         }
@@ -152,10 +155,50 @@ namespace Services
         void OnUserLogin(object sender, UserLoginResponse response)
         {
             Debug.LogFormat("OnUserLogin:{0} [{1}]", response.Result, response.Errormsg);
-
+            // 登录成功时设置用户数据
+            if (response.Result == Result.Success && response.Userinfo != null)
+            {
+                Models.User.Instance.SetupUserInfo(response.Userinfo);
+                Debug.Log("用户数据设置成功");
+            }
             if (this.OnLogin != null)
             {
                 this.OnLogin(response.Result, response.Errormsg);
+            }
+        }
+
+        public void SendCharacterCreate(string nameInputField, CharacterClass charClass)
+        {
+            Debug.LogFormat("UserCharacterCreateRequest::name :{0}",nameInputField);
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.createChar = new UserCreateCharacterRequest();
+            message.Request.createChar.Name = nameInputField;
+            message.Request.createChar.Class= charClass;
+
+            if (this.connected && NetClient.Instance.Connected)
+            {
+                this.pendingMessage = null;
+                NetClient.Instance.SendMessage(message);
+            }
+            else
+            {
+                this.pendingMessage = message;
+                this.ConnectToServer();
+            }
+        }
+
+        void OnUserCharacterCreate(object sender, UserCreateCharacterResponse response)
+        {
+            Debug.LogFormat("角色创建成功OnUserCharacterCreate:{0} [{1}]", response.Result, response.Errormsg);
+            if (response.Result == Result.Success)
+            {
+                Models.User.Instance.Info.Player.Characters.Clear();
+                Models.User.Instance.Info.Player.Characters.AddRange(response.Characters);
+            }
+            if (this.OnCharacterCreate != null)
+            {
+                this.OnCharacterCreate(response.Result, response.Errormsg);
             }
         }
     }

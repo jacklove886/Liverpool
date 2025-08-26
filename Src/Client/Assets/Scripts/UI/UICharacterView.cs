@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UICharacterView : MonoBehaviour {
-    public GameObject[] characters;
-    private int currentCharacter = 0;
+    public GameObject[] characters;//三个角色
+    private int currentCharacter = 0;//当前角色索引为0
     public int CurrentCharacter
     {
         get

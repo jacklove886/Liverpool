@@ -64,13 +64,20 @@ public class UILogin : MonoBehaviour {
                 PlayerPrefs.SetString("SavedUsername", username.text);
                 PlayerPrefs.Save();
             }
+            else
+            {
+                // 没勾选记住账号就把之前保存的删掉
+                PlayerPrefs.DeleteKey("SavedUsername");
+            }
+            PlayerPrefs.Save();
+
             // 登录成功，跳转到选择角色场景
             UnityEngine.SceneManagement.SceneManager.LoadScene("CharacterChoose");
         }
         else
         {
             // 登录失败，显示错误信息
-            MessageBox.Show("登录失败: " + msg);
+            MessageBox.Show(msg);
         }
     }
 }

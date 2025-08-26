@@ -1,5 +1,19 @@
-2025-08-25 00:31:02,923 [ 1] INFO  Unity: LoadingManager start
-2025-08-25 00:31:39,343 [ 1] INFO  Unity: 已点击注册
-2025-08-25 00:31:39,344 [ 1] INFO  Unity: 账号是
-2025-08-25 00:31:39,345 [ 1] INFO  Unity: 密码是
-2025-08-25 00:31:39,345 [ 1] INFO  Unity: 确认密码是
+2025-08-25 23:19:13,227 [ 1] INFO  Unity: LoadingManager start
+2025-08-25 23:19:32,658 [ 1] INFO  Unity: UserLoginRequest::user :1234 psw:1
+2025-08-25 23:19:32,660 [ 1] INFO  Unity: ConnectToServer() Start 
+2025-08-25 23:19:32,660 [ 1] INFO  Unity: DoConnect
+2025-08-25 23:19:32,662 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
+2025-08-25 23:19:32,663 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
+
+2025-08-25 23:19:32,667 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-08-25 23:19:34,582 [ 1] INFO  Unity: OnUserLogin:Failed [用户不存在.]
+2025-08-25 23:19:40,691 [ 1] INFO  Unity: UserLoginRequest::user :123 psw:1
+2025-08-25 23:19:40,754 [ 1] INFO  Unity: OnUserLogin:Failed [密码错误]
+2025-08-25 23:19:49,489 [ 1] INFO  Unity: UserLoginRequest::user :123 psw:123
+2025-08-25 23:19:49,721 [ 1] INFO  Unity: OnUserLogin:Success [None]
+2025-08-25 23:19:55,327 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2025-08-25 23:19:55,327 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+UnityEngine.Debug:LogWarning(Object)
+Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
+Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
+

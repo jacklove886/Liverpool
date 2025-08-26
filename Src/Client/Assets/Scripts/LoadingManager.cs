@@ -20,6 +20,7 @@ public class LoadingManager : MonoBehaviour {
     // Use this for initialization
     IEnumerator Start()
     {
+
         log4net.Config.XmlConfigurator.ConfigureAndWatch(new System.IO.FileInfo("log4net.xml"));
         UnityLogger.Init();
         Common.Log.Init("Unity");
@@ -29,11 +30,12 @@ public class LoadingManager : MonoBehaviour {
         UILoading.SetActive(false);
         UILogin.SetActive(false);
         yield return new WaitForSeconds(2f);
+        print("加载完毕1");
         UILoading.SetActive(true);
         yield return new WaitForSeconds(2.5f);
         UITips.SetActive(false);
-
-        //yield return DataManager.Instance.LoadData();
+        print("加载完毕2");
+        yield return DataManager.Instance.LoadData();
 
         //Init basic services
         //MapService.Instance.Init();

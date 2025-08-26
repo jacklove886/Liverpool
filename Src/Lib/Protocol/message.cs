@@ -3,6 +3,8 @@
 // Input: message.proto
 
 #pragma warning disable CS1591, CS0612, CS3021, IDE1006
+using System;
+
 namespace SkillBridge.Message
 {
 
@@ -326,6 +328,10 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(3, Name = @"characters")]
         public global::System.Collections.Generic.List<NCharacterInfo> Characters { get; } = new global::System.Collections.Generic.List<NCharacterInfo>();
 
+        public static implicit operator UserCreateCharacterResponse(UserCreateCharacterRequest v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     [global::ProtoBuf.ProtoContract()]
