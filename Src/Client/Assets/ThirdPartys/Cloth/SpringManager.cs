@@ -39,11 +39,11 @@ namespace UnityChan
         public Vector3 HorizonDeltaMove;
         private Vector3 LastPos;
 
-        private float UpdateSecAcc = 0;
+        //private float UpdateSecAcc = 0;
         private Transform MyTrans;
 
         // 用来稳定帧率，避免两帧之间的更新速度变化太快
-        private float lastUpdateCount = 0;
+        //private float lastUpdateCount = 0;
 
         private bool isHero = false;
 

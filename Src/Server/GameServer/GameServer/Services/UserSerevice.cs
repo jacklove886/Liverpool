@@ -78,7 +78,7 @@ namespace GameServer.Services
                 message.Response.userLogin.Result = Result.Success;
                 message.Response.userLogin.Errormsg = "None";
                 message.Response.userLogin.Userinfo = new NUserInfo();
-                message.Response.userLogin.Userinfo.Id = 1;
+                message.Response.userLogin.Userinfo.Id = (int)user.ID;
                 message.Response.userLogin.Userinfo.Player = new NPlayerInfo();
                 message.Response.userLogin.Userinfo.Player.Id = user.Player.ID;
                 foreach(var c in user.Player.Characters)
@@ -130,12 +130,28 @@ namespace GameServer.Services
             sender.Session.User.Player.Characters.Add(character);
             DBService.Instance.Entities.SaveChanges();
 
+
             //处理回发的消息
             NetMessage message = new NetMessage();
             message.Response = new NetMessageResponse();
             message.Response.createChar = new UserCreateCharacterResponse();
             message.Response.createChar.Result = Result.Success;
             message.Response.createChar.Errormsg = "None";
+
+            // 手动构建角色列表并返回
+            foreach (var c in sender.Session.User.Player.Characters)
+            {
+                NCharacterInfo info = new NCharacterInfo();
+                info.Id = c.ID;
+                info.Name = c.Name;
+                info.Class = (CharacterClass)c.Class;
+                info.Level = 0;
+                info.Tid = c.TID;
+                info.mapId = 1;
+                message.Response.createChar.Characters.Add(info);
+            }
+            Console.WriteLine($"最终返回角色数量：{message.Response.createChar.Characters.Count}");
+
 
             byte[] data = PackageHandler.PackMessage(message);
             //消息打包成数据流发给客户端

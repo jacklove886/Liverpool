@@ -190,11 +190,18 @@ namespace Services
 
         void OnUserCharacterCreate(object sender, UserCreateCharacterResponse response)
         {
-            Debug.LogFormat("角色创建成功OnUserCharacterCreate:{0} [{1}]", response.Result, response.Errormsg);
             if (response.Result == Result.Success)
             {
-                Models.User.Instance.Info.Player.Characters.Clear();
-                Models.User.Instance.Info.Player.Characters.AddRange(response.Characters);
+                // 不清空原有角色，直接添加新角色
+                if (response.Characters != null)
+                {
+                    Debug.LogFormat("服务器返回角色数量：{0}", response.Characters.Count);
+                    Models.User.Instance.Info.Player.Characters.Clear();
+                    Models.User.Instance.Info.Player.Characters.AddRange(response.Characters);
+                }
+                else
+                {
+                }
             }
             if (this.OnCharacterCreate != null)
             {
