@@ -81,12 +81,13 @@ namespace GameServer.Services
                 message.Response.userLogin.Userinfo.Id = (int)user.ID;
                 message.Response.userLogin.Userinfo.Player = new NPlayerInfo();
                 message.Response.userLogin.Userinfo.Player.Id = user.Player.ID;
-                foreach(var c in user.Player.Characters)
+                foreach (var c in user.Player.Characters)
                 {
                     NCharacterInfo info = new NCharacterInfo();
                     info.Id = c.ID;
                     info.Name = c.Name;
                     info.Class = (CharacterClass)c.Class;
+                    info.Level = c.Level;
                     message.Response.userLogin.Userinfo.Player.Characters.Add(info);
                 }
             }
@@ -115,12 +116,13 @@ namespace GameServer.Services
                 sender.SendData(dataFail, 0, dataFail.Length);
                 return;
             }
-            
+
             TCharacter character = new TCharacter()
             {
                 Name = request.Name,
                 Class = (int)request.Class,
                 TID = (int)request.Class,
+                Level = 1,
                 MapID = 1,
                 MapPosX = 5000,
                 MapPosY = 4000,
@@ -145,7 +147,7 @@ namespace GameServer.Services
                 info.Id = c.ID;
                 info.Name = c.Name;
                 info.Class = (CharacterClass)c.Class;
-                info.Level = 0;
+                info.Level = c.Level;
                 info.Tid = c.TID;
                 info.mapId = 1;
                 message.Response.createChar.Characters.Add(info);

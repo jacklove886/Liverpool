@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GameServer.Entities
 {
-    class Entity
+    public class Entity
     {
         public int entityId
         {

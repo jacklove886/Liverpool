@@ -54,6 +54,15 @@ public class UICharacterSelect : MonoBehaviour
     [Header("角色背景图")]
     public Image[] imageBackGround;                             // 角色背景图
 
+    [Header("音效播放器")]
+    public AudioSource audioClipPlay;                           // 音效播放器
+
+    [Header("角色音效")]
+    public AudioClip[] characterAudioClip1;                      // 角色音效
+
+    [Header("角色音效")]
+    public AudioClip[] characterAudioClip2;                      // 角色音效
+
 
     private void Awake()
     {
@@ -147,6 +156,15 @@ public class UICharacterSelect : MonoBehaviour
             imageBackGround[i].gameObject.SetActive(i == charClass - 1);
             //角色3D模型控制
             characterClassPrefab[i].SetActive(i == charClass - 1);
+            //选择角色播放音效
+            if (i == charClass - 1)
+            {     
+                audioClipPlay.clip = characterAudioClip2[i];
+                audioClipPlay.Play();
+            }
+            //播放动画
+            Animator animator = characterClassPrefab[i].GetComponent<Animator>();
+            animator.SetTrigger("SelectClass");
         }
         descs.text = DataManager.Instance.Characters[charClass.ToString()].Description;
     }
@@ -156,23 +174,8 @@ public class UICharacterSelect : MonoBehaviour
     {
         var character = User.Instance.Info.Player.Characters[index];
         User.Instance.CurrentCharacter = character;
-
-
-        // 控制角色3D模型显示
+        // 获得一个索引值来匹配当前选中的角色
         int classIndex = GetClassIndex(character.Class);
-
-        for (int i = 0; i < classCount; i++)
-        {
-            characterClassPrefab[i].SetActive(i == classIndex);
-            imageBackGround[i].gameObject.SetActive(i == classIndex);
-            if(i == classIndex)
-            {
-                Animator animator = characterClassPrefab[i].GetComponent<Animator>();
-                animator.SetTrigger("Click");
-            }
-            
-        }
-
 
         // 控制角色按钮高亮
         for (int i = 0; i < User.Instance.Info.Player.Characters.Count; i++)
@@ -180,7 +183,22 @@ public class UICharacterSelect : MonoBehaviour
             UICharacterMessage uICharacterMessage = uiChars[i].GetComponent<UICharacterMessage>();
             uICharacterMessage.selected = (index == i);
         }
-    }
+
+        //控制角色3D模型显示
+        for (int i = 0; i < classCount; i++)
+        {
+            characterClassPrefab[i].SetActive(i == classIndex);
+
+            imageBackGround[i].gameObject.SetActive(i == classIndex);
+            if (i == classIndex)
+            {
+                Animator animator = characterClassPrefab[i].GetComponent<Animator>();
+                animator.SetTrigger("Click");
+                audioClipPlay.clip = characterAudioClip1[i];
+                audioClipPlay.Play();
+            }      
+        }
+        }
 
     // 获取职业对应的数组索引
     private int GetClassIndex(SkillBridge.Message.CharacterClass characterClass)
@@ -210,7 +228,16 @@ public class UICharacterSelect : MonoBehaviour
     public void OnClickStartGame()
     {
         //如果选了某个角色 可以进入主城 否则请选择角色
-        MessageBox.Show("进入主城");
+        if(User.Instance.CurrentCharacter == null)
+        {
+            MessageBox.Show("请选择角色");
+            return;
+        }
+        else
+        {
+            MessageBox.Show("开始冒险");
+        }
+        UserService.Instance.SendGameEnter(User.Instance.CurrentCharacter.Id);
     }
 
     //绑定的事件

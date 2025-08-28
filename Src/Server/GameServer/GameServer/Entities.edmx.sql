@@ -68,6 +68,7 @@ CREATE TABLE [dbo].[Characters] (
     [MapPosX] int  NOT NULL,
     [MapPosY] int  NOT NULL,
     [MapPosZ] int  NOT NULL,
+    [Level] int NOT NULL DEFAULT 1,
     [Player_ID] int  NOT NULL
 );
 GO

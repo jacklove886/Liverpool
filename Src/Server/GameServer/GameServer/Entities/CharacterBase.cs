@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GameServer.Entities
 {
-    class CharacterBase : Entity
+    public class CharacterBase : Entity
     {
 
         public int Id
@@ -35,7 +35,7 @@ namespace GameServer.Entities
             this.Info.Level = level;
             this.Info.Tid = tid;
             this.Info.Entity = this.EntityData;
-            //this.Define = DataManager.Instance.Characters[this.Info.Tid];
+
             this.Info.Name = this.Define.Name;
         }
     }
