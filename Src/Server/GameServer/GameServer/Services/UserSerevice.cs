@@ -20,6 +20,8 @@ namespace GameServer.Services
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserRegisterRequest>(this.OnRegister);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserLoginRequest>(this.OnLogin);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserCreateCharacterRequest>(this.OnCharacterCreateRequest);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserGameEnterRequest>(this.OnGameEnter);
+            //MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserGameLeaveRequest>(this.OnCharacterCreateRequest);
         }
 
         public void Init()
@@ -164,7 +166,7 @@ namespace GameServer.Services
         private void OnGameEnter(NetConnection<NetSession> sender, UserGameEnterRequest request)
         {
             {
-                TCharacter databaseCharacter = sender.Session.User.Player.Characters.FirstOrDefault(c => c.ID == request.characterIdx);
+                TCharacter databaseCharacter = sender.Session.User.Player.Characters.ElementAt(request.characterIdx);
                 Log.InfoFormat("UserGameEnterRequest: characterID:{0}:{1} Map:{2}", databaseCharacter.ID, databaseCharacter.Name, databaseCharacter.MapID);
                 Character character = CharacterManager.Instance.CharacterEnterGame(databaseCharacter);
 

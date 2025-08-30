@@ -25,7 +25,7 @@ public class SceneManager : MonoSingleton<SceneManager>
 
     IEnumerator LoadLevel(string name)
     {
-        Debug.LogFormat("LoadLevel: {0}", name);
+        Debug.LogFormat("进入的地图是: {0}", name);
         AsyncOperation async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(name);
         async.allowSceneActivation = true;
         async.completed += LevelLoadCompleted;
@@ -41,6 +41,5 @@ public class SceneManager : MonoSingleton<SceneManager>
     {
         if (onProgress != null)
             onProgress(1f);
-        Debug.Log("LevelLoadCompleted:" + obj.progress);
     }
 }

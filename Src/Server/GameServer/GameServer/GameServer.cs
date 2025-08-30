@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using GameServer.Network;
 using System.Configuration;
 
 using System.Threading;
 
 using Network;
 using GameServer.Services;
-
+using GameServer.Managers;
 namespace GameServer
 {
     class GameServer
@@ -27,6 +28,10 @@ namespace GameServer
             network.Init(Port);
             DBService.Instance.Init();
             UserService.Instance.Init();
+            DataManager.Instance.Load();
+            MapManager.Instance.Init();
+
+
             thread = new Thread(new ThreadStart(this.Update));
 
             return true;

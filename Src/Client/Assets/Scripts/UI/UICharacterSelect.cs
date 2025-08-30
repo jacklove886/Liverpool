@@ -13,6 +13,7 @@ public class UICharacterSelect : MonoBehaviour
     public SkillBridge.Message.NCharacterInfo info;
     private CharacterClass charClass;                            // 枚举值 获得角色的int值
     private const int classCount = 3;                           // 职业数量常量
+    private int currentIndex;                                   //角色当前的索引
 
     [Header("选择/创建面板")]
     public GameObject panelSelect;                              // 角色选择面板
@@ -71,7 +72,6 @@ public class UICharacterSelect : MonoBehaviour
 
     void Start()
     {
-        DataManager.Instance.Load();//等以后可以写在LoadManager里
         InitCharacterSelect(true);
     }
 
@@ -114,9 +114,9 @@ public class UICharacterSelect : MonoBehaviour
             charInfo.SetInfo(User.Instance.Info.Player.Characters[i]);
 
             Button button = go.GetComponentInChildren<Button>();
-            int idx = i;
+            int index = i;
             button.onClick.AddListener(() => {
-                OnClickSelectCharacter(idx);
+                OnClickSelectCharacter(index);
             });
 
             uiChars.Add(go);
@@ -170,6 +170,7 @@ public class UICharacterSelect : MonoBehaviour
         descs.text = DataManager.Instance.Characters[charClass].Description;
     }
 
+
     //点击选择已经创建好的角色的按钮
     public void OnClickSelectCharacter(int index)
     {
@@ -183,9 +184,11 @@ public class UICharacterSelect : MonoBehaviour
         {
             UICharacterMessage uICharacterMessage = uiChars[i].GetComponent<UICharacterMessage>();
             uICharacterMessage.selected = (index == i);
+            uICharacterMessage.deleteButton.gameObject.SetActive(index == i);
+            uICharacterMessage.imageEmpty.gameObject.SetActive(index == i);
         }
 
-        //控制角色3D模型显示
+        //控制角色3D模型显示和删除按钮的显示
         for (int i = 0; i < classCount; i++)
         {
             characterClassPrefab[i].SetActive(i == classIndex);
@@ -199,7 +202,9 @@ public class UICharacterSelect : MonoBehaviour
                 audioClipPlay.Play();
             }      
         }
-        }
+        currentIndex = classIndex;
+        
+    }
 
     // 获取职业对应的数组索引
     private int GetClassIndex(SkillBridge.Message.CharacterClass characterClass)
@@ -213,6 +218,11 @@ public class UICharacterSelect : MonoBehaviour
         }
     }
 
+    //点击删除按钮 删除角色
+    public void OnClickDeleteCharacter()
+    {
+
+    }
     //点击创建角色的按钮  创建完角色  进入游戏
     public void OnClickCreateCharacterSuccess()
     {
@@ -240,10 +250,9 @@ public class UICharacterSelect : MonoBehaviour
         }
         else
         {
-            //进入游戏
-            MessageBox.Show("开始冒险");
+            //传入进入游戏角色的索引值(按职业划分的)
+            UserService.Instance.SendGameEnter(currentIndex);
         }
-        UserService.Instance.SendGameEnter(User.Instance.CurrentCharacter.Id);
     }
 
     //绑定的事件

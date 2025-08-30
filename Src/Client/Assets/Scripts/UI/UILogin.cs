@@ -16,6 +16,7 @@ public class UILogin : MonoBehaviour {
     // Use this for initialization
     private void Start()
     {
+        DataManager.Instance.Load();//如果启动了LoadingManager脚本 就不需要这句话 如果没启动 就要加上这句话来加载数据库
         UserService.Instance.OnLogin += OnLogin;
         string savedUsername = PlayerPrefs.GetString("SavedUsername", "");
         if (!string.IsNullOrEmpty(savedUsername))

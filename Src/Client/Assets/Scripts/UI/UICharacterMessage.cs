@@ -11,10 +11,10 @@ public class UICharacterMessage : MonoBehaviour
     public Text charClass;//角色职业
     public Text charName;//角色姓名
     public Image imageEmpty; // 角色空图像（用来存储自拍照）
-
+    [Header("删除按钮")]
+    public Button deleteButton; // 删除按钮引用
     [Header("自拍照")]
     public Sprite[] imageCharacter;                             // 角色自拍照
-
     [Header("选中效果")]
     public Image highlight;//图片高亮
     public bool selected
@@ -40,8 +40,7 @@ public class UICharacterMessage : MonoBehaviour
             if (info.Class.ToString() == "Warrior")
             {
                 charClass.text = "战士";
-                imageEmpty.sprite = imageCharacter[0];
-                
+                imageEmpty.sprite = imageCharacter[0];      
             }
 
             else if (info.Class.ToString() == "Wizard")
@@ -55,7 +54,6 @@ public class UICharacterMessage : MonoBehaviour
                 charClass.text = "游侠";
                 imageEmpty.sprite = imageCharacter[2];
             }
-            imageEmpty.gameObject.SetActive(true);
 
         }
     }

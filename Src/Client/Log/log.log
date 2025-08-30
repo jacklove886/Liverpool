@@ -1,9 +1,8 @@
-2025-08-30 16:33:23,473 [ 1] INFO  Unity: LoadingManager start
-2025-08-30 16:33:25,629 [ 1] INFO  Unity: 加载完毕1
-2025-08-30 16:33:28,130 [ 1] INFO  Unity: 加载完毕2
-2025-08-30 16:33:28,131 [ 1] INFO  Unity: DataManager > DataManager()
-2025-08-30 16:33:31,764 [ 1] INFO  Unity: 网络断开
-2025-08-30 16:33:31,765 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-08-30 17:28:51,398 [ 1] INFO  Unity: LoadingManager start
+2025-08-30 17:28:51,411 [ 1] INFO  Unity: DataManager > DataManager()
+2025-08-30 17:28:53,583 [ 1] INFO  Unity: 加载完毕1
+2025-08-30 17:28:56,033 [ 1] INFO  Unity: 网络断开
+2025-08-30 17:28:56,034 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)

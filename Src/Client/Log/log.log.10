@@ -1,18 +1,21 @@
-2025-08-26 18:06:21,481 [ 1] INFO  Unity: LoadingManager start
-2025-08-26 18:06:23,729 [ 1] INFO  Unity: 加载完毕1
-2025-08-26 18:06:26,233 [ 1] INFO  Unity: 加载完毕2
-2025-08-26 18:06:26,234 [ 1] INFO  Unity: DataManager > DataManager()
-2025-08-26 18:06:26,337 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{ArgumentException: Could not cast or convert from System.Int64 to Common.Data.SpawnPointDefine., Newtonsoft.Json.Utilities.ConvertUtils.EnsureTypeAssignable (System.Object value, System.Type initialType, System.Type targetType)
-Newtonsoft.Json.Utilities.ConvertUtils.ConvertOrCast (System.Object initialValue, System.Globalization.CultureInfo culture, System.Type targetType)
-Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType (Newtonsoft.Json.JsonReader reader, System.Object value, System.Globalization.CultureInfo culture, Newtonsoft.Json.Serialization.JsonContract contract, System.Type targetType)
-Rethrow as JsonSerializationException: Error converting value 1 to type 'Common.Data.SpawnPointDefine'. Path '1.ID', line 3, position 11.
-Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType (Newtonsoft.Json.JsonReader reader, System.Object value, System.Globalization.CultureInfo culture, Newtonsoft.Json.Serialization.JsonContract contract, System.Type targetType)
-Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal (Newtonsoft.Json.JsonReader reader, System.Type objectType, Newtonsoft.Json.Serialization.JsonContract contract, Newtonsoft.Json.Serialization.JsonProperty member, Newtonsoft.Json.Serialization.JsonContainerContract containerContract, Newtonsoft.Json.Serialization.JsonProperty containerMember, System.Object existingValue)
-Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateDictionary (IDictionary dictionary, Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonDictionaryContract contract, Newtonsoft.Json.Serialization.JsonProperty containerProperty, System.String id)
-}</args></log4net.Error>
-2025-08-26 18:06:29,456 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2025-08-26 18:06:29,457 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-08-30 16:28:52,530 [ 1] INFO  Unity: LoadingManager start
+2025-08-30 16:28:54,781 [ 1] INFO  Unity: 加载完毕1
+2025-08-30 16:28:57,284 [ 1] INFO  Unity: 加载完毕2
+2025-08-30 16:28:57,285 [ 1] INFO  Unity: DataManager > DataManager()
+2025-08-30 16:29:03,395 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-08-30 16:29:03,396 [ 1] INFO  Unity: 连接成功
+2025-08-30 16:29:03,398 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-08-30 16:29:03,401 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-08-30 16:29:05,460 [ 1] INFO  Unity: 登录成功
+2025-08-30 16:29:05,647 [ 1] INFO  Unity: 当前创建角色数量为5
+2025-08-30 16:29:06,435 [ 1] INFO  Unity: 网络断开
+2025-08-30 16:29:06,436 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+UnityEngine.Debug:LogWarning(Object)
+Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
+Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
+
+2025-08-30 16:29:06,438 [ 1] INFO  Unity: 网络断开
+2025-08-30 16:29:06,438 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)

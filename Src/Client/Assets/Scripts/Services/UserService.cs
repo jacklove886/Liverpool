@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -209,13 +209,12 @@ namespace Services
             }
         }
 
-        public void SendGameEnter(int characterID)
+        public void SendGameEnter(int characterIndex)
         {
-            Debug.LogFormat("UserGameEnterRequest::characterId:{0}", characterID);
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.gameEnter = new UserGameEnterRequest();
-            message.Request.gameEnter.characterIdx = characterID;
+            message.Request.gameEnter.characterIdx = characterIndex;
 
             if (this.connected && NetClient.Instance.Connected)
             {
@@ -256,7 +255,12 @@ namespace Services
 
         void OnUserMapCharacterEnter(object sender, MapCharacterEnterResponse response)
         {
-            Debug.LogFormat("角色进入地图:{0}", response.mapId);
+            Debug.LogFormat("角色进入第:{0}张地图", response.mapId);
+            if (SceneManager.Instance == null)
+            {
+                Debug.LogError("SceneManager.Instance is null");
+                return;
+            }
             NCharacterInfo info = response.Characters[0];
             User.Instance.CurrentCharacter = info;
             SceneManager.Instance.LoadScene(DataManager.Instance.Maps[response.mapId].Resource);
