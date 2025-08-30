@@ -1,8 +1,29 @@
-2025-08-26 17:59:40,477 [ 1] INFO  Unity: LoadingManager start
-2025-08-26 17:59:42,696 [ 1] INFO  Unity: 加载完毕1
-2025-08-26 17:59:45,200 [ 1] INFO  Unity: 加载完毕2
-2025-08-26 17:59:46,655 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2025-08-26 17:59:46,656 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-08-26 18:08:18,045 [ 1] INFO  Unity: LoadingManager start
+2025-08-26 18:08:20,123 [ 1] INFO  Unity: 加载完毕1
+2025-08-26 18:08:22,627 [ 1] INFO  Unity: 加载完毕2
+2025-08-26 18:08:22,628 [ 1] INFO  Unity: DataManager > DataManager()
+2025-08-26 18:08:26,543 [ 1] INFO  Unity: UserLoginRequest::user :123 psw:123
+2025-08-26 18:08:26,544 [ 1] INFO  Unity: ConnectToServer() Start 
+2025-08-26 18:08:26,545 [ 1] INFO  Unity: DoConnect
+2025-08-26 18:08:26,547 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
+2025-08-26 18:08:26,548 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
+
+2025-08-26 18:08:26,551 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-08-26 18:08:26,623 [ 1] INFO  Unity: OnUserLogin:Success [None]
+2025-08-26 18:08:26,624 [ 1] INFO  Unity: 用户数据设置成功
+2025-08-26 18:08:26,800 [ 1] INFO  Unity: 1
+2025-08-26 18:08:26,802 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UICharacterSelect.InitCharacterSelect (Boolean init) (at Assets/Scripts/UI/UICharacterSelect.cs:85)
+UICharacterSelect.Start () (at Assets/Scripts/UI/UICharacterSelect.cs:49)
+}</args></log4net.Error>
+2025-08-26 18:08:30,906 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2025-08-26 18:08:30,907 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+UnityEngine.Debug:LogWarning(Object)
+Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
+Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
+
+2025-08-26 18:08:30,908 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2025-08-26 18:08:30,908 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)

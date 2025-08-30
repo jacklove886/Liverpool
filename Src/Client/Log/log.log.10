@@ -1,23 +1,18 @@
-2025-08-26 17:58:44,364 [ 1] INFO  Unity: LoadingManager start
-2025-08-26 17:58:46,592 [ 1] INFO  Unity: 加载完毕1
-2025-08-26 17:58:49,091 [ 1] INFO  Unity: 加载完毕2
-2025-08-26 17:58:49,093 [ 1] INFO  Unity: DataManager > DataManager()
-2025-08-26 17:58:49,182 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{FormatException: Input string was not in the correct format, System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Int32.cs:640)
-System.Int32.Parse (System.String s, IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Int32.cs:208)
-System.Convert.ToInt32 (System.String value, IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Convert.cs:1277)
-System.String.System.IConvertible.ToInt32 (IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/String.cs:2391)
-System.Convert.ToType (System.Object value, System.Type conversionType, IFormatProvider provider, Boolean try_target_to_type) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Convert.cs:2910)
-System.Convert.ChangeType (System.Object value, System.Type conversionType, IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Convert.cs:2511)
+2025-08-26 18:06:21,481 [ 1] INFO  Unity: LoadingManager start
+2025-08-26 18:06:23,729 [ 1] INFO  Unity: 加载完毕1
+2025-08-26 18:06:26,233 [ 1] INFO  Unity: 加载完毕2
+2025-08-26 18:06:26,234 [ 1] INFO  Unity: DataManager > DataManager()
+2025-08-26 18:06:26,337 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{ArgumentException: Could not cast or convert from System.Int64 to Common.Data.SpawnPointDefine., Newtonsoft.Json.Utilities.ConvertUtils.EnsureTypeAssignable (System.Object value, System.Type initialType, System.Type targetType)
+Newtonsoft.Json.Utilities.ConvertUtils.ConvertOrCast (System.Object initialValue, System.Globalization.CultureInfo culture, System.Type targetType)
 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType (Newtonsoft.Json.JsonReader reader, System.Object value, System.Globalization.CultureInfo culture, Newtonsoft.Json.Serialization.JsonContract contract, System.Type targetType)
-Rethrow as JsonSerializationException: Error converting value "ID" to type 'System.Int32'. Path '1.ID', line 3, position 9.
+Rethrow as JsonSerializationException: Error converting value 1 to type 'Common.Data.SpawnPointDefine'. Path '1.ID', line 3, position 11.
 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType (Newtonsoft.Json.JsonReader reader, System.Object value, System.Globalization.CultureInfo culture, Newtonsoft.Json.Serialization.JsonContract contract, System.Type targetType)
-Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateDictionary (IDictionary dictionary, Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonDictionaryContract contract, Newtonsoft.Json.Serialization.JsonProperty containerProperty, System.String id)
-Rethrow as JsonSerializationException: Could not convert string 'ID' to dictionary key type 'System.Int32'. Create a TypeConverter to convert from the string to the key type object. Path '1.ID', line 3, position 9.
+Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal (Newtonsoft.Json.JsonReader reader, System.Type objectType, Newtonsoft.Json.Serialization.JsonContract contract, Newtonsoft.Json.Serialization.JsonProperty member, Newtonsoft.Json.Serialization.JsonContainerContract containerContract, Newtonsoft.Json.Serialization.JsonProperty containerMember, System.Object existingValue)
 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateDictionary (IDictionary dictionary, Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonDictionaryContract contract, Newtonsoft.Json.Serialization.JsonProperty containerProperty, System.String id)
 }</args></log4net.Error>
-2025-08-26 17:59:27,826 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2025-08-26 17:59:27,828 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-08-26 18:06:29,456 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2025-08-26 18:06:29,457 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)

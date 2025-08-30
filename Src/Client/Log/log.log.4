@@ -1,29 +1,23 @@
-2025-08-26 18:07:38,296 [ 1] INFO  Unity: LoadingManager start
-2025-08-26 18:07:40,552 [ 1] INFO  Unity: 加载完毕1
-2025-08-26 18:07:43,056 [ 1] INFO  Unity: 加载完毕2
-2025-08-26 18:07:43,057 [ 1] INFO  Unity: DataManager > DataManager()
-2025-08-26 18:07:51,693 [ 1] INFO  Unity: UserLoginRequest::user :123 psw:123
-2025-08-26 18:07:51,694 [ 1] INFO  Unity: ConnectToServer() Start 
-2025-08-26 18:07:51,695 [ 1] INFO  Unity: DoConnect
-2025-08-26 18:07:51,696 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2025-08-26 18:07:51,698 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
-
-2025-08-26 18:07:51,701 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-08-26 18:07:53,636 [ 1] INFO  Unity: OnUserLogin:Success [None]
-2025-08-26 18:07:53,637 [ 1] INFO  Unity: 用户数据设置成功
-2025-08-26 18:07:53,803 [ 1] INFO  Unity: 0
-2025-08-26 18:08:05,164 [ 1] INFO  Unity: UserCharacterCreateRequest::name :爱杨晨
-2025-08-26 18:08:05,455 [ 1] INFO  Unity: 角色创建成功OnUserCharacterCreate:Success [None]
-2025-08-26 18:08:05,456 [ 1] INFO  Unity: 返回创建界面
-2025-08-26 18:08:05,465 [ 1] INFO  Unity: 0
-2025-08-26 18:08:14,951 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2025-08-26 18:08:14,951 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
-
-2025-08-26 18:08:14,954 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2025-08-26 18:08:14,954 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-08-30 16:13:10,451 [ 1] INFO  Unity: LoadingManager start
+2025-08-30 16:13:12,696 [ 1] INFO  Unity: 加载完毕1
+2025-08-30 16:13:15,196 [ 1] INFO  Unity: 加载完毕2
+2025-08-30 16:13:15,197 [ 1] INFO  Unity: DataManager > DataManager()
+2025-08-30 16:13:15,313 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{FormatException: Input string was not in the correct format, System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Int32.cs:640)
+System.Int32.Parse (System.String s, IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Int32.cs:208)
+System.Convert.ToInt32 (System.String value, IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Convert.cs:1277)
+System.String.System.IConvertible.ToInt32 (IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/String.cs:2391)
+System.Convert.ToType (System.Object value, System.Type conversionType, IFormatProvider provider, Boolean try_target_to_type) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Convert.cs:2910)
+System.Convert.ChangeType (System.Object value, System.Type conversionType, IFormatProvider provider) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/Convert.cs:2511)
+Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType (Newtonsoft.Json.JsonReader reader, System.Object value, System.Globalization.CultureInfo culture, Newtonsoft.Json.Serialization.JsonContract contract, System.Type targetType)
+Rethrow as JsonSerializationException: Error converting value "ID" to type 'System.Int32'. Path '1.ID', line 3, position 9.
+Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType (Newtonsoft.Json.JsonReader reader, System.Object value, System.Globalization.CultureInfo culture, Newtonsoft.Json.Serialization.JsonContract contract, System.Type targetType)
+Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateDictionary (IDictionary dictionary, Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonDictionaryContract contract, Newtonsoft.Json.Serialization.JsonProperty containerProperty, System.String id)
+Rethrow as JsonSerializationException: Could not convert string 'ID' to dictionary key type 'System.Int32'. Create a TypeConverter to convert from the string to the key type object. Path '1.ID', line 3, position 9.
+Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateDictionary (IDictionary dictionary, Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonDictionaryContract contract, Newtonsoft.Json.Serialization.JsonProperty containerProperty, System.String id)
+}</args></log4net.Error>
+2025-08-30 16:13:15,739 [ 1] INFO  Unity: 网络断开
+2025-08-30 16:13:15,740 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)

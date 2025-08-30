@@ -2098,7 +2098,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a66dd9fe18ae83547ad8cb34c8d1b0d9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -5995,7 +5995,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1744317718}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b09743d2a886c6b4f9146874485c8567, type: 3}
   m_Name: 
@@ -6006,6 +6006,7 @@ MonoBehaviour:
   progressBar: {fileID: 734514905}
   progressText: {fileID: 147093212}
   progressNumber: {fileID: 147093212}
+  audioSource: {fileID: 716860588}
 --- !u!114 &1744317721
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,11 +16,12 @@ public class LoadingManager : MonoBehaviour {
     public Slider progressBar;
     public Text progressText;
     public Text progressNumber;
+    public AudioSource audioSource;
 
     // Use this for initialization
     IEnumerator Start()
     {
-
+        audioSource.Play();
         log4net.Config.XmlConfigurator.ConfigureAndWatch(new System.IO.FileInfo("log4net.xml"));
         UnityLogger.Init();
         Common.Log.Init("Unity");
