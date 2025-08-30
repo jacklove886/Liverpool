@@ -285,7 +285,6 @@ public class UICharacterSelect : MonoBehaviour
 
     void OnCharacterDelete(Result result, string message)
     {
-        print("操你妈");
         if (result == Result.Success)
         {
             MessageBox.Show("角色删除成功!");

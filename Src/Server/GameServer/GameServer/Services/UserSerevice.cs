@@ -211,19 +211,17 @@ namespace GameServer.Services
                     characterInfo.mapId = character.MapID;
                     message.Response.deleteChar.Characters.Add(characterInfo);
                 }
-
-                //消息打包成数据流发给客户端
-                byte[] data = PackageHandler.PackMessage(message);
-                sender.SendData(data, 0, data.Length);
             }
             catch (Exception ex)
             {
                 Log.ErrorFormat("删除角色异常：{0}", ex.Message);
                 message.Response.deleteChar.Result = Result.Failed;
                 message.Response.deleteChar.Errormsg = "删除失败";
-                byte[] data = PackageHandler.PackMessage(message);
-                sender.SendData(data, 0, data.Length);
             }
+
+            //消息打包成数据流发给客户端
+            byte[] data = PackageHandler.PackMessage(message);
+            sender.SendData(data, 0, data.Length);
         }
 
         private void OnGameEnter(NetConnection<NetSession> sender, UserGameEnterRequest request)

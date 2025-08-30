@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.IO;
 using UnityEngine;
 using SkillBridge.Message;
+using Models;
 
 namespace Network
 {
