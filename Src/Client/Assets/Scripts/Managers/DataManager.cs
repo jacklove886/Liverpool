@@ -13,52 +13,53 @@ using Newtonsoft.Json;
 public class DataManager : Singleton<DataManager>
 {
     public string DataPath;
-    public Dictionary<string, MapDefine> Maps = null;
-    public Dictionary<string, CharacterDefine> Characters = null;
-    public Dictionary<string, TeleporterDefine> Teleporters = null;
-    public Dictionary<string, SpawnPointDefine> SpawnPoints = null;
+    public Dictionary<int, MapDefine> Maps = null;
+    public Dictionary<int, CharacterDefine> Characters = null;
+    public Dictionary<int, TeleporterDefine> Teleporters = null;
+    public Dictionary<int, Dictionary<int, SpawnPointDefine>> SpawnPoints = null;
 
 
     public DataManager()
     {
         this.DataPath = "Data/";
+        Debug.LogFormat("DataManager > DataManager()");
     }
 
     public void Load()
     {
-
         string json = File.ReadAllText(this.DataPath + "MapDefine.txt");
-        this.Maps = JsonConvert.DeserializeObject<Dictionary<string, MapDefine>>(json);
+        this.Maps = JsonConvert.DeserializeObject<Dictionary<int, MapDefine>>(json);
 
         json = File.ReadAllText(this.DataPath + "CharacterDefine.txt");
-        this.Characters = JsonConvert.DeserializeObject<Dictionary<string, CharacterDefine>>(json);
+        this.Characters = JsonConvert.DeserializeObject<Dictionary<int, CharacterDefine>>(json);
 
-        json = File.ReadAllText(this.DataPath + "TeleporterDefine.txt");
-        this.Teleporters = JsonConvert.DeserializeObject<Dictionary<string, TeleporterDefine>>(json);
+        //json = File.ReadAllText(this.DataPath + "TeleporterDefine.txt");
+        //this.Teleporters = JsonConvert.DeserializeObject<Dictionary<int, TeleporterDefine>>(json);
 
-        json = File.ReadAllText(this.DataPath + "SpawnPointDefine.txt");
-        this.SpawnPoints = JsonConvert.DeserializeObject<Dictionary<string, SpawnPointDefine>>(json);
+        //json = File.ReadAllText(this.DataPath + "SpawnPointDefine.txt");
+        //this.SpawnPoints = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, SpawnPointDefine>>> (json);
     }
+
 
     public IEnumerator LoadData()
     {
         string json = File.ReadAllText(this.DataPath + "MapDefine.txt");
-        this.Maps = JsonConvert.DeserializeObject<Dictionary<string, MapDefine>>(json);
+        this.Maps = JsonConvert.DeserializeObject<Dictionary<int, MapDefine>>(json);
 
         yield return null;
 
         json = File.ReadAllText(this.DataPath + "CharacterDefine.txt");
-        this.Characters = JsonConvert.DeserializeObject<Dictionary<string, CharacterDefine>>(json);
+        this.Characters = JsonConvert.DeserializeObject<Dictionary<int, CharacterDefine>>(json);
 
         yield return null;
 
         json = File.ReadAllText(this.DataPath + "TeleporterDefine.txt");
-        this.Teleporters = JsonConvert.DeserializeObject<Dictionary<string, TeleporterDefine>>(json);
+        this.Teleporters = JsonConvert.DeserializeObject<Dictionary<int, TeleporterDefine>>(json);
 
         yield return null;
 
         json = File.ReadAllText(this.DataPath + "SpawnPointDefine.txt");
-        this.SpawnPoints = JsonConvert.DeserializeObject<Dictionary<string, SpawnPointDefine>>(json);
+        this.SpawnPoints = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, SpawnPointDefine>>>(json);
 
         yield return null;
     }

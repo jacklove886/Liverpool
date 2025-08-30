@@ -167,7 +167,7 @@ public class UICharacterSelect : MonoBehaviour
             //播放动画
             
         }
-        descs.text = DataManager.Instance.Characters[charClass.ToString()].Description;
+        descs.text = DataManager.Instance.Characters[charClass].Description;
     }
 
     //点击选择已经创建好的角色的按钮
@@ -221,6 +221,10 @@ public class UICharacterSelect : MonoBehaviour
             MessageBox.Show("请输入角色昵称");
             return;
         }
+        else
+        {
+            MessageBox.Show("角色创建成功");
+        }
         UserService.Instance.SendCharacterCreate(this.nameInputField.text, this.charClass);
 
     }
@@ -236,6 +240,7 @@ public class UICharacterSelect : MonoBehaviour
         }
         else
         {
+            //进入游戏
             MessageBox.Show("开始冒险");
         }
         UserService.Instance.SendGameEnter(User.Instance.CurrentCharacter.Id);
