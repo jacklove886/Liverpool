@@ -35,7 +35,6 @@ public class UICharacterMessage : MonoBehaviour
     {
         if (info != null)
         {
-            Debug.LogFormat("角色{0}等级是:{1}",(info.Name), (info.Level));
             this.charLevel.text = this.info.Level.ToString() + "级";
             this.charName.text = this.info.Name;
             if (info.Class.ToString() == "Warrior")

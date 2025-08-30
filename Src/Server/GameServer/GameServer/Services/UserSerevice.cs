@@ -7,11 +7,13 @@ using Common;
 using Network;
 using SkillBridge.Message;
 using GameServer.Entities;
+using GameServer.Managers;
 
 namespace GameServer.Services
 {
     class UserService : Singleton<UserService>
     {
+
 
         public UserService()
         {
@@ -123,8 +125,8 @@ namespace GameServer.Services
                 Class = (int)request.Class,
                 TID = (int)request.Class,
                 Level = 1,
-                MapID = 1,
-                MapPosX = 5000,
+                MapID = 1,//默认出身在地图1
+                MapPosX = 5000,//出生点的三维坐标
                 MapPosY = 4000,
                 MapPosZ = 820,
             };
@@ -140,24 +142,43 @@ namespace GameServer.Services
             message.Response.createChar.Result = Result.Success;
             message.Response.createChar.Errormsg = "None";
 
-            // 手动构建角色列表并返回
-            foreach (var c in sender.Session.User.Player.Characters)
-            {
-                NCharacterInfo info = new NCharacterInfo();
-                info.Id = c.ID;
-                info.Name = c.Name;
-                info.Class = (CharacterClass)c.Class;
-                info.Level = c.Level;
-                info.Tid = c.TID;
-                info.mapId = 1;
-                message.Response.createChar.Characters.Add(info);
-            }
-            Console.WriteLine($"最终返回角色数量：{message.Response.createChar.Characters.Count}");
+
+            //返回新创建的角色
+
+            NCharacterInfo newCharacterInfo = new NCharacterInfo();
+            newCharacterInfo.Id = character.ID;
+            newCharacterInfo.Name = character.Name;
+            newCharacterInfo.Class = (CharacterClass)character.Class;
+            newCharacterInfo.Level = character.Level;
+            newCharacterInfo.Tid = character.TID;
+            newCharacterInfo.mapId = character.MapID;
+
+            message.Response.createChar.Characters.Add(newCharacterInfo);
 
 
             byte[] data = PackageHandler.PackMessage(message);
             //消息打包成数据流发给客户端
             sender.SendData(data, 0, data.Length);
+        }
+
+        private void OnGameEnter(NetConnection<NetSession> sender, UserGameEnterRequest request)
+        {
+            {
+                TCharacter databaseCharacter = sender.Session.User.Player.Characters.FirstOrDefault(c => c.ID == request.characterIdx);
+                Log.InfoFormat("UserGameEnterRequest: characterID:{0}:{1} Map:{2}", databaseCharacter.ID, databaseCharacter.Name, databaseCharacter.MapID);
+                Character character = CharacterManager.Instance.CharacterEnterGame(databaseCharacter);
+
+                NetMessage message = new NetMessage();
+                message.Response = new NetMessageResponse();
+                message.Response.gameEnter = new UserGameEnterResponse();
+                message.Response.gameEnter.Result = Result.Success;
+                message.Response.gameEnter.Errormsg = "None";
+
+                byte[] data = PackageHandler.PackMessage(message);
+                sender.SendData(data, 0, data.Length);
+                sender.Session.Character = character;
+                MapManager.Instance[databaseCharacter.MapID].CharacterEnter(sender, character);
+            }
         }
     }
 }

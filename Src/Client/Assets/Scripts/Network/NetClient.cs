@@ -162,7 +162,7 @@ namespace Network
             {
                 throw new Exception("Please Init first.");
             }
-            Debug.Log("DoConnect");
+            Debug.Log("连接成功");
             this.connecting = true;
             this.lastSendTime = 0;
 
@@ -171,7 +171,7 @@ namespace Network
 
         public void OnDestroy()
         {
-            Debug.Log("OnDestroy NetworkManager.");
+            Debug.Log("网络断开");
             this.CloseConnection(NET_ERROR_ON_DESTROY);
         }
 
@@ -247,7 +247,7 @@ namespace Network
 
         void DoConnect()
         {
-            Debug.Log("NetClient.DoConnect on " + this.address.ToString());
+            Debug.Log("连接的IP地址为: " + this.address.ToString());
             try
             {
                 if (this.clientSocket != null)
@@ -258,8 +258,6 @@ namespace Network
 
                 this.clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 this.clientSocket.Blocking = true;
-
-                Debug.Log(string.Format("Connect[{0}] to server {1}", this.retryTimes, this.address) + "\n");
                 IAsyncResult result = this.clientSocket.BeginConnect(this.address, null, null);
                 bool success = result.AsyncWaitHandle.WaitOne(NetConnectTimeout);
                 if (success)

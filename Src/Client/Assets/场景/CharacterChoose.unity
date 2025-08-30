@@ -279,7 +279,6 @@ GameObject:
   m_Component:
   - component: {fileID: 92291866}
   - component: {fileID: 92291868}
-  - component: {fileID: 92291867}
   m_Layer: 0
   m_Name: "\u89D2\u8272\u6444\u50CF\u673A"
   m_TagString: Untagged
@@ -301,13 +300,6 @@ Transform:
   m_Father: {fileID: 2047632575}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!81 &92291867
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 92291865}
-  m_Enabled: 1
 --- !u!20 &92291868
 Camera:
   m_ObjectHideFlags: 0
@@ -5210,7 +5202,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1744968865}
   - component: {fileID: 1744968864}
-  - component: {fileID: 1744968863}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5218,13 +5209,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1744968863
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1744968862}
-  m_Enabled: 1
 --- !u!20 &1744968864
 Camera:
   m_ObjectHideFlags: 0

@@ -161,10 +161,11 @@ public class UICharacterSelect : MonoBehaviour
             {     
                 audioClipPlay.clip = characterAudioClip2[i];
                 audioClipPlay.Play();
+                Animator animator = characterClassPrefab[i].GetComponent<Animator>();
+                animator.SetTrigger("SelectClass");
             }
             //播放动画
-            Animator animator = characterClassPrefab[i].GetComponent<Animator>();
-            animator.SetTrigger("SelectClass");
+            
         }
         descs.text = DataManager.Instance.Characters[charClass.ToString()].Description;
     }

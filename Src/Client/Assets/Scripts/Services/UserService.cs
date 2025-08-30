@@ -53,7 +53,6 @@ namespace Services
                 logInitialized = true;
             }
 
-            Debug.Log("ConnectToServer() Start ");
             //NetClient.Instance.CryptKey = this.SessionId;
             NetClient.Instance.Init("127.0.0.1", 8000);
             NetClient.Instance.Connect();
@@ -135,7 +134,7 @@ namespace Services
         }
         public void SendLogin(string user, string psw)
         {
-            Debug.LogFormat("UserLoginRequest::user :{0} psw:{1}", user, psw);
+            Debug.LogFormat("用户名 :{0} 密码:{1}", user, psw);
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.userLogin = new UserLoginRequest();
@@ -156,12 +155,11 @@ namespace Services
 
         void OnUserLogin(object sender, UserLoginResponse response)
         {
-            Debug.LogFormat("OnUserLogin:{0} [{1}]", response.Result, response.Errormsg);
             // 登录成功时设置用户数据
             if (response.Result == Result.Success && response.Userinfo != null)
             {
                 Models.User.Instance.SetupUserInfo(response.Userinfo);
-                Debug.Log("用户数据设置成功");
+                Debug.Log("登录成功");
             }
             if (this.OnLogin != null)
             {
@@ -171,7 +169,7 @@ namespace Services
 
         public void SendCharacterCreate(string nameInputField, CharacterClass charClass)
         {
-            Debug.LogFormat("UserCharacterCreateRequest::name :{0}",nameInputField);
+            Debug.LogFormat("创建的角色名为 :{0}",nameInputField);
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.createChar = new UserCreateCharacterRequest();
@@ -194,15 +192,10 @@ namespace Services
         {
             if (response.Result == Result.Success)
             {
-                // 不清空原有角色，直接添加新角色
                 if (response.Characters != null)
                 {
-                    Debug.LogFormat("服务器返回角色数量：{0}", response.Characters.Count);
-                    Models.User.Instance.Info.Player.Characters.Clear();
+                    //Models.User.Instance.Info.Player.Characters.Clear();  不清空原有的 只添加新角色
                     Models.User.Instance.Info.Player.Characters.AddRange(response.Characters);
-                }
-                else
-                {
                 }
             }
             if (this.OnCharacterCreate != null)
