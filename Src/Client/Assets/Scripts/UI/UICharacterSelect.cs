@@ -5,7 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System;
+using System.Linq;
 
 public class UICharacterSelect : MonoBehaviour
 {
@@ -68,6 +69,7 @@ public class UICharacterSelect : MonoBehaviour
     private void Awake()
     {
         UserService.Instance.OnCharacterCreate += OnCharacterCreate;
+        UserService.Instance.OnCharacterDelete += OnCharacterDelete;
     }
 
     void Start()
@@ -75,9 +77,14 @@ public class UICharacterSelect : MonoBehaviour
         InitCharacterSelect(true);
     }
 
+    private void Update()
+    {
+        //Network.NetClient.Instance.Update();
+    }
     private void OnDestroy()
     {
         UserService.Instance.OnCharacterCreate -= OnCharacterCreate;
+        UserService.Instance.OnCharacterDelete -= OnCharacterDelete;
     }
 
     //初始化选择角色页面
@@ -179,7 +186,7 @@ public class UICharacterSelect : MonoBehaviour
         // 获得一个索引值来匹配当前选中的角色
         int classIndex = GetClassIndex(character.Class);
 
-        // 控制角色按钮高亮
+        // 控制角色按钮高亮以及删除按钮和自拍照的显示(逻辑都是一样的 只有当前选中的才生效)
         for (int i = 0; i < User.Instance.Info.Player.Characters.Count; i++)
         {
             UICharacterMessage uICharacterMessage = uiChars[i].GetComponent<UICharacterMessage>();
@@ -218,11 +225,6 @@ public class UICharacterSelect : MonoBehaviour
         }
     }
 
-    //点击删除按钮 删除角色
-    public void OnClickDeleteCharacter()
-    {
-
-    }
     //点击创建角色的按钮  创建完角色  进入游戏
     public void OnClickCreateCharacterSuccess()
     {
@@ -231,12 +233,22 @@ public class UICharacterSelect : MonoBehaviour
             MessageBox.Show("请输入角色昵称");
             return;
         }
+        UserService.Instance.SendCharacterCreate(this.nameInputField.text, this.charClass);
+    }
+
+    //点击删除按钮 删除角色
+    public void OnClickDeleteCharacter()
+    {
+        if (User.Instance.CurrentCharacter == null)
+        {
+            MessageBox.Show("请先选择要删除的角色");
+            return;
+        }
         else
         {
-            MessageBox.Show("角色创建成功");
+            // 发送删除请求，传入当前选中角色的名字
+            UserService.Instance.SendCharacterDelete(User.Instance.CurrentCharacter.Name);
         }
-        UserService.Instance.SendCharacterCreate(this.nameInputField.text, this.charClass);
-
     }
 
     //直接点击开始游戏的按钮
@@ -262,12 +274,27 @@ public class UICharacterSelect : MonoBehaviour
         {
             // 清空昵称输入框
             nameInputField.text = "";
-            MessageBox.Show("创建成功！");
+            MessageBox.Show("角色创建成功！");
             InitCharacterSelect(true);
         }
         else
         {
-            MessageBox.Show(message, "错误", MessageBoxType.Error);
+            MessageBox.Show(message, "创建失败", MessageBoxType.Error);
+        }
+    }
+
+    void OnCharacterDelete(Result result, string message)
+    {
+        print("操你妈");
+        if (result == Result.Success)
+        {
+            MessageBox.Show("角色删除成功!");
+            User.Instance.CurrentCharacter = null; // 清空当前选中的角色
+            InitCharacterSelect(true);
+        }
+        else
+        {
+            MessageBox.Show(message, "删除失败", MessageBoxType.Error);
         }
     }
 }

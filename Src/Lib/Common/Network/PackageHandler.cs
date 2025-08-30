@@ -1,4 +1,4 @@
-﻿// RayMix Libs - RayMix's .Net Libs
+// RayMix Libs - RayMix's .Net Libs
 // Copyright 2018 Ray@raymix.net.  All rights reserved.
 // https://www.raymix.net
 //
@@ -28,6 +28,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+using Common;
 using System;
 using System.IO;
 
@@ -69,7 +70,7 @@ namespace Network
         /// <param name="count"></param>
         public void ReceiveData(byte[] data,int offset,int count)
         {
-            if(stream.Position + count > stream.Capacity)
+            if (stream.Position + count > stream.Capacity)
             {
                 throw new Exception("PackageHandler write buffer overflow");
             }
@@ -126,9 +127,9 @@ namespace Network
                 {//包有效
 
                     SkillBridge.Message.NetMessage message = UnpackMessage(stream.GetBuffer(), this.readOffset + 4, packageSize);
-                    if (message == null)
+                    if (message != null)
                     {
-                        throw new Exception("PackageHandler ParsePackage faild,invalid package");
+
                     }
                     MessageDistributer<T>.Instance.ReceiveMessage(this.sender, message);
                     this.readOffset += (packageSize + 4);

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -341,7 +341,6 @@ namespace Network
                         this.CloseConnection(NET_ERROR_ZERO_BYTE);
                         return false;
                     }
-
                     this.packageHandler.ReceiveData(this.receiveBuffer.GetBuffer(), 0, n);
 
                 }

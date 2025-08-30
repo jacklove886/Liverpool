@@ -8,6 +8,8 @@ using Network;
 using SkillBridge.Message;
 using GameServer.Entities;
 using GameServer.Managers;
+using System.Data.Entity;
+using System.IO;
 
 namespace GameServer.Services
 {
@@ -19,9 +21,10 @@ namespace GameServer.Services
         {
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserRegisterRequest>(this.OnRegister);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserLoginRequest>(this.OnLogin);
-            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserCreateCharacterRequest>(this.OnCharacterCreateRequest);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserCreateCharacterRequest>(this.OnCharacterCreate);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserDeleteCharacterRequest>(this.OnCharacterDelete);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserGameEnterRequest>(this.OnGameEnter);
-            //MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserGameLeaveRequest>(this.OnCharacterCreateRequest);
+            //MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserGameLeaveRequest>(this.OnGameLeave);
         }
 
         public void Init()
@@ -100,10 +103,10 @@ namespace GameServer.Services
             sender.SendData(data, 0, data.Length);
         }
 
-        //创建角色请求
-        void OnCharacterCreateRequest(NetConnection<NetSession> sender, UserCreateCharacterRequest request)
+        //创建角色的请求
+        void OnCharacterCreate(NetConnection<NetSession> sender, UserCreateCharacterRequest request)
         {
-            Log.InfoFormat("UserCharacterCreateRequest: Name:{0}  Class:{1}", request.Name,request.Class);
+            Log.InfoFormat("创建角色的姓名: Name:{0} 职业: Class:{1}", request.Name,request.Class);
 
             var existingCharacter = DBService.Instance.Entities.Characters.FirstOrDefault(c => c.Name == request.Name);
 
@@ -161,6 +164,66 @@ namespace GameServer.Services
             byte[] data = PackageHandler.PackMessage(message);
             //消息打包成数据流发给客户端
             sender.SendData(data, 0, data.Length);
+        }
+
+        //删除角色的请求
+        void OnCharacterDelete(NetConnection<NetSession> sender, UserDeleteCharacterRequest request)
+        {
+            if (sender.Session.User == null)
+            {
+                return;
+            }
+            Log.InfoFormat("删除角色的姓名:{0}", request.Name);
+
+            NetMessage message = new NetMessage();
+            message.Response = new NetMessageResponse();
+            message.Response.deleteChar = new UserDeleteCharacterResponse();
+
+            try
+            {
+                var deleteCharacter = sender.Session.User.Player.Characters.FirstOrDefault(c => c.Name == request.Name);
+
+                //角色名字不存在 不执行删除操作
+                if (deleteCharacter == null)
+                {
+                    message.Response.deleteChar.Result = Result.Failed;
+                    message.Response.deleteChar.Errormsg = "角色不存在";
+                }
+                else
+                {
+                    // 从数据库删除角色
+                    DBService.Instance.Entities.Characters.Remove(deleteCharacter);
+                    sender.Session.User.Player.Characters.Remove(deleteCharacter);
+                    DBService.Instance.Entities.SaveChanges();
+
+                    message.Response.deleteChar.Result = Result.Success;
+                    message.Response.deleteChar.Errormsg = "None";
+                }
+                // 返回删除后的完整角色列表
+                foreach (var character in sender.Session.User.Player.Characters)
+                {
+                    NCharacterInfo characterInfo = new NCharacterInfo();
+                    characterInfo.Id = character.ID;
+                    characterInfo.Name = character.Name;
+                    characterInfo.Class = (CharacterClass)character.Class;
+                    characterInfo.Level = character.Level;
+                    characterInfo.Tid = character.TID;
+                    characterInfo.mapId = character.MapID;
+                    message.Response.deleteChar.Characters.Add(characterInfo);
+                }
+
+                //消息打包成数据流发给客户端
+                byte[] data = PackageHandler.PackMessage(message);
+                sender.SendData(data, 0, data.Length);
+            }
+            catch (Exception ex)
+            {
+                Log.ErrorFormat("删除角色异常：{0}", ex.Message);
+                message.Response.deleteChar.Result = Result.Failed;
+                message.Response.deleteChar.Errormsg = "删除失败";
+                byte[] data = PackageHandler.PackMessage(message);
+                sender.SendData(data, 0, data.Length);
+            }
         }
 
         private void OnGameEnter(NetConnection<NetSession> sender, UserGameEnterRequest request)

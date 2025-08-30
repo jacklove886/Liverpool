@@ -1110,6 +1110,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 319340608}
     m_Modifications:
+    - target: {fileID: 114249913545187206, guid: c85df0000e341f04aaebcec4baf09f9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224373899822684630, guid: c85df0000e341f04aaebcec4baf09f9e,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1202,11 +1207,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114249913545187206, guid: c85df0000e341f04aaebcec4baf09f9e,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 778722805}
-    - target: {fileID: 114249913545187206, guid: c85df0000e341f04aaebcec4baf09f9e,
-        type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2012033571}
@@ -1231,6 +1231,56 @@ Prefab:
     - target: {fileID: 1960157639569570, guid: c85df0000e341f04aaebcec4baf09f9e, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114514297652641098, guid: c85df0000e341f04aaebcec4baf09f9e,
+        type: 2}
+      propertyPath: removeButton
+      value: 
+      objectReference: {fileID: 1898050568}
+    - target: {fileID: 114249913545187206, guid: c85df0000e341f04aaebcec4baf09f9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2012033571}
+    - target: {fileID: 114249913545187206, guid: c85df0000e341f04aaebcec4baf09f9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249913545187206, guid: c85df0000e341f04aaebcec4baf09f9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249913545187206, guid: c85df0000e341f04aaebcec4baf09f9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249913545187206, guid: c85df0000e341f04aaebcec4baf09f9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249913545187206, guid: c85df0000e341f04aaebcec4baf09f9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249913545187206, guid: c85df0000e341f04aaebcec4baf09f9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249913545187206, guid: c85df0000e341f04aaebcec4baf09f9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249913545187206, guid: c85df0000e341f04aaebcec4baf09f9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c85df0000e341f04aaebcec4baf09f9e, type: 2}
@@ -4159,6 +4209,17 @@ MonoBehaviour:
       - m_Target: {fileID: 2012033571}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 778722805}
+        m_MethodName: OnClickDeleteCharacter
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

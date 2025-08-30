@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,13 +10,11 @@ public class Login : MonoBehaviour {
         Network.NetClient.Instance.Connect();
         SkillBridge.Message.NetMessage msg = new SkillBridge.Message.NetMessage();
         msg.Request = new SkillBridge.Message.NetMessageRequest();
-        msg.Request.firstTestRequest = new SkillBridge.Message.FirstTestRequest();
-        msg.Request.firstTestRequest.Helloworld = "Hello World";
         Network.NetClient.Instance.SendMessage(msg);
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+		Network.NetClient.Instance.Update();
 	}
 }

@@ -8,6 +8,7 @@ using UnityEngine;
 
 using SkillBridge.Message;
 using Models;
+using System.IO;
 
 namespace Services
 {
@@ -16,6 +17,7 @@ namespace Services
         public UnityEngine.Events.UnityAction<Result, string> OnRegister;
         public UnityEngine.Events.UnityAction<Result, string> OnLogin;
         public UnityEngine.Events.UnityAction<Result, string> OnCharacterCreate;
+        public UnityEngine.Events.UnityAction<Result, string> OnCharacterDelete;
         NetMessage pendingMessage = null;
         bool connected = false;
         private static bool logInitialized = false;  
@@ -27,6 +29,7 @@ namespace Services
             MessageDistributer.Instance.Subscribe<UserRegisterResponse>(this.OnUserRegister);
             MessageDistributer.Instance.Subscribe<UserLoginResponse>(this.OnUserLogin);
             MessageDistributer.Instance.Subscribe<UserCreateCharacterResponse>(this.OnUserCharacterCreate);
+            MessageDistributer.Instance.Subscribe<UserDeleteCharacterResponse>(this.OnUserCharacterDelete);
             MessageDistributer.Instance.Subscribe<UserGameEnterResponse>(this.OnUserGameEnter);
             MessageDistributer.Instance.Subscribe<UserGameLeaveResponse>(this.OnUserGameLeave);
             MessageDistributer.Instance.Subscribe<MapCharacterEnterResponse>(this.OnUserMapCharacterEnter);
@@ -38,6 +41,7 @@ namespace Services
             MessageDistributer.Instance.Unsubscribe<UserRegisterResponse>(this.OnUserRegister);
             MessageDistributer.Instance.Unsubscribe<UserLoginResponse>(this.OnUserLogin);
             MessageDistributer.Instance.Unsubscribe<UserCreateCharacterResponse>(this.OnUserCharacterCreate);
+            MessageDistributer.Instance.Unsubscribe<UserDeleteCharacterResponse>(this.OnUserCharacterDelete);
             MessageDistributer.Instance.Unsubscribe<UserGameEnterResponse>(this.OnUserGameEnter);
             MessageDistributer.Instance.Unsubscribe<UserGameLeaveResponse>(this.OnUserGameLeave);
             MessageDistributer.Instance.Unsubscribe<MapCharacterEnterResponse>(this.OnUserMapCharacterEnter);
@@ -47,7 +51,6 @@ namespace Services
 
         public void Init()
         {
-
         }
 
         public void ConnectToServer()
@@ -174,7 +177,7 @@ namespace Services
 
         public void SendCharacterCreate(string nameInputField, CharacterClass charClass)
         {
-            Debug.LogFormat("创建的角色名为 :{0}",nameInputField);
+            Debug.LogFormat("创建角色 :{0}",nameInputField);
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.createChar = new UserCreateCharacterRequest();
@@ -206,6 +209,41 @@ namespace Services
             if (this.OnCharacterCreate != null)
             {
                 this.OnCharacterCreate(response.Result, response.Errormsg);
+            }
+        }
+
+        public void SendCharacterDelete(string characterName)
+        {
+            Debug.LogFormat("删除角色: {0}", characterName);
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.deleteChar = new UserDeleteCharacterRequest();
+            message.Request.deleteChar.Name = characterName;
+
+            if (this.connected && NetClient.Instance.Connected)
+            {
+                this.pendingMessage = null;
+                NetClient.Instance.SendMessage(message);
+            }
+            else
+            {
+                this.pendingMessage = message;
+                this.ConnectToServer();
+            }
+        }
+
+        void OnUserCharacterDelete(object sender, UserDeleteCharacterResponse response)
+        {
+            Debug.Log("操你妈");
+            if (response.Result == Result.Success)
+            {
+                // 用服务器返回的完整列表
+                User.Instance.Info.Player.Characters.Clear();
+                User.Instance.Info.Player.Characters.AddRange(response.Characters);
+            }
+            if (this.OnCharacterDelete != null)
+            {
+                this.OnCharacterDelete(response.Result, response.Errormsg);
             }
         }
 

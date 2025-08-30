@@ -112,26 +112,28 @@ message NetMessageRequest{
 	UserRegisterRequest userRegister = 1;
 	UserLoginRequest userLogin = 2;
 	UserCreateCharacterRequest createChar = 3;
-	UserGameEnterRequest gameEnter = 4;
-	UserGameLeaveRequest gameLeave = 5;
+	UserDeleteCharacterRequest deleteChar = 4;
+	UserGameEnterRequest gameEnter = 5;
+	UserGameLeaveRequest gameLeave = 6;
 	
-	MapCharacterEnterRequest mapCharacterEnter = 6;
+	MapCharacterEnterRequest mapCharacterEnter = 7;
 
-	MapEntitySyncRequest mapEntitySync = 8;
-	MapTeleportRequest mapTeleport = 9;
+	MapEntitySyncRequest mapEntitySync = 9;
+	MapTeleportRequest mapTeleport = 10;
 }
 
 message NetMessageResponse{
 	UserRegisterResponse userRegister = 1;
 	UserLoginResponse userLogin = 2;
 	UserCreateCharacterResponse createChar = 3;
-	UserGameEnterResponse gameEnter = 4;
-	UserGameLeaveResponse gameLeave = 5;
+	UserDeleteCharacterResponse deleteChar = 4;
+	UserGameEnterResponse gameEnter = 5;
+	UserGameLeaveResponse gameLeave = 6;
 
-	MapCharacterEnterResponse mapCharacterEnter = 6;
-	MapCharacterLeaveResponse mapCharacterLeave = 7;
+	MapCharacterEnterResponse mapCharacterEnter = 7;
+	MapCharacterLeaveResponse mapCharacterLeave = 8;
 
-	MapEntitySyncResponse mapEntitySync = 8;
+	MapEntitySyncResponse mapEntitySync = 9;
 	
 }
 
@@ -171,6 +173,18 @@ message UserCreateCharacterResponse {
 	RESULT result = 1;
 	string errormsg = 2;
 	repeated NCharacterInfo characters = 3;
+}
+message UserDeleteCharacterRequest
+{
+    string name = 1;
+}
+
+message UserDeleteCharacterResponse {
+    RESULT result = 1;
+    string errormsg = 2;
+	string name = 3;
+    repeated NCharacterInfo characters = 4;
+
 }
 
 message UserGameEnterRequest
