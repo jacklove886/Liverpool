@@ -109,7 +109,7 @@ public class UICharacterSelect : MonoBehaviour
             Debug.LogWarning("角色列表为空，无法初始化角色选择界面");
             return;
         }
-        print("当前创建角色数量为" + User.Instance.Info.Player.Characters.Count);
+        print("当前角色数量为" + User.Instance.Info.Player.Characters.Count);
 
         for (int i = 0; i < User.Instance.Info.Player.Characters.Count; i++)
         {

@@ -198,6 +198,7 @@ namespace Services
 
         void OnUserCharacterCreate(object sender, UserCreateCharacterResponse response)
         {
+            Debug.LogFormat("创建角色接收到响应");
             if (response.Result == Result.Success)
             {
                 if (response.Characters != null)
@@ -247,6 +248,7 @@ namespace Services
 
         void OnUserCharacterDelete(object sender, UserDeleteCharacterResponse response)
         {
+            Debug.LogFormat("删除角色接收到响应");
             if (response.Result == Result.Success)
             {
                 // 用服务器返回的完整列表
