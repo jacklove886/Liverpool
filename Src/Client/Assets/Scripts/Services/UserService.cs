@@ -225,19 +225,6 @@ namespace Services
             {
                 this.pendingMessage = null;
                 NetClient.Instance.SendMessage(message);
-                // 服务器会正常处理删除，但客户端不等待响应
-                // 从本地角色列表中移除角色
-                var characterToRemove = User.Instance.Info.Player.Characters.FirstOrDefault(c => c.Name == characterName);
-                if (characterToRemove != null)
-                {
-                    User.Instance.Info.Player.Characters.Remove(characterToRemove);
-                }
-                
-                // 立即触发成功回调，让UI更新角色列表
-                if (this.OnCharacterDelete != null)
-                {
-                    this.OnCharacterDelete(Result.Success, "");
-                }
             }
             else
             {
