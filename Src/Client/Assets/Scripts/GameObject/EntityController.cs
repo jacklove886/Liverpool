@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Entities;
+using Models;
 
 public class EntityController : MonoBehaviour {
 
@@ -28,6 +29,7 @@ public class EntityController : MonoBehaviour {
 
     [Header("角色类型")]
     public bool isPlayer=false;             //是否是玩家
+    public int whichCharacter;              //判断具体是哪个角色  1战士,2法师,3游侠
 	
 	void Start () {
 		if(entity!=null)
@@ -68,21 +70,36 @@ public class EntityController : MonoBehaviour {
 
 	public void OnEntityEvent(EntityEvent entityEvent, float horizontal = 0, float vertical = 0)
     {
+        int currentCharacter = (int)User.Instance.CurrentCharacter.Class;
         switch (entityEvent)
         {
             case EntityEvent.EventIdle:
-                anim.SetFloat("Horizontal", 0);
-                anim.SetFloat("Vertical", 0);
-                anim.SetBool("Move", false);
+                if (currentCharacter == 1)
+                {
+                    anim.SetFloat("Horizontal", 0);
+                    anim.SetFloat("Vertical", 0);
+                    anim.SetBool("Move", false);
+                }
+                if (currentCharacter == 2|| currentCharacter==3)
+                {
+                    anim.SetBool("Move", false);
+                }
                 break;
             case EntityEvent.EventMoveFwd:
             case EntityEvent.EventMoveBack:
             case EntityEvent.EventMoveLeft:
             case EntityEvent.EventMoveRight:
                 // 用H和V的值
-                anim.SetFloat("Horizontal", horizontal);
-                anim.SetFloat("Vertical", vertical);
-                anim.SetBool("Move", true);
+                if (currentCharacter == 1)
+                {
+                    anim.SetFloat("Horizontal", horizontal);
+                    anim.SetFloat("Vertical", vertical);
+                    anim.SetBool("Move", true);
+                }
+                if (currentCharacter == 2|| currentCharacter==3)
+                {
+                    anim.SetBool("Move", true);
+                }
                 break;
             case EntityEvent.EventJump:
                 anim.SetTrigger("Jump");
@@ -100,4 +117,5 @@ public class EntityController : MonoBehaviour {
             UIWorldElementManager.Instance.RemoveCharacterNameBar(this.transform);
         }*/
     }
+
 }

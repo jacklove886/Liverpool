@@ -1769,6 +1769,7 @@ MonoBehaviour:
   animSpeed: 1.5
   jumpForce: 3
   isPlayer: 0
+  whichCharacter: 0
 --- !u!114 &114195032503727026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2068,8 +2069,6 @@ MonoBehaviour:
   entityController: {fileID: 0}
   speed: 0
   onAir: 0
-  vertical: 0
-  horizontal: 0
 --- !u!114 &114864272369621308
 MonoBehaviour:
   m_ObjectHideFlags: 1
