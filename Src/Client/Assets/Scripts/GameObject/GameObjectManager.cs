@@ -48,11 +48,11 @@ public class GameObjectManager : MonoBehaviour
             Object obj = Resloader.Load<Object>(character.Define.Resource);
             if(obj == null)
             {
-                Debug.LogErrorFormat("角色[{0}] 资源[{1}] 不存在.",character.Define.TID, character.Define.Resource);
+                Debug.LogErrorFormat("角色：[{0}] 资源[{1}] 不存在.",character.Define.Name, character.Define.Resource);
                 return;
             }
             GameObject go = (GameObject)Instantiate(obj);
-            go.name = "角色ID:" + character.Info.Id + "_角色名:" + character.Info.Name;
+            go.name = character.Info.Name;
 
             go.transform.position = GameObjectTool.LogicToWorld(character.position);
             go.transform.forward = GameObjectTool.LogicToWorld(character.direction);
@@ -80,7 +80,7 @@ public class GameObjectManager : MonoBehaviour
                     pc.enabled = false;
                 }
             }
-            UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, character);
+            //UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, character);
         }
     }
 }

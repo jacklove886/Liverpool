@@ -39,11 +39,13 @@ enum CHARACTER_STATE
 
 enum ENTITY_EVENT
 {
-	NONE = 0;
-	IDLE = 1;
-	MOVE_FWD = 2;
-	MOVE_BACK = 3;
-	JUMP = 4;
+	EVENT_NONE = 0;
+    EVENT_IDLE = 1;
+    EVENT_MOVE_FWD = 2;
+    EVENT_MOVE_BACK = 3;
+    EVENT_MOVE_LEFT = 4;
+    EVENT_MOVE_RIGHT = 5;
+    EVENT_JUMP = 6;
 }
 
 message NUserInfo {

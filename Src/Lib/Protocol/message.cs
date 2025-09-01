@@ -525,16 +525,20 @@ namespace SkillBridge.Message
     [global::ProtoBuf.ProtoContract(Name = @"ENTITY_EVENT")]
     public enum EntityEvent
     {
-        [global::ProtoBuf.ProtoEnum(Name = @"NONE")]
-        None = 0,
-        [global::ProtoBuf.ProtoEnum(Name = @"IDLE")]
-        Idle = 1,
-        [global::ProtoBuf.ProtoEnum(Name = @"MOVE_FWD")]
-        MoveFwd = 2,
-        [global::ProtoBuf.ProtoEnum(Name = @"MOVE_BACK")]
-        MoveBack = 3,
-        [global::ProtoBuf.ProtoEnum(Name = @"JUMP")]
-        Jump = 4,
+        [global::ProtoBuf.ProtoEnum(Name = @"EVENT_NONE")]
+        EventNone = 0,
+        [global::ProtoBuf.ProtoEnum(Name = @"EVENT_IDLE")]
+        EventIdle = 1,
+        [global::ProtoBuf.ProtoEnum(Name = @"EVENT_MOVE_FWD")]
+        EventMoveFwd = 2,
+        [global::ProtoBuf.ProtoEnum(Name = @"EVENT_MOVE_BACK")]
+        EventMoveBack = 3,
+        [global::ProtoBuf.ProtoEnum(Name = @"EVENT_MOVE_LEFT")]
+        EventMoveLeft = 4,
+        [global::ProtoBuf.ProtoEnum(Name = @"EVENT_MOVE_RIGHT")]
+        EventMoveRight = 5,
+        [global::ProtoBuf.ProtoEnum(Name = @"EVENT_JUMP")]
+        EventJump = 6,
     }
 
 }

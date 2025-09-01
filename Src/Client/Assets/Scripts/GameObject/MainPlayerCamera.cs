@@ -42,6 +42,7 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
         Vector3 angles = transform.eulerAngles;
         x = angles.y;
         y = angles.x;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
@@ -50,12 +51,9 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
             return;
 
         // 鼠标控制相机旋转
-        if (Input.GetMouseButton(1)) // 右键按住时才旋转
-        {
             x += Input.GetAxis("Mouse X") * xSpeed * Time.deltaTime;
             y -= Input.GetAxis("Mouse Y") * ySpeed * Time.deltaTime;
             y = ClampAngle(y, yMinLimit, yMaxLimit);
-        }
 
         // 鼠标滚轮控制距离
         float scroll = Input.GetAxis("Mouse ScrollWheel");
@@ -84,7 +82,7 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
         transform.rotation = rotation;
 
         // 同步玩家Y轴旋转（可选）
-        if (Input.GetMouseButton(1))
+        //if (Input.GetMouseButton(1))
         {
             player.transform.rotation = Quaternion.Euler(0, x, 0);
         }

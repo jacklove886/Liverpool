@@ -66,34 +66,39 @@ public class EntityController : MonoBehaviour {
 		}
 	}
 
-	public void OnEntityEvent(EntityEvent entityEvent)
-	{
-		switch(entityEvent)
-		{
-			case EntityEvent.Idle:
-				anim.SetBool("Move", false);
-				anim.SetTrigger("Idle");
-				break;
-			case EntityEvent.MoveFwd:
-				anim.SetBool("Move", true);
-				break;
-			case EntityEvent.MoveBack:
-				anim.SetBool("Move", true);
-				break;
-			case EntityEvent.Jump:
-				anim.SetTrigger("Jump");
-				break;
-		}
-	}
+	public void OnEntityEvent(EntityEvent entityEvent, float horizontal = 0, float vertical = 0)
+    {
+        switch (entityEvent)
+        {
+            case EntityEvent.EventIdle:
+                anim.SetFloat("Horizontal", 0);
+                anim.SetFloat("Vertical", 0);
+                anim.SetBool("Move", false);
+                break;
+            case EntityEvent.EventMoveFwd:
+            case EntityEvent.EventMoveBack:
+            case EntityEvent.EventMoveLeft:
+            case EntityEvent.EventMoveRight:
+                // 用H和V的值
+                Debug.LogFormat("设置动画参数: H={0}, V={1}, Move={2}", horizontal, vertical, true);
+                anim.SetFloat("Horizontal", horizontal);
+                anim.SetFloat("Vertical", vertical);
+                anim.SetBool("Move", true);
+                break;
+            case EntityEvent.EventJump:
+                anim.SetTrigger("Jump");
+                break;
+        }
+    }
 
     void OnDestroy()
     {
         if (entity != null)
-            Debug.LogFormat("消失的玩家：{0},ID：{1} ",this.name, entity.entityId);
+            Debug.LogFormat("消失的玩家：{0} " ,entity.entityId);
 
-        if (UIWorldElementManager.Instance != null)
+        /*if (UIWorldElementManager.Instance != null)
         {
             UIWorldElementManager.Instance.RemoveCharacterNameBar(this.transform);
-        }
+        }*/
     }
 }

@@ -30,7 +30,7 @@ namespace Services
 
         private void OnMapCharacterEnter(object sender, MapCharacterEnterResponse response)
         {
-            Debug.LogFormat("角色进入了地图:{0},当前角色数量:{1}",response.mapId,response.Characters.Count);
+            Debug.LogFormat("进入了地图:{0},当前角色数量:{1}",response.mapId,response.Characters.Count);
             foreach(var cha in response.Characters)
             {
                if(User.Instance.CurrentCharacter.Id==cha.Id)

@@ -35,33 +35,23 @@ namespace Entities
             this.Define = DataManager.Instance.Characters[info.Tid];
         }
 
-        public void MoveForward()
+        public void Move()
         {
-            Debug.LogFormat("角色向前移动");
             this.speed = this.Define.Speed;
-        }
-
-        public void MoveBack()
-        {
-            Debug.LogFormat("角色向后移动");
-            this.speed = -this.Define.Speed;
         }
 
         public void Stop()
         {
-            Debug.LogFormat("角色停止移动");
             this.speed = 0;
         }
 
         public void SetDirection(Vector3Int direction)
         {
-            Debug.LogFormat("角色方向:{0}", direction);
             this.direction = direction;
         }
 
         public void SetPosition(Vector3Int position)
         {
-            Debug.LogFormat("角色位置:{0}", position);
             this.position = position;
         }
     }

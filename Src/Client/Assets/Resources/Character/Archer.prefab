@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 114861350494065554}
   - component: {fileID: 114112841312458084}
   m_Layer: 0
-  m_Name: "\u6E38\u4FA0"
+  m_Name: Archer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2066,10 +2066,10 @@ MonoBehaviour:
   isPlayer: 0
   rb: {fileID: 54458875908084424}
   entityController: {fileID: 0}
-  rotateSpeed: 2
-  turnAngle: 10
   speed: 0
   onAir: 0
+  vertical: 0
+  horizontal: 0
 --- !u!114 &114864272369621308
 MonoBehaviour:
   m_ObjectHideFlags: 1

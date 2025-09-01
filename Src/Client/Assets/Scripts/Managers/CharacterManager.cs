@@ -27,7 +27,7 @@ namespace Services
 
         public void AddCharacter(SkillBridge.Message.NCharacterInfo cha)
         {
-            Debug.LogFormat("加入角色ID:{0},角色姓名:{1},地图:{2}，实体信息:{3}",cha.Id,cha.Name,cha.mapId,cha.Entity.String());
+            Debug.LogFormat("加入角色姓名:{0},地图:{1}，实体信息:{2}",cha.Name,cha.mapId,cha.Entity.String());
             Character character=new Character(cha);
             this.Characters[cha.Id]=character;
 

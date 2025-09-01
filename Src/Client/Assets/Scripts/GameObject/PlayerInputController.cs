@@ -16,16 +16,16 @@ public class PlayerInputController : MonoBehaviour {
     public EntityController entityController;//实体控制器
 
     [Header("移动参数")]
-    public float rotateSpeed=2.0f;//旋转的速度
-    public float turnAngle=10;//旋转角度的阈值
     public int speed;
     public bool onAir=false; //是否在空中
+    public float vertical;
+    public float horizontal;
 
     [Header("位置同步")]
     private Vector3 lastPos;
 	
 	void Start () {
-		state=SkillBridge.Message.CharacterState.Idle;
+        state =SkillBridge.Message.CharacterState.Idle;
 		if(this.character==null)
 		{
 			DataManager.Instance.Load();
@@ -47,91 +47,89 @@ public class PlayerInputController : MonoBehaviour {
 			}
 		}
 	}
-	
-	void FixedUpdate () 
+
+    void FixedUpdate()
+    {
+        if (character == null) return;
+
+        vertical = Input.GetAxis("Vertical");   
+        horizontal = Input.GetAxis("Horizontal");
+        Debug.LogFormat("原始输入值: V={0}, H={1}", vertical, horizontal);
+
+        // 移动处理
+        if (Mathf.Abs(vertical) > 0.01f || Mathf.Abs(horizontal) > 0.01f)
+        {
+            if (state != SkillBridge.Message.CharacterState.Move)  // 恢复这个检查
+            {
+                this.character.Move();
+                state = SkillBridge.Message.CharacterState.Move;
+            }
+            if (Mathf.Abs(vertical) > Mathf.Abs(horizontal)) // 前后移动为主
+                {
+                    if (vertical > 0)
+                    {   
+                        this.SendEntityEvent(EntityEvent.EventMoveFwd, horizontal, vertical);
+                    }
+                    else
+                    {
+                        this.SendEntityEvent(EntityEvent.EventMoveBack, horizontal, vertical);
+                    }
+                }
+            else // 左右移动为主
+                {
+                    if (horizontal > 0)
+                    {
+                        this.SendEntityEvent(EntityEvent.EventMoveRight, horizontal, vertical);
+                    }
+                    else
+                    {
+                        this.SendEntityEvent(EntityEvent.EventMoveLeft, horizontal, vertical);
+                    }
+                }
+            
+            // 角色移动
+            Vector3 moveDirection = (Vector3.forward * vertical + Vector3.right * horizontal).normalized;
+            rb.velocity = new Vector3(moveDirection.x * character.speed / 100f, rb.velocity.y, moveDirection.z * character.speed / 100f);
+        }
+
+        else
+        {
+            if (state != SkillBridge.Message.CharacterState.Idle)
+            {
+                state = SkillBridge.Message.CharacterState.Idle;
+                this.rb.velocity = Vector3.zero;
+                this.character.Stop();
+                this.SendEntityEvent(EntityEvent.EventIdle, 0, 0);
+            }
+        }
+
+
+        // 按空格实现跳跃
+        if (Input.GetButtonDown("Jump"))
+        {
+            this.SendEntityEvent(EntityEvent.EventJump, 0, 0);
+        }
+    }
+
+    private void LateUpdate()
 	{
-		if(character==null)
-		{
-			return;
-		}
+        Vector3 offset = this.rb.transform.position - lastPos;
+        this.speed = (int)(offset.magnitude * 100f / Time.deltaTime);
+        this.lastPos = this.rb.transform.position;
 
-		float v=Input.GetAxis("Vertical");//垂直处理
-
-		if(v>0.01)
-		{
-			if(state!=SkillBridge.Message.CharacterState.Move)
-			{
-				state=SkillBridge.Message.CharacterState.Move;
-				this.character.MoveForward();
-				this.SendEntityEvent(EntityEvent.MoveFwd);
-			}
-			rb.velocity=
-			rb.velocity.y*Vector3.up+GameObjectTool.LogicToWorld(character.direction)*(character.speed+9.81f)/100f;
-		}
-		else if(v<-0.01)
-		{
-			if(state!=SkillBridge.Message.CharacterState.Move)
-			{
-				state=SkillBridge.Message.CharacterState.Move;
-                this.character.MoveBack();
-				this.SendEntityEvent(EntityEvent.MoveBack);
-			}
-			rb.velocity=
-			rb.velocity.y*Vector3.up+GameObjectTool.LogicToWorld(character.direction)*(character.speed+9.81f)/100f;
-		}
-		else
-		{
-			if (state != SkillBridge.Message.CharacterState.Idle)
-        	{
-            state = SkillBridge.Message.CharacterState.Idle;
-            this.rb.velocity = Vector3.zero;
-            this.character.Stop();
-            this.SendEntityEvent(EntityEvent.Idle);
-       		}
-		}
-
-		float h=Input.GetAxis("Horizontal");//水平处理
-		if(h<-0.1||h>0.1)
-		{
-			this.transform.Rotate(0,h*rotateSpeed,0);
-			Vector3 dir=GameObjectTool.LogicToWorld(character.direction);
-			Quaternion rotation=new Quaternion();
-			rotation.SetFromToRotation(dir,this.transform.forward);
-
-			if(rotation.eulerAngles.y>this.turnAngle&&rotation.eulerAngles.y<(360-this.turnAngle))
-			{
-				character.SetDirection(GameObjectTool.WorldToLogic(this.transform.forward));
-				rb.transform.forward=this.transform.forward;
-				this.SendEntityEvent(EntityEvent.None);
-			}
-		}
-
-		
-		if (Input.GetButtonDown("Jump"))// 跳跃处理
-		{
-			this.SendEntityEvent(EntityEvent.Jump);
-		}
-	}
-
-	private void LateUpdate()
-	{
-    Vector3 offset = this.rb.transform.position - lastPos;
-    this.speed = (int)(offset.magnitude * 100f / Time.deltaTime);
-    this.lastPos = this.rb.transform.position;
-
-    if ((GameObjectTool.WorldToLogic(this.rb.transform.position) - this.character.position).magnitude > 50)
+        if ((GameObjectTool.WorldToLogic(this.rb.transform.position) - this.character.position).magnitude > 50)
     	{
         this.character.SetPosition(GameObjectTool.WorldToLogic(this.rb.transform.position));
-        this.SendEntityEvent(EntityEvent.None);
+        this.SendEntityEvent(EntityEvent.EventNone);
     	}
-    this.transform.position = this.rb.transform.position;
+        this.transform.position = this.rb.transform.position;
 	}
 
-	void SendEntityEvent(EntityEvent entityEvent)
+	void SendEntityEvent(EntityEvent entityEvent, float horizontal = 0, float vertical = 0)
 	{
 		if(entityController!=null)
 		{
-			entityController.OnEntityEvent(entityEvent);
+			entityController.OnEntityEvent(entityEvent, horizontal, vertical);
 		}
 	}
 }

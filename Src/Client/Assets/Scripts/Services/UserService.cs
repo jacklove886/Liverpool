@@ -321,6 +321,21 @@ namespace Services
             }
             NCharacterInfo info = response.Characters[0];
             User.Instance.CurrentCharacter = info;
+
+            /*NCharacterInfo info = null;
+            foreach (var character in response.Characters)
+            {
+                if (character.Id == User.Instance.CurrentCharacter.Id)
+                {
+                    info = character;
+                    break;
+                }
+            }
+            if (info != null)
+            {
+                User.Instance.CurrentCharacter = info;
+            }*/
+
             SceneManager.Instance.LoadScene(DataManager.Instance.Maps[response.mapId].Resource);
         }
     }

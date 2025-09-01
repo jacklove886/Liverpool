@@ -209,7 +209,7 @@ public class UICharacterSelect : MonoBehaviour
                 audioClipPlay.Play();
             }      
         }
-        currentIndex = classIndex;
+        currentIndex = index;
         
     }
 
