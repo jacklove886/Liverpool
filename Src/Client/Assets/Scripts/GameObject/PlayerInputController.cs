@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Entities;
 using SkillBridge.Message;
+using Models;
 
 public class PlayerInputController : MonoBehaviour {
 
@@ -107,6 +108,8 @@ public class PlayerInputController : MonoBehaviour {
         if (Input.GetButtonDown("Jump"))
         {
             this.SendEntityEvent(EntityEvent.EventJump, 0, 0);
+            AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.jumpAudioClip[(int)User.Instance.CurrentCharacter.Class-1];
+            AudioManager.Instance.audioClipPlay.Play();
         }
     }
 

@@ -131,9 +131,9 @@ namespace GameServer.Services
                 TID = (int)request.Class,
                 Level = 1,
                 MapID = 1,//默认出身在地图1
-                MapPosX = 5000,//出生点的三维坐标
-                MapPosY = 4000,
-                MapPosZ = 820,
+                MapPosX = 4150,//出生点的三维坐标
+                MapPosY = 3000,
+                MapPosZ = 800,
             };
             DBService.Instance.Entities.Characters.Add(character);
             sender.Session.User.Player.Characters.Add(character);

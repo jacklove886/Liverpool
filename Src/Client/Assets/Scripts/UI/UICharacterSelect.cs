@@ -15,7 +15,7 @@ public class UICharacterSelect : MonoBehaviour
     private CharacterClass charClass;                            // 枚举值 获得角色的int值
     private const int classCount = 3;                           // 职业数量常量
     private int currentIndex;                                   //角色当前列表中的索引
-    private int classIndex;                                     //角色当前职业中的索引
+    public int classIndex;                                     //角色当前职业中的索引
 
     [Header("选择/创建面板")]
     public GameObject panelSelect;                              // 角色选择面板
@@ -56,19 +56,6 @@ public class UICharacterSelect : MonoBehaviour
 
     [Header("角色背景图")]
     public Image[] imageBackGround;                             // 角色背景图
-
-    [Header("音效播放器")]
-    public AudioSource audioClipPlay;                           // 音效播放器
-
-    [Header("角色创建音效")]
-    public AudioClip[] characterAudioClip1;                      // 角色创建音效
-
-    [Header("角色选择音效")]
-    public AudioClip[] characterAudioClip2;                      // 角色选择音效
-
-    [Header("角色进入游戏音效")]
-    public AudioClip[] characterAudioClip3;                      // 角色进入游戏音效
-
 
     private void Awake()
     {
@@ -126,7 +113,8 @@ public class UICharacterSelect : MonoBehaviour
 
             Button button = go.GetComponentInChildren<Button>();
             int index = i;
-            button.onClick.AddListener(() => {
+            button.onClick.AddListener(() =>
+            {
                 OnClickSelectCharacter(index);
             });
 
@@ -169,14 +157,14 @@ public class UICharacterSelect : MonoBehaviour
             characterClassPrefab[i].SetActive(i == charClass - 1);
             //选择角色播放音效
             if (i == charClass - 1)
-            {     
-                audioClipPlay.clip = characterAudioClip2[i];
-                audioClipPlay.Play();
+            {
+                AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.characterAudioClip2[i];
+                AudioManager.Instance.audioClipPlay.Play();
                 Animator animator = characterClassPrefab[i].GetComponentInChildren<Animator>();
                 animator.SetTrigger("SelectClass");
             }
             //播放动画
-            
+
         }
         descs.text = DataManager.Instance.Characters[charClass].Description;
     }
@@ -209,12 +197,11 @@ public class UICharacterSelect : MonoBehaviour
             {
                 Animator animator = characterClassPrefab[i].GetComponentInChildren<Animator>();
                 animator.SetTrigger("Click");
-                audioClipPlay.clip = characterAudioClip1[i];
-                audioClipPlay.Play();
-            }      
+                AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.characterAudioClip1[i];
+                AudioManager.Instance.audioClipPlay.Play();
+            }
         }
         currentIndex = index;
-        
     }
 
     // 获取职业对应的数组索引
@@ -258,7 +245,6 @@ public class UICharacterSelect : MonoBehaviour
     //直接点击开始游戏的按钮
     public void OnClickStartGame()
     {
-        DontDestroyOnLoad(audioClipPlay.gameObject);
         //如果选了某个角色 可以进入主城 否则请选择角色
         if (User.Instance.CurrentCharacter == null)
         {
@@ -267,8 +253,8 @@ public class UICharacterSelect : MonoBehaviour
         }
         else
         {
-            audioClipPlay.clip = characterAudioClip3[classIndex];
-            audioClipPlay.Play();
+            AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.characterAudioClip3[classIndex];
+            AudioManager.Instance.audioClipPlay.Play();
             //传入进入游戏角色的索引值(按职业划分的)
             UserService.Instance.SendGameEnter(currentIndex);
         }
