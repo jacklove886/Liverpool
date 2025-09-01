@@ -13,10 +13,14 @@ public class UILogin : MonoBehaviour {
     public Button buttonRegister;
     public Button buttonLogin;
 
-    // Use this for initialization
     private void Start()
     {
-        DataManager.Instance.Load();//如果启动了LoadingManager脚本 就不需要这句话 如果没启动 就要加上这句话来加载数据库
+        # region  如果启动了LoadingManager脚本 就不需要这三句话 如果没启动 就要加上这三句话来加载数据库
+        MapService.Instance.Init();//初始化服务器
+        UserService.Instance.Init();//初始化服务器
+        DataManager.Instance.Load();//加载数据库
+        #endregion
+
         UserService.Instance.OnLogin += OnLogin;
         string savedUsername = PlayerPrefs.GetString("SavedUsername", "");
         if (!string.IsNullOrEmpty(savedUsername))
@@ -30,7 +34,6 @@ public class UILogin : MonoBehaviour {
         UserService.Instance.OnLogin -= OnLogin;
     }
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}

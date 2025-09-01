@@ -6,6 +6,7 @@ using System.IO;
 
 using SkillBridge.Message;
 using ProtoBuf;
+using Services;
 
 public class LoadingManager : MonoBehaviour {
 
@@ -18,7 +19,6 @@ public class LoadingManager : MonoBehaviour {
     public Text progressNumber;
     public AudioSource audioSource;
 
-    // Use this for initialization
     IEnumerator Start()
     {
         audioSource.Play();
@@ -38,12 +38,11 @@ public class LoadingManager : MonoBehaviour {
         print("加载完毕2");
         yield return DataManager.Instance.LoadData();
 
-        //Init basic services
-        //MapService.Instance.Init();
-        //UserService.Instance.Init();
+        //初始化服务器
+        MapService.Instance.Init();
+        UserService.Instance.Init();
 
 
-        // Fake Loading Simulate
         for (float i = 50; i < 100;)
         {
             i += Random.Range(0.1f, 1.5f);
@@ -57,7 +56,6 @@ public class LoadingManager : MonoBehaviour {
     }
 
 
-    // Update is called once per frame
     void Update () {
 
     }

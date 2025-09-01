@@ -105,6 +105,27 @@ namespace Services
                         this.OnRegister(Result.Failed, string.Format("服务器断开！\n RESULT:{0} ERROR:{1}", result, reason));
                     }
                 }
+                 if (this.pendingMessage.Request.userLogin!=null)
+                {
+                    if (this.OnLogin != null)
+                    {
+                        this.OnLogin(Result.Failed, string.Format("服务器断开！\n RESULT:{0} ERROR:{1}", result, reason));
+                    }
+                }
+                if (this.pendingMessage.Request.createChar!=null)
+                {
+                    if (this.OnCharacterCreate != null)
+                    {
+                        this.OnCharacterCreate(Result.Failed, string.Format("服务器断开！\n RESULT:{0} ERROR:{1}", result, reason));
+                    }
+                }
+                if (this.pendingMessage.Request.deleteChar!=null)
+                {
+                    if (this.OnCharacterDelete != null)
+                    {
+                        this.OnCharacterDelete(Result.Failed, string.Format("服务器断开！\n RESULT:{0} ERROR:{1}", result, reason));
+                    }
+                }
                 return true;
             }
             return false;
@@ -198,7 +219,6 @@ namespace Services
 
         void OnUserCharacterCreate(object sender, UserCreateCharacterResponse response)
         {
-            Debug.LogFormat("创建角色接收到响应");
             if (response.Result == Result.Success)
             {
                 if (response.Characters != null)
@@ -235,7 +255,6 @@ namespace Services
 
         void OnUserCharacterDelete(object sender, UserDeleteCharacterResponse response)
         {
-            Debug.LogFormat("删除角色接收到响应");
             if (response.Result == Result.Success)
             {
                 // 用服务器返回的完整列表

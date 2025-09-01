@@ -168,7 +168,7 @@ public class UICharacterSelect : MonoBehaviour
             {     
                 audioClipPlay.clip = characterAudioClip2[i];
                 audioClipPlay.Play();
-                Animator animator = characterClassPrefab[i].GetComponent<Animator>();
+                Animator animator = characterClassPrefab[i].GetComponentInChildren<Animator>();
                 animator.SetTrigger("SelectClass");
             }
             //播放动画
@@ -203,7 +203,7 @@ public class UICharacterSelect : MonoBehaviour
             imageBackGround[i].gameObject.SetActive(i == classIndex);
             if (i == classIndex)
             {
-                Animator animator = characterClassPrefab[i].GetComponent<Animator>();
+                Animator animator = characterClassPrefab[i].GetComponentInChildren<Animator>();
                 animator.SetTrigger("Click");
                 audioClipPlay.clip = characterAudioClip1[i];
                 audioClipPlay.Play();

@@ -24,7 +24,7 @@ namespace GameServer.Services
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserCreateCharacterRequest>(this.OnCharacterCreate);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserDeleteCharacterRequest>(this.OnCharacterDelete);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserGameEnterRequest>(this.OnGameEnter);
-            //MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserGameLeaveRequest>(this.OnGameLeave);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserGameLeaveRequest>(this.OnGameLeave);
         }
 
         public void Init()
@@ -243,5 +243,11 @@ namespace GameServer.Services
                 MapManager.Instance[databaseCharacter.MapID].CharacterEnter(sender, character);
             }
         }
+
+        private void OnGameLeave(NetConnection<NetSession> sender, UserGameLeaveRequest message)
+        {
+
+        }
+
     }
 }
