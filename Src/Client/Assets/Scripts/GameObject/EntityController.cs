@@ -80,7 +80,6 @@ public class EntityController : MonoBehaviour {
             case EntityEvent.EventMoveLeft:
             case EntityEvent.EventMoveRight:
                 // 用H和V的值
-                Debug.LogFormat("设置动画参数: H={0}, V={1}, Move={2}", horizontal, vertical, true);
                 anim.SetFloat("Horizontal", horizontal);
                 anim.SetFloat("Vertical", vertical);
                 anim.SetBool("Move", true);
@@ -94,7 +93,7 @@ public class EntityController : MonoBehaviour {
     void OnDestroy()
     {
         if (entity != null)
-            Debug.LogFormat("消失的玩家：{0} " ,entity.entityId);
+            Debug.LogFormat("消失的玩家：{0},位置{1} " ,entity.entityId,entity.position);
 
         /*if (UIWorldElementManager.Instance != null)
         {

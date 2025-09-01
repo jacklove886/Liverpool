@@ -40,6 +40,7 @@ namespace Entities
             this.speed = this.Define.Speed;
         }
 
+
         public void Stop()
         {
             this.speed = 0;

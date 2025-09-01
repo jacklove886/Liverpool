@@ -36762,19 +36762,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   global: 1
-  playerCamera: {fileID: 1998024368}
+  playerCamera: {fileID: 0}
   viewPoint: {fileID: 0}
   player: {fileID: 0}
-  xSpeed: 120
-  ySpeed: 120
-  yMinLimit: -20
-  yMaxLimit: 60
+  xSpeed: 100
+  ySpeed: 100
+  yMinLimit: -15
+  yMaxLimit: 15
   distance: 1.5
   distanceMin: 1.5
-  distanceMax: 6.5
+  distanceMax: 5
   zoomSpeed: 3
-  offset: {x: 0, y: 0.82, z: -0.54}
-  rotateOffset: {x: 0, y: 0, z: -0.34}
+  offset: {x: 0, y: 1, z: 0}
+  rotateOffset: {x: 0, y: 0, z: -0.6}
   smoothTime: 0.1
   enableMouseControl: 1
 --- !u!4 &1233638304

@@ -14,7 +14,8 @@ public class UICharacterSelect : MonoBehaviour
     public SkillBridge.Message.NCharacterInfo info;
     private CharacterClass charClass;                            // 枚举值 获得角色的int值
     private const int classCount = 3;                           // 职业数量常量
-    private int currentIndex;                                   //角色当前的索引
+    private int currentIndex;                                   //角色当前列表中的索引
+    private int classIndex;                                     //角色当前职业中的索引
 
     [Header("选择/创建面板")]
     public GameObject panelSelect;                              // 角色选择面板
@@ -59,11 +60,14 @@ public class UICharacterSelect : MonoBehaviour
     [Header("音效播放器")]
     public AudioSource audioClipPlay;                           // 音效播放器
 
-    [Header("角色音效")]
-    public AudioClip[] characterAudioClip1;                      // 角色音效
+    [Header("角色创建音效")]
+    public AudioClip[] characterAudioClip1;                      // 角色创建音效
 
-    [Header("角色音效")]
-    public AudioClip[] characterAudioClip2;                      // 角色音效
+    [Header("角色选择音效")]
+    public AudioClip[] characterAudioClip2;                      // 角色选择音效
+
+    [Header("角色进入游戏音效")]
+    public AudioClip[] characterAudioClip3;                      // 角色进入游戏音效
 
 
     private void Awake()
@@ -184,7 +188,7 @@ public class UICharacterSelect : MonoBehaviour
         var character = User.Instance.Info.Player.Characters[index];
         User.Instance.CurrentCharacter = character;
         // 获得一个索引值来匹配当前选中的角色
-        int classIndex = GetClassIndex(character.Class);
+        classIndex = GetClassIndex(character.Class);
 
         // 控制角色按钮高亮以及删除按钮和自拍照的显示(逻辑都是一样的 只有当前选中的才生效)
         for (int i = 0; i < User.Instance.Info.Player.Characters.Count; i++)
@@ -254,14 +258,17 @@ public class UICharacterSelect : MonoBehaviour
     //直接点击开始游戏的按钮
     public void OnClickStartGame()
     {
+        DontDestroyOnLoad(audioClipPlay.gameObject);
         //如果选了某个角色 可以进入主城 否则请选择角色
-        if(User.Instance.CurrentCharacter == null)
+        if (User.Instance.CurrentCharacter == null)
         {
             MessageBox.Show("请选择角色");
             return;
         }
         else
         {
+            audioClipPlay.clip = characterAudioClip3[classIndex];
+            audioClipPlay.Play();
             //传入进入游戏角色的索引值(按职业划分的)
             UserService.Instance.SendGameEnter(currentIndex);
         }

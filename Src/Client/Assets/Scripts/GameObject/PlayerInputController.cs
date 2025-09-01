@@ -18,8 +18,8 @@ public class PlayerInputController : MonoBehaviour {
     [Header("移动参数")]
     public int speed;
     public bool onAir=false; //是否在空中
-    public float vertical;
-    public float horizontal;
+    private float vertical;
+    private float horizontal;
 
     [Header("位置同步")]
     private Vector3 lastPos;
@@ -54,21 +54,20 @@ public class PlayerInputController : MonoBehaviour {
 
         vertical = Input.GetAxis("Vertical");   
         horizontal = Input.GetAxis("Horizontal");
-        Debug.LogFormat("原始输入值: V={0}, H={1}", vertical, horizontal);
 
         // 移动处理
         if (Mathf.Abs(vertical) > 0.01f || Mathf.Abs(horizontal) > 0.01f)
         {
-            if (state != SkillBridge.Message.CharacterState.Move)  // 恢复这个检查
+            if (state != SkillBridge.Message.CharacterState.Move) 
             {
-                this.character.Move();
                 state = SkillBridge.Message.CharacterState.Move;
             }
-            if (Mathf.Abs(vertical) > Mathf.Abs(horizontal)) // 前后移动为主
+            character.Move();
+            if (Mathf.Abs(vertical) >=Mathf.Abs(horizontal)) // 前后移动为主
                 {
                     if (vertical > 0)
-                    {   
-                        this.SendEntityEvent(EntityEvent.EventMoveFwd, horizontal, vertical);
+                    {
+                        this.SendEntityEvent(EntityEvent.EventMoveFwd, horizontal, vertical); 
                     }
                     else
                     {
@@ -88,7 +87,7 @@ public class PlayerInputController : MonoBehaviour {
                 }
             
             // 角色移动
-            Vector3 moveDirection = (Vector3.forward * vertical + Vector3.right * horizontal).normalized;
+            Vector3 moveDirection = (transform.forward * vertical + transform.right * horizontal).normalized;
             rb.velocity = new Vector3(moveDirection.x * character.speed / 100f, rb.velocity.y, moveDirection.z * character.speed / 100f);
         }
 
