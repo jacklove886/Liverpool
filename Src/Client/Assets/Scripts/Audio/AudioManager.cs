@@ -6,7 +6,8 @@ public class AudioManager : MonoSingleton<AudioManager>
 {
 
     [Header("音效播放器")]
-    public AudioSource audioClipPlay;                           
+    public AudioSource audioClipPlay;//总的声音播放器
+    public AudioSource jumpaudioClipPlay;//专门的跳跃声音播放器
 
     [Header("打开游戏音效")]
     public AudioClip openGameClip;                             

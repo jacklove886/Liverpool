@@ -1,168 +1,180 @@
-﻿using SkillBridge.Message;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Entities;
-using Models;
+﻿using SkillBridge.Message;  
+using System.Collections;  
+using UnityEngine;  
+using Entities;  
+using Models;  
 
-public class EntityController : MonoBehaviour {
+public class EntityController : MonoBehaviour
+{
 
     [Header("组件引用")]
-    public Rigidbody rb;
-    public Animator anim;
-    public float[] jumpTime= { 1.8f, 1.3f, 1.3f };   //跳跃持续的时间 1.83 1.36 1.36
-    //private AnimatorStateInfo currentstateInfo;//当前动画状态
+    public Rigidbody rb;  
+    public Animator anim;  
+    public float[] jumpTime = { 1.8f, 1.3f, 1.3f };  // 跳跃持续的时间 战士、法师、游侠
 
     [Header("实体数据")]
-    public Entity entity;
-    public int currentCharacterClass;   //当前角色的类型 
+    public Entity entity;  // 实体逻辑对象
+    public int currentCharacterClass;  // 角色的职业类型索引
 
     [Header("位置和方向")]
-    public UnityEngine.Vector3 position;    // Unity世界位置
-    public UnityEngine.Vector3 direction;   // Unity世界方向
-    //private Quaternion rotation;
-    //public UnityEngine.Vector3 lastPosition;  // 上一帧位置
-    //public Quaternion lastRotation;          // 上一帧旋转
-
-    [Header("移动参数")]
-    public float speed;                     //移动速度
-    public float animSpeed=1.5f;            //动画速度
-    public float jumpForce=3.0f;            //跳跃力度
+    public Vector3 position;  
+    public Vector3 direction;  
 
     [Header("角色类型")]
-    public bool isPlayer=false;             //是否是玩家
+    public bool isPlayer = false;  // 是否为玩家角色
 
-    void Start() {
-        currentCharacterClass = (int)User.Instance.CurrentCharacter.Class - 1;
-
-        if (entity!=null)
-		{
-			this.UpdateTransform();
-		}
-
-		if(!isPlayer)
-		{
-			rb.useGravity=false; //不是玩家就不受重力的影响
-		}
-	}
-	
-	void UpdateTransform()
-	{
-		this.position = GameObjectTool.LogicToWorld(entity.position);
-		this.direction = GameObjectTool.LogicToWorld(entity.direction);
-
-		this.rb.MovePosition(this.position);
-		this.transform.forward = this.direction;
-		//this.lastPosition = this.position;
-		//this.lastRotation = this.rotation;
-	}
-	
-	void FixedUpdate () 
-	{
-		if(entity==null)
-		{
-			return;
-		}
-		this.entity.OnUpdate(Time.fixedDeltaTime);//更新实体的逻辑
-
-		if(!isPlayer)
-		{
-			this.UpdateTransform();//不是玩家需要同步位置
-		}
-	}
-
-	public void OnEntityEvent(EntityEvent entityEvent, float horizontal = 1, float vertical = 1)
+    void Start()
     {
-        int currentCharacter = (int)User.Instance.CurrentCharacter.Class;
+        currentCharacterClass = (int)User.Instance.CurrentCharacter.Class - 1; 
+
+        if (entity != null)  
+        {
+            UpdateTransform();  
+        }
+
+        if (!isPlayer)  
+        {
+            rb.useGravity = false;  // 非玩家不受重力
+        }
+    }
+
+    void UpdateTransform()
+    {
+        position = GameObjectTool.LogicToWorld(entity.position);  
+        direction = GameObjectTool.LogicToWorld(entity.direction);  
+
+        rb.MovePosition(position);  
+        transform.forward = direction;  
+    }
+
+    void FixedUpdate()
+    {
+        if (entity == null) return;  
+
+        entity.OnUpdate(Time.fixedDeltaTime);  
+
+        if (!isPlayer)  
+        {
+            UpdateTransform();  
+        }
+    }
+
+    public void OnEntityEvent(EntityEvent entityEvent, float horizontal = 0, float vertical = 0)
+    {
+        int currentCharacter = (int)User.Instance.CurrentCharacter.Class;  // 获取当前角色职业类型
+
         switch (entityEvent)
         {
             case EntityEvent.EventIdle:
-                if (AudioManager.Instance.audioClipPlay.isPlaying) { AudioManager.Instance.audioClipPlay.Stop(); }
-                if (currentCharacter == 1)
-                {
-                    anim.SetFloat("Horizontal", 0);
-                    anim.SetFloat("Vertical", 0);
-                }
-                else if (currentCharacter == 2|| currentCharacter==3)
-                {
-                    //因为法师和游侠只有向前的走路动画 所以没有混合树
-                }
-                anim.SetBool("Move", false);
-                anim.SetBool("Run", false);
+
+                StopMovementAudio();  
+                SetIdleAnimation(currentCharacter);  
                 break;
 
             case EntityEvent.EventMoveFwd:
             case EntityEvent.EventMoveBack:
             case EntityEvent.EventMoveLeft:
             case EntityEvent.EventMoveRight:
-                // 用H和V的值
-                if (currentCharacter == 1)
-                {
-                    anim.SetFloat("Horizontal", horizontal);
-                    anim.SetFloat("Vertical", vertical);
-                }
-                else if (currentCharacter == 2|| currentCharacter==3)
-                {
-                    //因为法师和游侠只有向前的走路动画 所以没有混合树
-                }
 
-                anim.SetBool("Move", true);
-                anim.SetBool("Run", false);
-
-                AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.walkAudioClip[currentCharacterClass];
-                AudioManager.Instance.audioClipPlay.Play();
-
+                SetMovementAnimation(currentCharacter, horizontal, vertical);  
+                PlayMovementAudio();  
                 break;
-            
+
             case EntityEvent.EventRun:
-                anim.SetBool("Run",true);
-                anim.SetBool("Move", false);
 
-                AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.runAudioClip[currentCharacterClass];
-                AudioManager.Instance.audioClipPlay.Play();
-
+                SetRunAnimation(); 
+                PlayRunAudio();  
                 break;
 
             case EntityEvent.EventJump:
-                anim.SetTrigger("Jump");
-                if (AudioManager.Instance.audioClipPlay.isPlaying)
-                {
-                    AudioManager.Instance.audioClipPlay.PlayOneShot(AudioManager.Instance.jumpAudioClip[currentCharacterClass]);
 
-                    //等待跳跃声音播放完毕
-                    StartCoroutine(JumpVoiceWaitTime());
-                    //等待跳跃动画完成 
-                    StartCoroutine(JumpWaitTime());        
-                }
-                else
-                {
-                    AudioManager.Instance.audioClipPlay.PlayOneShot(AudioManager.Instance.jumpAudioClip[currentCharacterClass]);
-                }
+                HandleJumpEvent(); 
                 break;
-
         }
     }
 
-    IEnumerator JumpVoiceWaitTime()
+    
+    private void StopMovementAudio()
     {
-        yield return new WaitForSeconds(0.05f);
+        if (AudioManager.Instance.audioClipPlay.isPlaying)  
+        {
+            AudioManager.Instance.audioClipPlay.Stop();  
+        }
     }
 
+    
+    private void SetIdleAnimation(int currentCharacter)
+    {
+        if (currentCharacter == 1)  // 战士有前后左右Move动画 需要混合树
+        {
+            anim.SetFloat("Horizontal", 0);  
+            anim.SetFloat("Vertical", 0);  
+        }
+        // 法师和游侠只有向前的Move动画
+        anim.SetBool("Move", false);  
+        anim.SetBool("Run", false);  
+    }
+
+    
+    private void SetMovementAnimation(int currentCharacter, float horizontal, float vertical)
+    {
+        if (currentCharacter == 1)  
+        {
+            anim.SetFloat("Horizontal", horizontal);  
+            anim.SetFloat("Vertical", vertical);  
+        }
+        // 法师和游侠只有向前的Move动画
+        anim.SetBool("Move", true);  
+        anim.SetBool("Run", false);  
+    }
+
+    
+    private void PlayMovementAudio()
+    {
+        AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.walkAudioClip[currentCharacterClass];  
+        AudioManager.Instance.audioClipPlay.Play();  
+    }
+
+    
+    private void SetRunAnimation()
+    {
+        anim.SetBool("Run", true);  
+        anim.SetBool("Move", false);  
+    }
+
+    
+    private void PlayRunAudio()
+    {
+        AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.runAudioClip[currentCharacterClass];  
+        AudioManager.Instance.audioClipPlay.Play();  
+    }
+
+    //跳跃事件
+    private void HandleJumpEvent()
+    {
+        anim.SetTrigger("Jump");  
+
+        
+        StopMovementAudio();
+
+        
+        AudioManager.Instance.jumpaudioClipPlay.PlayOneShot(AudioManager.Instance.jumpAudioClip[currentCharacterClass]);
+
+        // 等待跳跃动画播放后 才播放走路跑步音效
+        StartCoroutine(JumpWaitTime());
+    }
+
+    
     IEnumerator JumpWaitTime()
     {
-        AudioManager.Instance.audioClipPlay.Stop();
-        yield return new WaitForSeconds(jumpTime[currentCharacterClass]);
+        yield return new WaitForSeconds(jumpTime[currentCharacterClass]);  
     }
 
     void OnDestroy()
     {
-        if (entity != null)
-            Debug.LogFormat("消失的玩家：{0},位置{1} " ,entity.entityId,entity.position);
-
-        /*if (UIWorldElementManager.Instance != null)
+        if (entity != null)  
         {
-            UIWorldElementManager.Instance.RemoveCharacterNameBar(this.transform);
-        }*/
+            Debug.LogFormat("消失的玩家：{0},位置{1}", entity.entityId, entity.position);  
+        }
     }
-
 }
