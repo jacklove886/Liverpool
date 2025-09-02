@@ -29,7 +29,6 @@ public class EntityController : MonoBehaviour {
 
     [Header("角色类型")]
     public bool isPlayer=false;             //是否是玩家
-    public int whichCharacter;              //判断具体是哪个角色  1战士,2法师,3游侠
 	
 	void Start () {
 		if(entity!=null)
@@ -78,12 +77,12 @@ public class EntityController : MonoBehaviour {
                 {
                     anim.SetFloat("Horizontal", 0);
                     anim.SetFloat("Vertical", 0);
-                    anim.SetBool("Move", false);
                 }
-                if (currentCharacter == 2|| currentCharacter==3)
+                else if (currentCharacter == 2|| currentCharacter==3)
                 {
-                    anim.SetBool("Move", false);
+
                 }
+                anim.SetBool("Move", false);
                 break;
             case EntityEvent.EventMoveFwd:
             case EntityEvent.EventMoveBack:
@@ -94,12 +93,14 @@ public class EntityController : MonoBehaviour {
                 {
                     anim.SetFloat("Horizontal", horizontal);
                     anim.SetFloat("Vertical", vertical);
-                    anim.SetBool("Move", true);
                 }
-                if (currentCharacter == 2|| currentCharacter==3)
+                else if (currentCharacter == 2|| currentCharacter==3)
                 {
-                    anim.SetBool("Move", true);
+
                 }
+                AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.walkAudioClip[(int)User.Instance.CurrentCharacter.Class - 1];
+                AudioManager.Instance.audioClipPlay.Play();
+                anim.SetBool("Move", true);
                 break;
             case EntityEvent.EventJump:
                 anim.SetTrigger("Jump");

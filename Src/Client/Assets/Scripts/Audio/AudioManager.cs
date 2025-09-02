@@ -23,6 +23,12 @@ public class AudioManager : MonoSingleton<AudioManager>
     [Header("角色跳跃音效")]
     public AudioClip[] jumpAudioClip;
 
+    [Header("角色走路音效")]
+    public AudioClip[] walkAudioClip;
+
+    [Header("角色跑步音效")]
+    public AudioClip[] runAudioClip;
+
     protected void Awake()
     {
         DontDestroyOnLoad(gameObject);
