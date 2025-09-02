@@ -1,21 +1,9 @@
-2025-08-30 16:28:52,530 [ 1] INFO  Unity: LoadingManager start
-2025-08-30 16:28:54,781 [ 1] INFO  Unity: 加载完毕1
-2025-08-30 16:28:57,284 [ 1] INFO  Unity: 加载完毕2
-2025-08-30 16:28:57,285 [ 1] INFO  Unity: DataManager > DataManager()
-2025-08-30 16:29:03,395 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-08-30 16:29:03,396 [ 1] INFO  Unity: 连接成功
-2025-08-30 16:29:03,398 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-08-30 16:29:03,401 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-08-30 16:29:05,460 [ 1] INFO  Unity: 登录成功
-2025-08-30 16:29:05,647 [ 1] INFO  Unity: 当前创建角色数量为5
-2025-08-30 16:29:06,435 [ 1] INFO  Unity: 网络断开
-2025-08-30 16:29:06,436 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
-
-2025-08-30 16:29:06,438 [ 1] INFO  Unity: 网络断开
-2025-08-30 16:29:06,438 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-08-30 16:33:23,473 [ 1] INFO  Unity: LoadingManager start
+2025-08-30 16:33:25,629 [ 1] INFO  Unity: 加载完毕1
+2025-08-30 16:33:28,130 [ 1] INFO  Unity: 加载完毕2
+2025-08-30 16:33:28,131 [ 1] INFO  Unity: DataManager > DataManager()
+2025-08-30 16:33:31,764 [ 1] INFO  Unity: 网络断开
+2025-08-30 16:33:31,765 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)

@@ -126,7 +126,6 @@ public class PlayerInputController : MonoBehaviour {
         if (Input.GetButtonDown("Jump"))
         {
             this.SendEntityEvent(EntityEvent.EventJump, 0, 0);
-            AudioManager.Instance.audioClipPlay.PlayOneShot(AudioManager.Instance.jumpAudioClip[(int)User.Instance.CurrentCharacter.Class - 1]);
         }
     }
 

@@ -1745,6 +1745,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 54458875908084424}
   anim: {fileID: 95073332798948188}
+  jumpTime:
+  - 1.8
+  - 1.3
+  - 1.3
+  currentCharacterClass: 0
   position: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   speed: 0

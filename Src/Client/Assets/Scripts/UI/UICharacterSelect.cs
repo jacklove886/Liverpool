@@ -158,7 +158,7 @@ public class UICharacterSelect : MonoBehaviour
             //选择角色播放音效
             if (i == charClass - 1)
             {
-                AudioManager.Instance.audioClipPlay.PlayOneShot(AudioManager.Instance.characterAudioClip2[i]);
+                AudioManager.Instance.audioClipPlay.PlayOneShot(AudioManager.Instance.characterAudioClip1[i]);
                 Animator animator = characterClassPrefab[i].GetComponentInChildren<Animator>();
                 animator.SetTrigger("SelectClass");
             }
@@ -196,7 +196,8 @@ public class UICharacterSelect : MonoBehaviour
             {
                 Animator animator = characterClassPrefab[i].GetComponentInChildren<Animator>();
                 animator.SetTrigger("Click");
-                AudioManager.Instance.audioClipPlay.PlayOneShot(AudioManager.Instance.characterAudioClip1[i]);
+                AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.characterAudioClip2[(int)User.Instance.CurrentCharacter.Class - 1];
+                AudioManager.Instance.audioClipPlay.Play();
             }
         }
         currentIndex = index;

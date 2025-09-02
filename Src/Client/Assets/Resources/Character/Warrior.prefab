@@ -6394,8 +6394,12 @@ MonoBehaviour:
   isPlayer: 0
   rb: {fileID: 54951745923302836}
   entityController: {fileID: 0}
-  speed: 0
-  onAir: 0
+  currentspeed: 0
+  realspeed: 0
+  isGround: 1
+  isRunning: 0
+  vertical: 0
+  horizontal: 0
 --- !u!114 &114745283537742638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6409,13 +6413,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 54951745923302836}
   anim: {fileID: 95105909796862502}
+  jumpTime:
+  - 1.8
+  - 1.3
+  - 1.3
+  currentCharacterClass: 0
   position: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   speed: 0
   animSpeed: 1.5
   jumpForce: 3
   isPlayer: 0
-  whichCharacter: 0
 --- !u!136 &136259602359844226
 CapsuleCollider:
   m_ObjectHideFlags: 1

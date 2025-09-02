@@ -10,10 +10,12 @@ public class EntityController : MonoBehaviour {
     [Header("组件引用")]
     public Rigidbody rb;
     public Animator anim;
+    public float[] jumpTime= { 1.8f, 1.3f, 1.3f };   //跳跃持续的时间 1.83 1.36 1.36
     //private AnimatorStateInfo currentstateInfo;//当前动画状态
 
     [Header("实体数据")]
     public Entity entity;
+    public int currentCharacterClass;   //当前角色的类型 
 
     [Header("位置和方向")]
     public UnityEngine.Vector3 position;    // Unity世界位置
@@ -29,9 +31,11 @@ public class EntityController : MonoBehaviour {
 
     [Header("角色类型")]
     public bool isPlayer=false;             //是否是玩家
-	
-	void Start () {
-		if(entity!=null)
+
+    void Start() {
+        currentCharacterClass = (int)User.Instance.CurrentCharacter.Class - 1;
+
+        if (entity!=null)
 		{
 			this.UpdateTransform();
 		}
@@ -101,11 +105,11 @@ public class EntityController : MonoBehaviour {
                 {
                     //因为法师和游侠只有向前的走路动画 所以没有混合树
                 }
+
                 anim.SetBool("Move", true);
                 anim.SetBool("Run", false);
 
-                if (AudioManager.Instance.audioClipPlay.isPlaying) { AudioManager.Instance.audioClipPlay.Stop(); }
-                AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.walkAudioClip[(int)User.Instance.CurrentCharacter.Class - 1];
+                AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.walkAudioClip[currentCharacterClass];
                 AudioManager.Instance.audioClipPlay.Play();
 
                 break;
@@ -114,17 +118,40 @@ public class EntityController : MonoBehaviour {
                 anim.SetBool("Run",true);
                 anim.SetBool("Move", false);
 
-                if (AudioManager.Instance.audioClipPlay.isPlaying) { AudioManager.Instance.audioClipPlay.Stop(); }
-                AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.runAudioClip[(int)User.Instance.CurrentCharacter.Class - 1];
+                AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.runAudioClip[currentCharacterClass];
                 AudioManager.Instance.audioClipPlay.Play();
 
                 break;
 
             case EntityEvent.EventJump:
                 anim.SetTrigger("Jump");
+                if (AudioManager.Instance.audioClipPlay.isPlaying)
+                {
+                    AudioManager.Instance.audioClipPlay.PlayOneShot(AudioManager.Instance.jumpAudioClip[currentCharacterClass]);
+
+                    //等待跳跃声音播放完毕
+                    StartCoroutine(JumpVoiceWaitTime());
+                    //等待跳跃动画完成 
+                    StartCoroutine(JumpWaitTime());        
+                }
+                else
+                {
+                    AudioManager.Instance.audioClipPlay.PlayOneShot(AudioManager.Instance.jumpAudioClip[currentCharacterClass]);
+                }
                 break;
 
         }
+    }
+
+    IEnumerator JumpVoiceWaitTime()
+    {
+        yield return new WaitForSeconds(0.05f);
+    }
+
+    IEnumerator JumpWaitTime()
+    {
+        AudioManager.Instance.audioClipPlay.Stop();
+        yield return new WaitForSeconds(jumpTime[currentCharacterClass]);
     }
 
     void OnDestroy()
