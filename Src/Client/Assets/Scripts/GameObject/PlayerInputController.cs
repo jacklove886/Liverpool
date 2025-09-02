@@ -17,8 +17,10 @@ public class PlayerInputController : MonoBehaviour {
     public EntityController entityController;//实体控制器
 
     [Header("移动参数")]
-    public int speed;
-    public bool onAir=false; //是否在空中
+    public int currentspeed;//目前速度
+    public int realspeed;//真实速度
+    public bool isGround=true; //是否在地面
+    public bool isRunning = false; //是否在跑步
     private float vertical;
     private float horizontal;
 
@@ -55,41 +57,52 @@ public class PlayerInputController : MonoBehaviour {
 
         vertical = Input.GetAxis("Vertical");   
         horizontal = Input.GetAxis("Horizontal");
+        // 按住shift进入跑步状态
+        isRunning = Input.GetKey(KeyCode.LeftShift);
 
         // 移动处理
         if (Mathf.Abs(vertical) > 0.01f || Mathf.Abs(horizontal) > 0.01f)
         {
-            if (state != SkillBridge.Message.CharacterState.Move) 
+            Debug.Log(string.Format("V: {0}, H: {1}, Shift: {2}", vertical, horizontal, Input.GetKey(KeyCode.LeftShift)));
+
+            if (state != SkillBridge.Message.CharacterState.Move&&!isRunning)
             {
                 state = SkillBridge.Message.CharacterState.Move;
+                currentspeed = this.character.Move();
+            if (Mathf.Abs(vertical) >= Mathf.Abs(horizontal)) // 前后移动为主
+            {
+                if (vertical > 0)
+                {
+                    this.SendEntityEvent(EntityEvent.EventMoveFwd, horizontal, vertical);
+                }
+                else
+                {
+                    this.SendEntityEvent(EntityEvent.EventMoveBack, horizontal, vertical);
+                }
             }
-            character.Move();
-            if (Mathf.Abs(vertical) >=Mathf.Abs(horizontal)) // 前后移动为主
-                {
-                    if (vertical > 0)
-                    {
-                        this.SendEntityEvent(EntityEvent.EventMoveFwd, horizontal, vertical); 
-                    }
-                    else
-                    {
-                        this.SendEntityEvent(EntityEvent.EventMoveBack, horizontal, vertical);
-                    }
-                }
             else // 左右移动为主
+            {
+                if (horizontal > 0)
                 {
-                    if (horizontal > 0)
-                    {
-                        this.SendEntityEvent(EntityEvent.EventMoveRight, horizontal, vertical);
-                    }
-                    else
-                    {
-                        this.SendEntityEvent(EntityEvent.EventMoveLeft, horizontal, vertical);
-                    }
+                    this.SendEntityEvent(EntityEvent.EventMoveRight, horizontal, vertical);
                 }
-            
+                else
+                {
+                    this.SendEntityEvent(EntityEvent.EventMoveLeft, horizontal, vertical);
+                }
+            }
+         }
+
+            else if (state != SkillBridge.Message.CharacterState.Run&&isRunning)
+            {
+                state = SkillBridge.Message.CharacterState.Run;
+                currentspeed = this.character.Run();
+                this.SendEntityEvent(EntityEvent.EventRun);
+            }
+
             // 角色移动
             Vector3 moveDirection = (transform.forward * vertical + transform.right * horizontal).normalized;
-            rb.velocity = new Vector3(moveDirection.x * character.speed / 100f, rb.velocity.y, moveDirection.z * character.speed / 100f);
+            rb.velocity = new Vector3(moveDirection.x * currentspeed / 100f, rb.velocity.y, moveDirection.z * currentspeed / 100f);
         }
 
         else
@@ -98,7 +111,7 @@ public class PlayerInputController : MonoBehaviour {
             {
                 state = SkillBridge.Message.CharacterState.Idle;
                 this.rb.velocity = Vector3.zero;
-                this.character.Stop();
+                currentspeed=this.character.Stop();
                 this.SendEntityEvent(EntityEvent.EventIdle, 0, 0);
             }
         }
@@ -108,15 +121,14 @@ public class PlayerInputController : MonoBehaviour {
         if (Input.GetButtonDown("Jump"))
         {
             this.SendEntityEvent(EntityEvent.EventJump, 0, 0);
-            AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.jumpAudioClip[(int)User.Instance.CurrentCharacter.Class-1];
-            AudioManager.Instance.audioClipPlay.Play();
+            AudioManager.Instance.audioClipPlay.PlayOneShot(AudioManager.Instance.jumpAudioClip[(int)User.Instance.CurrentCharacter.Class - 1]);
         }
     }
 
     private void LateUpdate()
 	{
         Vector3 offset = this.rb.transform.position - lastPos;
-        this.speed = (int)(offset.magnitude * 100f / Time.deltaTime);
+        this.realspeed = (int)(offset.magnitude * 100f / Time.deltaTime);
         this.lastPos = this.rb.transform.position;
 
         if ((GameObjectTool.WorldToLogic(this.rb.transform.position) - this.character.position).magnitude > 50)

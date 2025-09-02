@@ -520,6 +520,8 @@ namespace SkillBridge.Message
         Idle = 0,
         [global::ProtoBuf.ProtoEnum(Name = @"MOVE")]
         Move = 1,
+        [global::ProtoBuf.ProtoEnum(Name = @"RUN")]
+        Run = 2,
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"ENTITY_EVENT")]
@@ -539,6 +541,8 @@ namespace SkillBridge.Message
         EventMoveRight = 5,
         [global::ProtoBuf.ProtoEnum(Name = @"EVENT_JUMP")]
         EventJump = 6,
+        [global::ProtoBuf.ProtoEnum(Name = @"EVENT_RUN")]
+        EventRun = 7,
     }
 
 }

@@ -22,8 +22,7 @@ public class UILogin : MonoBehaviour {
         #endregion
 
         UserService.Instance.OnLogin += OnLogin;
-        AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.openGameClip;
-        AudioManager.Instance.audioClipPlay.Play();
+        AudioManager.Instance.audioClipPlay.PlayOneShot(AudioManager.Instance.openGameClip);
         string savedUsername = PlayerPrefs.GetString("SavedUsername", "");
         if (!string.IsNullOrEmpty(savedUsername))
         {

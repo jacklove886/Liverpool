@@ -35,15 +35,20 @@ namespace Entities
             this.Define = DataManager.Instance.Characters[info.Tid];
         }
 
-        public void Move()
+        public int Move()
         {
-            this.speed = this.Define.Speed;
+            return this.Define.Speed;
+        }
+
+        public int Run()
+        {
+            return this.Define.Speed*2;
         }
 
 
-        public void Stop()
+        public int Stop()
         {
-            this.speed = 0;
+            return  0;
         }
 
         public void SetDirection(Vector3Int direction)

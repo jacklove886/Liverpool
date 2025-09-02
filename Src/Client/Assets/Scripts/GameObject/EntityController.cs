@@ -73,6 +73,7 @@ public class EntityController : MonoBehaviour {
         switch (entityEvent)
         {
             case EntityEvent.EventIdle:
+                if (AudioManager.Instance.audioClipPlay.isPlaying) { AudioManager.Instance.audioClipPlay.Stop(); }
                 if (currentCharacter == 1)
                 {
                     anim.SetFloat("Horizontal", 0);
@@ -80,10 +81,12 @@ public class EntityController : MonoBehaviour {
                 }
                 else if (currentCharacter == 2|| currentCharacter==3)
                 {
-
+                    //因为法师和游侠只有向前的走路动画 所以没有混合树
                 }
                 anim.SetBool("Move", false);
+                anim.SetBool("Run", false);
                 break;
+
             case EntityEvent.EventMoveFwd:
             case EntityEvent.EventMoveBack:
             case EntityEvent.EventMoveLeft:
@@ -96,15 +99,31 @@ public class EntityController : MonoBehaviour {
                 }
                 else if (currentCharacter == 2|| currentCharacter==3)
                 {
-
+                    //因为法师和游侠只有向前的走路动画 所以没有混合树
                 }
+                anim.SetBool("Move", true);
+                anim.SetBool("Run", false);
+
+                if (AudioManager.Instance.audioClipPlay.isPlaying) { AudioManager.Instance.audioClipPlay.Stop(); }
                 AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.walkAudioClip[(int)User.Instance.CurrentCharacter.Class - 1];
                 AudioManager.Instance.audioClipPlay.Play();
-                anim.SetBool("Move", true);
+
                 break;
+            
+            case EntityEvent.EventRun:
+                anim.SetBool("Run",true);
+                anim.SetBool("Move", false);
+
+                if (AudioManager.Instance.audioClipPlay.isPlaying) { AudioManager.Instance.audioClipPlay.Stop(); }
+                AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.runAudioClip[(int)User.Instance.CurrentCharacter.Class - 1];
+                AudioManager.Instance.audioClipPlay.Play();
+
+                break;
+
             case EntityEvent.EventJump:
                 anim.SetTrigger("Jump");
                 break;
+
         }
     }
 
