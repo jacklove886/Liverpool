@@ -67,7 +67,7 @@ public class EntityController : MonoBehaviour {
 		}
 	}
 
-	public void OnEntityEvent(EntityEvent entityEvent, float horizontal = 0, float vertical = 0)
+	public void OnEntityEvent(EntityEvent entityEvent, float horizontal = 1, float vertical = 1)
     {
         int currentCharacter = (int)User.Instance.CurrentCharacter.Class;
         switch (entityEvent)

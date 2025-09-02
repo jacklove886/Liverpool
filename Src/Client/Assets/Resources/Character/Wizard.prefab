@@ -3735,7 +3735,6 @@ MonoBehaviour:
   animSpeed: 1.5
   jumpForce: 3
   isPlayer: 0
-  whichCharacter: 0
 --- !u!114 &114941903310418252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3750,8 +3749,12 @@ MonoBehaviour:
   isPlayer: 0
   rb: {fileID: 54306720164916184}
   entityController: {fileID: 0}
-  speed: 0
-  onAir: 0
+  currentspeed: 0
+  realspeed: 0
+  isGround: 1
+  isRunning: 0
+  vertical: 0
+  horizontal: 0
 --- !u!136 &136782465201658730
 CapsuleCollider:
   m_ObjectHideFlags: 1

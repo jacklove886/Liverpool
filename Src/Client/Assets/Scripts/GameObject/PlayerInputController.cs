@@ -21,8 +21,8 @@ public class PlayerInputController : MonoBehaviour {
     public int realspeed;//真实速度
     public bool isGround=true; //是否在地面
     public bool isRunning = false; //是否在跑步
-    private float vertical;
-    private float horizontal;
+    public float vertical;
+    public float horizontal;
 
     [Header("位置同步")]
     private Vector3 lastPos;
@@ -63,42 +63,47 @@ public class PlayerInputController : MonoBehaviour {
         // 移动处理
         if (Mathf.Abs(vertical) > 0.01f || Mathf.Abs(horizontal) > 0.01f)
         {
-            Debug.Log(string.Format("V: {0}, H: {1}, Shift: {2}", vertical, horizontal, Input.GetKey(KeyCode.LeftShift)));
-
-            if (state != SkillBridge.Message.CharacterState.Move&&!isRunning)
+            if (!isRunning)
             {
-                state = SkillBridge.Message.CharacterState.Move;
-                currentspeed = this.character.Move();
-            if (Mathf.Abs(vertical) >= Mathf.Abs(horizontal)) // 前后移动为主
-            {
-                if (vertical > 0)
+                if (state != SkillBridge.Message.CharacterState.Move)
                 {
-                    this.SendEntityEvent(EntityEvent.EventMoveFwd, horizontal, vertical);
+                    state = SkillBridge.Message.CharacterState.Move;
+                    currentspeed = this.character.Move();
                 }
-                else
+                if (Mathf.Abs(vertical) >= Mathf.Abs(horizontal)) // 前后移动为主
                 {
-                    this.SendEntityEvent(EntityEvent.EventMoveBack, horizontal, vertical);
+                    if (vertical > 0)
+                    {
+                        this.SendEntityEvent(EntityEvent.EventMoveFwd, horizontal, vertical);
+                    }
+                    else
+                    {
+                        this.SendEntityEvent(EntityEvent.EventMoveBack, horizontal, vertical);
+                    }
+                }
+                else // 左右移动为主
+                {
+                    if (horizontal > 0)
+                    {
+                        this.SendEntityEvent(EntityEvent.EventMoveRight, horizontal, vertical);
+                    }
+                    else
+                    {
+                        this.SendEntityEvent(EntityEvent.EventMoveLeft, horizontal, vertical);
+                    }
                 }
             }
-            else // 左右移动为主
+            
+            else
             {
-                if (horizontal > 0)
+                if (state != SkillBridge.Message.CharacterState.Run)
                 {
-                    this.SendEntityEvent(EntityEvent.EventMoveRight, horizontal, vertical);
-                }
-                else
-                {
-                    this.SendEntityEvent(EntityEvent.EventMoveLeft, horizontal, vertical);
+                    state = SkillBridge.Message.CharacterState.Run;
+                    currentspeed = this.character.Run();
+                    this.SendEntityEvent(EntityEvent.EventRun);
                 }
             }
-         }
-
-            else if (state != SkillBridge.Message.CharacterState.Run&&isRunning)
-            {
-                state = SkillBridge.Message.CharacterState.Run;
-                currentspeed = this.character.Run();
-                this.SendEntityEvent(EntityEvent.EventRun);
-            }
+            
 
             // 角色移动
             Vector3 moveDirection = (transform.forward * vertical + transform.right * horizontal).normalized;
