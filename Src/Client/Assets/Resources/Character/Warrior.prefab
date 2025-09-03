@@ -6386,7 +6386,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1255622839845486}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a16f86ce4d2847546b69ca7ef553d73b, type: 3}
   m_Name: 
@@ -6420,9 +6420,6 @@ MonoBehaviour:
   currentCharacterClass: 0
   position: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
-  speed: 0
-  animSpeed: 1.5
-  jumpForce: 3
   isPlayer: 0
 --- !u!136 &136259602359844226
 CapsuleCollider:

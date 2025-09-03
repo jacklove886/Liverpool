@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace Models
             this.userInfo = info;
         }
 
+        public MapDefine CurrentMapData { get; set; }
         public SkillBridge.Message.NCharacterInfo CurrentCharacter { get; set; }
 
     }

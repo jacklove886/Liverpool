@@ -9,7 +9,9 @@ namespace Services
 {
     class MapService : Singleton<MapService>, IDisposable
     {
+
         public int CurrentMapID=0;//当前地图的ID
+
         public MapService()
         {
             MessageDistributer.Instance.Subscribe<MapCharacterEnterResponse>(this.OnMapCharacterEnter);
@@ -31,7 +33,8 @@ namespace Services
         private void OnMapCharacterEnter(object sender, MapCharacterEnterResponse response)
         {
             Debug.LogFormat("进入了地图:{0},当前角色数量:{1}",response.mapId,response.Characters.Count);
-            foreach(var cha in response.Characters)
+
+            foreach (var cha in response.Characters)
             {
                if(User.Instance.CurrentCharacter.Id==cha.Id)
                {
@@ -39,11 +42,20 @@ namespace Services
                }
                CharacterManager.Instance.AddCharacter(cha);
             }
-            if(CurrentMapID!=response.mapId)
+
+            string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            if (DataManager.Instance.Maps.ContainsKey(response.mapId))
             {
-                this.EnterMap(response.mapId);
-                this.CurrentMapID=response.mapId;
+                string targetScene = DataManager.Instance.Maps[response.mapId].Resource;
+
+                if (currentScene != targetScene)
+                {
+                    Debug.LogFormat("场景不匹配：当前场景{0}, 目标场景{1}, 开始切换", currentScene, targetScene);
+                    this.EnterMap(response.mapId);
+                }
             }
+
+            this.CurrentMapID = response.mapId;  // 更新地图ID
         }
 
         private void EnterMap(int mapId)
@@ -51,6 +63,7 @@ namespace Services
          if(DataManager.Instance.Maps.ContainsKey(mapId))   
          {
             MapDefine map =DataManager.Instance.Maps[mapId];
+            User.Instance.CurrentMapData = map;
             SceneManager.Instance.LoadScene(map.Resource);
          }
          else
