@@ -7,19 +7,20 @@ public class AudioManager : MonoSingleton<AudioManager>
 
     [Header("音效播放器")]
     public AudioSource audioClipPlay;//总的声音播放器
-    public AudioSource jumpaudioClipPlay;//专门的跳跃声音播放器
+    public AudioSource bgmaudioClipPlay;//背景音乐播放器
+    public AudioSource jumpaudioClipPlay;//角色跳跃声音
 
     [Header("打开游戏音效")]
-    public AudioClip openGameClip;                             
+    public AudioClip openGameClip;
+
+    [Header("主城背景音乐")]
+    public AudioClip bgmInMainCityClip;
 
     [Header("角色创建音效")]
     public AudioClip[] characterAudioClip1;                      
 
     [Header("角色选择音效")]
     public AudioClip[] characterAudioClip2;                     
-
-    [Header("角色进入游戏音效")]
-    public AudioClip[] characterAudioClip3;
 
     [Header("角色跳跃音效")]
     public AudioClip[] jumpAudioClip;

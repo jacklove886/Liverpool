@@ -6,36 +6,37 @@ using UnityEngine.UI;
 
 public class UINameBar : MonoBehaviour {
 
-    public Text avaverName;
-
-
-
+    public Text characterName;
     public Character character;
+    public Transform owner;  //名称跟随角色
+    public Transform Camera;//摄像机位置
+    public float height = 2.0f;//姓名条离角色的距离
 
 
-    // Use this for initialization
-    void Start () {
-		if(this.character!=null)
-        {
-            
-        }
-	}
+    void Start ()
+    {
+        
+    }
 	
-	// Update is called once per frame
-	void Update () {
-        this.UpdateInfo();
-
-        this.transform.forward = Camera.main.transform.forward;
-	}
+	
+	void Update ()
+    {
+        UpdateInfo();
+        if (owner != null)
+        {
+            transform.position = owner.position + Vector3.up * height;//永远在玩家头上
+            transform.forward = Camera.transform.forward;//永远朝向摄像机
+        }
+    }
 
     void UpdateInfo()
     {
         if (this.character != null)
         {
-            string name = this.character.Name + " Lv." + this.character.Info.Level;
-            if(name != this.avaverName.text)
+            string name = character.Name + "  " + character.Info.Level+"级";
+            if(name!= characterName.text)
             {
-                this.avaverName.text = name;
+                characterName.text = name;
             }
         }
     }

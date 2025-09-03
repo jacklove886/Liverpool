@@ -1,59 +1,44 @@
-﻿using System.Collections;
+﻿using Entities;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIWorldElementManager : MonoBehaviour {
+public class UIWorldElementManager : MonoSingleton<UIWorldElementManager> {
 
-    public GameObject escPanel;//返回选择角色界面的按钮
-    public bool escPanelState=false;//开启状态 按ESC进行开启关闭
-    public bool mouseState;  //鼠标状态  false为锁定 true为None
+    public GameObject namePrefab;//角色头上姓名的预制体
 
+    private Dictionary<Transform, GameObject> elements = new Dictionary<Transform, GameObject>();
+    
 
     void Start ()
     {
-        Cursor.lockState = CursorLockMode.Locked;  // 游戏开始时锁定鼠标
-        mouseState = false; 
+        
     }
 	
 	
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            EscPanel();
-        }
-
-        //面板关闭情况下才允许点击 改变鼠标变成锁定
-        if (Input.GetMouseButtonDown(0) && !escPanelState&&mouseState)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            mouseState = false;
-        }
         
     }
 
-    public void EscPanel()
+    public void AddCharacterNameBar(Transform owner,Character character)
     {
-        escPanelState = !escPanelState;
-        mouseState = true;
-        if (escPanelState ==true)
+        GameObject goNameBar = Instantiate(namePrefab, this.transform);
+        goNameBar.name = "角色" + character.Name;
+        goNameBar.GetComponent<UINameBar>().owner = owner;
+        goNameBar.GetComponent<UINameBar>().character = character;
+        goNameBar.SetActive(true);
+        this.elements[owner] = goNameBar;
+    }
+
+    public void RemoveCharacterNameBar(Transform owner)
+    {
+        if (this.elements.ContainsKey(owner))
         {
-            Cursor.lockState = CursorLockMode.None;
+            Destroy(this.elements[owner]);
+            this.elements.Remove(owner);
         }
-
-        escPanel.SetActive(escPanelState);
     }
 
-    public void OnClickBackToChooseCharacter()
-    {
-        //返回选择角色的页面
-        SceneManager.Instance.LoadScene("CharacterChoose");
-    }
-
-    public void OnClickQuitGame()
-    {
-        //退出游戏
-        Application.Quit();
-    }
 }

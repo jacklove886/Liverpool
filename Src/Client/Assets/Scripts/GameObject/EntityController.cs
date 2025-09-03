@@ -176,5 +176,9 @@ public class EntityController : MonoBehaviour
         {
             Debug.LogFormat("消失的玩家：{0},位置{1}", entity.entityId, entity.position);  
         }
+        if (UIWorldElementManager.Instance != null)
+        {
+            UIWorldElementManager.Instance.RemoveCharacterNameBar(this.transform);
+        }
     }
 }

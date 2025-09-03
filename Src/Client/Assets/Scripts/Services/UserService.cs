@@ -30,9 +30,7 @@ namespace Services
             MessageDistributer.Instance.Subscribe<UserLoginResponse>(this.OnUserLogin);
             MessageDistributer.Instance.Subscribe<UserCreateCharacterResponse>(this.OnUserCharacterCreate);
             MessageDistributer.Instance.Subscribe<UserDeleteCharacterResponse>(this.OnUserCharacterDelete);
-            MessageDistributer.Instance.Subscribe<UserGameEnterResponse>(this.OnUserGameEnter);
             MessageDistributer.Instance.Subscribe<UserGameLeaveResponse>(this.OnUserGameLeave);
-            MessageDistributer.Instance.Subscribe<MapCharacterEnterResponse>(this.OnUserMapCharacterEnter);
         }
 
 
@@ -42,9 +40,7 @@ namespace Services
             MessageDistributer.Instance.Unsubscribe<UserLoginResponse>(this.OnUserLogin);
             MessageDistributer.Instance.Unsubscribe<UserCreateCharacterResponse>(this.OnUserCharacterCreate);
             MessageDistributer.Instance.Unsubscribe<UserDeleteCharacterResponse>(this.OnUserCharacterDelete);
-            MessageDistributer.Instance.Unsubscribe<UserGameEnterResponse>(this.OnUserGameEnter);
             MessageDistributer.Instance.Unsubscribe<UserGameLeaveResponse>(this.OnUserGameLeave);
-            MessageDistributer.Instance.Unsubscribe<MapCharacterEnterResponse>(this.OnUserMapCharacterEnter);
             NetClient.Instance.OnConnect -= OnGameServerConnect;
             NetClient.Instance.OnDisconnect -= OnGameServerDisconnect;
         }
@@ -269,6 +265,7 @@ namespace Services
 
         public void SendGameEnter(int characterIndex)
         {
+            Debug.Log("发出进入游戏的响应");
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.gameEnter = new UserGameEnterRequest();
@@ -286,22 +283,25 @@ namespace Services
             }
         }
 
-        void OnUserGameEnter(object sender, UserGameEnterResponse response)
-        {
-            Debug.LogFormat("角色进入游戏:{0}", response.Result);
-            if (response.Result == Result.Success)
-            {
-                //进入游戏
-            }
-        }
-
 
         public void SendGameLeave()
         {
+            Debug.Log("发出退出游戏的响应");
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.gameLeave = new UserGameLeaveRequest();
             NetClient.Instance.SendMessage(message);
+
+            if (this.connected && NetClient.Instance.Connected)
+            {
+                this.pendingMessage = null;
+                NetClient.Instance.SendMessage(message);
+            }
+            else
+            {
+                this.pendingMessage = message;
+                this.ConnectToServer();
+            }
         }
 
         void OnUserGameLeave(object sender, UserGameLeaveResponse response)
@@ -310,33 +310,5 @@ namespace Services
             Debug.LogFormat("角色离开游戏:{0}", response.Result);
         }
 
-
-        void OnUserMapCharacterEnter(object sender, MapCharacterEnterResponse response)
-        {
-            Debug.LogFormat("角色进入第:{0}张地图", response.mapId);
-            if (SceneManager.Instance == null)
-            {
-                Debug.LogError("SceneManager.Instance is null");
-                return;
-            }
-            NCharacterInfo info = response.Characters[0];
-            User.Instance.CurrentCharacter = info;
-
-            /*NCharacterInfo info = null;
-            foreach (var character in response.Characters)
-            {
-                if (character.Id == User.Instance.CurrentCharacter.Id)
-                {
-                    info = character;
-                    break;
-                }
-            }
-            if (info != null)
-            {
-                User.Instance.CurrentCharacter = info;
-            }*/
-
-            SceneManager.Instance.LoadScene(DataManager.Instance.Maps[response.mapId].Resource);
-        }
     }
 }

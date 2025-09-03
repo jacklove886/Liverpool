@@ -1281,13 +1281,13 @@ Prefab:
         type: 2}
       propertyPath: imageCharacter.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: ca79d962c3d05814dad3fd2703767530,
+      objectReference: {fileID: 21300000, guid: 6c8bfd6840ebf6d4595d58b4563b906b,
         type: 3}
     - target: {fileID: 114514297652641098, guid: c85df0000e341f04aaebcec4baf09f9e,
         type: 2}
       propertyPath: imageCharacter.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: df5b900c6bb44d94faa3e55e4058ffc4,
+      objectReference: {fileID: 21300000, guid: e3e61ce887e5d2d4ca31fe747d490f7a,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c85df0000e341f04aaebcec4baf09f9e, type: 2}
@@ -4172,47 +4172,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1383987877}
   m_CullTransparentMesh: 0
---- !u!1 &1449910548
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1449910550}
-  - component: {fileID: 1449910549}
-  m_Layer: 0
-  m_Name: SceneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1449910549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1449910548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c07f59903f46be44592cf686d82fe8b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  global: 1
---- !u!4 &1449910550
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1449910548}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000000059604645, y: 0.7412358, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1562810091
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,9 @@ public class GameObjectManager : MonoBehaviour
 {
 
     Dictionary<int, GameObject> Characters = new Dictionary<int, GameObject>();
-    
+
+
+
     void Start()
     {
         StartCoroutine(InitGameObjects());
@@ -80,7 +82,7 @@ public class GameObjectManager : MonoBehaviour
                     pc.enabled = false;
                 }
             }
-            //UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, character);
+            UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, character);
         }
     }
 }

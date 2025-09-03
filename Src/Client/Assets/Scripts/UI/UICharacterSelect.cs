@@ -252,7 +252,6 @@ public class UICharacterSelect : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.audioClipPlay.PlayOneShot(AudioManager.Instance.characterAudioClip3[classIndex]);
             //传入进入游戏角色的索引值(按职业划分的)
             UserService.Instance.SendGameEnter(currentIndex);
         }
