@@ -4,7 +4,7 @@ using UnityEngine;
 using Entities;
 using SkillBridge.Message;
 
-namespace Services
+namespace Managers
 {
     class CharacterManager : Singleton<CharacterManager>, IDisposable
     {
@@ -20,6 +20,7 @@ namespace Services
         {
             this.Characters.Clear();
         }
+
         public void Dispose()
         {
             
@@ -31,11 +32,14 @@ namespace Services
             Character character=new Character(cha);
             this.Characters[cha.Id]=character;
 
-            if(OnCharacterEnter!= null)
+            //这句话永远不会执行
+            if (OnCharacterEnter!= null)
             {
+                Debug.Log("操你妈6");
                 OnCharacterEnter(character);
             }
         }
+
         public void RemoveCharacter(int characterId)
         {
             Debug.LogFormat("移除角色ID：{0}",characterId);

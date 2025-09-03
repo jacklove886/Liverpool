@@ -1,8 +1,10 @@
 ﻿using Common.Data;
+using Managers;
 using Models;
 using Network;
 using SkillBridge.Message;
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Services
@@ -58,7 +60,7 @@ namespace Services
             this.CurrentMapID = response.mapId;  // 更新地图ID
         }
 
-        private void EnterMap(int mapId)
+            private void EnterMap(int mapId)
         {
          if(DataManager.Instance.Maps.ContainsKey(mapId))   
          {

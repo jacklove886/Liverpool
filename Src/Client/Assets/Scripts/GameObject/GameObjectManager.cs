@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Entities;
-using Services;
 using SkillBridge.Message;
+using Managers;
+using Models;
 
 public class GameObjectManager : MonoBehaviour
 {
@@ -16,19 +17,21 @@ public class GameObjectManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(InitGameObjects());
-        CharacterManager.Instance.OnCharacterEnter = OnCharacterEnter;
+        CharacterManager.Instance.OnCharacterEnter += OnCharacterEnter;
     }
 
     private void OnDestroy()
     {
-        CharacterManager.Instance.OnCharacterEnter = null;
+        CharacterManager.Instance.OnCharacterEnter -= OnCharacterEnter;
     }
 
-    void Update()
+
+        void Update()
     {
 
     }
 
+    //这句话永远不会执行
     void OnCharacterEnter(Character cha)
     {
         CreateCharacterObject(cha);
@@ -72,6 +75,7 @@ public class GameObjectManager : MonoBehaviour
             {
                 if (character.Info.Id == Models.User.Instance.CurrentCharacter.Id)
                 {
+                    User.Instance.CurrentCharacterObject = go;
                     MainPlayerCamera.Instance.player = go;
                     pc.enabled = true;
                     pc.character = character;
