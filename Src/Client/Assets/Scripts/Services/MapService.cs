@@ -60,23 +60,32 @@ namespace Services
             this.CurrentMapID = response.mapId;  // 更新地图ID
         }
 
-            private void EnterMap(int mapId)
+        private void EnterMap(int mapId)
         {
-         if(DataManager.Instance.Maps.ContainsKey(mapId))   
-         {
-            MapDefine map =DataManager.Instance.Maps[mapId];
-            User.Instance.CurrentMapData = map;
-            SceneManager.Instance.LoadScene(map.Resource);
-         }
-         else
-         {
-            Debug.LogErrorFormat("地图ID:{0}不存在",mapId);
-         }
+             if(DataManager.Instance.Maps.ContainsKey(mapId))   
+             {
+                MapDefine map =DataManager.Instance.Maps[mapId];
+                User.Instance.CurrentMapData = map;
+                SceneManager.Instance.LoadScene(map.Resource);
+             }
+             else
+             {
+                Debug.LogErrorFormat("地图ID:{0}不存在",mapId);
+             }
         }
 
         private void OnMapCharacterLeave(object sender, MapCharacterLeaveResponse response)
         {
-            
+            Debug.LogFormat("{0}离开了地图", response.characterId);
+
+            if (response.characterId != User.Instance.CurrentCharacter.Id)
+            {
+                CharacterManager.Instance.RemoveCharacter(response.characterId);//离开的是其他人 移除离开的人
+            }
+            else
+            {
+                CharacterManager.Instance.Clear();//自己退出 销毁所有角色
+            }
         }
     }
 }

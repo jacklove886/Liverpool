@@ -13,6 +13,9 @@ public class AudioManager : MonoSingleton<AudioManager>
     [Header("打开游戏音效")]
     public AudioClip openGameClip;
 
+    [Header("打开角色创建音效")]
+    public AudioClip openChooseCharacterClip;
+
     [Header("主城背景音乐")]
     public AudioClip bgmInMainCityClip;
 

@@ -2,9 +2,10 @@
 using System.Collections;  
 using UnityEngine;  
 using Entities;  
-using Models;  
+using Models;
+using Managers;
 
-public class EntityController : MonoBehaviour
+public class EntityController : MonoBehaviour, IEntityNotify
 {
 
     [Header("组件引用")]
@@ -21,14 +22,18 @@ public class EntityController : MonoBehaviour
     public Vector3 direction;  
 
     [Header("角色类型")]
-    public bool isPlayer = false;  // 是否为玩家角色
+    public bool isPlayer;  // 是否为玩家角色
 
     void Start()
     {
-        currentCharacterClass = (int)User.Instance.CurrentCharacter.Class - 1; 
+        if (User.Instance.CurrentCharacter != null)
+        {
+            currentCharacterClass = (int)User.Instance.CurrentCharacter.Class - 1;
+        }
 
         if (entity != null)  
         {
+            EntityManager.Instance.RegisterEntityChangeNotify(entity.entityId, this);
             UpdateTransform();  
         }
 
@@ -57,6 +62,16 @@ public class EntityController : MonoBehaviour
         {
             UpdateTransform();  
         }
+    }
+
+
+    public void OnEntityRemoved()
+    {
+        if (UIWorldElementManager.Instance != null)
+        {
+            UIWorldElementManager.Instance.RemoveCharacterNameBar(this.transform);
+        }
+        Destroy(this.gameObject);
     }
 
     public void OnEntityEvent(EntityEvent entityEvent, float horizontal = 0, float vertical = 0)

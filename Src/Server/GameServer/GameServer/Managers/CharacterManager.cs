@@ -16,15 +16,18 @@ namespace GameServer.Managers
             Characters.Clear();
         }
 
-        public Character CharacterEnterGame(TCharacter databaseCharacter)
+        public Character CharacterAdd(TCharacter cha)
         {
-            Character gameCharacter = new Character(CharacterType.Player,databaseCharacter);
-            Characters[databaseCharacter.ID] = gameCharacter;  
-            return gameCharacter; 
+            Character character = new Character(CharacterType.Player, cha);
+            EntityManager.Instance.AddEntity(cha.MapID, character);
+            Characters[character.Id] = character;  
+            return character; 
         }
 
         public void CharacterRemove(int characerId)
         {
+            var cha = Characters[characerId];
+            EntityManager.Instance.RemoveEntity(cha.Data.MapID, cha);
             Characters.Remove(characerId);
         }
     }

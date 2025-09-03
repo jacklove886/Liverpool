@@ -40,18 +40,16 @@ public class UIMiniMap : MonoBehaviour {
         }
         minimap.SetNativeSize();// 设置小地图为原始尺寸
         minimap.transform.localPosition = Vector3.zero;// 重置小地图位置为原点
-
-        StartCoroutine(waitTime());
-        this.playerTransform = User.Instance.CurrentCharacterObject.transform;
-    }
-	
-    IEnumerator waitTime()
-    {
-        yield return null;
+        this.playerTransform = null;
     }
 	
 	void Update ()
     {
+        if (playerTransform == null) playerTransform = MinimapManager.Instance.PlayerTransform;
+        playerTransform = MinimapManager.Instance.PlayerTransform;
+
+        if (playerTransform == null) return;
+
         realPlayerX = playerTransform.position.x - miniMapBoudingBox.bounds.min.x;//玩家相对地图左下角的位置
         realPlayerY = playerTransform.position.z - miniMapBoudingBox.bounds.min.z;//玩家相对地图最下面的位置
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Models;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,20 +37,27 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
     private float y = 0f;
     private Vector3 velocity = Vector3.zero;
 
-    void Start()
+    protected override void OnStart()
     {
         // 初始化相机角度
         Vector3 angles = transform.eulerAngles;
         x = angles.y;
         y = angles.x;
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     void Update()
     {
-        if (player == null || !enableMouseControl)
-            return;
+        if (player == null)
+        {
+            player = User.Instance.CurrentCharacterObject;
+        }
 
+        if (!enableMouseControl)
+        {
+            return;
+        }
+            
         // 鼠标控制相机旋转
             x += Input.GetAxis("Mouse X") * xSpeed * Time.deltaTime;
             y -= Input.GetAxis("Mouse Y") * ySpeed * Time.deltaTime;

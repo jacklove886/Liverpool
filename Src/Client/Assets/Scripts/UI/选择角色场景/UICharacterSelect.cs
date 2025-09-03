@@ -19,44 +19,47 @@ public class UICharacterSelect : MonoBehaviour
     public int classIndex;                                     //角色当前职业中的索引
 
     [Header("选择/创建面板")]
-    public GameObject panelSelect;                              // 角色选择面板
-    public GameObject panelCreate;                              // 角色创建面板
+    public GameObject panelSelect;                              
+    public GameObject panelCreate;                              
 
     [Header("生成信息的父物体")]
-    public Transform uiCharList;                                // 生成信息的父物体
+    public Transform uiCharList;                                
 
     [Header("滚动条角色信息面板的预制体")]
-    public GameObject uiCharacterMessage;                       // 滚动条角色信息面板的预制体
+    public GameObject uiCharacterMessage;                       
 
     [Header("创建面板滚动条中角色列表")]
-    public List<GameObject> uiChars = new List<GameObject>();   // 滚动条中角色列表
+    public List<GameObject> uiChars = new List<GameObject>();   
 
     [Header("职业介绍")]
-    public Text descs;                                          // 职业介绍
+    public Text descs;                                         
 
     [Header("创建界面填写昵称的框")]
-    public InputField nameInputField;                           // 创建界面填写昵称的框
+    public InputField nameInputField;                          
 
     [Header("添加角色的按钮")]
-    public Button creatCharacter;                               // 添加角色的按钮
+    public Button creatCharacter;                             
 
     [Header("选择角色类型的按钮")]
-    public Button[] selectClass;                                // 选择角色类型的按钮
+    public Button[] selectClass;                              
 
     [Header("已经创建好的角色的按钮")]
-    public Button selectCharacter;                              // 已经创建好的角色的按钮
+    public Button selectCharacter;                             
 
     [Header("最上面的角色图标")]
-    public Image[] titles;                                      // 最上面的角色图标
+    public Image[] titles;                                      
 
     [Header("职业图标")]
-    public Image[] confirmPicture;                              // 职业图标
+    public Image[] confirmPicture;                              
 
     [Header("角色3D模型")]
-    public GameObject[] characterClassPrefab;                   // 角色3D模型
+    public GameObject[] characterClassPrefab;                  
 
     [Header("角色背景图")]
-    public Image[] imageBackGround;                             // 角色背景图
+    public Image[] imageBackGround;                            
+
+    [Header("初始面板")]
+    public GameObject originalPanel;                            
 
     private void Awake()
     {
@@ -66,7 +69,7 @@ public class UICharacterSelect : MonoBehaviour
 
     void Start()
     {
-        InitCharacterSelect(true);
+        InitCharacterSelect(true); 
     }
 
     private void Update()
@@ -82,8 +85,11 @@ public class UICharacterSelect : MonoBehaviour
     //初始化选择角色页面
     public void InitCharacterSelect(bool init)
     {
+        originalPanel.SetActive(true);
         panelCreate.SetActive(false);
         panelSelect.SetActive(true);
+        AudioManager.Instance.audioClipPlay.clip=AudioManager.Instance.openChooseCharacterClip;
+        AudioManager.Instance.audioClipPlay.Play();
         if (init)
         {
             foreach (var old in uiChars)
@@ -118,14 +124,12 @@ public class UICharacterSelect : MonoBehaviour
             {
                 OnClickSelectCharacter(index);
             });
-
             uiChars.Add(go);
             go.SetActive(true);
         }
-        // 如果有角色，自动选择第一个
-        if (User.Instance.Info.Player.Characters.Count > 0)
+        for (int j = 0; j < classCount; j++)
         {
-            OnClickSelectCharacter(0);
+            characterClassPrefab[j].SetActive(false);
         }
 
     }
@@ -137,6 +141,7 @@ public class UICharacterSelect : MonoBehaviour
         panelSelect.SetActive(false);
         panelCreate.SetActive(true);
         OnClickSelectClass(1);//默认选了第一个职业
+        originalPanel.SetActive(false);
     }
 
 
@@ -173,6 +178,7 @@ public class UICharacterSelect : MonoBehaviour
     //点击选择已经创建好的角色的按钮
     public void OnClickSelectCharacter(int index)
     {
+        originalPanel.SetActive(false);
         var character = User.Instance.Info.Player.Characters[index];
         User.Instance.CurrentCharacter = character;
         // 获得一个索引值来匹配当前选中的角色
@@ -216,7 +222,7 @@ public class UICharacterSelect : MonoBehaviour
         }
     }
 
-    //点击创建角色的按钮  创建完角色  进入游戏
+    //点击创建角色的按钮  创建完角色
     public void OnClickCreateCharacterSuccess()
     {
         if (string.IsNullOrEmpty(nameInputField.text))

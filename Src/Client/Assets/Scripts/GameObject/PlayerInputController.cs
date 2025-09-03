@@ -104,7 +104,6 @@ public class PlayerInputController : MonoBehaviour {
                     this.SendEntityEvent(EntityEvent.EventRun);
                 }
             }
-            
 
             // 角色移动
             Vector3 moveDirection = (transform.forward * vertical + transform.right * horizontal).normalized;
@@ -132,14 +131,16 @@ public class PlayerInputController : MonoBehaviour {
 
     private void LateUpdate()
 	{
+        if (character == null) return;
+
         Vector3 offset = this.rb.transform.position - lastPos;
         this.realspeed = (int)(offset.magnitude * 100f / Time.deltaTime);
         this.lastPos = this.rb.transform.position;
 
         if ((GameObjectTool.WorldToLogic(this.rb.transform.position) - this.character.position).magnitude > 50)
     	{
-        this.character.SetPosition(GameObjectTool.WorldToLogic(this.rb.transform.position));
-        this.SendEntityEvent(EntityEvent.EventNone);
+            this.character.SetPosition(GameObjectTool.WorldToLogic(this.rb.transform.position));
+            this.SendEntityEvent(EntityEvent.EventNone);
     	}
         this.transform.position = this.rb.transform.position;
 	}

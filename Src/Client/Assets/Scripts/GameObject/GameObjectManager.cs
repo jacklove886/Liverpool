@@ -7,22 +7,24 @@ using SkillBridge.Message;
 using Managers;
 using Models;
 
-public class GameObjectManager : MonoBehaviour
+public class GameObjectManager : MonoSingleton<GameObjectManager>
 {
 
     Dictionary<int, GameObject> Characters = new Dictionary<int, GameObject>();
 
 
 
-    void Start()
+    protected override void OnStart()
     {
         StartCoroutine(InitGameObjects());
         CharacterManager.Instance.OnCharacterEnter += OnCharacterEnter;
+        CharacterManager.Instance.OnCharacterLeave += OnCharacterLeave;
     }
 
     private void OnDestroy()
     {
         CharacterManager.Instance.OnCharacterEnter -= OnCharacterEnter;
+        CharacterManager.Instance.OnCharacterLeave -= OnCharacterLeave;
     }
 
 
@@ -32,9 +34,20 @@ public class GameObjectManager : MonoBehaviour
     }
 
     //这句话永远不会执行
-    void OnCharacterEnter(Character cha)
+    void OnCharacterEnter(Character character)
     {
-        CreateCharacterObject(cha);
+        CreateCharacterObject(character);
+    }
+
+    void OnCharacterLeave(Character character)
+    {
+        if (!Characters.ContainsKey(character.entityId)) return;
+
+        if (Characters[character.entityId] != null)
+        {
+            Destroy(Characters[character.entityId]);
+            Characters.Remove(character.entityId);
+        }
     }
 
     IEnumerator InitGameObjects()
@@ -48,45 +61,55 @@ public class GameObjectManager : MonoBehaviour
 
     private void CreateCharacterObject(Character character)
     {
-        if (!Characters.ContainsKey(character.Info.Id) || Characters[character.Info.Id] == null)
+        if (!Characters.ContainsKey(character.entityId) || Characters[character.entityId] == null)
         {
             Object obj = Resloader.Load<Object>(character.Define.Resource);
-            if(obj == null)
+            if (obj == null)
             {
-                Debug.LogErrorFormat("角色：[{0}] 资源[{1}] 不存在.",character.Define.Name, character.Define.Resource);
+                Debug.LogErrorFormat("角色：[{0}] 资源[{1}] 不存在.", character.Define.Name, character.Define.Resource);
                 return;
             }
-            GameObject go = (GameObject)Instantiate(obj);
+            GameObject go = (GameObject)Instantiate(obj, this.transform);
             go.name = character.Info.Name;
+            Characters[character.entityId] = go;
 
-            go.transform.position = GameObjectTool.LogicToWorld(character.position);
-            go.transform.forward = GameObjectTool.LogicToWorld(character.direction);
-            Characters[character.Info.Id] = go;
+            EntityController entityController = go.GetComponent<EntityController>();
 
-            EntityController ec = go.GetComponent<EntityController>();
-            if (ec != null)
+            if (entityController != null)
             {
-                ec.entity = character;
-                ec.isPlayer = character.IsPlayer;
+                entityController.entity = character;
+                entityController.isPlayer = character.Info.Type == CharacterType.Player;
+
             }
-            
-            PlayerInputController pc = go.GetComponent<PlayerInputController>();
-            if (pc != null)
-            {
-                if (character.Info.Id == Models.User.Instance.CurrentCharacter.Id)
-                {
-                    User.Instance.CurrentCharacterObject = go;
-                    MainPlayerCamera.Instance.player = go;
-                    pc.enabled = true;
-                    pc.character = character;
-                    pc.entityController = ec;
-                }
-                else
-                {
-                    pc.enabled = false;
-                }
-            }
+
             UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, character);
+        }
+        InitGameObject(Characters[character.entityId], character);
+    }
+
+    //避免切换场景后人物状态出现错误
+    private void InitGameObject(GameObject go,Character character)
+    {
+        go.transform.position = GameObjectTool.LogicToWorld(character.position);
+        go.transform.forward = GameObjectTool.LogicToWorld(character.direction);
+
+        EntityController entityController = go.GetComponent<EntityController>();
+        PlayerInputController pc = go.GetComponent<PlayerInputController>();
+
+        if (pc != null)
+        {
+            if (User.Instance.CurrentCharacter != null && character.Info.Id == User.Instance.CurrentCharacter.Id)
+            {
+                User.Instance.CurrentCharacterObject = go;
+                MainPlayerCamera.Instance.player = go;
+                pc.enabled = true;
+                pc.character = character;
+                pc.entityController = entityController;
+            }
+            else
+            {
+                pc.enabled = false;
+            }
         }
     }
 }

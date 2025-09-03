@@ -226,28 +226,37 @@ namespace GameServer.Services
 
         private void OnGameEnter(NetConnection<NetSession> sender, UserGameEnterRequest request)
         {
-            {
-                TCharacter databaseCharacter = sender.Session.User.Player.Characters.ElementAt(request.characterIdx);
-                Log.InfoFormat("UserGameEnterRequest: characterID:{0}:{1} Map:{2}", databaseCharacter.ID, databaseCharacter.Name, databaseCharacter.MapID);
-                Character character = CharacterManager.Instance.CharacterEnterGame(databaseCharacter);
+            TCharacter databaseCharacter = sender.Session.User.Player.Characters.ElementAt(request.characterIdx);
+            Log.InfoFormat("UserGameEnterRequest: characterID:{0}:{1} Map:{2}", databaseCharacter.ID, databaseCharacter.Name, databaseCharacter.MapID);
+            Character character = CharacterManager.Instance.CharacterAdd(databaseCharacter);
 
-                NetMessage message = new NetMessage();
-                message.Response = new NetMessageResponse();
-                message.Response.gameEnter = new UserGameEnterResponse();
-                message.Response.gameEnter.Result = Result.Success;
-                message.Response.gameEnter.Errormsg = "None";
+            NetMessage message = new NetMessage();
+            message.Response = new NetMessageResponse();
+            message.Response.gameEnter = new UserGameEnterResponse();
+            message.Response.gameEnter.Result = Result.Success;
+            message.Response.gameEnter.Errormsg = "None";
 
-                byte[] data = PackageHandler.PackMessage(message);
-                sender.SendData(data, 0, data.Length);
-                sender.Session.Character = character;
-                MapManager.Instance[databaseCharacter.MapID].CharacterEnter(sender, character);
-            }
+            byte[] data = PackageHandler.PackMessage(message);
+            sender.SendData(data, 0, data.Length);
+            sender.Session.Character = character;
+            MapManager.Instance[databaseCharacter.MapID].CharacterEnter(sender, character);
         }
 
-        private void OnGameLeave(NetConnection<NetSession> sender, UserGameLeaveRequest message)
+        private void OnGameLeave(NetConnection<NetSession> sender, UserGameLeaveRequest request)
         {
+            Character character = sender.Session.Character;
+            Log.InfoFormat("UserGameLeaveRequest: characterID:{0}:{1} Map:{2}", character.Id, character.Info.Name, character.Info.mapId);
+            CharacterManager.Instance.CharacterRemove(character.Id);
 
+            MapManager.Instance[character.Info.mapId].CharacterLeave(character.Info);
+            NetMessage message = new NetMessage();
+            message.Response = new NetMessageResponse();
+            message.Response.gameLeave = new UserGameLeaveResponse();
+            message.Response.gameLeave.Result = Result.Success;
+            message.Response.gameLeave.Errormsg = "None";
+
+            byte[] data = PackageHandler.PackMessage(message);
+            sender.SendData(data, 0, data.Length);
         }
-
     }
 }

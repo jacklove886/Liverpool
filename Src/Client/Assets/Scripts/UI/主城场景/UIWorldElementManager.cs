@@ -9,15 +9,15 @@ public class UIWorldElementManager : MonoSingleton<UIWorldElementManager> {
     public GameObject namePrefab;//角色头上姓名的预制体
 
     private Dictionary<Transform, GameObject> elements = new Dictionary<Transform, GameObject>();
-    
 
-    void Start ()
+
+    protected override void OnStart()
     {
-        
+
     }
-	
-	
-	void Update ()
+
+
+    void Update ()
     {
         
     }

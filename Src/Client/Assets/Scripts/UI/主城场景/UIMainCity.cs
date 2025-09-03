@@ -14,7 +14,7 @@ public class UIMainCity : MonoBehaviour {
     {
         AudioManager.Instance.bgmaudioClipPlay.clip = AudioManager.Instance.bgmInMainCityClip;
         AudioManager.Instance.bgmaudioClipPlay.Play();
-        Cursor.lockState = CursorLockMode.Locked;  // 游戏开始时锁定鼠标
+        Cursor.visible = false; 
         UpdataAvatar();
 	}
 	
@@ -26,12 +26,17 @@ public class UIMainCity : MonoBehaviour {
             EscPanel();
         }
 
-        //面板关闭情况下才允许点击 改变鼠标变成锁定
+        //面板关闭情况下才允许点击 鼠标光标隐藏
         if (Input.GetMouseButtonDown(0) && !escPanelState)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false; //隐藏光标
         }
 
+        //Alt解锁鼠标
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            Cursor.visible = true; 
+        }
     }
 
     void UpdataAvatar()
@@ -44,7 +49,11 @@ public class UIMainCity : MonoBehaviour {
         escPanelState = !escPanelState;
         if (escPanelState == true)
         {
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.visible = false;
         }
 
         escPanel.SetActive(escPanelState);
@@ -55,6 +64,7 @@ public class UIMainCity : MonoBehaviour {
         StopMainCityMusic();
         //返回选择角色的页面
         SceneManager.Instance.LoadScene("CharacterChoose");
+        Services.UserService.Instance.SendGameLeave();
     }
 
     public void OnClickReturnGame()
@@ -70,9 +80,7 @@ public class UIMainCity : MonoBehaviour {
 
     private void StopMainCityMusic()
     {
-        if (AudioManager.Instance != null &&
-            AudioManager.Instance.bgmaudioClipPlay != null &&
-            AudioManager.Instance.bgmaudioClipPlay.isPlaying)
+        if (AudioManager.Instance.bgmaudioClipPlay.isPlaying)
         {
             AudioManager.Instance.bgmaudioClipPlay.Stop();  // 停止背景音乐
         }
