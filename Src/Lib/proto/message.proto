@@ -42,12 +42,9 @@ enum ENTITY_EVENT
 {
 	EVENT_NONE = 0;
     EVENT_IDLE = 1;
-    EVENT_MOVE_FWD = 2;
-    EVENT_MOVE_BACK = 3;
-    EVENT_MOVE_LEFT = 4;
-    EVENT_MOVE_RIGHT = 5;
-    EVENT_JUMP = 6;
-	EVENT_RUN = 7;
+    EVENT_MOVE = 2;
+    EVENT_JUMP = 3;
+	EVENT_RUN = 4;
 }
 
 message NUserInfo {

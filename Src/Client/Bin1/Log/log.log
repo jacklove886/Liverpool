@@ -1,0 +1,24 @@
+2025-09-02 20:28:55,387 [ 1] INFO  Unity: LoadingManager start
+2025-09-02 20:28:55,399 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-02 20:28:57,512 [ 1] INFO  Unity: 加载完毕1
+2025-09-02 20:29:00,014 [ 1] INFO  Unity: 加载完毕2
+2025-09-02 20:29:06,293 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-02 20:29:06,294 [ 1] INFO  Unity: 连接成功
+2025-09-02 20:29:06,296 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-02 20:29:06,299 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-02 20:29:08,184 [ 1] INFO  Unity: 登录成功
+2025-09-02 20:29:08,363 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-02 20:29:58,060 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-02 20:29:58,069 [ 1] INFO  Unity: 角色进入第:1张地图
+2025-09-02 20:29:58,071 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-02 20:29:58,072 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-02 20:29:58,074 [ 1] INFO  Unity: 加入角色姓名:子龙,地图:1，实体信息:(0:pos:(4150,3000,800),dir:(100,0,0),spd:0
+2025-09-02 20:29:58,075 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-02 20:29:58,780 [ 1] INFO  Unity: 消失的玩家：0,位置(4150, 3000, 800) 
+2025-09-02 20:30:08,946 [ 1] INFO  Unity: 消失的玩家：0,位置(4826, 4794, 804) 
+2025-09-02 20:30:08,947 [ 1] INFO  Unity: 网络断开
+2025-09-02 20:30:08,947 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+UnityEngine.Debug:LogWarning(Object)
+Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:181)
+Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:176)
+

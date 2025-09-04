@@ -10,7 +10,7 @@ namespace Managers
     {
         void OnEntityRemoved();
         void OnEntityChange(Entity entity);
-        void OnEntityEvent(EntityEvent @event,float horizontal = 0, float vertical = 0);
+        void OnEntityEvent(EntityEvent @event);
     }
 
     class EntityManager:Singleton<EntityManager>

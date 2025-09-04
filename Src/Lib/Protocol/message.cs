@@ -531,18 +531,12 @@ namespace SkillBridge.Message
         EventNone = 0,
         [global::ProtoBuf.ProtoEnum(Name = @"EVENT_IDLE")]
         EventIdle = 1,
-        [global::ProtoBuf.ProtoEnum(Name = @"EVENT_MOVE_FWD")]
-        EventMoveFwd = 2,
-        [global::ProtoBuf.ProtoEnum(Name = @"EVENT_MOVE_BACK")]
-        EventMoveBack = 3,
-        [global::ProtoBuf.ProtoEnum(Name = @"EVENT_MOVE_LEFT")]
-        EventMoveLeft = 4,
-        [global::ProtoBuf.ProtoEnum(Name = @"EVENT_MOVE_RIGHT")]
-        EventMoveRight = 5,
+        [global::ProtoBuf.ProtoEnum(Name = @"EVENT_MOVE")]
+        EventMove = 2,
         [global::ProtoBuf.ProtoEnum(Name = @"EVENT_JUMP")]
-        EventJump = 6,
+        EventJump = 3,
         [global::ProtoBuf.ProtoEnum(Name = @"EVENT_RUN")]
-        EventRun = 7,
+        EventRun = 4,
     }
 
 }

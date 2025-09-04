@@ -66,11 +66,11 @@ public class EntityController : MonoBehaviour, IEntityNotify
     {
         if (entity == null) return;  
 
-        entity.OnUpdate(Time.fixedDeltaTime);  
+        entity.OnUpdate(Time.fixedDeltaTime);
 
-        if (!isPlayer)  
+        if (!isPlayer)
         {
-            UpdateTransform();  
+            UpdateTransform();
         }
     }
 
@@ -84,7 +84,7 @@ public class EntityController : MonoBehaviour, IEntityNotify
         Destroy(this.gameObject);
     }
 
-    public void OnEntityEvent(EntityEvent entityEvent, float horizontal = 0, float vertical = 0)
+    public void OnEntityEvent(EntityEvent entityEvent)
     {
         int currentCharacter = (int)User.Instance.CurrentCharacter.Class;  // 获取当前角色职业类型
 
@@ -93,15 +93,12 @@ public class EntityController : MonoBehaviour, IEntityNotify
             case EntityEvent.EventIdle:
 
                 StopMovementAudio();  
-                SetIdleAnimation(currentCharacter);  
+                SetIdleAnimation();  
                 break;
 
-            case EntityEvent.EventMoveFwd:
-            case EntityEvent.EventMoveBack:
-            case EntityEvent.EventMoveLeft:
-            case EntityEvent.EventMoveRight:
+            case EntityEvent.EventMove:
 
-                SetMovementAnimation(currentCharacter, horizontal, vertical);  
+                SetMovementAnimation();  
                 PlayMovementAudio();  
                 break;
 
@@ -128,27 +125,15 @@ public class EntityController : MonoBehaviour, IEntityNotify
     }
 
     
-    private void SetIdleAnimation(int currentCharacter)
+    private void SetIdleAnimation()
     {
-        if (currentCharacter == 1)  // 战士有前后左右Move动画 需要混合树
-        {
-            anim.SetFloat("Horizontal", 0);  
-            anim.SetFloat("Vertical", 0);  
-        }
-        // 法师和游侠只有向前的Move动画
         anim.SetBool("Move", false);  
         anim.SetBool("Run", false);  
     }
 
     
-    private void SetMovementAnimation(int currentCharacter, float horizontal, float vertical)
+    private void SetMovementAnimation()
     {
-        if (currentCharacter == 1)  
-        {
-            anim.SetFloat("Horizontal", horizontal);  
-            anim.SetFloat("Vertical", vertical);  
-        }
-        // 法师和游侠只有向前的Move动画
         anim.SetBool("Move", true);  
         anim.SetBool("Run", false);  
     }
@@ -209,7 +194,6 @@ public class EntityController : MonoBehaviour, IEntityNotify
 
     public void OnEntityChange(Entity entity)
     {
-        Debug.Log("操你妈");
-    }
 
+    }
 }

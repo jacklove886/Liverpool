@@ -27,11 +27,9 @@ public class PlayerInputController : MonoBehaviour {
 
     [Header("位置同步")]
     private Vector3 lastPos;
-    private float lastSyncTime = 0;
-    private float syncWaitTime = 0.1f; // 每0.1秒同步一次
 
     void Start () {
-        state =SkillBridge.Message.CharacterState.Idle;
+        state =CharacterState.Idle;
 		if(this.character==null)
 		{
 			DataManager.Instance.Load();
@@ -68,37 +66,19 @@ public class PlayerInputController : MonoBehaviour {
         {
             if (!isRunning)
             {
+                // 只在状态或方向变化时发送
                 if (state != CharacterState.Move)
                 {
                     state = CharacterState.Move;
                     currentspeed = this.character.Move();
-                }
-                if (Mathf.Abs(vertical) >= Mathf.Abs(horizontal)) // 前后移动为主
-                {
-                    if (vertical > 0)
-                    {
-                        this.SendEntityEvent(EntityEvent.EventMoveFwd, horizontal, vertical);
-                    }
-                    else
-                    {
-                        this.SendEntityEvent(EntityEvent.EventMoveBack, horizontal, vertical);
-                    }
-                }
-                else // 左右移动为主
-                {
-                    if (horizontal > 0)
-                    {
-                        this.SendEntityEvent(EntityEvent.EventMoveRight, horizontal, vertical);
-                    }
-                    else
-                    {
-                        this.SendEntityEvent(EntityEvent.EventMoveLeft, horizontal, vertical);
-                    }
+                    this.SendEntityEvent(EntityEvent.EventMove);
                 }
             }
-            
+
+            //跑步状态
             else
             {
+                // 只在状态变化时发送
                 if (state != CharacterState.Run)
                 {
                     state = CharacterState.Run;
@@ -112,6 +92,7 @@ public class PlayerInputController : MonoBehaviour {
             rb.velocity = new Vector3(moveDirection.x * currentspeed / 100f, rb.velocity.y, moveDirection.z * currentspeed / 100f);
         }
 
+        //Idle状态
         else
         {
             if (state != CharacterState.Idle)
@@ -119,7 +100,7 @@ public class PlayerInputController : MonoBehaviour {
                 state = CharacterState.Idle;
                 this.rb.velocity = Vector3.zero;
                 currentspeed=this.character.Stop();
-                this.SendEntityEvent(EntityEvent.EventIdle, 0, 0);
+                this.SendEntityEvent(EntityEvent.EventIdle);
             }
         }
 
@@ -127,7 +108,7 @@ public class PlayerInputController : MonoBehaviour {
         // 按空格实现跳跃
         if (Input.GetButtonDown("Jump"))
         {
-            this.SendEntityEvent(EntityEvent.EventJump, 0, 0);
+            this.SendEntityEvent(EntityEvent.EventJump);
         }
     }
 
@@ -147,17 +128,15 @@ public class PlayerInputController : MonoBehaviour {
         this.transform.position = this.rb.transform.position;
 	}
 
-	void SendEntityEvent(EntityEvent entityEvent, float horizontal = 0, float vertical = 0)
-	{
-		if(entityController!=null)
-		{
-			entityController.OnEntityEvent(entityEvent, horizontal, vertical);
-		}
 
-        if (Time.time - lastSyncTime > syncWaitTime)
+    void SendEntityEvent(EntityEvent entityEvent)
+    {
+        // 本地动画立即执行
+        if (entityController != null)
         {
-            MapService.Instance.SendMapEntitySync(entityEvent, character.EntityData);
-            lastSyncTime = Time.time;
+            entityController.OnEntityEvent(entityEvent);
         }
+
+        MapService.Instance.SendMapEntitySync(entityEvent, character.EntityData);
     }
 }
