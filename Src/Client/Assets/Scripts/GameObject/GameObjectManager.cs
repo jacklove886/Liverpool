@@ -28,11 +28,6 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
     }
 
 
-        void Update()
-    {
-
-    }
-
     //这句话永远不会执行
     void OnCharacterEnter(Character character)
     {
@@ -80,19 +75,16 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
                 entityController.entity = character;
                 entityController.isPlayer = character.Info.Id == User.Instance.CurrentCharacter.Id;
             }
-
             UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, character);
+            InitGameObject(Characters[character.entityId], character, entityController);
         }
-        InitGameObject(Characters[character.entityId], character);
     }
 
     //避免切换场景后人物状态出现错误
-    private void InitGameObject(GameObject go,Character character)
+    private void InitGameObject(GameObject go,Character character, EntityController entityController)
     {
         go.transform.position = GameObjectTool.LogicToWorld(character.position);
         go.transform.forward = GameObjectTool.LogicToWorld(character.direction);
-
-        EntityController entityController = go.GetComponent<EntityController>();
 
         PlayerInputController pc = go.GetComponent<PlayerInputController>();
 

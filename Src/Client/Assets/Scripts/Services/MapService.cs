@@ -44,20 +44,14 @@ namespace Services
                }
                CharacterManager.Instance.AddCharacter(cha);
             }
-
-            string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-            if (DataManager.Instance.Maps.ContainsKey(response.mapId))
+                
+            if (CurrentMapID != response.mapId)
             {
-                string targetScene = DataManager.Instance.Maps[response.mapId].Resource;
-
-                if (currentScene != targetScene)
-                {
-                    Debug.LogFormat("场景不匹配：当前场景{0}, 目标场景{1}, 开始切换", currentScene, targetScene);
-                    this.EnterMap(response.mapId);
-                }
+                Debug.LogFormat("场景不匹配：当前场景{0}, 目标场景{1}, 开始切换", CurrentMapID, response.mapId);
+                EnterMap(response.mapId);
+                CurrentMapID = response.mapId;  // 更新地图ID
             }
-
-            this.CurrentMapID = response.mapId;  // 更新地图ID
+            
         }
 
         private void EnterMap(int mapId)
