@@ -29,9 +29,6 @@ public class PlayerInputController : MonoBehaviour {
     private Vector3 lastPos;
 	//private float lastSync = 0;
 
-    [Header("旋转同步")]
-    private Vector3 lastDirection; // 上一帧的方向
-    //private float rotationSyncThreshold = 5f; // 旋转同步
 
     void Start () {
         state =CharacterState.Idle;
@@ -55,7 +52,6 @@ public class PlayerInputController : MonoBehaviour {
 				entityController.entity=this.character;
 			}
 		}
-        lastDirection = this.transform.forward;
     }
 
     void FixedUpdate()
