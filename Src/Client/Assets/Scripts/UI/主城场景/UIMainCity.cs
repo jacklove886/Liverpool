@@ -74,6 +74,7 @@ public class UIMainCity : MonoBehaviour {
     public void OnClickQuitGame()
     {
         StopMainCityMusic();
+        Services.UserService.Instance.SendGameLeave();//如果出bug 把这一行注释掉
         //退出游戏
         Application.Quit();
     }

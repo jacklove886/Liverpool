@@ -73,7 +73,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
             if (entityController != null)
             {
                 entityController.entity = character;
-                entityController.isPlayer = character.Info.Id == User.Instance.CurrentCharacter.Id;
+                entityController.isPlayer = character.Info.Name == User.Instance.CurrentCharacter.Name;
             }
             UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, character);
             InitGameObject(Characters[character.entityId], character, entityController);
@@ -90,7 +90,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
 
         if (pc != null)
         {
-            if (User.Instance.CurrentCharacter != null && character.Info.Id == User.Instance.CurrentCharacter.Id)
+            if (User.Instance.CurrentCharacter != null && character.Info.Name == User.Instance.CurrentCharacter.Name)
             {
                 User.Instance.CurrentCharacterObject = go;
                 MainPlayerCamera.Instance.player = go;

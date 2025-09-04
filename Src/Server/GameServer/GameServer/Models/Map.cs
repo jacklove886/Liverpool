@@ -76,7 +76,7 @@ namespace GameServer.Models
             conn.SendData(data, 0, data.Length);
         }
 
-        internal void CharacterLeave(NCharacterInfo cha)
+        internal void CharacterLeave(Character cha)
         {
             Log.InfoFormat("CharacterLeave: Map:{0} characterId:{1}", this.Define.ID, cha.Id);
             foreach(var kv in MapCharacters)
@@ -99,7 +99,7 @@ namespace GameServer.Models
             connection.SendData(data, 0, data.Length);
         }
 
-        private void SendCharacterLeaveMap(NetConnection<NetSession> connection, NCharacterInfo character)
+        private void SendCharacterLeaveMap(NetConnection<NetSession> connection, Character character)
         {
             NetMessage message = new NetMessage();
             message.Response = new NetMessageResponse();
@@ -111,7 +111,6 @@ namespace GameServer.Models
             connection.SendData(data, 0, data.Length);
         }
 
-        //这个方法实现将移动同步广播给当前地图的所有玩家
         internal void UpdateEntity(NEntitySync entity)
         {
             foreach(var kv in MapCharacters)
@@ -124,7 +123,6 @@ namespace GameServer.Models
                 }
                 else
                 {
-                    //消息发给别人
                     MapService.Instance.SendEntityUpdate(kv.Value.connection, entity);
                 }
             }

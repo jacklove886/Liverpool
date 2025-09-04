@@ -290,7 +290,6 @@ namespace Services
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.gameLeave = new UserGameLeaveRequest();
-            NetClient.Instance.SendMessage(message);
 
             if (this.connected && NetClient.Instance.Connected)
             {
@@ -307,6 +306,7 @@ namespace Services
         void OnUserGameLeave(object sender, UserGameLeaveResponse response)
         {
             MapService.Instance.CurrentMapID = 0;
+            User.Instance.CurrentCharacter = null;
             Debug.LogFormat("角色离开游戏:{0}", response.Result);
         }
 
