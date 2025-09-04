@@ -91,10 +91,12 @@ namespace GameServer.Services
                 foreach (var c in user.Player.Characters)
                 {
                     NCharacterInfo info = new NCharacterInfo();
-                    info.Id = c.ID;
+                    info.Id = 0;  //Entity ID
                     info.Name = c.Name;
                     info.Class = (CharacterClass)c.Class;
+                    info.Type = CharacterType.Player;
                     info.Level = c.Level;
+                    info.Tid = c.ID;
                     message.Response.userLogin.Userinfo.Player.Characters.Add(info);
                 }
             }
@@ -151,12 +153,12 @@ namespace GameServer.Services
             //返回新创建的角色
 
             NCharacterInfo newCharacterInfo = new NCharacterInfo();
-            newCharacterInfo.Id = character.ID;
+            newCharacterInfo.Id = 0;  //Entity ID
             newCharacterInfo.Name = character.Name;
             newCharacterInfo.Class = (CharacterClass)character.Class;
+            newCharacterInfo.Type = CharacterType.Player;
             newCharacterInfo.Level = character.Level;
-            newCharacterInfo.Tid = character.TID;
-            newCharacterInfo.mapId = character.MapID;
+            newCharacterInfo.Tid = character.ID;
 
             message.Response.createChar.Characters.Add(newCharacterInfo);
 

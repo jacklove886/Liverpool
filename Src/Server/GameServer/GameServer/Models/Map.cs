@@ -79,11 +79,11 @@ namespace GameServer.Models
         internal void CharacterLeave(NCharacterInfo cha)
         {
             Log.InfoFormat("CharacterLeave: Map:{0} characterId:{1}", this.Define.ID, cha.Id);
-            MapCharacters.Remove(cha.Id);
             foreach(var kv in MapCharacters)
             {
                 SendCharacterLeaveMap(kv.Value.connection, cha);
             }
+            MapCharacters.Remove(cha.Id);
         }
 
         void SendCharacterEnterMap(NetConnection<NetSession> connection, NCharacterInfo character)
