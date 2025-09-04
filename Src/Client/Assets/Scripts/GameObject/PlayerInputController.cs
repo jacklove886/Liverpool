@@ -91,7 +91,8 @@ public class PlayerInputController : MonoBehaviour {
 
             // 角色移动
             Vector3 moveDirection = (transform.forward * vertical + transform.right * horizontal).normalized;
-            rb.velocity = new Vector3(moveDirection.x * currentspeed / 100f, rb.velocity.y, moveDirection.z * currentspeed / 100f);
+            float speedzoom = currentspeed / 100f;
+            rb.velocity = new Vector3(moveDirection.x * speedzoom, rb.velocity.y, moveDirection.z * speedzoom);
         }
 
         //Idle状态
