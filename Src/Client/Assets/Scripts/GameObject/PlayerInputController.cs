@@ -11,7 +11,6 @@ public class PlayerInputController : MonoBehaviour {
 	[Header("角色状态")]
     SkillBridge.Message.CharacterState state;//角色的状态(移动，停止)
     public Character character; //角色实体
-    public bool isPlayer=false; //是否是玩家
 
     [Header("物理组件")]
     public Rigidbody rb;

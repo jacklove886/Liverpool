@@ -22,10 +22,11 @@ public class EntityController : MonoBehaviour, IEntityNotify
     public Vector3 direction;  
 
     [Header("角色类型")]
-    public bool isPlayer;  // 是否为玩家角色
+    public bool isPlayer=false;  // 是否为玩家角色
 
     void Start()
     {
+        StartCoroutine(waitTime());
         if (User.Instance.CurrentCharacter != null)
         {
             currentCharacterClass = (int)User.Instance.CurrentCharacter.Class - 1;
@@ -37,10 +38,19 @@ public class EntityController : MonoBehaviour, IEntityNotify
             UpdateTransform();  
         }
 
-        if (!isPlayer)  
+        if (isPlayer)  
         {
-            rb.useGravity = false;  // 非玩家不受重力
+            rb.useGravity = true;  // 只有玩家受重力影响
         }
+        else
+        {
+            rb.useGravity = false;
+        }
+    }
+
+    IEnumerator waitTime()
+    {
+        yield return null;
     }
 
     void UpdateTransform()

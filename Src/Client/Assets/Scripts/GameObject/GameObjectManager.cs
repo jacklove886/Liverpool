@@ -78,8 +78,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
             if (entityController != null)
             {
                 entityController.entity = character;
-                entityController.isPlayer = character.Info.Type == CharacterType.Player;
-
+                entityController.isPlayer = character.Info.Id == User.Instance.CurrentCharacter.Id;
             }
 
             UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, character);
@@ -94,6 +93,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
         go.transform.forward = GameObjectTool.LogicToWorld(character.direction);
 
         EntityController entityController = go.GetComponent<EntityController>();
+
         PlayerInputController pc = go.GetComponent<PlayerInputController>();
 
         if (pc != null)
