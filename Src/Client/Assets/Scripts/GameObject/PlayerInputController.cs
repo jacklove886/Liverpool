@@ -26,8 +26,10 @@ public class PlayerInputController : MonoBehaviour {
     public float horizontal;
 
     [Header("位置同步")]
-    private Vector3 lastPos;
-	//private float lastSync = 0;
+    private Vector3 lastPos;// 上次同步的位置
+
+    [Header("旋转同步")]
+    private float lastSyncRotation = 0f;  // 上次同步的旋转角度
 
 
     void Start () {
@@ -125,10 +127,22 @@ public class PlayerInputController : MonoBehaviour {
 
         Vector3Int goLogicPos = GameObjectTool.WorldToLogic(this.rb.transform.position);
         float logicOffset = (goLogicPos - this.character.position).magnitude;
-        if (logicOffset > 100)
+
+        float currentRotation = this.transform.eulerAngles.y;
+
+        // 计算旋转差值
+        float rotationOffset = Mathf.Abs(Mathf.DeltaAngle(lastSyncRotation, currentRotation));
+
+        if (logicOffset > 5f|| rotationOffset>5f)
         {
-            this.character.SetPosition(GameObjectTool.WorldToLogic(this.rb.transform.position));
-            this.SendEntityEvent(EntityEvent.EventNone);
+            this.character.SetPosition(GameObjectTool.WorldToLogic(this.rb.transform.position));//同步位置
+
+            Vector3 forwardDirection = this.transform.forward;
+            Vector3Int logicDirection = GameObjectTool.WorldToLogic(forwardDirection);
+            this.character.SetDirection(logicDirection);//同步旋转
+            lastSyncRotation = currentRotation;// 记录本次同步的旋转角度
+
+            this.SendEntityEvent(EntityEvent.EventNone);//发送更新事件
         }
         this.transform.position = this.rb.transform.position;
 	}

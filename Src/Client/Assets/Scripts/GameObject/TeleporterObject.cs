@@ -24,7 +24,7 @@ public class TeleporterObject : MonoBehaviour {
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        if (mesh == null)
+        if (mesh != null)
         {
             Gizmos.DrawWireMesh(mesh, transform.position + Vector3.up * transform.localScale.y * .5f, transform.rotation, transform.localScale);
         }
@@ -42,9 +42,10 @@ public class TeleporterObject : MonoBehaviour {
             TeleporterDefine td = DataManager.Instance.Teleporters[ID];
             if (td == null)
             {
+                Debug.LogErrorFormat("角色:{0}进入传送门:{1},但是TeleporterDefine不存在", playerController.character.Info.Name, ID);
                 return;
             }
-            Debug.LogErrorFormat("角色:{0}进入传送门:{1},但是TeleporterDefine不存在", playerController.character.Info.Name, ID);
+            Debug.LogFormat("角色:{0}进入传送门[{1}:{2}", playerController.character.Info.Name, td.ID, td.Name);
             if (td.LinkTo > 0)
             {
                 if (DataManager.Instance.Teleporters.ContainsKey(td.LinkTo))

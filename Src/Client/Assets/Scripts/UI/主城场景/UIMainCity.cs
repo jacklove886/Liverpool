@@ -51,12 +51,20 @@ public class UIMainCity : MonoBehaviour {
         if (escPanelState == true)
         {
             Time.timeScale = 0;
+            if (AudioManager.Instance.audioClipPlay.clip!=null&&AudioManager.Instance.audioClipPlay.isPlaying)
+            {
+                AudioManager.Instance.audioClipPlay.Stop();
+            }
             Cursor.visible = true;
         }
         else
         {
             Cursor.visible = false;
             Time.timeScale = 1;
+            if(AudioManager.Instance.audioClipPlay.clip != null)
+            {
+                AudioManager.Instance.audioClipPlay.Play();
+            }
         }
 
         escPanel.SetActive(escPanelState);
