@@ -17,6 +17,7 @@ namespace GameServer.Services
         public MapService()
         {
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<MapEntitySyncRequest>(this.OnMapEntitySync);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<MapTeleportRequest>(this.OnMapTeleport);
         }
 
         public void Init()
@@ -41,6 +42,33 @@ namespace GameServer.Services
             //消息打包成数据流发给客户端
             byte[] data = PackageHandler.PackMessage(message);
             sender.SendData(data, 0, data.Length);
+        }
+
+        private void OnMapTeleport(NetConnection<NetSession> sender, MapTeleportRequest request)
+        {
+            Character character = sender.Session.Character;
+            Log.InfoFormat("OnMapTeleport接收到请求,characterID:{0},TeleporterID:{1}", character.entityId, request.teleporterId);
+            if (!DataManager.Instance.Teleporters.ContainsKey(request.teleporterId))
+            {
+                Log.WarningFormat("传送点:{0}不存在", request.teleporterId);
+                return;
+            }
+
+            //request.teleporterId是当前传送点ID
+            TeleporterDefine source = DataManager.Instance.Teleporters[request.teleporterId];
+            if (source.LinkTo==0|| !DataManager.Instance.Teleporters.ContainsKey(source.LinkTo))
+            {
+                Log.WarningFormat("连接传送点:{0}不存在", source.LinkTo);
+            }
+
+            TeleporterDefine target= DataManager.Instance.Teleporters[source.LinkTo];//source.LinkTo是目标传送点
+
+            MapManager.Instance[source.MapID].CharacterLeave(character);//source.MapID是当前地图ID
+            //传送点ID和地图ID不一样  传送点ID是在UI里配置的  地图ID是配置表里的
+            character.Position = target.Position;
+            character.Direction = target.Direction;
+            MapManager.Instance[target.MapID].CharacterEnter(sender,character);//target.MapID是目标地图ID
+
         }
     }
 }

@@ -49,11 +49,13 @@ public class UIMainCity : MonoBehaviour {
         escPanelState = !escPanelState;
         if (escPanelState == true)
         {
+            Time.timeScale = 0;
             Cursor.visible = true;
         }
         else
         {
             Cursor.visible = false;
+            Time.timeScale = 1;
         }
 
         escPanel.SetActive(escPanelState);

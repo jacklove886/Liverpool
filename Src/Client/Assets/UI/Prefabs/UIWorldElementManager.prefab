@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 223566564084626014}
   - component: {fileID: 114270720423512022}
   - component: {fileID: 114048303067869158}
-  - component: {fileID: 114141771165877210}
   m_Layer: 5
   m_Name: UIWorldElementManager
   m_TagString: Untagged
@@ -100,19 +99,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114141771165877210
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1034990032926516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e78fee6e4516c44eb49789668db4411, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  global: 0
-  nameBarPrefab: {fileID: 1836021834122326}
 --- !u!114 &114170858077496070
 MonoBehaviour:
   m_ObjectHideFlags: 1

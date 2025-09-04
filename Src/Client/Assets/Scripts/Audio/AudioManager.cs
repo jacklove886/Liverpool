@@ -40,8 +40,8 @@ public class AudioManager : MonoSingleton<AudioManager>
     }
 
     void Start () {
-		
-	}
+        bgmaudioClipPlay.loop = true;
+    }
 	
 	
 	void Update () {

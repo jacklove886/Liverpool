@@ -114,5 +114,16 @@ namespace Services
             }
             //Debug.Log(sb.ToString());
         }
+
+        //发送角色传送的消息
+        public void SendMapTeleport(int teleporterID)
+        {
+            Debug.LogFormat("发送SendMapTeleport请求:teleporterID{0}", teleporterID);
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.mapTeleport = new MapTeleportRequest();
+            message.Request.mapTeleport.teleporterId = teleporterID;
+            NetClient.Instance.SendMessage(message);
+        }
     }
 }

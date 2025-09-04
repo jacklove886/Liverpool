@@ -29,7 +29,7 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
     public Vector3 rotateOffset = new Vector3(0, 0, -1);  // 旋转偏移
 
     [Header("平滑参数")]
-    public float smoothTime = 0.1f;       // 位置平滑时间
+    public float smoothTime = 0.1f;       
     public bool enableMouseControl = true; // 是否启用鼠标控制
 
     // 私有变量
@@ -58,9 +58,9 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
         }
             
         // 鼠标控制相机旋转
-            x += Input.GetAxis("Mouse X") * xSpeed * Time.deltaTime;
-            y -= Input.GetAxis("Mouse Y") * ySpeed * Time.deltaTime;
-            y = ClampAngle(y, yMinLimit, yMaxLimit);
+        x += Input.GetAxis("Mouse X") * xSpeed * Time.deltaTime;
+        y -= Input.GetAxis("Mouse Y") * ySpeed * Time.deltaTime;
+        y = ClampAngle(y, yMinLimit, yMaxLimit);
 
         // 鼠标滚轮控制距离
         float scroll = Input.GetAxis("Mouse ScrollWheel");
@@ -82,22 +82,18 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
         // 计算目标位置
         Vector3 targetPosition = player.transform.position + offset + rotation * rotateOffset * distance;
         
-        // 平滑移动到目标位置
+        // 移动到目标位置
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         
         // 设置相机旋转
         transform.rotation = rotation;
 
-        // 同步玩家Y轴旋转（可选）
+        // 按住鼠标右键同步玩家Y轴旋转
         //if (Input.GetMouseButton(1))
-        {
-            player.transform.rotation = Quaternion.Euler(0, x, 0);
-        }
+        player.transform.rotation = Quaternion.Euler(0, x, 0);
     }
 
-    /// <summary>
-    /// 限制角度范围
-    /// </summary>
+    // 限制角度范围
     private float ClampAngle(float angle, float min, float max)
     {
         if (angle < -360f) angle += 360f;
@@ -105,17 +101,13 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
         return Mathf.Clamp(angle, min, max);
     }
 
-    /// <summary>
-    /// 设置跟随目标
-    /// </summary>
+    // 设置跟随目标
     public void SetTarget(GameObject target)
     {
         player = target;
     }
 
-    /// <summary>
-    /// 重置相机位置
-    /// </summary>
+    // 重置相机位置
     public void ResetCamera()
     {
         if (player != null)
@@ -127,9 +119,7 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
         }
     }
 
-    /// <summary>
-    /// 启用/禁用鼠标控制
-    /// </summary>
+    // 启用/禁用鼠标控制
     public void SetMouseControl(bool enable)
     {
         enableMouseControl = enable;
