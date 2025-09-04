@@ -306,7 +306,6 @@ namespace Services
         void OnUserGameLeave(object sender, UserGameLeaveResponse response)
         {
             MapService.Instance.CurrentMapID = 0;
-            User.Instance.CurrentCharacter = null;
             Debug.LogFormat("角色离开游戏:{0}", response.Result);
         }
 

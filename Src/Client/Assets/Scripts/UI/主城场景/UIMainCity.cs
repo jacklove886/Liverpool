@@ -12,6 +12,7 @@ public class UIMainCity : MonoBehaviour {
 
     void Start ()
     {
+        Time.timeScale = 1;
         AudioManager.Instance.bgmaudioClipPlay.clip = AudioManager.Instance.bgmInMainCityClip;
         AudioManager.Instance.bgmaudioClipPlay.Play();
         Cursor.visible = false; 

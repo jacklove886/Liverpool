@@ -40,7 +40,7 @@ namespace Services
 
             foreach (var cha in response.Characters)
             {
-               if(User.Instance.CurrentCharacter.Id==cha.Id||User.Instance.CurrentCharacter==null)
+               if(User.Instance.CurrentCharacter.Name==cha.Name)
                {
                     User.Instance.CurrentCharacter=cha;
                }
