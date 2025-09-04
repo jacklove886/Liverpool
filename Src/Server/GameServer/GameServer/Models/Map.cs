@@ -11,6 +11,7 @@ using Common.Data;
 using Network;
 using GameServer.Managers;
 using GameServer.Entities;
+using GameServer.Services;
 
 namespace GameServer.Models
 {
@@ -109,5 +110,25 @@ namespace GameServer.Models
             byte[] data = PackageHandler.PackMessage(message);
             connection.SendData(data, 0, data.Length);
         }
+
+        //这个方法实现将移动同步广播给当前地图的所有玩家
+        internal void UpdateEntity(NEntitySync entity)
+        {
+            foreach(var kv in MapCharacters)
+            {
+                if (kv.Value.character.entityId == entity.Id)
+                {
+                    kv.Value.character.Position = entity.Entity.Position;
+                    kv.Value.character.Direction= entity.Entity.Direction;
+                    kv.Value.character.Speed = entity.Entity.Speed;
+                }
+                else
+                {
+                    //消息发给别人
+                    MapService.Instance.SendEntityUpdate(kv.Value.connection, entity);
+                }
+            }
+        }
+
     }
 }

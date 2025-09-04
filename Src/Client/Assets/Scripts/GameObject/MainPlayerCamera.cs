@@ -43,7 +43,6 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
         Vector3 angles = transform.eulerAngles;
         x = angles.y;
         y = angles.x;
-        Cursor.lockState = CursorLockMode.Confined;
     }
 
     void Update()

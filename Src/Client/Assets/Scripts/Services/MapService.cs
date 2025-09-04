@@ -18,6 +18,7 @@ namespace Services
         {
             MessageDistributer.Instance.Subscribe<MapCharacterEnterResponse>(this.OnMapCharacterEnter);
             MessageDistributer.Instance.Subscribe<MapCharacterLeaveResponse>(this.OnMapCharacterLeave);
+            MessageDistributer.Instance.Subscribe<MapEntitySyncResponse>(this.OnMapEntitySync);
         }
 
 
@@ -25,6 +26,7 @@ namespace Services
         {
             MessageDistributer.Instance.Unsubscribe<MapCharacterEnterResponse>(this.OnMapCharacterEnter);
             MessageDistributer.Instance.Unsubscribe<MapCharacterLeaveResponse>(this.OnMapCharacterLeave);
+            MessageDistributer.Instance.Unsubscribe<MapEntitySyncResponse>(this.OnMapEntitySync);
         }
 
         public void Init()
@@ -80,6 +82,37 @@ namespace Services
             {
                 CharacterManager.Instance.Clear();//自己退出 销毁所有角色
             }
+        }
+
+        //实体同步  客户端要发送消息给服务端 要进行角色移动了
+        public void SendMapEntitySync(EntityEvent entityEvent,NEntity entity)
+        {
+            Debug.LogFormat("发送SendMapEntitySync请求:ID{0}", entity.Id);
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.mapEntitySync = new MapEntitySyncRequest();
+            message.Request.mapEntitySync.entitySync = new NEntitySync()
+            {
+                Id = entity.Id,
+                Event = entityEvent,
+                Entity = entity
+            };
+            NetClient.Instance.SendMessage(message);
+        }
+
+        //客户端接收到服务器发送的同步消息  进行移动同步
+        private void OnMapEntitySync(object sender, MapEntitySyncResponse response)
+        {
+            //System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            //sb.AppendFormat("MapEntityUpdateResponse:Entity:{0}", response.entitySyncs.Count);
+            //sb.AppendLine();
+            foreach(var entity in response.entitySyncs)
+            {
+                EntityManager.Instance.OnEntitySync(entity);//真正有用的只有这一行 其余都是日志输出
+                //sb.AppendFormat("[{0}]evt:{1} entity:{2}", entity.Id, entity.Event, entity.Entity.String());
+                //sb.AppendLine();
+            }
+            //Debug.Log(sb.ToString());
         }
     }
 }

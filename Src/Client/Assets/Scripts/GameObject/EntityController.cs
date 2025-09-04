@@ -206,4 +206,10 @@ public class EntityController : MonoBehaviour, IEntityNotify
             UIWorldElementManager.Instance.RemoveCharacterNameBar(this.transform);
         }
     }
+
+    public void OnEntityChange(Entity entity)
+    {
+        Debug.Log("操你妈");
+    }
+
 }

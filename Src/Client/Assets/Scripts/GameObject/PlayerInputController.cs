@@ -5,6 +5,7 @@ using Entities;
 using SkillBridge.Message;
 using Models;
 using Managers;
+using Services;
 
 public class PlayerInputController : MonoBehaviour {
 
@@ -26,8 +27,10 @@ public class PlayerInputController : MonoBehaviour {
 
     [Header("位置同步")]
     private Vector3 lastPos;
-	
-	void Start () {
+    private float lastSyncTime = 0;
+    private float syncWaitTime = 0.1f; // 每0.1秒同步一次
+
+    void Start () {
         state =SkillBridge.Message.CharacterState.Idle;
 		if(this.character==null)
 		{
@@ -65,9 +68,9 @@ public class PlayerInputController : MonoBehaviour {
         {
             if (!isRunning)
             {
-                if (state != SkillBridge.Message.CharacterState.Move)
+                if (state != CharacterState.Move)
                 {
-                    state = SkillBridge.Message.CharacterState.Move;
+                    state = CharacterState.Move;
                     currentspeed = this.character.Move();
                 }
                 if (Mathf.Abs(vertical) >= Mathf.Abs(horizontal)) // 前后移动为主
@@ -96,9 +99,9 @@ public class PlayerInputController : MonoBehaviour {
             
             else
             {
-                if (state != SkillBridge.Message.CharacterState.Run)
+                if (state != CharacterState.Run)
                 {
-                    state = SkillBridge.Message.CharacterState.Run;
+                    state = CharacterState.Run;
                     currentspeed = this.character.Run();
                     this.SendEntityEvent(EntityEvent.EventRun);
                 }
@@ -111,9 +114,9 @@ public class PlayerInputController : MonoBehaviour {
 
         else
         {
-            if (state != SkillBridge.Message.CharacterState.Idle)
+            if (state != CharacterState.Idle)
             {
-                state = SkillBridge.Message.CharacterState.Idle;
+                state = CharacterState.Idle;
                 this.rb.velocity = Vector3.zero;
                 currentspeed=this.character.Stop();
                 this.SendEntityEvent(EntityEvent.EventIdle, 0, 0);
@@ -150,5 +153,11 @@ public class PlayerInputController : MonoBehaviour {
 		{
 			entityController.OnEntityEvent(entityEvent, horizontal, vertical);
 		}
-	}
+
+        if (Time.time - lastSyncTime > syncWaitTime)
+        {
+            MapService.Instance.SendMapEntitySync(entityEvent, character.EntityData);
+            lastSyncTime = Time.time;
+        }
+    }
 }
