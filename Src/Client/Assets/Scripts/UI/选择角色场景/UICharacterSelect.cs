@@ -72,10 +72,6 @@ public class UICharacterSelect : MonoBehaviour
         InitCharacterSelect(true); 
     }
 
-    private void Update()
-    {
-        //Network.NetClient.Instance.Update();
-    }
     private void OnDestroy()
     {
         UserService.Instance.OnCharacterCreate -= OnCharacterCreate;

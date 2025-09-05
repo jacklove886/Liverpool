@@ -419,8 +419,7 @@ namespace Network
             MessageDistributer.Instance.Distribute();
         }
 
-        //Update need called once per frame
-        public void Update()
+        void Update()
         {
             if (!running)
             {
