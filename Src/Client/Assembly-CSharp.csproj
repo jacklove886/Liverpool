@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\GameObject\GameObjectManager.cs" />
     <Compile Include="Assets\Scripts\GameObject\GameObjectTool.cs" />
     <Compile Include="Assets\Scripts\GameObject\MainPlayerCamera.cs" />
+    <Compile Include="Assets\Scripts\GameObject\MapController.cs" />
     <Compile Include="Assets\Scripts\GameObject\PlayerInputController.cs" />
     <Compile Include="Assets\Scripts\GameObject\TeleporterObject.cs" />
     <Compile Include="Assets\Scripts\LoadingManager.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Assets\Scripts\Services\MapService.cs" />
     <Compile Include="Assets\Scripts\Services\UserService.cs" />
     <Compile Include="Assets\Scripts\UI\主城场景\UIMain.cs" />
+    <Compile Include="Assets\Scripts\UI\主城场景\UIManager.cs" />
     <Compile Include="Assets\Scripts\UI\主城场景\UIMiniMap.cs" />
     <Compile Include="Assets\Scripts\UI\主城场景\UINameBar.cs" />
     <Compile Include="Assets\Scripts\UI\主城场景\UIWorldElementManager.cs" />

@@ -26,29 +26,28 @@ public class UIMiniMap : MonoBehaviour {
 
     void Start ()
     {
-        InitMap();
-        realMapWidth = miniMapBoudingBox.bounds.size.x; //地图真实宽度
-        realMapHeight = miniMapBoudingBox.bounds.size.z;//地图真实高度
+        MinimapManager.Instance.minimap = this;
+        UpdateMap();     
     }
 
-    void InitMap()
+    public void UpdateMap()
     {
         mapName.text = User.Instance.CurrentMapData.Name;
-        if (this.minimap.overrideSprite == null)
-        {
         minimap.overrideSprite = MinimapManager.Instance.LoadCurrentMiniMap();// 加载当前地图的小地图的图片
-        }
         minimap.SetNativeSize();// 设置小地图为原始尺寸
         minimap.transform.localPosition = Vector3.zero;// 重置小地图位置为原点
-        this.playerTransform = null;
+        miniMapBoudingBox = MinimapManager.Instance.MinimapBoundingBox;
+        playerTransform = null;
     }
 	
 	void Update ()
     {
         if (playerTransform == null) playerTransform = MinimapManager.Instance.PlayerTransform;
-        playerTransform = MinimapManager.Instance.PlayerTransform;
 
-        if (playerTransform == null) return;
+        if (playerTransform == null|| miniMapBoudingBox==null) return;
+
+        realMapWidth = miniMapBoudingBox.bounds.size.x; //地图真实宽度
+        realMapHeight = miniMapBoudingBox.bounds.size.z;//地图真实高度
 
         realPlayerX = playerTransform.position.x - miniMapBoudingBox.bounds.min.x;//玩家相对地图左下角的位置
         realPlayerY = playerTransform.position.z - miniMapBoudingBox.bounds.min.z;//玩家相对地图最下面的位置
