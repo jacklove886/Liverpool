@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIMainCity : MonoSingleton<UIMainCity> {
+public class UIMain : MonoSingleton<UIMain> {
 
     public Text myNameandLevel;
     public GameObject escPanel;//返回选择角色界面的按钮
@@ -82,24 +82,26 @@ public class UIMainCity : MonoSingleton<UIMainCity> {
         go.SetActive(escPanelState);
     }
 
+    //返回选择角色的页面
     public void OnClickBackToChooseCharacter()
     {
         StopMainCityMusic();
-        //返回选择角色的页面
+        
         SceneManager.Instance.LoadScene("CharacterChoose");
         Services.UserService.Instance.SendGameLeave();
     }
 
+    //返回游戏
     public void OnClickReturnGame()
     {
         EscPanel();
     }
+
+    //退出游戏
     public void OnClickQuitGame()
     {
         StopMainCityMusic();
-        Services.UserService.Instance.SendGameLeave();//如果出bug 把这一行注释掉
-        //退出游戏
-        Application.Quit();
+        Application.Quit(); 
     }
 
     private void StopMainCityMusic()
