@@ -234,7 +234,7 @@ public class UICharacterSelect : MonoBehaviour
     {
         if (User.Instance.CurrentCharacter == null)
         {
-            MessageBox.Show("请先选择要删除的角色");
+            MessageBox.Show("请选择要删除的角色");
             return;
         }
         else
@@ -288,7 +288,7 @@ public class UICharacterSelect : MonoBehaviour
     {
         if (result == Result.Success)
         {
-            MessageBox.Show("角色删除成功!");
+            MessageBox.Show("角色删除成功");
             User.Instance.CurrentCharacter = null; // 清空当前选中的角色
             InitCharacterSelect(true);
         }

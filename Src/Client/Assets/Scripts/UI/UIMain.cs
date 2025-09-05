@@ -98,7 +98,7 @@ public class UIMain : MonoSingleton<UIMain> {
     //退出游戏
     public void OnClickQuitGame()
     {
-        UIMessageBox msgBox = MessageBox.Show("确认？", "删除角色", MessageBoxType.Confirm, "确认", "取消");
+        UIMessageBox msgBox = MessageBox.Show("确认要退出游戏吗？", "退出游戏", MessageBoxType.Confirm, "确认", "取消");
         msgBox.OnYes = () =>
         {
             StopMainCityMusic();
