@@ -27,9 +27,12 @@ namespace GameServer.Managers
 
         public void CharacterRemove(int characerId)
         {
-            var cha = Characters[characerId];
-            EntityManager.Instance.RemoveEntity(cha.Data.MapID, cha);
-            Characters.Remove(characerId);
+            //因为Disconnected也删除一次角色 所以要TrgGetValue
+            if (Characters.TryGetValue(characerId, out Character cha))
+            {
+                EntityManager.Instance.RemoveEntity(cha.Data.MapID, cha);
+                Characters.Remove(characerId);
+            }
         }
     }
 }

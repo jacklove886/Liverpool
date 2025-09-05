@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoSingleton<AudioManager>
+public class SoundManager : MonoSingleton<SoundManager>
 {
 
     [Header("音效播放器")]
@@ -42,10 +42,5 @@ public class AudioManager : MonoSingleton<AudioManager>
     void Start () {
         bgmaudioClipPlay.loop = true;
     }
-	
-	
-	void Update () {
-		
-	}
 
 }

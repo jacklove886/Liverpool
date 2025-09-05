@@ -84,8 +84,8 @@ public class UICharacterSelect : MonoBehaviour
         originalPanel.SetActive(true);
         panelCreate.SetActive(false);
         panelSelect.SetActive(true);
-        AudioManager.Instance.audioClipPlay.clip=AudioManager.Instance.openChooseCharacterClip;
-        AudioManager.Instance.audioClipPlay.Play();
+        SoundManager.Instance.audioClipPlay.clip= SoundManager.Instance.openChooseCharacterClip;
+        SoundManager.Instance.audioClipPlay.Play();
         if (init)
         {
             foreach (var old in uiChars)
@@ -160,7 +160,7 @@ public class UICharacterSelect : MonoBehaviour
             //选择角色播放音效
             if (i == charClass - 1)
             {
-                AudioManager.Instance.audioClipPlay.PlayOneShot(AudioManager.Instance.characterAudioClip1[i]);
+                SoundManager.Instance.audioClipPlay.PlayOneShot(SoundManager.Instance.characterAudioClip1[i]);
                 Animator animator = characterClassPrefab[i].GetComponentInChildren<Animator>();
                 animator.SetTrigger("SelectClass");
             }
@@ -199,8 +199,8 @@ public class UICharacterSelect : MonoBehaviour
             {
                 Animator animator = characterClassPrefab[i].GetComponentInChildren<Animator>();
                 animator.SetTrigger("Click");
-                AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.characterAudioClip2[(int)User.Instance.CurrentCharacter.Class - 1];
-                AudioManager.Instance.audioClipPlay.Play();
+                SoundManager.Instance.audioClipPlay.clip = SoundManager.Instance.characterAudioClip2[(int)User.Instance.CurrentCharacter.Class - 1];
+                SoundManager.Instance.audioClipPlay.Play();
             }
         }
         currentIndex = index;
@@ -239,8 +239,16 @@ public class UICharacterSelect : MonoBehaviour
         }
         else
         {
-            // 发送删除请求，传入当前选中角色的名字
-            UserService.Instance.SendCharacterDelete(User.Instance.CurrentCharacter.Name);
+            UIMessageBox msgBox= MessageBox.Show("确认要删除角色吗？", "删除角色", MessageBoxType.Confirm, "确认", "取消");
+            msgBox.OnYes = () =>
+            {
+                // 发送删除请求，传入当前选中角色的名字
+                UserService.Instance.SendCharacterDelete(User.Instance.CurrentCharacter.Name);
+            };
+            msgBox.OnNo = () =>
+            {
+                //什么都不做;
+            };
         }
     }
 

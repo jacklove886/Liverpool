@@ -118,9 +118,9 @@ public class EntityController : MonoBehaviour, IEntityNotify
     
     private void StopMovementAudio()
     {
-        if (AudioManager.Instance.audioClipPlay.isPlaying)  
+        if (SoundManager.Instance.audioClipPlay.isPlaying)  
         {
-            AudioManager.Instance.audioClipPlay.Stop();  
+            SoundManager.Instance.audioClipPlay.Stop();  
         }
     }
 
@@ -141,8 +141,8 @@ public class EntityController : MonoBehaviour, IEntityNotify
     
     private void PlayMovementAudio()
     {
-        AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.walkAudioClip[currentCharacterClass];  
-        AudioManager.Instance.audioClipPlay.Play();  
+        SoundManager.Instance.audioClipPlay.clip = SoundManager.Instance.walkAudioClip[currentCharacterClass];
+        SoundManager.Instance.audioClipPlay.Play();  
     }
 
     
@@ -155,8 +155,8 @@ public class EntityController : MonoBehaviour, IEntityNotify
     
     private void PlayRunAudio()
     {
-        AudioManager.Instance.audioClipPlay.clip = AudioManager.Instance.runAudioClip[currentCharacterClass];  
-        AudioManager.Instance.audioClipPlay.Play();  
+        SoundManager.Instance.audioClipPlay.clip = SoundManager.Instance.runAudioClip[currentCharacterClass];
+        SoundManager.Instance.audioClipPlay.Play();  
     }
 
     //跳跃事件
@@ -167,8 +167,8 @@ public class EntityController : MonoBehaviour, IEntityNotify
         
         StopMovementAudio();
 
-        
-        AudioManager.Instance.jumpaudioClipPlay.PlayOneShot(AudioManager.Instance.jumpAudioClip[currentCharacterClass]);
+
+        SoundManager.Instance.jumpaudioClipPlay.PlayOneShot(SoundManager.Instance.jumpAudioClip[currentCharacterClass]);
 
         // 等待跳跃动画播放后 才播放走路跑步音效
         StartCoroutine(JumpWaitTime());

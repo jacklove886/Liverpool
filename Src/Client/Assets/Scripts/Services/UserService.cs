@@ -151,6 +151,7 @@ namespace Services
         void OnUserRegister(object sender, UserRegisterResponse response)
         {
             Debug.LogFormat("OnUserRegister:{0} [{1}]", response.Result, response.Errormsg);
+            MessageBox.Show("用户已存在");
 
             if (this.OnRegister != null)
             {

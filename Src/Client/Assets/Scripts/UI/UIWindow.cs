@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class UIWindow : MonoBehaviour {
 
-    public delegate void CloseHandler(UIWindow sender, WindowResult result);
+    //sender是UIWindow的实例
+    public delegate void CloseHandler(UIWindow sender, WindowResult result);//WindowResult是枚举类型
     public event CloseHandler OnClose;
 
     public virtual System.Type Type { get { return this.GetType(); } }
@@ -16,9 +17,9 @@ public abstract class UIWindow : MonoBehaviour {
         No
     }
 	
-    public void Close(WindowResult result = WindowResult.None)
+    public void Close(WindowResult result = WindowResult.None)//不传参数默认是None 可以传参Yes 或者No
     {
-        UIManager.Instance.Close(Type);
+        UIManager.Instance.Close(Type);//关闭预制体
         if (OnClose != null)
         {
             OnClose(this, result);

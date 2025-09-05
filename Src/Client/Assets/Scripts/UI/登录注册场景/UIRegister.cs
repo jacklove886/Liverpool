@@ -1,4 +1,5 @@
 ﻿using Services;
+using SkillBridge.Message;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,8 +21,9 @@ public class UIRegister : MonoBehaviour {
     {
         UserService.Instance.OnRegister -= OnRegister;
     }
-    void OnRegister(SkillBridge.Message.Result result,string msg)
+    void OnRegister(Result result,string msg)
     {
+        if(result==Result.Success)
         MessageBox.Show("注册成功");
     }
 	
@@ -47,14 +49,14 @@ public class UIRegister : MonoBehaviour {
             MessageBox.Show("请输入确认密码");
             return;
         }
+        else if (buttonYuedu.gameObject.activeInHierarchy != true)
+        {
+            MessageBox.Show("请勾选用户协议");
+            return;
+        }
         else if (password.text != confirmpassword.text)
         {
             MessageBox.Show("两次输入的密码不一致");
-            return;
-        }
-        else if (buttonYuedu.gameObject.activeInHierarchy!=true)
-        {
-            MessageBox.Show("请勾选用户协议");
             return;
         }
         UserService.Instance.SendRegister(username.text, password.text);

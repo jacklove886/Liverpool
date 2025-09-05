@@ -1,4 +1,5 @@
 ﻿using Models;
+using Services;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,9 +14,8 @@ public class UIMain : MonoSingleton<UIMain> {
 
     protected override void OnStart ()
     {
-        Time.timeScale = 1;
-        AudioManager.Instance.bgmaudioClipPlay.clip = AudioManager.Instance.bgmInMainCityClip;
-        AudioManager.Instance.bgmaudioClipPlay.Play();
+        SoundManager.Instance.bgmaudioClipPlay.clip = SoundManager.Instance.bgmInMainCityClip;
+        SoundManager.Instance.bgmaudioClipPlay.Play();
         Cursor.visible = false;
         UpdateAvatar();
 
@@ -33,7 +33,7 @@ public class UIMain : MonoSingleton<UIMain> {
 	
 	void Update ()
     {
-
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "CharacterChoose") return;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             EscPanel();
@@ -62,31 +62,29 @@ public class UIMain : MonoSingleton<UIMain> {
         escPanelState = !escPanelState;
         if (escPanelState == true)
         {
-            Time.timeScale = 0;
-            if (AudioManager.Instance.audioClipPlay.clip!=null&&AudioManager.Instance.audioClipPlay.isPlaying)
+            if (SoundManager.Instance.audioClipPlay.clip!=null&& SoundManager.Instance.audioClipPlay.isPlaying)
             {
-                AudioManager.Instance.audioClipPlay.Stop();
+                SoundManager.Instance.audioClipPlay.Stop();
             }
             Cursor.visible = true;
         }
         else
         {
             Cursor.visible = false;
-            Time.timeScale = 1;
-            if(AudioManager.Instance.audioClipPlay.clip != null)
+            if(SoundManager.Instance.audioClipPlay.clip != null)
             {
-                AudioManager.Instance.audioClipPlay.Play();
+                SoundManager.Instance.audioClipPlay.Play();
             }
         }
-
         go.SetActive(escPanelState);
     }
 
     //返回选择角色的页面
     public void OnClickBackToChooseCharacter()
     {
-        StopMainCityMusic();
-        
+        escPanelState = !escPanelState;
+        go.SetActive(escPanelState);
+        StopMainCityMusic(); 
         SceneManager.Instance.LoadScene("CharacterChoose");
         Services.UserService.Instance.SendGameLeave();
     }
@@ -100,15 +98,19 @@ public class UIMain : MonoSingleton<UIMain> {
     //退出游戏
     public void OnClickQuitGame()
     {
-        StopMainCityMusic();
-        Application.Quit(); 
+        UIMessageBox msgBox = MessageBox.Show("确认？", "删除角色", MessageBoxType.Confirm, "确认", "取消");
+        msgBox.OnYes = () =>
+        {
+            StopMainCityMusic();
+            Application.Quit();
+        };
     }
 
     private void StopMainCityMusic()
     {
-        if (AudioManager.Instance.bgmaudioClipPlay.isPlaying)
+        if (SoundManager.Instance.bgmaudioClipPlay.isPlaying)
         {
-            AudioManager.Instance.bgmaudioClipPlay.Stop();  // 停止背景音乐
+            SoundManager.Instance.bgmaudioClipPlay.Stop();  // 停止背景音乐
         }
     }
 }
