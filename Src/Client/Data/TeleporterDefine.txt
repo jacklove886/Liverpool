@@ -25,11 +25,11 @@
     "Position": {
       "X": 1562,
       "Y": 2601,
-      "Z": 760
+      "Z": 793
     },
     "Direction": {
-      "X": 0,
-      "Y": 100,
+      "X": 100,
+      "Y": 0,
       "Z": 0
     }
   },
@@ -59,11 +59,11 @@
     "Position": {
       "X": 6844,
       "Y": 2601,
-      "Z": 760
+      "Z": 852
     },
     "Direction": {
-      "X": 0,
-      "Y": 100,
+      "X": -100,
+      "Y": 0,
       "Z": 0
     }
   },
@@ -111,11 +111,11 @@
     "Position": {
       "X": 2942,
       "Y": 4003,
-      "Z": 39
+      "Z": 15
     },
     "Direction": {
-      "X": 0,
-      "Y": 100,
+      "X": 98,
+      "Y": -17,
       "Z": 0
     }
   },
@@ -125,8 +125,16 @@
     "MapID": 3,
     "LinkTo": 4,
     "Descript": null,
-    "Position": null,
-    "Direction": null
+    "Position": {
+      "X": 2124,
+      "Y": 4003,
+      "Z": 250
+    },
+    "Direction": {
+      "X": 0,
+      "Y": 100,
+      "Z": 0
+    }
   },
   "10": {
     "ID": 10,
@@ -134,8 +142,16 @@
     "MapID": 3,
     "LinkTo": 0,
     "Descript": null,
-    "Position": null,
-    "Direction": null
+    "Position": {
+      "X": 2942,
+      "Y": 4003,
+      "Z": 15
+    },
+    "Direction": {
+      "X": 98,
+      "Y": -17,
+      "Z": 0
+    }
   },
   "11": {
     "ID": 11,
@@ -143,8 +159,16 @@
     "MapID": 4,
     "LinkTo": 6,
     "Descript": null,
-    "Position": null,
-    "Direction": null
+    "Position": {
+      "X": -2276,
+      "Y": 2298,
+      "Z": 337
+    },
+    "Direction": {
+      "X": 70,
+      "Y": 71,
+      "Z": 0
+    }
   },
   "12": {
     "ID": 12,
@@ -152,7 +176,15 @@
     "MapID": 4,
     "LinkTo": 0,
     "Descript": null,
-    "Position": null,
-    "Direction": null
+    "Position": {
+      "X": -1886,
+      "Y": 1892,
+      "Z": 107
+    },
+    "Direction": {
+      "X": 71,
+      "Y": -70,
+      "Z": 0
+    }
   }
 }

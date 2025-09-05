@@ -4,20 +4,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIMainCity : MonoBehaviour {
+public class UIMainCity : MonoSingleton<UIMainCity> {
 
     public Text myNameandLevel;
     public GameObject escPanel;//返回选择角色界面的按钮
+    private GameObject go;//预制体局部变量
     public bool escPanelState = false;//开启状态 按ESC进行开启关闭
 
-    void Start ()
+    protected override void OnStart ()
     {
         Time.timeScale = 1;
         AudioManager.Instance.bgmaudioClipPlay.clip = AudioManager.Instance.bgmInMainCityClip;
         AudioManager.Instance.bgmaudioClipPlay.Play();
-        Cursor.visible = false; 
-        UpdataAvatar();
-	}
+        Cursor.visible = false;
+        UpdateAvatar();
+
+        go = Instantiate(escPanel, this.transform);//实例化返回面板
+        go.name = "ESC面板";
+
+        Button backButton = go.transform.Find("返回角色选择按钮").GetComponent<Button>();
+        Button returnButton = go.transform.Find("返回游戏按钮").GetComponent<Button>();
+        Button quitButton = go.transform.Find("退出游戏按钮").GetComponent<Button>();
+
+        backButton.onClick.AddListener(OnClickBackToChooseCharacter);
+        returnButton.onClick.AddListener(OnClickReturnGame);
+        quitButton.onClick.AddListener(OnClickQuitGame);
+    }
 	
 	void Update ()
     {
@@ -40,7 +52,7 @@ public class UIMainCity : MonoBehaviour {
         }
     }
 
-    void UpdataAvatar()
+    void UpdateAvatar()
     {
         myNameandLevel.text = User.Instance.CurrentCharacter.Name +"  "+ User.Instance.CurrentCharacter.Level.ToString()+"级";
     }
@@ -67,7 +79,7 @@ public class UIMainCity : MonoBehaviour {
             }
         }
 
-        escPanel.SetActive(escPanelState);
+        go.SetActive(escPanelState);
     }
 
     public void OnClickBackToChooseCharacter()

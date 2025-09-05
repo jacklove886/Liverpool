@@ -1,6 +1,4 @@
 ﻿using Models;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
@@ -85,14 +83,6 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
         // 移动到目标位置
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
 
-        // 设置相机旋转
-        float currentPlayerY = player.transform.eulerAngles.y;
-
-        if (Mathf.Abs(Mathf.DeltaAngle(currentPlayerY, x)) > 90f)
-        {
-            x = currentPlayerY; // 将鼠标x同步为角色当前朝向
-        }
-
         transform.rotation = rotation;
 
         // 同步玩家Y轴旋转
@@ -130,4 +120,5 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
     {
         enableMouseControl = enable;
     }
+
 }
