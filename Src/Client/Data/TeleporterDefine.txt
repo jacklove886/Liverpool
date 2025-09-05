@@ -1,9 +1,9 @@
 {
   "1": {
     "ID": 1,
-    "Name": "主城->野外",
+    "Name": "利物浦->落日森林传送门",
     "MapID": 1,
-    "LinkTo": 6,
+    "LinkTo": 8,
     "Descript": null,
     "Position": {
       "X": 625,
@@ -18,9 +18,9 @@
   },
   "2": {
     "ID": 2,
-    "Name": "主城->副本",
+    "Name": "落日森林->利物浦出口",
     "MapID": 1,
-    "LinkTo": 8,
+    "LinkTo": 0,
     "Descript": null,
     "Position": {
       "X": 1562,
@@ -28,16 +28,16 @@
       "Z": 760
     },
     "Direction": {
-      "X": 100,
-      "Y": 0,
+      "X": 0,
+      "Y": 100,
       "Z": 0
     }
   },
   "3": {
     "ID": 3,
-    "Name": "主城传入点1",
+    "Name": "利物浦->苍龙山脉传送门",
     "MapID": 1,
-    "LinkTo": 0,
+    "LinkTo": 10,
     "Descript": null,
     "Position": {
       "X": 7444,
@@ -52,7 +52,7 @@
   },
   "4": {
     "ID": 4,
-    "Name": "出城传入点2",
+    "Name": "苍龙山脉->利物浦出口",
     "MapID": 1,
     "LinkTo": 0,
     "Descript": null,
@@ -62,16 +62,34 @@
       "Z": 760
     },
     "Direction": {
-      "X": -100,
-      "Y": 0,
+      "X": 0,
+      "Y": 100,
       "Z": 0
     }
   },
   "5": {
     "ID": 5,
-    "Name": "野外->主城",
+    "Name": "利物浦->失落神殿传送门",
+    "MapID": 1,
+    "LinkTo": 12,
+    "Descript": null,
+    "Position": null,
+    "Direction": null
+  },
+  "6": {
+    "ID": 6,
+    "Name": "失落神殿->利物浦出口",
+    "MapID": 1,
+    "LinkTo": 0,
+    "Descript": null,
+    "Position": null,
+    "Direction": null
+  },
+  "7": {
+    "ID": 7,
+    "Name": "落日森林->利物浦传送门",
     "MapID": 2,
-    "LinkTo": 3,
+    "LinkTo": 2,
     "Descript": null,
     "Position": {
       "X": 2124,
@@ -84,9 +102,9 @@
       "Z": 0
     }
   },
-  "6": {
-    "ID": 6,
-    "Name": "野外传入点",
+  "8": {
+    "ID": 8,
+    "Name": "利物浦->落日森林出口",
     "MapID": 2,
     "LinkTo": 0,
     "Descript": null,
@@ -96,43 +114,45 @@
       "Z": 39
     },
     "Direction": {
-      "X": 100,
-      "Y": 0,
+      "X": 0,
+      "Y": 100,
       "Z": 0
     }
   },
-  "7": {
-    "ID": 7,
-    "Name": "副本->主城",
+  "9": {
+    "ID": 9,
+    "Name": "苍龙山脉->利物浦传送门",
     "MapID": 3,
     "LinkTo": 4,
     "Descript": null,
-    "Position": {
-      "X": 2109,
-      "Y": 3989,
-      "Z": 9
-    },
-    "Direction": {
-      "X": 100,
-      "Y": 0,
-      "Z": 0
-    }
+    "Position": null,
+    "Direction": null
   },
-  "8": {
-    "ID": 8,
-    "Name": "副本传入点",
+  "10": {
+    "ID": 10,
+    "Name": "利物浦->苍龙山脉出口",
     "MapID": 3,
     "LinkTo": 0,
     "Descript": null,
-    "Position": {
-      "X": 2784,
-      "Y": 3931,
-      "Z": 7
-    },
-    "Direction": {
-      "X": 100,
-      "Y": 0,
-      "Z": 0
-    }
+    "Position": null,
+    "Direction": null
+  },
+  "11": {
+    "ID": 11,
+    "Name": "失落神殿->利物浦传送门",
+    "MapID": 4,
+    "LinkTo": 6,
+    "Descript": null,
+    "Position": null,
+    "Direction": null
+  },
+  "12": {
+    "ID": 12,
+    "Name": "利物浦->失落神殿出口",
+    "MapID": 4,
+    "LinkTo": 0,
+    "Descript": null,
+    "Position": null,
+    "Direction": null
   }
 }

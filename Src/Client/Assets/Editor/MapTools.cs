@@ -6,6 +6,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using Common.Data;
+using SkillBridge.Message;
 
 public class MapTools{
 
@@ -47,8 +48,34 @@ public class MapTools{
                     EditorUtility.DisplayDialog("错误", string.Format("地图:{0}中配置的Teleporter:[{1}] MapID:{2} 错误", map.Value, teleporter.ID,def.MapID), "确定");
                     return;
                 }
+
                 def.Position = GameObjectTool.WorldToLogicN(teleporter.transform.position);
-                def.Direction = GameObjectTool.WorldToLogicN(teleporter.transform.forward);
+                // 根据传送门ID设置特定方向
+                if (def.LinkTo == 0) // 出口传送门
+                {
+                    switch (teleporter.ID)
+                    {
+                        case 2: // 落日森林->利物浦
+                        case 8: // 利物浦->落日森林
+                            def.Direction = new NVector3() { X = 0, Y = 100, Z = 0 }; 
+                            break;
+                        case 4: // 苍龙山脉->利物浦
+                        case 10: // 利物浦->苍龙山脉
+                            def.Direction = new NVector3() { X = 0, Y = 100, Z = 0 }; 
+                            break;
+                        case 6: // 失落神殿->利物浦
+                        case 12: // 利物浦->失落神殿
+                            def.Direction = new NVector3() { X = 0, Y = -100, Z = 0 }; 
+                            break;
+                        default:
+                            def.Direction = GameObjectTool.WorldToLogicN(teleporter.transform.forward);
+                            break;
+                    }
+                }
+                else // 入口传送门
+                {
+                    def.Direction = GameObjectTool.WorldToLogicN(teleporter.transform.forward);
+                }
             }
         }
         DataManager.Instance.SaveTeleporters();

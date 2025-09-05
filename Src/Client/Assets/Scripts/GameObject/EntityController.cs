@@ -59,7 +59,7 @@ public class EntityController : MonoBehaviour, IEntityNotify
         direction = GameObjectTool.LogicToWorld(entity.direction);  
 
         rb.MovePosition(position);  
-        transform.forward = direction;  
+        transform.forward = direction;
     }
 
     void FixedUpdate()
