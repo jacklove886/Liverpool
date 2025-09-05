@@ -35,4 +35,9 @@ public abstract class UIWindow : MonoBehaviour {
     {
         Close(WindowResult.Yes);
     }
+
+    private void OnMouseDown()
+    {
+        Debug.LogFormat(name + "已点击");
+    }
 }

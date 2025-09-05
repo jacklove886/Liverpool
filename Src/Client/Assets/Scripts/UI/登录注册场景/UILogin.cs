@@ -86,4 +86,17 @@ public class UILogin : MonoBehaviour {
             MessageBox.Show(msg);
         }
     }
+
+    public void OnClickDialog()
+    {
+        UIDialog uIDialog = UIManager.Instance.Show<UIDialog>();
+        uIDialog.SetTitle("Siu");
+        uIDialog.OnClose += UIDialog_OnClose;
+    }
+
+    private void UIDialog_OnClose(UIWindow sender, UIWindow.WindowResult result)
+    {
+        string DialogName = (sender as UIDialog).name;
+        MessageBox.Show("我们阿森纳是不可战胜的"+result,"Here we go",MessageBoxType.Information);
+    }
 }
