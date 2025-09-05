@@ -83,11 +83,12 @@
     <Compile Include="Assets\Scripts\Scene\SceneManager.cs" />
     <Compile Include="Assets\Scripts\Services\MapService.cs" />
     <Compile Include="Assets\Scripts\Services\UserService.cs" />
-    <Compile Include="Assets\Scripts\UI\主城场景\UIMain.cs" />
-    <Compile Include="Assets\Scripts\UI\主城场景\UIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\UIMain.cs" />
+    <Compile Include="Assets\Scripts\UI\UIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\UIWindow.cs" />
+    <Compile Include="Assets\Scripts\UI\UIWorldElementManager.cs" />
     <Compile Include="Assets\Scripts\UI\主城场景\UIMiniMap.cs" />
     <Compile Include="Assets\Scripts\UI\主城场景\UINameBar.cs" />
-    <Compile Include="Assets\Scripts\UI\主城场景\UIWorldElementManager.cs" />
     <Compile Include="Assets\Scripts\UI\登录注册场景\UILogin.cs" />
     <Compile Include="Assets\Scripts\UI\登录注册场景\UIRegister.cs" />
     <Compile Include="Assets\Scripts\UI\选择角色场景\MessageBox.cs" />
