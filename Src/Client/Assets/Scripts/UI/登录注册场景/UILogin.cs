@@ -16,7 +16,7 @@ public class UILogin : MonoBehaviour {
 
     private void Start()
     {
-        # region  如果启动了LoadingManager脚本 就不需要这三句话 如果没启动 就要加上这三句话来加载数据库
+        # region  如果启动了LoadingManager脚本 就不需要这些话 如果没启动 就要加上这些话来加载数据库
         MapService.Instance.Init();//初始化服务器
         UserService.Instance.Init();//初始化服务器
         DataManager.Instance.Load();//加载数据库

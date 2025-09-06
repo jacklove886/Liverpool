@@ -238,6 +238,24 @@ namespace GameServer.Services
             message.Response.gameEnter.Result = Result.Success;
             message.Response.gameEnter.Errormsg = "None";
 
+            //进入成功,发送初始角色信息
+            message.Response.gameEnter.Character = character.Info;
+
+            //道具系统测试
+            int itemID = 7;//道具ID
+            bool hasItem = character.ItemManager.HasItem(itemID);//是否拥有
+            Log.InfoFormat("拥有道具:[{0}]{1}", itemID, hasItem);
+            if (hasItem)
+            {
+                character.ItemManager.RemoveItem(itemID, 1);//如果有就删除
+            }
+            else
+            {
+                character.ItemManager.AddItem(itemID, 5);//没有就添加
+            }
+            Models.Item item = character.ItemManager.SearchItem(itemID);//查询道具
+            Log.InfoFormat("查找到道具:[{0}]{1}", itemID, item);
+
             byte[] data = PackageHandler.PackMessage(message);
             sender.SendData(data, 0, data.Length);
             sender.Session.Character = character;

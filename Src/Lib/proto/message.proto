@@ -47,6 +47,13 @@ enum ENTITY_EVENT
 	EVENT_RUN = 4;
 }
 
+enum ITEM_TYPE
+{
+	NORMAL=0;
+	MATERIAL=1;
+	TASK=2; //任务道具
+}
+
 message NUserInfo {
 	int32 id = 1;
 	NPlayerInfo player = 2;
@@ -66,6 +73,14 @@ message NCharacterInfo {
 	int32 level = 6;
 	int32 mapId = 7;
 	NEntity entity = 8;
+
+	repeated NItemInfo Items=10;//可重复类型的 即数组
+}
+
+message NItemInfo
+{
+	int32 id=1;
+	int32 count=2;
 }
 
 message NVector3
@@ -196,6 +211,7 @@ message UserGameEnterRequest
 message UserGameEnterResponse {
 	RESULT result = 1;
 	string errormsg = 2;
+	NCharacterInfo character=3; //返回角色信息
 }
 
 message UserGameLeaveRequest

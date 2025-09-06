@@ -23,8 +23,14 @@ public class UIRegister : MonoBehaviour {
     }
     void OnRegister(Result result,string msg)
     {
-        if(result==Result.Success)
-        MessageBox.Show("注册成功");
+        if (result == Result.Failed)
+        {
+            MessageBox.Show("用户已存在");
+        }
+        else
+        {
+            MessageBox.Show("注册成功!");
+        }
     }
 	
 	// Update is called once per frame

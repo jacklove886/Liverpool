@@ -9,6 +9,7 @@ using UnityEngine;
 using SkillBridge.Message;
 using Models;
 using System.IO;
+using Managers;
 
 namespace Services
 {
@@ -30,6 +31,7 @@ namespace Services
             MessageDistributer.Instance.Subscribe<UserLoginResponse>(this.OnUserLogin);
             MessageDistributer.Instance.Subscribe<UserCreateCharacterResponse>(this.OnUserCharacterCreate);
             MessageDistributer.Instance.Subscribe<UserDeleteCharacterResponse>(this.OnUserCharacterDelete);
+            MessageDistributer.Instance.Subscribe<UserGameEnterResponse>(this.OnUserGameEnter);
             MessageDistributer.Instance.Subscribe<UserGameLeaveResponse>(this.OnUserGameLeave);
         }
 
@@ -40,6 +42,7 @@ namespace Services
             MessageDistributer.Instance.Unsubscribe<UserLoginResponse>(this.OnUserLogin);
             MessageDistributer.Instance.Unsubscribe<UserCreateCharacterResponse>(this.OnUserCharacterCreate);
             MessageDistributer.Instance.Unsubscribe<UserDeleteCharacterResponse>(this.OnUserCharacterDelete);
+            MessageDistributer.Instance.Unsubscribe<UserGameEnterResponse>(this.OnUserGameEnter);
             MessageDistributer.Instance.Unsubscribe<UserGameLeaveResponse>(this.OnUserGameLeave);
             NetClient.Instance.OnConnect -= OnGameServerConnect;
             NetClient.Instance.OnDisconnect -= OnGameServerDisconnect;
@@ -151,7 +154,6 @@ namespace Services
         void OnUserRegister(object sender, UserRegisterResponse response)
         {
             Debug.LogFormat("OnUserRegister:{0} [{1}]", response.Result, response.Errormsg);
-            MessageBox.Show("用户已存在");
 
             if (this.OnRegister != null)
             {
@@ -281,6 +283,18 @@ namespace Services
             {
                 this.pendingMessage = message;
                 this.ConnectToServer();
+            }
+        }
+
+        void OnUserGameEnter(object sender, UserGameEnterResponse response)
+        {
+            Debug.LogFormat("角色进入游戏:{0}", response.Result);
+            if (response.Result == Result.Success)
+            {
+                if (response.Character != null)
+                {
+                    ItemManager.Instance.Init(response.Character.Items);
+                }
             }
         }
 
