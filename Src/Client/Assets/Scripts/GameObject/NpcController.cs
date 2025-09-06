@@ -9,7 +9,10 @@ public class NpcController : MonoBehaviour {
 
     public int npcId;
     private Animator anim;
-    public bool inInteractive;//正在对话中
+    private AudioSource TalkAudio;//交互的语音播放
+    public bool inInteractive;//正在交互中
+    private bool canInteractive=false;//能否交互
+    public float interactiveDistance = 4f;//可交互的距离
 
     private Color originColor;
     private Renderer meshrenderer;
@@ -22,7 +25,10 @@ public class NpcController : MonoBehaviour {
         //获取组件
         npc = NpcManager.Instance.GetNpcDefine(npcId);//获取NPC的数据
         anim = gameObject.GetComponent<Animator>();
+        TalkAudio = gameObject.GetComponent<AudioSource>();
         meshrenderer = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+
+        NpcDistanceManager.Instance.RegisterNpc(this);
 
         originColor = meshrenderer.sharedMaterial.color;//原始颜色是初始化时候的颜色
         StartCoroutine(Actions());
@@ -44,6 +50,11 @@ public class NpcController : MonoBehaviour {
         anim.SetTrigger("Relax");
     }
 
+    public void SetCanInteractive(bool value)//能否交互
+    {
+        canInteractive = value;
+    }
+
     private void Interactive()
     {
         if (!inInteractive)
@@ -60,6 +71,7 @@ public class NpcController : MonoBehaviour {
         if (NpcManager.Instance.Interactive(npc))//调用NpcManagaer的方法
         {
             anim.SetTrigger("Talk");
+            TalkAudio.PlayOneShot(TalkAudio.clip);
         }
         yield return new WaitForSeconds(3f);//防止三秒内重复点击
         inInteractive = false;
@@ -78,7 +90,14 @@ public class NpcController : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        Interactive();
+        if (canInteractive)
+        {
+            Interactive();
+        }
+        else
+        {
+            MessageBox.Show("距离太远啦！");
+        }     
     }
 
     private void OnMouseOver()

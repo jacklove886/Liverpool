@@ -15,7 +15,7 @@ namespace Managers
 
         public void RegisterNpcEvent(NpcFunction function,NpcActionHandler action)
         {
-            if (!eventMap.ContainsKey(function))//如果字典里还没有这个功能
+            if (!eventMap.ContainsKey(function))//如果字典里还没有这个功能 目前只有:InvokeShop  InvokeInsrance
             {
                 eventMap[function] = action;//添加功能到字典中
             }
@@ -65,11 +65,11 @@ namespace Managers
             {
                 return false;
             }
-            if (!eventMap.ContainsKey(npc.Function))//如果没用注册功能事件
+            if (!eventMap.ContainsKey(npc.Function))//如果没有注册功能事件
             {
                 return false;
             }
-            return eventMap[npc.Function](npc);//调用功能事件
+            return eventMap[npc.Function](npc);//调用功能事件  传入npc参数
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Managers
             this.Items.Clear();//清空字典
             foreach(var info in items)
             {
+                //创建new Item 来调用构造函数  传入参数
                 Item item = new Item(info);//这里的info是List<NItemInfo>  items遍历出来的  而不是字典里的Items
                 this.Items.Add(item.Id, item);//遍历角色的道具 添加到字典中
                 Debug.LogFormat("ItemManager初始化道具:[{0}]", item);

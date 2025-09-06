@@ -13,7 +13,7 @@ namespace GameServer.Managers
 {
     public class ItemManager
     {
-        Character Owner;//Character类实例  角色对象
+        public Character Owner;//Character类实例  角色对象
 
         public Dictionary<int, Item> Items = new Dictionary<int, Item>();//Key是ID，Value是道具对象
 
@@ -23,7 +23,7 @@ namespace GameServer.Managers
 
             foreach (var item in owner.Data.Items)//遍历角色身上的所有道具
             {
-                this.Items.Add(item.ItemID, new Item(item));//添加道具
+                this.Items.Add(item.ItemID, new Item(item));//添加道具 item是Tcharacter类型
             }
         }
 
