@@ -20,6 +20,7 @@ public class UILogin : MonoBehaviour {
         MapService.Instance.Init();//初始化服务器
         UserService.Instance.Init();//初始化服务器
         DataManager.Instance.Load();//加载数据库
+        NpcTestManager.Instance.Init();//初始化NPC管理器
         #endregion
 
         UserService.Instance.OnLogin += OnLogin;
@@ -90,7 +91,7 @@ public class UILogin : MonoBehaviour {
     public void OnClickDialog()
     {
         UIDialog uIDialog = UIManager.Instance.Show<UIDialog>();//利用返回值获得组件
-        uIDialog.SetTitle("Siu");//调用方法
+        uIDialog.title.text="Siu";//调用方法
         uIDialog.OnClose += UIDialog_OnClose;//订阅UIWindow的事件
     }
 

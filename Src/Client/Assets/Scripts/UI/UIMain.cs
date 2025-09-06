@@ -16,7 +16,6 @@ public class UIMain : MonoSingleton<UIMain> {
     {
         SoundManager.Instance.bgmaudioClipPlay.clip = SoundManager.Instance.bgmInMainCityClip;
         SoundManager.Instance.bgmaudioClipPlay.Play();
-        Cursor.visible = false;
         UpdateAvatar();
 
         go = Instantiate(escPanel, this.transform);//实例化返回面板
@@ -38,18 +37,6 @@ public class UIMain : MonoSingleton<UIMain> {
         {
             EscPanel();
         }
-
-        //面板关闭情况下才允许点击 鼠标光标隐藏
-        if (Input.GetMouseButtonDown(0) && !escPanelState)
-        {
-            Cursor.visible = false; //隐藏光标
-        }
-
-        //Alt解锁鼠标
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            Cursor.visible = true; 
-        }
     }
 
     void UpdateAvatar()
@@ -66,11 +53,9 @@ public class UIMain : MonoSingleton<UIMain> {
             {
                 SoundManager.Instance.audioClipPlay.Stop();
             }
-            Cursor.visible = true;
         }
         else
         {
-            Cursor.visible = false;
             if(SoundManager.Instance.audioClipPlay.clip != null)
             {
                 SoundManager.Instance.audioClipPlay.Play();

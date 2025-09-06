@@ -1,0 +1,146 @@
+Parent = MaterialInstanceConstant'/Game/Resources/Cha/0_MasterMat/B21/HeroSet/mi_Hero_Hair1_B21_master.mi_Hero_Hair1_B21_master'
+ScalarParameterValues[10] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = { Name=Highlight Contrast }
+        ParameterValue = 173.423
+        ParameterName = None
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = { Name=Highlight Intensity }
+        ParameterValue = 1.12428
+        ParameterName = None
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = { Name=Highlight Shift }
+        ParameterValue = -0.107143
+        ParameterName = None
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = { Name=Highlight Shift Tile }
+        ParameterValue = 4.97681
+        ParameterName = None
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = { Name=Jitter }
+        ParameterValue = 1.52306
+        ParameterName = None
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = { Name=Normal Intensity }
+        ParameterValue = 2.09277
+        ParameterName = None
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = { Name=Normal Offset }
+        ParameterValue = 1.04587
+        ParameterName = None
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = { Name=Normal Tile }
+        ParameterValue = 1.53518
+        ParameterName = None
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = { Name=OutLine Amount }
+        ParameterValue = 0.25
+        ParameterName = None
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = { Name=RefractionDepthBias }
+        ParameterValue = 0
+        ParameterName = None
+    }
+}
+TextureParameterValues[2] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = { Name=Diffuse }
+        ParameterValue = Texture2D'/Game/Resources/Cha/Hero/ShaneGhost/mat/tex/PC_Shane_Gost_Hair_D.PC_Shane_Gost_Hair_D'
+        ParameterName = None
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = { Name=SHIFT }
+        ParameterValue = Texture2D'/Game/Resources/TA/MasterTex/Cha/DiffuseTexture_03_64.DiffuseTexture_03_64'
+        ParameterName = None
+    }
+}
+VectorParameterValues[4] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = { Name=Color_Hair }
+        ParameterValue = { R=0.020155, G=0.020833, B=0.018121, A=1 }
+        ParameterName = None
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = { Name=FX_SkillColor }
+        ParameterValue = { R=5, G=0.2, B=10, A=1 }
+        ParameterName = None
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = { Name=OutLine Color }
+        ParameterValue = { R=0.5625, G=0.459262, B=0.366211, A=1 }
+        ParameterName = None
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = { Name=BoundSize }
+        ParameterValue = { R=1000, G=1000, B=1000, A=1 }
+        ParameterName = None
+    }
+}
+BasePropertyOverrides =
+{
+    bOverride_BlendMode = false
+    BlendMode = BLEND_Masked (1)
+    bOverride_TwoSided = false
+    TwoSided = true
+    bOverride_OpacityMaskClipValue = false
+    OpacityMaskClipValue = 0.3333
+}
+StaticParameters =
+{
+    StaticSwitchParameters[0] = {}
+    StaticComponentMaskParameters[0] = {}
+    TerrainLayerWeightParameters[0] = {}
+    MaterialLayersParameters[0] = {}
+}
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[2] =
+{
+    TextureStreamingData[0] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = PC_Shane_Gost_Hair_D
+    }
+    TextureStreamingData[1] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = T_TransformSet
+    }
+}

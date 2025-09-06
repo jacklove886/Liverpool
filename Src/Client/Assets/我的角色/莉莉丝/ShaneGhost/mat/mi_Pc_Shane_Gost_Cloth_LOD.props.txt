@@ -1,0 +1,170 @@
+Parent = MaterialInstanceConstant'/Game/Resources/Cha/0_MasterMat/B21/HeroSet/mi_Hero_Costume_LOD1_master.mi_Hero_Costume_LOD1_master'
+ScalarParameterValues[8] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = { Name=LOD1_SkinBoundary }
+        ParameterValue = 2.61725
+        ParameterName = None
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = { Name=LOD1_SkinBrightless }
+        ParameterValue = 1
+        ParameterName = None
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = { Name=Roughness Min }
+        ParameterValue = 0.514286
+        ParameterName = None
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = { Name=Metal }
+        ParameterValue = 0.5
+        ParameterName = None
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = { Name=Normal Intensity }
+        ParameterValue = 1
+        ParameterName = None
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = { Name=Specular }
+        ParameterValue = 0.345238
+        ParameterName = None
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = { Name=Reflection Intensity }
+        ParameterValue = 6
+        ParameterName = None
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = { Name=RefractionDepthBias }
+        ParameterValue = 0
+        ParameterName = None
+    }
+}
+TextureParameterValues[5] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = { Name=Roughness }
+        ParameterValue = Texture2D'/Game/Resources/Cha/Hero/ShaneGhost/mat/tex/PC_Shane_Gost_Lod_R.PC_Shane_Gost_Lod_R'
+        ParameterName = None
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = { Name=Normal }
+        ParameterValue = Texture2D'/Game/Resources/Cha/Hero/ShaneGhost/mat/tex/PC_Shane_Gost_Lod_N.PC_Shane_Gost_Lod_N'
+        ParameterName = None
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = { Name=Diffuse }
+        ParameterValue = Texture2D'/Game/Resources/Cha/Hero/ShaneGhost/mat/tex/PC_Shane_Gost_Lod_D.PC_Shane_Gost_Lod_D'
+        ParameterName = None
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = { Name=FaceMask }
+        ParameterValue = Texture2D'/Game/Resources/Cha/Hero/ShaneGhost/mat/tex/PC_Shane_Gost_Lod_M.PC_Shane_Gost_Lod_M'
+        ParameterName = None
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = { Name=Reflection }
+        ParameterValue = Texture2D'/Game/Resources/TA/MasterTex/ZbrushMat/Orora_02.Orora_02'
+        ParameterName = None
+    }
+}
+VectorParameterValues[4] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = { Name=FX_SkillColor }
+        ParameterValue = { R=5, G=0.2, B=10, A=1 }
+        ParameterName = None
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = { Name=Reflection Color }
+        ParameterValue = { R=0.671875, G=0.66412, B=0.654378, A=1 }
+        ParameterName = None
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = { Name=Shadow MoveVector }
+        ParameterValue = { R=0, G=0, B=0, A=1 }
+        ParameterName = None
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = { Name=BoundSize }
+        ParameterValue = { R=1000, G=1000, B=1000, A=1 }
+        ParameterName = None
+    }
+}
+BasePropertyOverrides =
+{
+    bOverride_BlendMode = false
+    BlendMode = BLEND_Masked (1)
+    bOverride_TwoSided = false
+    TwoSided = false
+    bOverride_OpacityMaskClipValue = false
+    OpacityMaskClipValue = 0.3333
+}
+StaticParameters =
+{
+    StaticSwitchParameters[0] = {}
+    StaticComponentMaskParameters[0] = {}
+    TerrainLayerWeightParameters[0] = {}
+    MaterialLayersParameters[0] = {}
+}
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[5] =
+{
+    TextureStreamingData[0] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = PC_Shane_Gost_Lod_D
+    }
+    TextureStreamingData[1] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = PC_Shane_Gost_Lod_M
+    }
+    TextureStreamingData[2] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = PC_Shane_Gost_Lod_N
+    }
+    TextureStreamingData[3] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = PC_Shane_Gost_Lod_R
+    }
+    TextureStreamingData[4] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = T_TransformSet
+    }
+}
