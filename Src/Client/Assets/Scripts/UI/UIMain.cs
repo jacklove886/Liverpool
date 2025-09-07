@@ -98,4 +98,9 @@ public class UIMain : MonoSingleton<UIMain> {
             SoundManager.Instance.bgmaudioClipPlay.Stop();  // 停止背景音乐
         }
     }
+
+    public void OnClickBag()
+    {
+        UIManager.Instance.Show<UIBag>();
+    }
 }

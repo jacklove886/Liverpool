@@ -23,7 +23,7 @@ namespace GameServer.Entities
         {
 
             Data = cha;
-            Info = new NCharacterInfo();
+            Info = new NCharacterInfo();//NCharacterInfo是自定义的协议
             Info.Type = type;
             Info.Id = cha.ID;
             Info.Name = cha.Name;
@@ -34,8 +34,13 @@ namespace GameServer.Entities
             Info.Entity = this.EntityData;
             Define = DataManager.Instance.Characters[this.Info.Tid];
 
+            //道具系统
             ItemManager = new ItemManager(this);
             ItemManager.GetItemInfos(Info.Items);
+            //背包系统
+            Info.Bag = new NBagInfo();
+            Info.Bag.Items = this.Data.Bag.Items;
+            Info.Bag.Unlocked = this.Data.Bag.Unlocked;
         }
     }
 }

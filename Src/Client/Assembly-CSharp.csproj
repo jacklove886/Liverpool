@@ -27,7 +27,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,7 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\GameObject\TeleporterObject.cs" />
     <Compile Include="Assets\Scripts\LoadingManager.cs" />
     <Compile Include="Assets\Scripts\Log\UnityLogger.cs" />
+    <Compile Include="Assets\Scripts\Managers\BagManager.cs" />
     <Compile Include="Assets\Scripts\Managers\CharacterManager.cs" />
     <Compile Include="Assets\Scripts\Managers\DataManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EntityManager.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Assets\Scripts\Managers\MinimapManager.cs" />
     <Compile Include="Assets\Scripts\Managers\NpcManager.cs" />
     <Compile Include="Assets\Scripts\Managers\NpcTestManager.cs" />
+    <Compile Include="Assets\Scripts\Models\BagItem.cs" />
     <Compile Include="Assets\Scripts\Models\Item.cs" />
     <Compile Include="Assets\Scripts\Models\User.cs" />
     <Compile Include="Assets\Scripts\Network\NetClient.cs" />
@@ -98,6 +100,10 @@
     <Compile Include="Assets\Scripts\UI\主城场景\UINameBar.cs" />
     <Compile Include="Assets\Scripts\UI\登录注册场景\UILogin.cs" />
     <Compile Include="Assets\Scripts\UI\登录注册场景\UIRegister.cs" />
+    <Compile Include="Assets\Scripts\UI\背包系统\TabButton.cs" />
+    <Compile Include="Assets\Scripts\UI\背包系统\TabView.cs" />
+    <Compile Include="Assets\Scripts\UI\背包系统\UIBag.cs" />
+    <Compile Include="Assets\Scripts\UI\背包系统\UIItemIcon.cs" />
     <Compile Include="Assets\Scripts\UI\选择角色场景\MessageBox.cs" />
     <Compile Include="Assets\Scripts\UI\选择角色场景\UICharacterMessage.cs" />
     <Compile Include="Assets\Scripts\UI\选择角色场景\UICharacterSelect.cs" />

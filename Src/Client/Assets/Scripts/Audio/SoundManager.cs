@@ -34,12 +34,9 @@ public class SoundManager : MonoSingleton<SoundManager>
     [Header("角色跑步音效")]
     public AudioClip[] runAudioClip;
 
-    protected void Awake()
+    protected override void OnStart ()
     {
         DontDestroyOnLoad(gameObject);
-    }
-
-    void Start () {
         bgmaudioClipPlay.loop = true;
     }
 

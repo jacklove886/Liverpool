@@ -137,7 +137,14 @@ namespace GameServer.Services
                 MapPosY = 3000,
                 MapPosZ = 800,
             };
-            DBService.Instance.Entities.Characters.Add(character);
+
+            //初始化背包  背包表和角色表是一对一的关系
+            var bag = new TCharacterBag();//TCharacterBag是数据库表
+            bag.Owner = character;
+            bag.Items = new byte[0];
+            bag.Unlocked = 20;
+            character.Bag = DBService.Instance.Entities.CharacterBags.Add(bag);
+            character=DBService.Instance.Entities.Characters.Add(character);
             sender.Session.User.Player.Characters.Add(character);
             DBService.Instance.Entities.SaveChanges();
 
@@ -247,14 +254,18 @@ namespace GameServer.Services
             Log.InfoFormat("拥有道具:[{0}]{1}", itemID, hasItem);
             if (hasItem)
             {
-                character.ItemManager.RemoveItem(itemID, 1);//如果有就删除
+                //character.ItemManager.RemoveItem(itemID, 1);//如果有就删除
             }
             else
             {
-                character.ItemManager.AddItem(itemID, 5);//没有就添加
+                character.ItemManager.AddItem(1,50);
+                character.ItemManager.AddItem(2, 1);
+                character.ItemManager.AddItem(3, 2);
+                character.ItemManager.AddItem(4, 4);
             }
             Models.Item item = character.ItemManager.SearchItem(itemID);//查询道具
             Log.InfoFormat("查找到道具:[{0}]{1}", itemID, item);
+            DBService.Instance.Save();
 
             byte[] data = PackageHandler.PackMessage(message);
             sender.SendData(data, 0, data.Length);

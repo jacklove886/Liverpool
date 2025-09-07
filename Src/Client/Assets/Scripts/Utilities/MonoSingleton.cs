@@ -18,7 +18,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 
     }
 
-    void Start()
+    void Awake()//防止start执行顺序不固定
     {
         if (global)
         {

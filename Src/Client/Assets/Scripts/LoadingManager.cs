@@ -45,15 +45,15 @@ public class LoadingManager : MonoBehaviour {
         NpcTestManager.Instance.Init();
 
 
-        for (float i = 50; i < 100;)
+        for (float i = 50; i < 100;)//从50-100开始模拟加载
         {
-            i += Random.Range(0.1f, 1.5f);
+            i += Random.Range(0.1f, 1.5f);//随机加载0.1-1.5个进度条
             progressBar.value = i;
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();//等待UI更新
         }
 
         UILoading.SetActive(false);
-        UILogin.SetActive(true);
+        UILogin.SetActive(true);//显示登录界面
         yield return null;
     }
 

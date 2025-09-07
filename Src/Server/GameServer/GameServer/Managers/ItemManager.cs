@@ -84,7 +84,7 @@ namespace GameServer.Managers
                 this.Items.Add(itemID, item);//添加到字典中
             }
             Log.InfoFormat("[角色:{0}]添加了:[{1}]数量为:{2}", Owner.Data.ID, item,count);
-            DBService.Instance.Save();
+            //DBService.Instance.Save();
             return true;
         }
 
@@ -101,7 +101,7 @@ namespace GameServer.Managers
             }
             item.Remove(count);
             Log.InfoFormat("[角色:{0}]移除了:[{1}]数量为:{2}", Owner.Data.ID, item, count);
-            DBService.Instance.Save();
+            //DBService.Instance.Save();
             return true;
         }
 

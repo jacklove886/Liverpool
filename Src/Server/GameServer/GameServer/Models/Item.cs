@@ -13,7 +13,7 @@ namespace GameServer.Models
         public int ItemID;
         public int Count;
 
-        public Item(TCharacterItem item)//构造函数
+        public Item(TCharacterItem item)//构造函数 接受数据库TCharacterItem
         {
             this.dbItem = item;
             this.ItemID = item.ItemID;

@@ -9,7 +9,7 @@ public class UIManager : Singleton<UIManager> {
     {
         public string Resources;//预制体的路径
         public bool Cache; //控制UI关闭时是销毁还是隐藏  true隐藏 false销毁
-        public GameObject Instance;
+        public GameObject gameObject;
     }
 
     //Type填写类名 UIElement里填上面的三个变量
@@ -23,7 +23,8 @@ public class UIManager : Singleton<UIManager> {
         element.Resources = "UI/UIDialog";
         element.Cache = true;*/
         UIResources.Add(typeof(UIDialog), new UIElement() { Resources = "UI/UIDialog", Cache = true });//只隐藏不销毁
-        }
+        UIResources.Add(typeof(UIBag), new UIElement() { Resources = "UI/UIBag", Cache = true });
+    }
 
     ~UIManager()
     {
@@ -37,9 +38,9 @@ public class UIManager : Singleton<UIManager> {
         if (UIResources.ContainsKey(type))
         {
             UIElement info = UIResources[type];//实例化一个UIElement对象 可以调用三个变量
-            if (info.Instance != null)
+            if (info.gameObject != null)
             {
-                info.Instance.SetActive(true);//如果有实例 直接开启
+                info.gameObject.SetActive(true);//如果有实例 直接开启
             }
             else
             {
@@ -48,9 +49,9 @@ public class UIManager : Singleton<UIManager> {
                 {
                     return default(T);//返回T类型的默认值 比如string返回null int返回0 bool返回false
                 }
-                info.Instance = (GameObject)GameObject.Instantiate(prefab);
+                info.gameObject = (GameObject)GameObject.Instantiate(prefab);
             }
-            return info.Instance.GetComponent<T>();//返回T组件
+            return info.gameObject.GetComponent<T>();//返回T组件
         }
         return default(T);
     }
@@ -63,12 +64,12 @@ public class UIManager : Singleton<UIManager> {
             UIElement info = UIResources[type];
             if (info.Cache)
             {
-                info.Instance.SetActive(false);//关闭
+                info.gameObject.SetActive(false);//关闭
             }
             else
             {
-                GameObject.Destroy(info.Instance);//销毁
-                info.Instance = null;
+                GameObject.Destroy(info.gameObject);//销毁
+                info.gameObject = null;
             }
         }
     }

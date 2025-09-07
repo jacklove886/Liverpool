@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class UIWindow : MonoBehaviour {
+public abstract class UIWindow : MonoBehaviour {//abstarct意义是防止直接实力化UIWindow 但是子类可以直接使用方法
 
-    //sender是UIWindow的实例
-    public delegate void CloseHandler(UIWindow sender, WindowResult result);//WindowResult是枚举类型
-    public event CloseHandler OnClose;
+    //uIDialog.OnClose += UIDialog_OnClose;//订阅UIWindow的事件
+    //private void UIDialog_OnClose(UIWindow sender, UIWindow.WindowResult result)
+    public event System.Action<UIWindow, WindowResult> OnClose;//发布关闭委托
 
-    public virtual System.Type Type { get { return this.GetType(); } }
+    public virtual System.Type Type { get { return this.GetType(); } }//每个子类返回自己的具体类型
 
     public enum WindowResult
     {
@@ -24,7 +24,7 @@ public abstract class UIWindow : MonoBehaviour {
         {
             OnClose(this, result);
         }
-        OnClose = null;
+        OnClose = null;//清空订阅事件
     }
     
     public virtual void OnCloseClick()
@@ -32,13 +32,14 @@ public abstract class UIWindow : MonoBehaviour {
         Close();
     }
 
-    public virtual void OnYesClick()
+    public virtual void OnYesClick()//虚方法 子类可以通过按钮绑定:yesButton.onClick.AddListener(OnYesClick);
     {
         Close(WindowResult.Yes);
     }
 
-    private void OnMouseDown()
+    public virtual void OnNoClick()
     {
-        Debug.LogFormat(name + "已点击");
+        Close(WindowResult.No);
     }
+
 }
