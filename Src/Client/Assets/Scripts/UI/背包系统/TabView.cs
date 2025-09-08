@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TabView: MonoBehaviour//标签管理器
 {
@@ -17,22 +18,22 @@ public class TabView: MonoBehaviour//标签管理器
         for(int i = 0; i < tabButtons.Length; i++)
         {
             tabButtons[i].tabView = this;
-            tabButtons[i].tabIndex = i;
+            tabButtons[i].tabIndex = i;//告诉按钮所在的索引
         }
         yield return new WaitForEndOfFrame();//等待UI准备好  也是等待一帧
         SelectTab(0);
     }
 
-    public void SelectTab(int index)
+    public void SelectTab(int tabindex)
     {
-        if (this.index != index)//如果索引和当前的不一样 切换背包
+        if (this.index != tabindex)//如果索引和当前的不一样 切换背包
         {
             for(int i = 0; i < tabButtons.Length; i++)
             {
-                tabButtons[i].Select(i == index);
-                tabPages[i].SetActive(i == index);
+                tabButtons[i].Select(i == tabindex);
+                tabPages[i].SetActive(i == tabindex);
             }
-            this.index = index;//更新索引
+            this.index = tabindex;//更新索引
         }
     }
     

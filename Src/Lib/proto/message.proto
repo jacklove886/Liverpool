@@ -7,7 +7,7 @@ option cc_enable_arenas = true;
 
 ////////////////////////////////////////////////////////////////
 //
-//  Basic Defines
+//  Basic Defines  每次加完协议MessageDispatch里加消息分发
 //
 ////////////////////////////////////////////////////////////////
 enum RESULT
@@ -73,7 +73,7 @@ message NCharacterInfo {
 	int32 level = 6;
 	int32 mapId = 7;
 	NEntity entity = 8;
-
+	int64 gold=9;
 	repeated NItemInfo Items=10;//可重复类型的 即数组
 	NBagInfo Bag=11; //背包系统
 }
@@ -143,6 +143,7 @@ message NetMessageRequest{
 
 	MapEntitySyncRequest mapEntitySync = 9;
 	MapTeleportRequest mapTeleport = 10;
+	ItemBuyRequest itemBuy=11;
 }
 
 message NetMessageResponse{
@@ -157,6 +158,10 @@ message NetMessageResponse{
 	MapCharacterLeaveResponse mapCharacterLeave = 8;
 
 	MapEntitySyncResponse mapEntitySync = 9;
+	ItemBuyResponse itemBuy=11;
+
+	//StatusNotify statusNotify=100;
+
 	
 }
 
@@ -262,6 +267,20 @@ message MapEntitySyncResponse
 message MapTeleportRequest
 {
 	int32 teleporterId = 1;
+}
+
+//道具购买请求
+message ItemBuyRequest
+{
+	int32 shopID=1;
+	int32 shopItemID=2;
+}
+
+//道具购买响应
+message ItemBuyResponse
+{
+	Result result=1;
+	string errormsg=2;
 }
 
 //背包保存请求

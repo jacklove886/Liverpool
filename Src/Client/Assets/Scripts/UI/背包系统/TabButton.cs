@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TabButton : MonoBehaviour //单个标签按钮
+public class TabButton : MonoBehaviour //单个标签按钮  是TabView的子物体
 {
     public Sprite activeImage;//激活图片
     public Sprite normalImage;//正常图片

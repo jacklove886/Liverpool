@@ -21,6 +21,7 @@ public class UILogin : MonoBehaviour {
         UserService.Instance.Init();//初始化服务器
         DataManager.Instance.Load();//加载数据库
         NpcTestManager.Instance.Init();//初始化NPC管理器
+        ShopManager.Instance.Init();//初始化商店管理器
         #endregion
 
         UserService.Instance.OnLogin += OnLogin;

@@ -136,6 +136,7 @@ namespace GameServer.Services
                 MapPosX = 4150,//出生点的三维坐标
                 MapPosY = 3000,
                 MapPosZ = 800,
+                Gold=1000000,
             };
 
             //初始化背包  背包表和角色表是一对一的关系
@@ -258,7 +259,7 @@ namespace GameServer.Services
             }
             else
             {
-                character.ItemManager.AddItem(1,50);
+                character.ItemManager.AddItem(1,2);
                 character.ItemManager.AddItem(2, 1);
                 character.ItemManager.AddItem(3, 2);
                 character.ItemManager.AddItem(4, 4);

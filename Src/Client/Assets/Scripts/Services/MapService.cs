@@ -87,7 +87,6 @@ namespace Services
         //实体同步  客户端要发送消息给服务端 要进行角色移动了
         public void SendMapEntitySync(EntityEvent entityEvent,NEntity entity)
         {
-            Debug.LogFormat("发送SendMapEntitySync请求:ID{0}", entity.Id);
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.mapEntitySync = new MapEntitySyncRequest();

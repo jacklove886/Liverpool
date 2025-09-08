@@ -23,7 +23,8 @@ public class UIManager : Singleton<UIManager> {
         element.Resources = "UI/UIDialog";
         element.Cache = true;*/
         UIResources.Add(typeof(UIDialog), new UIElement() { Resources = "UI/UIDialog", Cache = true });//只隐藏不销毁
-        UIResources.Add(typeof(UIBag), new UIElement() { Resources = "UI/UIBag", Cache = true });
+        UIResources.Add(typeof(UIBag), new UIElement() { Resources = "UI/UIBag", Cache = false });
+        UIResources.Add(typeof(UIShop), new UIElement() { Resources = "UI/UIShop", Cache = false });
     }
 
     ~UIManager()

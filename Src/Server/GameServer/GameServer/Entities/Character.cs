@@ -16,8 +16,10 @@ namespace GameServer.Entities
         public TCharacter Data;
 
         public ItemManager ItemManager;
+        //public StatusManager StatusManager;
         
-
+        
+         //T开头是数据库的
         public Character(CharacterType type,TCharacter cha)://构造函数
             base(new Core.Vector3Int(cha.MapPosX, cha.MapPosY, cha.MapPosZ),new Core.Vector3Int(100,0,0))
         {
@@ -31,8 +33,10 @@ namespace GameServer.Entities
             Info.Tid = cha.TID;
             Info.Class = (CharacterClass)cha.Class;
             Info.mapId = cha.MapID;
+            Info.Gold = cha.Gold;
             Info.Entity = this.EntityData;
             Define = DataManager.Instance.Characters[this.Info.Tid];
+            //StatusManager = new StatusManager(this);
 
             //道具系统
             ItemManager = new ItemManager(this);
@@ -42,5 +46,19 @@ namespace GameServer.Entities
             Info.Bag.Items = this.Data.Bag.Items;
             Info.Bag.Unlocked = this.Data.Bag.Unlocked;
         }
+
+        /*public long Gold
+        {
+            get { return this.Data.Gold;}
+            set
+            {
+                if (this.Data.Gold == value)
+                {
+                    return;
+                }
+                //this.StatusManager.AddGoldChange((int)(value - this.Data.Gold));
+                this.Data.Gold = value;
+            }
+        }*/
     }
 }

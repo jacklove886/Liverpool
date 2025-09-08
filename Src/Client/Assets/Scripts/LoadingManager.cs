@@ -43,6 +43,7 @@ public class LoadingManager : MonoBehaviour {
         MapService.Instance.Init();
         UserService.Instance.Init();
         NpcTestManager.Instance.Init();
+        ShopManager.Instance.Init();
 
 
         for (float i = 50; i < 100;)//从50-100开始模拟加载

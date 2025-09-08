@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Common.Data;
+using UnityEngine.Events;
 
 namespace Managers
 {
@@ -23,6 +24,7 @@ namespace Managers
             uIDialog.ButtonText.text = "购买商品";
             if(npc.ID==4)
             uIDialog.ButtonText.text = "升级装备";
+            uIDialog.shopParam = npc.Param;
             return true;
         }
 
@@ -41,6 +43,6 @@ namespace Managers
             };    
             return true;
         }
-   
+
     }
 }
