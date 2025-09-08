@@ -99,7 +99,48 @@ message NBagInfo
 
 ////////////////////////////////////////////////////////////////
 //
-//  Entities
+//  状态
+//
+////////////////////////////////////////////////////////////////
+
+enum STATUS_ACTION
+{
+	UPDATE=0;//状态更新
+	ADD=1;//增加
+	DELETE=2;//删除
+}
+
+enum STATUS_TYPE//状态改变的具体内容
+{
+	MONEY=0;
+	EXP=1;
+	SKILL_POINT=2;
+	ITEM=3;
+}
+
+enum STATUS_SOURCE
+{
+	UPDATE=0;
+	ADD=1;
+	DELETE=2;
+}
+
+message NSTATUS
+{
+	STATUS_ACTION action=1;
+	STATUS_TYPE type=2;
+	int32 id=3;
+	int32 value=4;
+}
+
+message StatusNotify
+{
+	repeated NSTATUS status=1; //repeated是数组 
+}
+
+////////////////////////////////////////////////////////////////
+//
+//  Entities实体
 //
 ////////////////////////////////////////////////////////////////
 
@@ -160,7 +201,7 @@ message NetMessageResponse{
 	MapEntitySyncResponse mapEntitySync = 9;
 	ItemBuyResponse itemBuy=11;
 
-	//StatusNotify statusNotify=100;
+	StatusNotify statusNotify=100;
 
 	
 }

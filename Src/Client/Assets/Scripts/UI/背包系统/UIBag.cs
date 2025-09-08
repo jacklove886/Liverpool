@@ -1,5 +1,8 @@
 ﻿using Managers;
 using Models;
+using Services;
+using SkillBridge.Message;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,8 +30,8 @@ public class UIBag : UIWindow
         }
         StartCoroutine(InitBags());
 	}
-	
-	IEnumerator InitBags()//初始化背包显示
+
+    IEnumerator InitBags()//初始化背包显示
     {
         for(int i = 0; i < BagManager.Instance.Items.Length; i++)
         {
@@ -36,22 +39,28 @@ public class UIBag : UIWindow
             if (item.ItemID > 0)
             {
                 GameObject go = Instantiate(bagItem, slots[i].transform);//展示正确的道具图片 生成在对应的栏位下
-                go.name = "第"+i+"个道具";
+                go.name = "第"+(i+1)+"个道具";
                 var ui = go.GetComponent<UIBagItemIcon>();
                 var def = ItemManager.Instance.Items[item.ItemID].Define;
                 ui.SetMainIcon(def.Icon, item.Count.ToString());
             }
+            SetMoney();
         }
         yield return null;
     }
 
-    public void SetTitle(string title)
+    public void SetMoney()
     {
-        this.money.text = User.Instance.CurrentCharacter.Id.ToString();
+        this.money.text = User.Instance.CurrentCharacter.Gold.ToString();
     }
 
     public void OnReset()
     {
         BagManager.Instance.Reset();//整理背包功能
+    }
+
+    public void OnClickClose()
+    {
+        UIManager.Instance.Close(typeof(UIBag));
     }
 }

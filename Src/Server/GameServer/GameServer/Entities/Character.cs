@@ -14,7 +14,7 @@ namespace GameServer.Entities
     {
        
         public TCharacter Data;
-
+        public StatusManager StatusManager;
         public ItemManager ItemManager;
         //public StatusManager StatusManager;
         
@@ -45,9 +45,12 @@ namespace GameServer.Entities
             Info.Bag = new NBagInfo();
             Info.Bag.Items = this.Data.Bag.Items;
             Info.Bag.Unlocked = this.Data.Bag.Unlocked;
+
+            //状态管理器
+            this.StatusManager = new StatusManager(this);
         }
 
-        /*public long Gold
+        public long Gold
         {
             get { return this.Data.Gold;}
             set
@@ -56,9 +59,9 @@ namespace GameServer.Entities
                 {
                     return;
                 }
-                //this.StatusManager.AddGoldChange((int)(value - this.Data.Gold));
-                this.Data.Gold = value;
+                this.StatusManager.AddGoldChange((int)(value - this.Data.Gold));//新金币减去老金币
+                this.Data.Gold = value;//新金币赋值
             }
-        }*/
+        }
     }
 }

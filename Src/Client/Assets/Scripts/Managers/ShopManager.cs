@@ -1,4 +1,5 @@
 ﻿using Common.Data;
+using Services;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Managers
 
         public bool BuyItem(int shopID,int shopItemID)
         {
-            //ItemService.Instance.SendBuyItem(shopID, shopItemID);
+            ItemService.Instance.SendBuyItem(shopID, shopItemID);
             return true;
         }
     }

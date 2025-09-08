@@ -83,6 +83,7 @@ namespace GameServer.Managers
                 item = new Item(dbItem);
                 this.Items.Add(itemID, item);//添加到字典中
             }
+            this.Owner.StatusManager.AddItemChange(itemID, count, StatusAction.Add);
             Log.InfoFormat("[角色:{0}]添加了:[{1}]数量为:{2}", Owner.Data.ID, item,count);
             //DBService.Instance.Save();
             return true;
@@ -100,6 +101,7 @@ namespace GameServer.Managers
                 return false;
             }
             item.Remove(count);
+            this.Owner.StatusManager.AddItemChange(itemID, count, StatusAction.Delete);
             Log.InfoFormat("[角色:{0}]移除了:[{1}]数量为:{2}", Owner.Data.ID, item, count);
             //DBService.Instance.Save();
             return true;

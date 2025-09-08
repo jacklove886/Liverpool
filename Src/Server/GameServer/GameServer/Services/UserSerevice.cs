@@ -64,30 +64,29 @@ namespace GameServer.Services
         {
             Log.InfoFormat("UserLoginRequest: User:{0}  Pass:{1}", request.User, request.Passward);
 
-            NetMessage message = new NetMessage();
-            message.Response = new NetMessageResponse();
-            message.Response.userLogin = new UserLoginResponse();
+            sender.Session.Response.userLogin = new UserLoginResponse();
 
             TUser user = DBService.Instance.Entities.Users.Where(u => u.Username == request.User).FirstOrDefault();
             if (user == null)
             {
-                message.Response.userLogin.Result = Result.Failed;
-                message.Response.userLogin.Errormsg = "用户不存在.";
+                sender.Session.Response.userLogin.Result = Result.Failed;
+                sender.Session.Response.userLogin.Errormsg = "用户不存在.";
             }
             else if (user.Password!=request.Passward)
             {
-                message.Response.userLogin.Result = Result.Failed;
-                message.Response.userLogin.Errormsg = "密码错误";
+                sender.Session.Response.userLogin.Result = Result.Failed;
+                sender.Session.Response.userLogin.Errormsg = "密码错误";
             }
             else
             {
                 sender.Session.User = user;
-                message.Response.userLogin.Result = Result.Success;
-                message.Response.userLogin.Errormsg = "None";
-                message.Response.userLogin.Userinfo = new NUserInfo();
-                message.Response.userLogin.Userinfo.Id = (int)user.ID;
-                message.Response.userLogin.Userinfo.Player = new NPlayerInfo();
-                message.Response.userLogin.Userinfo.Player.Id = user.Player.ID;
+
+                sender.Session.Response.userLogin.Result = Result.Success;
+                sender.Session.Response.userLogin.Errormsg = "None";
+                sender.Session.Response.userLogin.Userinfo = new NUserInfo();
+                sender.Session.Response.userLogin.Userinfo.Id = (int)user.ID;
+                sender.Session.Response.userLogin.Userinfo.Player = new NPlayerInfo();
+                sender.Session.Response.userLogin.Userinfo.Player.Id = user.Player.ID;
                 foreach (var c in user.Player.Characters)
                 {
                     NCharacterInfo info = new NCharacterInfo();
@@ -97,12 +96,10 @@ namespace GameServer.Services
                     info.Type = CharacterType.Player;
                     info.Level = c.Level;
                     info.Tid = c.ID;
-                    message.Response.userLogin.Userinfo.Player.Characters.Add(info);
+                    sender.Session.Response.userLogin.Userinfo.Player.Characters.Add(info);
                 }
             }
-
-            byte[] data = PackageHandler.PackMessage(message);
-            sender.SendData(data, 0, data.Length);
+            sender.SendResponse();
         }
 
         //创建角色的请求
@@ -115,14 +112,10 @@ namespace GameServer.Services
             //角色名字已存在
             if (existingCharacter != null)
             {
-                NetMessage messageFail = new NetMessage();
-                messageFail.Response = new NetMessageResponse();
-                messageFail.Response.createChar = new UserCreateCharacterResponse();
-                messageFail.Response.createChar.Result = Result.Failed;
-                messageFail.Response.createChar.Errormsg = "角色名已存在,请重新输入";
-                byte[] dataFail = PackageHandler.PackMessage(messageFail);
-                //消息打包成数据流发给客户端
-                sender.SendData(dataFail, 0, dataFail.Length);
+                sender.Session.Response.createChar = new UserCreateCharacterResponse();
+                sender.Session.Response.createChar.Result = Result.Failed;
+                sender.Session.Response.createChar.Errormsg = "角色名已存在,请重新输入";
+                sender.SendResponse();
                 return;
             }
 
@@ -151,11 +144,9 @@ namespace GameServer.Services
 
 
             //处理回发的消息
-            NetMessage message = new NetMessage();
-            message.Response = new NetMessageResponse();
-            message.Response.createChar = new UserCreateCharacterResponse();
-            message.Response.createChar.Result = Result.Success;
-            message.Response.createChar.Errormsg = "None";
+            sender.Session.Response.createChar = new UserCreateCharacterResponse();
+            sender.Session.Response.createChar.Result = Result.Success;
+            sender.Session.Response.createChar.Errormsg = "None";
 
 
             //返回新创建的角色
@@ -168,12 +159,9 @@ namespace GameServer.Services
             newCharacterInfo.Level = character.Level;
             newCharacterInfo.Tid = character.ID;
 
-            message.Response.createChar.Characters.Add(newCharacterInfo);
+            sender.Session.Response.createChar.Characters.Add(newCharacterInfo);
 
-
-            byte[] data = PackageHandler.PackMessage(message);
-            //消息打包成数据流发给客户端
-            sender.SendData(data, 0, data.Length);
+            sender.SendResponse();
         }
 
         //删除角色的请求
@@ -185,9 +173,7 @@ namespace GameServer.Services
             }
             Log.InfoFormat("删除角色的姓名:{0}", request.Name);
 
-            NetMessage message = new NetMessage();
-            message.Response = new NetMessageResponse();
-            message.Response.deleteChar = new UserDeleteCharacterResponse();
+            sender.Session.Response.deleteChar = new UserDeleteCharacterResponse();
 
             try
             {
@@ -196,8 +182,8 @@ namespace GameServer.Services
                 //角色名字不存在 不执行删除操作
                 if (deleteCharacter == null)
                 {
-                    message.Response.deleteChar.Result = Result.Failed;
-                    message.Response.deleteChar.Errormsg = "角色不存在";
+                    sender.Session.Response.deleteChar.Result = Result.Failed;
+                    sender.Session.Response.deleteChar.Errormsg = "角色不存在";
                 }
                 else
                 {
@@ -206,8 +192,8 @@ namespace GameServer.Services
                     sender.Session.User.Player.Characters.Remove(deleteCharacter);
                     DBService.Instance.Entities.SaveChanges();
 
-                    message.Response.deleteChar.Result = Result.Success;
-                    message.Response.deleteChar.Errormsg = "None";
+                    sender.Session.Response.deleteChar.Result = Result.Success;
+                    sender.Session.Response.deleteChar.Errormsg = "None";
                 }
                 // 返回删除后的完整角色列表
                 foreach (var character in sender.Session.User.Player.Characters)
@@ -219,19 +205,18 @@ namespace GameServer.Services
                     characterInfo.Level = character.Level;
                     characterInfo.Tid = character.TID;
                     characterInfo.mapId = character.MapID;
-                    message.Response.deleteChar.Characters.Add(characterInfo);
+                    sender.Session.Response.deleteChar.Characters.Add(characterInfo);
                 }
             }
             catch (Exception ex)
             {
                 Log.ErrorFormat("删除角色异常：{0}", ex.Message);
-                message.Response.deleteChar.Result = Result.Failed;
-                message.Response.deleteChar.Errormsg = "删除失败";
+                sender.Session.Response.deleteChar.Result = Result.Failed;
+                sender.Session.Response.deleteChar.Errormsg = "删除失败";
             }
 
             //消息打包成数据流发给客户端
-            byte[] data = PackageHandler.PackMessage(message);
-            sender.SendData(data, 0, data.Length);
+            sender.SendResponse();
         }
 
         private void OnGameEnter(NetConnection<NetSession> sender, UserGameEnterRequest request)
@@ -240,36 +225,22 @@ namespace GameServer.Services
             Log.InfoFormat("UserGameEnterRequest: characterID:{0}:{1} Map:{2}", databaseCharacter.ID, databaseCharacter.Name, databaseCharacter.MapID);
             Character character = CharacterManager.Instance.CharacterAdd(databaseCharacter);
 
-            NetMessage message = new NetMessage();
-            message.Response = new NetMessageResponse();
-            message.Response.gameEnter = new UserGameEnterResponse();
-            message.Response.gameEnter.Result = Result.Success;
-            message.Response.gameEnter.Errormsg = "None";
+            sender.Session.Response.gameEnter = new UserGameEnterResponse();
+            sender.Session.Response.gameEnter.Result = Result.Success;
+            sender.Session.Response.gameEnter.Errormsg = "None";
 
             //进入成功,发送初始角色信息
-            message.Response.gameEnter.Character = character.Info;
+            sender.Session.Response.gameEnter.Character = character.Info;
 
             //道具系统测试
             int itemID = 7;//道具ID
             bool hasItem = character.ItemManager.HasItem(itemID);//是否拥有
             Log.InfoFormat("拥有道具:[{0}]{1}", itemID, hasItem);
-            if (hasItem)
-            {
-                //character.ItemManager.RemoveItem(itemID, 1);//如果有就删除
-            }
-            else
-            {
-                character.ItemManager.AddItem(1,2);
-                character.ItemManager.AddItem(2, 1);
-                character.ItemManager.AddItem(3, 2);
-                character.ItemManager.AddItem(4, 4);
-            }
             Models.Item item = character.ItemManager.SearchItem(itemID);//查询道具
             Log.InfoFormat("查找到道具:[{0}]{1}", itemID, item);
             DBService.Instance.Save();
 
-            byte[] data = PackageHandler.PackMessage(message);
-            sender.SendData(data, 0, data.Length);
+            sender.SendResponse();
             sender.Session.Character = character;
             MapManager.Instance[databaseCharacter.MapID].CharacterEnter(sender, character);
         }
@@ -280,14 +251,12 @@ namespace GameServer.Services
             Log.InfoFormat("UserGameLeaveRequest: characterID:{0}:{1} Map:{2}", character.Id, character.Info.Name, character.Info.mapId);
 
             CharacterLeave(character);
-            NetMessage message = new NetMessage();
-            message.Response = new NetMessageResponse();
-            message.Response.gameLeave = new UserGameLeaveResponse();
-            message.Response.gameLeave.Result = Result.Success;
-            message.Response.gameLeave.Errormsg = "None";
 
-            byte[] data = PackageHandler.PackMessage(message);
-            sender.SendData(data, 0, data.Length);
+            sender.Session.Response.gameLeave = new UserGameLeaveResponse();
+            sender.Session.Response.gameLeave.Result = Result.Success;
+            sender.Session.Response.gameLeave.Errormsg = "None";
+
+            sender.SendResponse();
         }
 
         public  void CharacterLeave(Character character)

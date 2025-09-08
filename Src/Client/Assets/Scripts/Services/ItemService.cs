@@ -34,7 +34,8 @@ namespace Services
 
         private void OnItemBuy(object sender,ItemBuyResponse response)
         {
-            MessageBox.Show("购买结果" + response.Result, "购买完成");
+            if(response.Result==Result.Success)
+            MessageBox.Show("购买成功！" ,"购买完成");
         }
     }
 }

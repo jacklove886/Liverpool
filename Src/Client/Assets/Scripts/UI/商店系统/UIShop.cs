@@ -1,6 +1,8 @@
 ﻿using Common.Data;
 using Managers;
 using Models;
+using Services;
+using SkillBridge.Message;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +17,17 @@ public class UIShop : MonoBehaviour {
     private ShopDefine shop;
     public Transform[] itemRoot;//绑定的Content
     public GameObject shopItem;
+
+    private void Start()
+    {
+
+        StatusService.Instance.RegisterStatusNofity(StatusType.Money, OnMoneyChanged);
+    }
+
+    private void OnDestroy()
+    {
+        StatusService.Instance.UnregisterStatusNotify(StatusType.Money, OnMoneyChanged);
+    }
 
 
     IEnumerator InitItems()
@@ -58,7 +71,18 @@ public class UIShop : MonoBehaviour {
         }
         if (!ShopManager.Instance.BuyItem(this.shop.ID, this.selectedItem.shopItemID))
         {
-            
+            ShopManager.Instance.BuyItem(this.shop.ID, this.selectedItem.shopItemID);
         }
+    }
+
+    public void OnClickClose()
+    {
+        UIManager.Instance.Close(typeof(UIShop));
+    }
+
+    private bool OnMoneyChanged(Nstatus status)
+    {
+        money.text = User.Instance.CurrentCharacter.Gold.ToString();
+        return true;
     }
 }

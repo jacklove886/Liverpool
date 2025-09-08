@@ -15,6 +15,6 @@ public class UIDialog : UIWindow{
     public override void OnYesClick()
     {
         ShopManager.Instance.ShowShop(shopParam);
-        Close(WindowResult.Yes); // 关闭对话框 并传入确认参数
+        Close(); // 关闭对话框
     }
 }

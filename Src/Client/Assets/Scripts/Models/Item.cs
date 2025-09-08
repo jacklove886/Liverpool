@@ -14,11 +14,16 @@ namespace Models
         public int Count;
         public ItemDefine Define;
 
-        public Item(NItemInfo item)//接受网络NItemInfo
+        public Item(NItemInfo item) ://构造函数   接受网络NItemInfo  
+            this(item.Id, item.Count)
         {
-            this.Id = item.Id;
-            this.Count = item.Count;
-            this.Define = DataManager.Instance.Items[item.Id];
+        }
+
+        public Item(int Id,int count)
+        {
+            this.Id = Id;
+            this.Count = count;
+            this.Define = DataManager.Instance.Items[this.Id];
         }
 
         public override string ToString()
