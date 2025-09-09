@@ -15,7 +15,7 @@ public class UIManager : Singleton<UIManager> {
     //Type填写类名 UIElement里填上面的三个变量
     private Dictionary<Type, UIElement> UIResources = new Dictionary<Type, UIElement>();
 
-    public UIManager()
+    public UIManager()//构造函数
     {
         //每有一个UI类就在UIResources字典里注册一个  
         /*new UIElement 等价于:
@@ -41,6 +41,10 @@ public class UIManager : Singleton<UIManager> {
             UIElement info = UIResources[type];//实例化一个UIElement对象 可以调用三个变量
             if (info.gameObject != null)
             {
+                if (info.gameObject.activeInHierarchy)//如果已经激活 返回当前实例
+                {
+                    return info.gameObject.GetComponent<T>();
+                }
                 info.gameObject.SetActive(true);//如果有实例 直接开启
             }
             else

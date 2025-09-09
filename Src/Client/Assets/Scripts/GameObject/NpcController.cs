@@ -88,6 +88,7 @@ public class NpcController : MonoBehaviour {
         }
     }
 
+    //按下鼠标  距离近就交互
     private void OnMouseDown()
     {
         if (canInteractive)

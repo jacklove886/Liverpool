@@ -46,6 +46,7 @@ namespace Managers
             return false;
         }
 
+        //如果是任务类型
         private bool DoTaskInteractive(NpcDefine npc)
         {
             UIMessageBox msgBox = MessageBox.Show("你好旅行者", npc.Name, MessageBoxType.Confirm, "开始对话", "取消");
@@ -59,6 +60,7 @@ namespace Managers
             return true;
         }
 
+        //功能类型
         private bool DoFunctionInteractive(NpcDefine npc)
         {
             if (npc.Type != NpcType.Functional)

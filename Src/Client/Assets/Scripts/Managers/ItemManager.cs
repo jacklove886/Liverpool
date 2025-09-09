@@ -16,7 +16,7 @@ namespace Managers
 
         internal void Init(List<NItemInfo> items)//初始化  在UserService的GameEnter里调用 进入游戏初始化道具系统
         {
-            this.Items.Clear();//清空字典
+            this.Items.Clear();//清空字典 确保没有旧数据
             foreach(var info in items)
             {
                 //创建new Item 来调用构造函数  传入参数
@@ -24,6 +24,7 @@ namespace Managers
                 this.Items.Add(item.Id, item);//遍历角色的道具 添加到字典中
                 Debug.LogFormat("ItemManager初始化道具:[{0}]", item);
             }
+            //注册物品状态变更事件
             StatusService.Instance.RegisterStatusNofity(StatusType.Item, OnItemNotify);
         }
 
@@ -35,6 +36,7 @@ namespace Managers
 
         private bool OnItemNotify(Nstatus status)
         {
+            //根据行为来调用不同的方法
             if (status.Action == StatusAction.Add)
             {
                 this.AddItem(status.Id, status.Value);
@@ -51,24 +53,24 @@ namespace Managers
             Item item = null;
             if(this.Items.TryGetValue(itemId,out item))
             {
-                item.Count += count;
+                item.Count += count;//如果ID存在直接添加
             }
             else
             {
-                item = new Item(itemId, count);
+                item = new Item(itemId, count);//不存在新建再添加
                 this.Items.Add(itemId, item);
             }
-            BagManager.Instance.AddItem(itemId, count);
+            BagManager.Instance.AddItem(itemId, count);//同步背包
         }
 
         void RemoveItem(int itemId, int count)
         {
-            if (!this.Items.ContainsKey(itemId))
+            if (!this.Items.ContainsKey(itemId))//不存在返回
             {
                 return;
             }
             Item item = this.Items[itemId];
-            if (item.Count < count)
+            if (item.Count < count)//已有数量小于要删除的 返回
             {
                 return;
             }

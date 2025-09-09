@@ -9,12 +9,13 @@ namespace Managers
 {
     class NpcTestManager:Singleton<NpcTestManager>
     {
-        public void Init()
+        public void Init()//游戏启动时被LoadingManager调用
         {
             NpcManager.Instance.RegisterNpcEvent(Common.Data.NpcFunction.InvokeShop, OnNpcInvokeShop);//商店功能
             NpcManager.Instance.RegisterNpcEvent(Common.Data.NpcFunction.InvokeInsrance, OnNpcInvokeInsrance);//副本功能
         }
 
+        //方法匹配委托定义public delegate bool NpcActionHandler(NpcDefine npc)
         private bool OnNpcInvokeShop(NpcDefine npc)
         {
             UIDialog uIDialog = UIManager.Instance.Show<UIDialog>();

@@ -36,7 +36,7 @@ public class PlayerInputController : MonoBehaviour {
         state =CharacterState.Idle;
 		if(this.character==null)
 		{
-			DataManager.Instance.Load();
+			//DataManager.Instance.Load(); 如果从游戏加载开始不需要这句话
 			NCharacterInfo characterinfo=new NCharacterInfo();
 			characterinfo.Id=1;
 			characterinfo.Name="玩家1";

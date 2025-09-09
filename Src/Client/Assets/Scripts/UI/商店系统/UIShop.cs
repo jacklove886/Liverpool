@@ -32,10 +32,12 @@ public class UIShop : MonoBehaviour {
 
     IEnumerator InitItems()
     {
-        foreach(var kv in DataManager.Instance.ShopItems[shop.ID])
+        //DataManager.Instance.ShopItems是嵌套字典结构，外层键是商店ID，内层键是商品ID,Value是商品配置
+        foreach (var kv in DataManager.Instance.ShopItems[shop.ID])
         {
             if(kv.Value.Status>0)//可出售状态
             {
+                //暂时都放在第一个Content容器里
                 GameObject go = Instantiate(shopItem, itemRoot[0]);
                 UIShopItem ui = go.GetComponent<UIShopItem>();
                 ui.SetShopItem(kv.Key, kv.Value, this);
@@ -59,20 +61,19 @@ public class UIShop : MonoBehaviour {
         {
             selectedItem.Selected = false;
         }
-        selectedItem = item;
+        selectedItem = item;//将传入的item作为当前选择的Item
     }
 
+    //绑定在购买按钮上
     public void OnClickBuy()
     {
+        //没有选中的商品
         if (this.selectedItem == null)
         {
             MessageBox.Show("请选择要购买的道具", "购买提示");
             return;
         }
-        if (!ShopManager.Instance.BuyItem(this.shop.ID, this.selectedItem.shopItemID))
-        {
-            ShopManager.Instance.BuyItem(this.shop.ID, this.selectedItem.shopItemID);
-        }
+        ShopManager.Instance.BuyItem(this.shop.ID, this.selectedItem.shopItemID);
     }
 
     public void OnClickClose()

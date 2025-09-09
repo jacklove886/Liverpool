@@ -19,6 +19,7 @@ namespace Models
         {
         }
 
+        //重载构造函数
         public Item(int Id,int count)
         {
             this.Id = Id;

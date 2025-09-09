@@ -21,7 +21,9 @@ namespace Managers
         public Dictionary<int, Dictionary<int, SpawnPointDefine>> SpawnPoints = null;
         public Dictionary<int, NpcDefine> Npcs = null;
         public Dictionary<int, ItemDefine> Items = null;
+        // 商店定义字典，Key是商店ID，Value是商店配置对象
         public Dictionary<int, ShopDefine> Shops = null;
+        //商店商品嵌套字典，外层Key是商店ID，内层Key是商品ID，Value是商品配置对象
         public Dictionary<int, Dictionary<int, ShopItemDefine>> ShopItems = null;
 
 
@@ -31,7 +33,7 @@ namespace Managers
             Debug.LogFormat("DataManager > DataManager()");
         }
 
-        public void Load()
+        public void Load()//同步加载方法 可能会造成游戏卡顿
         {
             string json = File.ReadAllText(this.DataPath + "MapDefine.txt");
             this.Maps = JsonConvert.DeserializeObject<Dictionary<int, MapDefine>>(json);
@@ -56,10 +58,10 @@ namespace Managers
         }
 
 
-        public IEnumerator LoadData()
+        public IEnumerator LoadData()//携程方法 分帧加载所有游戏数据配置
         {
-            string json = File.ReadAllText(this.DataPath + "MapDefine.txt");
-            this.Maps = JsonConvert.DeserializeObject<Dictionary<int, MapDefine>>(json);
+            string json = File.ReadAllText(this.DataPath + "MapDefine.txt");//读取配置文件到字符串变量
+            this.Maps = JsonConvert.DeserializeObject<Dictionary<int, MapDefine>>(json);//将字符串反序列化为地图字典
 
             yield return null;
 

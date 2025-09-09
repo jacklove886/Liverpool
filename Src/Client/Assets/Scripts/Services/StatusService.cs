@@ -12,7 +12,7 @@ namespace Services
     class StatusService : Singleton<StatusService>, IDisposable
     {
         public delegate bool StatusNotifyHandle(Nstatus status);//委托
-
+        //StatusType 支持四种状态类型  Money Exp SkillPoint Item 四种变更
         Dictionary<StatusType, StatusNotifyHandle> eventMap = new Dictionary<StatusType, StatusNotifyHandle>();
 
         public void Init()
@@ -20,6 +20,7 @@ namespace Services
 
         }
 
+        //订阅注册机制 和NPC很像
         public void RegisterStatusNofity(StatusType function,StatusNotifyHandle action)
         {
             if (!eventMap.ContainsKey(function))
@@ -32,6 +33,7 @@ namespace Services
             }
         }
 
+        //取消订阅
         public void UnregisterStatusNotify(StatusType function, StatusNotifyHandle action)
         {
             if (eventMap.ContainsKey(function))
@@ -40,7 +42,8 @@ namespace Services
             }
         }
 
-        public StatusService()
+
+        public StatusService()//构造函数  订阅服务器的StatusNotify消息
         {
             MessageDistributer.Instance.Subscribe<StatusNotify>(this.OnStatusNotify);
         }
@@ -50,6 +53,7 @@ namespace Services
             MessageDistributer.Instance.Unsubscribe<StatusNotify>(this.OnStatusNotify);
         }
 
+        //接收到消息后自动调用方法   遍历所有变更的情况 确保所有状态正确处理
         private void OnStatusNotify(object sender, StatusNotify notify)
         {
             foreach(Nstatus status in notify.Status)
@@ -58,27 +62,31 @@ namespace Services
             }
         }
 
+        //处理变更情况
         private void Notify(Nstatus status)
         {
             Debug.LogFormat("StatusNotify:[{0}[{1}][{2}][{3}]", status.Type, status.Action, status.Id, status.Value);
 
+            //如果是金币
             if (status.Type == StatusType.Money)
             {
+                //如果是增加
                 if (status.Action == StatusAction.Add)
                 {
                     User.Instance.AddGold(status.Value);
                 }
+                //如果是减少
                 else if (status.Action == StatusAction.Delete)
                 {
                     User.Instance.AddGold(-status.Value);
                 }
             }
 
-            //如果不是钱就发通知
-            StatusNotifyHandle handler;
-            if(eventMap.TryGetValue(status.Type,out handler))
+            //如果不是钱就发通知  
+            StatusNotifyHandle handler;//handler是委托变量
+            if(eventMap.TryGetValue(status.Type,out handler))//如果有调用的方法
             {
-                handler(status);
+                handler(status);//调用这个方法
             };
         }
     }

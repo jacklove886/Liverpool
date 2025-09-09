@@ -20,12 +20,13 @@ public class UIShopItem : MonoBehaviour,ISelectHandler
     public Sprite selectBg;//选中的背景
 
     private bool selected;
-    public bool Selected
+    public bool Selected//属性
     {
         get { return selected; }
         set
         {
             selected = value;
+            //选中即selectBg 未选中就是正常Bg
             this.background.overrideSprite = selected ? selectBg : normalBg;
         }
     }
@@ -46,7 +47,7 @@ public class UIShopItem : MonoBehaviour,ISelectHandler
     {
         this.shop = owner;
         this.shopItemID = id;
-        this.shopItem = shopItem;
+        this.shopItem = shopItem;//存储配置信息 里面有具体价格 数量 状态
         this.item = DataManager.Instance.Items[this.shopItem.ItemID];
 
         this.nameText.text = this.item.Name;
@@ -55,7 +56,8 @@ public class UIShopItem : MonoBehaviour,ISelectHandler
         this.iconImage.overrideSprite = Resloader.Load<Sprite>(item.Icon);
     }
 
-    public void OnSelect(BaseEventData eventData)
+    //Unity内置接口
+    public void OnSelect(BaseEventData eventData)//方法
     {
         this.Selected = true;
         this.shop.SelectShopItem(this);

@@ -50,8 +50,22 @@ enum ENTITY_EVENT
 enum ITEM_TYPE
 {
 	NORMAL=0;
-	MATERIAL=1;
+	MATERIAL=1;//材料
 	TASK=2; //任务道具
+	EQUIP=3;//装备
+	PUPPY=4;//宠物
+}
+
+enum EQUIP_SLOT
+{
+	WEAPON=0;//武器
+	ACCESSORY=1;//防具
+	HELMET=2;//头盔
+	CHEST=3;//胸甲
+	SHOULDER=4;//护肩
+	PANTS=5;//裤子
+	BOOTS=6;//靴子
+	SLOT_MAX=7;//槽位上限7个
 }
 
 message NUserInfo {
@@ -76,6 +90,7 @@ message NCharacterInfo {
 	int64 gold=9;
 	repeated NItemInfo Items=10;//可重复类型的 即数组
 	NBagInfo Bag=11; //背包系统
+	bytes Equips=12;
 }
 
 message NItemInfo
@@ -185,6 +200,7 @@ message NetMessageRequest{
 	MapEntitySyncRequest mapEntitySync = 9;
 	MapTeleportRequest mapTeleport = 10;
 	ItemBuyRequest itemBuy=11;
+	ItemEquipRequest itemEquip=12;
 }
 
 message NetMessageResponse{
@@ -200,6 +216,7 @@ message NetMessageResponse{
 
 	MapEntitySyncResponse mapEntitySync = 9;
 	ItemBuyResponse itemBuy=11;
+	ItemEquipResponse itemEquip=12;
 
 	StatusNotify statusNotify=100;
 
@@ -320,7 +337,7 @@ message ItemBuyRequest
 //道具购买响应
 message ItemBuyResponse
 {
-	Result result=1;
+	RESULT result=1;
 	string errormsg=2;
 }
 
@@ -333,6 +350,20 @@ message BagSaveRequest
 //背包响应
 message BagSaveResponse
 {
-	Result result=1;
+	RESULT result=1;
+	string errormsg=2;
+}
+
+//装备请求
+message ItemEquipRequest
+{
+	int32 slot=1;
+	int32 itemId=2;
+	bool isEquip=3;//代表穿还是脱装备
+}
+
+message ItemEquipResponse
+{
+	RESULT result=1;
 	string errormsg=2;
 }

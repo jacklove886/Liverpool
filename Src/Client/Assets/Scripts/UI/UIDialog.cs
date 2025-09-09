@@ -10,11 +10,11 @@ public class UIDialog : UIWindow{
     public Text Introduce;//介绍
     public Text ButtonText;//按钮文字
 
-    public int shopParam;
+    public int shopParam;//存储商店ID
 
     public override void OnYesClick()
     {
-        ShopManager.Instance.ShowShop(shopParam);
+        ShopManager.Instance.ShowShop(shopParam);//NpcTestManager对shopParam赋值了
         Close(); // 关闭对话框
     }
 }
