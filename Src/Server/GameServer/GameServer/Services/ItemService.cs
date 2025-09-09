@@ -17,6 +17,7 @@ namespace GameServer.Services
         {
             //订阅请求信息 发送响应
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<ItemBuyRequest>(this.OnItemBuy);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<ItemEquipRequest>(this.OnItemEquip);
         }
 
         public void Init()
@@ -24,6 +25,7 @@ namespace GameServer.Services
 
         }
 
+        //购买装备请求
          void OnItemBuy(NetConnection<NetSession> sender, ItemBuyRequest request)
         {
             Character character = sender.Session.Character;
@@ -31,6 +33,17 @@ namespace GameServer.Services
             var result = ShopManager.Instance.BuyItem(sender, request.shopID, request.shopItemID);//返回方法的结果
             sender.Session.Response.itemBuy = new ItemBuyResponse();
             sender.Session.Response.itemBuy.Result = result;
+            sender.SendResponse();
+        }
+
+        //穿装备请求
+         void OnItemEquip(NetConnection<NetSession> sender, ItemEquipRequest request)
+        {
+            Character character = sender.Session.Character;
+            Log.InfoFormat("装备请求:角色:{0} 装备栏:{1} 物品:{2}", character.Id, request.Slot, request.itemId);
+            var result = EquipManager.Instance.EquipItem(sender, request.Slot, request.itemId,true);//返回这个方法的结果 是true还是false
+            sender.Session.Response.itemEquip = new ItemEquipResponse();
+            sender.Session.Response.itemEquip.Result = result;
             sender.SendResponse();
         }
     }

@@ -8,6 +8,7 @@ json-excel\json-excel json Tables\ Data\
 @copy Data\ItemDefine.txt ..\Client\Data\
 @copy Data\ShopDefine.txt ..\Client\Data\
 @copy Data\ShopItemDefine.txt ..\Client\Data\
+@copy Data\EquipDefine.txt ..\Client\Data\
 
 
 @copy Data\CharacterDefine.txt ..\Server\GameServer\GameServer\bin\Debug\Data
@@ -18,5 +19,6 @@ json-excel\json-excel json Tables\ Data\
 @copy Data\ItemDefine.txt ..\Server\GameServer\GameServer\bin\Debug\Data
 @copy Data\ShopDefine.txt ..\Server\GameServer\GameServer\bin\Debug\Data
 @copy Data\ShopItemDefine.txt ..\Server\GameServer\GameServer\bin\Debug\Data
+@copy Data\EquipDefine.txt ..\Server\GameServer\GameServer\bin\Debug\Data
 
 pause

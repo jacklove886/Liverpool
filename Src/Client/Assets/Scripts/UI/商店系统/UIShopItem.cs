@@ -14,6 +14,7 @@ public class UIShopItem : MonoBehaviour,ISelectHandler
     public Text nameText;//名称
     public Text countText;//数量
     public Text priceText;//价格
+    public Text limitClass;//限制的职业
 
     public Image background;//背景
     public Sprite normalBg;
@@ -51,8 +52,14 @@ public class UIShopItem : MonoBehaviour,ISelectHandler
         this.item = DataManager.Instance.Items[this.shopItem.ItemID];
 
         this.nameText.text = this.item.Name;
-        this.countText.text = shopItem.Count.ToString();
+        this.countText.text = "x"+shopItem.Count.ToString();
         this.priceText.text = shopItem.Price.ToString();
+        switch (this.item.LimitClass.ToString())
+        {
+            case "Warrior":  this.limitClass.text = "战士"; break;
+            case "Wizard" :  this.limitClass.text = "法师"; break;
+            case "Archer" :  this.limitClass.text = "游侠"; break; 
+        }
         this.iconImage.overrideSprite = Resloader.Load<Sprite>(item.Icon);
     }
 

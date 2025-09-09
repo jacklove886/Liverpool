@@ -11,7 +11,7 @@ public class PageView : MonoBehaviour {
     public Text pageText;//页码
     public Scrollbar scrollbar;//滑动条
 
-    public GameObject[] pagePages;//页码
+    public GameObject[] pages;//页码
 
     int index = -1;
 
@@ -23,13 +23,13 @@ public class PageView : MonoBehaviour {
         SelectPage(0);
     }
 
-    public void SelectPage(int pageIndex)
+    public  void SelectPage(int pageIndex)
     {
         if (this.index != pageIndex)//如果索引和当前的不一样 切换背包
         {
-            for (int i = 0; i < pagePages.Length; i++)
+            for (int i = 0; i < pages.Length; i++)
             {
-                pagePages[i].SetActive(i == pageIndex);
+                pages[i].SetActive(i == pageIndex);
                 
             }
             this.index = pageIndex;//更新索引
@@ -39,10 +39,10 @@ public class PageView : MonoBehaviour {
 
     private void UpdatePageText()
     {
-        pageText.text = ((index + 1) +"/"+ (pagePages.Length)).ToString();//更新文本
+        pageText.text = ((index + 1) +"/"+ (pages.Length)).ToString();//更新文本
 
         leftArrow.interactable = index > 0;
-        rightArrow.interactable=index< pagePages.Length - 1;
+        rightArrow.interactable=index< pages.Length - 1;
     }
 
 

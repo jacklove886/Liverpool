@@ -101,6 +101,11 @@ public class UIMain : MonoSingleton<UIMain> {
 
     public void OnClickBag()
     {
-        UIManager.Instance.Show<UIBag>();
+        UIManager.Instance.Show<UIBag>();//背包
+    }
+
+    public void OnClickCharEquip()
+    {
+        UIManager.Instance.Show<UICharEquip>();//商店
     }
 }

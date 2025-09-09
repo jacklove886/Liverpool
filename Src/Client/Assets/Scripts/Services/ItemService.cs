@@ -1,4 +1,6 @@
-﻿using Network;
+﻿using Managers;
+using Models;
+using Network;
 using SkillBridge.Message;
 using System;
 using System.Collections.Generic;
@@ -14,11 +16,13 @@ namespace Services
         {
             //订阅ItemBuyResponse类型的响应消息  发送响应调用OnItemBuy
             MessageDistributer.Instance.Subscribe<ItemBuyResponse>(this.OnItemBuy);
+            MessageDistributer.Instance.Subscribe<ItemEquipResponse>(this.OnItemEquip);
         }
 
         public void Dispose()
         {
             MessageDistributer.Instance.Unsubscribe<ItemBuyResponse>(this.OnItemBuy);
+            MessageDistributer.Instance.Unsubscribe<ItemEquipResponse>(this.OnItemEquip);
         }
 
         public void SendBuyItem(int shopID,int shopItemID)
@@ -42,5 +46,47 @@ namespace Services
                 MessageBox.Show("购买失败！" + response.Errormsg, "购买失败");
             }
         }
+
+        //pendingEquip里有装备信息  发送请求的时候记录下来
+        Item pendingEquip = null;
+        bool isEquip = false;
+        public bool SendEquip(Item equip, bool isEquip)
+        {
+            if(pendingEquip!=null)
+            Debug.Log("发送装备穿戴请求");
+            pendingEquip = equip;
+            this.isEquip = isEquip;
+
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.itemEquip = new ItemEquipRequest();
+            message.Request.itemEquip.Slot = (int)equip.EquipInfo.Slot;//传入装备槽
+            message.Request.itemEquip.itemId = equip.Id;//传入商品ID
+            message.Request.itemEquip.isEquip = isEquip;//传入商品ID
+            NetClient.Instance.SendMessage(message);//发送消息
+            return true;
+        }
+
+        //利用pendingEquip  返回的时候就知道穿戴的装备信息
+        private void OnItemEquip(object sender, ItemEquipResponse response)
+        {
+            if (response.Result == Result.Success)
+            {
+                if (pendingEquip != null)
+                {
+                    if (this.isEquip)
+                    {
+                        EquipManager.Instance.OnEquipItem(pendingEquip);//穿装备
+                    }
+                    else
+                    {
+                        EquipManager.Instance.OnUnEquipItem(pendingEquip.EquipInfo.Slot);//脱装备
+                    }
+                    pendingEquip = null;
+                }
+            }
+            
+        }
+
     }
 }

@@ -130,6 +130,7 @@ namespace GameServer.Services
                 MapPosY = 3000,
                 MapPosZ = 800,
                 Gold=1000000,
+                Equips=new byte[28]
             };
 
             //初始化背包  背包表和角色表是一对一的关系
@@ -139,6 +140,22 @@ namespace GameServer.Services
             bag.Unlocked = 20;
             character.Bag = DBService.Instance.Entities.CharacterBags.Add(bag);
             character=DBService.Instance.Entities.Characters.Add(character);
+
+            character.Items.Add(new TCharacterItem()
+            {
+                Owner=character,
+                ItemID=1,
+                ItemCount=20,
+            });
+
+            character.Items.Add(new TCharacterItem()
+            {
+                Owner = character,
+                ItemID = 2,
+                ItemCount = 20,
+            });
+
+
             sender.Session.User.Player.Characters.Add(character);
             DBService.Instance.Entities.SaveChanges();
 
@@ -232,14 +249,7 @@ namespace GameServer.Services
             //进入成功,发送初始角色信息
             sender.Session.Response.gameEnter.Character = character.Info;
 
-            //道具系统测试
-            int itemID = 7;//道具ID
-            bool hasItem = character.ItemManager.HasItem(itemID);//是否拥有
-            Log.InfoFormat("拥有道具:[{0}]{1}", itemID, hasItem);
-            Models.Item item = character.ItemManager.SearchItem(itemID);//查询道具
-            Log.InfoFormat("查找到道具:[{0}]{1}", itemID, item);
-            DBService.Instance.Save();
-
+            //发送响应客户端
             sender.SendResponse();
             sender.Session.Character = character;
             MapManager.Instance[databaseCharacter.MapID].CharacterEnter(sender, character);

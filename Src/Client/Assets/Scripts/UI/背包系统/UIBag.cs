@@ -54,9 +54,22 @@ public class UIBag : UIWindow
         this.money.text = User.Instance.CurrentCharacter.Gold.ToString();
     }
 
+    void Clear()
+    {
+        for(int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].transform.childCount > 0)
+            {
+                Destroy(slots[i].transform.GetChild(0).gameObject);//摧毁每一个BagItem
+            }
+        }
+    }
+
     public void OnReset()
     {
         BagManager.Instance.Reset();//整理背包功能
+        Clear();
+        StartCoroutine(InitBags());//重新初始化
     }
 
     public void OnClickClose()

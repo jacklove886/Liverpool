@@ -19,12 +19,16 @@ namespace Managers
         public Dictionary<int, CharacterDefine> Characters = null;
         public Dictionary<int, TeleporterDefine> Teleporters = null;
         public Dictionary<int, Dictionary<int, SpawnPointDefine>> SpawnPoints = null;
+        //NPC字典
         public Dictionary<int, NpcDefine> Npcs = null;
+        //道具字典
         public Dictionary<int, ItemDefine> Items = null;
         // 商店定义字典，Key是商店ID，Value是商店配置对象
         public Dictionary<int, ShopDefine> Shops = null;
         //商店商品嵌套字典，外层Key是商店ID，内层Key是商品ID，Value是商品配置对象
         public Dictionary<int, Dictionary<int, ShopItemDefine>> ShopItems = null;
+        //装备字典
+        public Dictionary<int, EquipDefine> Equips = null;
 
 
         public DataManager()
@@ -55,6 +59,9 @@ namespace Managers
 
             json = File.ReadAllText(this.DataPath + "ShopItemDefine.txt");
             this.ShopItems = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, ShopItemDefine>>>(json);
+
+            json = File.ReadAllText(this.DataPath + "EquipDefine.txt");
+            this.Equips = JsonConvert.DeserializeObject<Dictionary<int, EquipDefine>>(json);
         }
 
 
@@ -92,6 +99,11 @@ namespace Managers
 
             json = File.ReadAllText(this.DataPath + "ShopItemDefine.txt");
             this.ShopItems = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, ShopItemDefine>>>(json);
+
+            yield return null;
+
+            json = File.ReadAllText(this.DataPath + "EquipDefine.txt");
+            this.Equips = JsonConvert.DeserializeObject<Dictionary<int, EquipDefine>>(json);
 
             yield return null;
         }

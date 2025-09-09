@@ -14,6 +14,7 @@ public class UIShop : MonoBehaviour {
     public Text title;//标题
     public Text money;//价格
 
+    public PageView pageView;
     private ShopDefine shop;
     public Transform[] itemRoot;//绑定的Content
     public GameObject shopItem;
@@ -30,17 +31,29 @@ public class UIShop : MonoBehaviour {
     }
 
 
-    IEnumerator InitItems()
+    IEnumerator InitItems()//初始化道具
     {
+        int count = 0;
+        int page = 0;
         //DataManager.Instance.ShopItems是嵌套字典结构，外层键是商店ID，内层键是商品ID,Value是商品配置
         foreach (var kv in DataManager.Instance.ShopItems[shop.ID])
         {
             if(kv.Value.Status>0)//可出售状态
             {
-                //暂时都放在第一个Content容器里
-                GameObject go = Instantiate(shopItem, itemRoot[0]);
+                if (count > 16)//如果道具超过16个 超过的放到下一页
+                {
+                    count = 0;
+                    page++;  
+                    if (page >= itemRoot.Length)//页码超过总的页数  目前总共两页
+                    {
+                        MessageBox.Show("商品数量过多!", "错误提示");
+                        break;
+                    }
+                }
+                GameObject go = Instantiate(shopItem, itemRoot[page]);
                 UIShopItem ui = go.GetComponent<UIShopItem>();
                 ui.SetShopItem(kv.Key, kv.Value, this);
+                count++;   
             }
         }
         yield return null;

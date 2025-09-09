@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Managers\CharacterManager.cs" />
     <Compile Include="Assets\Scripts\Managers\DataManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EntityManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\EquipManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ItemManager.cs" />
     <Compile Include="Assets\Scripts\Managers\MinimapManager.cs" />
     <Compile Include="Assets\Scripts\Managers\NpcManager.cs" />
@@ -110,6 +111,8 @@
     <Compile Include="Assets\Scripts\UI\背包系统\TabView.cs" />
     <Compile Include="Assets\Scripts\UI\背包系统\UIBag.cs" />
     <Compile Include="Assets\Scripts\UI\背包系统\UIBagItemIcon.cs" />
+    <Compile Include="Assets\Scripts\UI\装备系统\UICharEquip.cs" />
+    <Compile Include="Assets\Scripts\UI\装备系统\UIEquipItem.cs" />
     <Compile Include="Assets\Scripts\UI\选择角色场景\MessageBox.cs" />
     <Compile Include="Assets\Scripts\UI\选择角色场景\UICharacterMessage.cs" />
     <Compile Include="Assets\Scripts\UI\选择角色场景\UICharacterSelect.cs" />

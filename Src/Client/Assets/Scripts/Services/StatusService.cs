@@ -12,6 +12,8 @@ namespace Services
     class StatusService : Singleton<StatusService>, IDisposable
     {
         public delegate bool StatusNotifyHandle(Nstatus status);//委托
+        //哈希只需要一个Key 不需要Value
+        HashSet<StatusNotifyHandle> handlers = new HashSet<StatusNotifyHandle>();
         //StatusType 支持四种状态类型  Money Exp SkillPoint Item 四种变更
         Dictionary<StatusType, StatusNotifyHandle> eventMap = new Dictionary<StatusType, StatusNotifyHandle>();
 
@@ -23,6 +25,10 @@ namespace Services
         //订阅注册机制 和NPC很像
         public void RegisterStatusNofity(StatusType function,StatusNotifyHandle action)
         {
+            if (handlers.Contains(action))
+            {
+                return;
+            }
             if (!eventMap.ContainsKey(function))
             {
                 eventMap[function] = action;
@@ -31,6 +37,7 @@ namespace Services
             {
                 eventMap[function] += action;
             }
+            handlers.Add(action);
         }
 
         //取消订阅

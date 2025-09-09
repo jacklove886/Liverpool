@@ -23,7 +23,7 @@ namespace Services
         bool connected = false;
         private static bool logInitialized = false;  
 
-        public UserService()
+        public UserService()//构造函数
         {
             NetClient.Instance.OnConnect += OnGameServerConnect;
             NetClient.Instance.OnDisconnect += OnGameServerDisconnect;
@@ -293,8 +293,10 @@ namespace Services
             {
                 if (response.Character != null)
                 {
+                    //进入游戏 初始化
                     ItemManager.Instance.Init(response.Character.Items);
                     BagManager.Instance.Init(response.Character.Bag);
+                    EquipManager.Instance.Init(response.Character.Equips);
                 }
             }
         }
