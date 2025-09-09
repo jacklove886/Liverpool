@@ -52,7 +52,10 @@ namespace Services
         bool isEquip = false;
         public bool SendEquip(Item equip, bool isEquip)
         {
-            if(pendingEquip!=null)
+            if (pendingEquip!= null)
+            {
+                return false;
+            }
             Debug.Log("发送装备穿戴请求");
             pendingEquip = equip;
             this.isEquip = isEquip;

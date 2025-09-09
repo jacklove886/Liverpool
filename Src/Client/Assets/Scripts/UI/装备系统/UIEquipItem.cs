@@ -42,20 +42,20 @@ public class UIEquipItem : MonoBehaviour,IPointerClickHandler
         this.UICharEquip = owner;
         this.index = idx;
         this.item = item;
-        this.isEquiped = equiped;
-        this.icon.overrideSprite = Resloader.Load<Sprite>(this.item.Define.Icon);
+        this.isEquiped = equiped;      
         if (!isEquiped)
         {
             this.title.text = this.item.Define.Name;
-            this.level.text = this.item.Define.Level.ToString();
+            this.level.text = ("LV  "+this.item.Define.Level).ToString();
             switch (this.item.Define.LimitClass.ToString())
             {
                 case "Warrior": this.LimitClass.text = "战士"; break;
                 case "Wizard": this.LimitClass.text = "法师"; break;
                 case "Archer": this.LimitClass.text = "游侠"; break;
             }
-            this.limitCategory.text = this.item.Define.Category;
-        }       
+            this.limitCategory.text = this.item.Define.Category;  
+        }
+        this.icon.overrideSprite = Resloader.Load<Sprite>(this.item.Define.Icon);
     }
 
     //指针点击处理器  鼠标按下执行

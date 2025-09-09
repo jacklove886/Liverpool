@@ -11,6 +11,7 @@ public class UICharEquip : MonoBehaviour
 {
     public Text title;
     public Text money;
+    public Text characterName;
 
     public GameObject itemPrefab;
 
@@ -18,7 +19,9 @@ public class UICharEquip : MonoBehaviour
 
     public Transform itemListRoot;
 
-    public List<Transform> slots;
+    public List<Transform> slots;//装备栏
+
+    public GameObject[] EquipRoot;//装备栏根节点
 
     private void Start()
     {
@@ -37,7 +40,9 @@ public class UICharEquip : MonoBehaviour
         InitAllEquipItems();//初始化左边装备列表
         ClearEuipedList();//把中间已经装备的列表清空
         InitEquipedItems();//初始化中间装备列表
-        this.money.text = User.Instance.CurrentCharacter.Gold.ToString();
+        var cha = User.Instance.CurrentCharacter;
+        this.money.text = cha.Gold.ToString();
+        characterName.text = cha.Name + "  LV " + cha.Level;
     }
 
     void InitAllEquipItems()
@@ -52,8 +57,6 @@ public class UICharEquip : MonoBehaviour
                     continue;//已经装备就不显示在道具列表了
                 }
                 GameObject go = Instantiate(itemPrefab, itemListRoot);
-                Text text = go.transform.GetChild(0).GetComponent<Text>();
-                text.text = "";
                 UIEquipItem ui = go.GetComponent<UIEquipItem>();
                 //false表示不是装备列表 是左边道具列表   true就表示是装备列表
                 ui.SetEquipItem(kv.Key, kv.Value, this, false);
@@ -84,14 +87,25 @@ public class UICharEquip : MonoBehaviour
     {
         for(int i = 0; i < (int)EquipSlot.SlotMax; i++)
         {
-            var item = EquipManager.Instance.Equips[i];
+            var item = EquipManager.Instance.Equips[i];        
             if (item != null)//如果格子上有装备
             {
+                Text slotText = EquipRoot[i].GetComponentInChildren<Text>(true);
+                if (slotText != null)
+                {
+                    slotText.gameObject.SetActive(false);
+                }
                 GameObject go = Instantiate(itemEquipedIcon, slots[i]);
-                Text text = go.transform.GetChild(0).GetComponent<Text>();
-                text = null;
                 UIEquipItem ui = go.GetComponent<UIEquipItem>();
                 ui.SetEquipItem(i, item, this, true);
+            }
+            else
+            {
+                Text slotText = EquipRoot[i].GetComponentInChildren<Text>(true);
+                if (slotText != null)
+                {
+                    slotText.gameObject.SetActive(true);
+                }
             }
         }
     }

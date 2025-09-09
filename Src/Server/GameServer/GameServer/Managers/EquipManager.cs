@@ -29,7 +29,7 @@ namespace GameServer.Managers
                 }
             }
             UpdateEquip(character.Data.Equips, slot, itemID, isEquip);//更新装备
-            DBService.Instance.Save();
+            DBService.Instance.Save(true);
             return Result.Success;
         }
 
