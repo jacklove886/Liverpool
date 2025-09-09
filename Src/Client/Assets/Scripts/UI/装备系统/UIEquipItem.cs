@@ -71,10 +71,11 @@ public class UIEquipItem : MonoBehaviour,IPointerClickHandler
             {
                 DoEquip();
                 this.Selected = false;
+                this.UICharEquip.SelectEquipItem(null);
             }
             else
             {
-                this.Selected = true;
+                this.UICharEquip.SelectEquipItem(this);
             }
         }
     }

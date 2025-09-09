@@ -110,6 +110,20 @@ public class UICharEquip : MonoBehaviour
         }
     }
 
+    private UIEquipItem selectedItem;
+    public void SelectEquipItem(UIEquipItem item)
+    {
+        if (selectedItem != null)
+        {
+            selectedItem.Selected = false;
+        }
+        selectedItem = item;//将传入的item作为当前选择的Item
+        if (selectedItem != null)
+        {
+            selectedItem.Selected = true;
+        }
+    }
+
     //穿装备  由格子调用
     public void DoEquip(Item item)
     {
