@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\Managers\ShopManager.cs" />
     <Compile Include="Assets\Scripts\Models\BagItem.cs" />
     <Compile Include="Assets\Scripts\Models\Item.cs" />
+    <Compile Include="Assets\Scripts\Models\Quest.cs" />
     <Compile Include="Assets\Scripts\Models\User.cs" />
     <Compile Include="Assets\Scripts\Network\NetClient.cs" />
     <Compile Include="Assets\Scripts\Scene\SceneManager.cs" />
@@ -102,6 +103,10 @@
     <Compile Include="Assets\Scripts\UI\UIWorldElementManager.cs" />
     <Compile Include="Assets\Scripts\UI\主城场景\UIMiniMap.cs" />
     <Compile Include="Assets\Scripts\UI\主城场景\UINameBar.cs" />
+    <Compile Include="Assets\Scripts\UI\任务系统\ListView.cs" />
+    <Compile Include="Assets\Scripts\UI\任务系统\UIQuestInfo.cs" />
+    <Compile Include="Assets\Scripts\UI\任务系统\UIQuestItem.cs" />
+    <Compile Include="Assets\Scripts\UI\任务系统\UIQuestSystem.cs" />
     <Compile Include="Assets\Scripts\UI\商店系统\PageView.cs" />
     <Compile Include="Assets\Scripts\UI\商店系统\UIShop.cs" />
     <Compile Include="Assets\Scripts\UI\商店系统\UIShopItem.cs" />
