@@ -11,23 +11,23 @@ namespace Models
     public class Quest
     {
         public QuestDefine Define;
-        public NQuestInfo Info;//如果还没接任务 不存在网络信息
+        public NQuestInfo Info;
 
         public Quest()//构造函数
         {
 
         }
 
-        public Quest(NQuestInfo info)//重载
+        public Quest(NQuestInfo info)//重载   从服务器创建任务
         {
-            this.Info = info;
-            this.Define = DataManager.Instance.Quests[info.QuestId];
+            this.Info = info;//从服务器同步任务信息
+            this.Define = DataManager.Instance.Quests[info.QuestId];//获得具体QuestId的那个任务的数据
         }
 
-        public Quest(QuestDefine define)//重载
+        public Quest(QuestDefine define)//重载  从配置数据创建任务
         {
             this.Define = define;
-            this.Info = null;
+            this.Info = null;//表示任务还没被接受
         }
     }
 }

@@ -13,7 +13,7 @@ public class UIQuestItem : ListView.ListViewItem {
     public Sprite selectBg;
     public Quest quest;
 
-public override void onSelected(bool selected)
+    public override void OnSelected(bool selected)
     {
         this.background.overrideSprite= selected?selectBg: normalBg;
     }

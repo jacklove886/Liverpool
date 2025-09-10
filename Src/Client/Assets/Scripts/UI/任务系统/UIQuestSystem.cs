@@ -24,9 +24,9 @@ public class UIQuestSystem : UIWindow {
 
     void Start ()
     {
-        this.listMain.onItemSelected += this.OnQuestSelected;
-        this.listBranch.onItemSelected += this.OnQuestSelected;
-        this.Tabs.OnTabSelect += OnSelectTab;
+        this.listMain.onItemSelected += this.OnQuestSelected;//订阅主线任务列表选中的事件
+        this.listBranch.onItemSelected += this.OnQuestSelected;//订阅支线任务列表选中的事件
+        this.Tabs.OnTabSelect += OnSelectTab;//进行中任务和可接任务之间的切换
         RefreshUI();
         //QuestManager.Instance.OnQuestChanged+=RefreshUI;
     }

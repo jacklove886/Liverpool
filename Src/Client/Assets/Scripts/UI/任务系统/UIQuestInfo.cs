@@ -5,22 +5,23 @@ using Models;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIQuestInfo : MonoBehaviour {
+public class UIQuestInfo : MonoBehaviour//任务信息列表
+{
 
     public Text title;
-    public Text[] targets;
-    public Text description;
-    public UIBagItemIcon[] rewardItems;
+    public Text[] targets;//任务目标
+    public Text description;//描述
+    public UIBagItemIcon[] rewardItems;//任务奖励
 
-    public Text rewardMoney;
-    public Text rewardExp;
+    public Text rewardMoney;//奖励金额
+    public Text rewardExp;//奖励经验
 
 	void Start () {
 		
 	}
 	
 
-    public void SetQuestInfo(Quest quest)
+    public void SetQuestInfo(Quest quest)//设置信息
     {
         this.title.text = string.Format("[{0}]{1}", quest.Define.Type, quest.Define.Name);
         if (quest.Info == null)
@@ -38,7 +39,8 @@ public class UIQuestInfo : MonoBehaviour {
         this.rewardMoney.text = quest.Define.RewardGold.ToString();
         this.rewardExp.text = quest.Define.RewardExp.ToString();
 
-        foreach(var fitter in this.GetComponentsInChildren<ContentSizeFitter>())
+        //自动设置为LayoutVertical
+        foreach (var fitter in this.GetComponentsInChildren<ContentSizeFitter>())
         {
             fitter.SetLayoutVertical();
         }  
