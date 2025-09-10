@@ -35,9 +35,9 @@ namespace Managers
         //最主要的NPC交互方法
         public bool Interactive(NpcDefine npc) 
         {
-            if (npc.Type == NpcType.Task)//如果是Task类型
+            if (DoTaskInteractive(npc))
             {
-                return DoTaskInteractive(npc);
+                return true;
             }
             else if (npc.Type == NpcType.Functional)//如果是Fcuntional类型
             {
@@ -46,18 +46,13 @@ namespace Managers
             return false;
         }
 
-        //如果是任务类型
         private bool DoTaskInteractive(NpcDefine npc)
         {
-            UIMessageBox msgBox = MessageBox.Show("你好旅行者", npc.Name, MessageBoxType.Confirm, "开始对话", "取消");
-            msgBox.OnYes = () =>
-            {
-                UIDialog uIDialog = UIManager.Instance.Show<UIDialog>();
-                uIDialog.title.text = npc.Name;
-                uIDialog.Introduce.text = npc.Introduction;
-                uIDialog.ButtonText.text = "接受任务";
-            };
-            return true;
+            var status = QuestManager.Instance.GetQuestStatusByNpc(npc.ID);
+            //NPC状态为空的话 返回false
+            if (status == NpcQuestStatus.None)
+                return false;
+            return QuestManager.Instance.OpenNpcQuest(npc.ID);
         }
 
         //功能类型

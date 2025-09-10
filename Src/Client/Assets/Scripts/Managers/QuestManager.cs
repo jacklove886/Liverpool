@@ -2,6 +2,7 @@
 using SkillBridge.Message;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Managers
@@ -86,6 +87,140 @@ namespace Managers
                 this.AddNpcQuest(quest.Define.SubmitNPC, quest);
                 this.allQuests[quest.Define.ID] = quest;
             }
+        }
+
+        void AddNpcQuest(int npcID,Quest quest)
+        {
+            
+            if (!this.npcQuests.ContainsKey(npcID))
+            {
+                //如果是新npc 建立任务分类索引
+                this.npcQuests[npcID] = new Dictionary<NpcQuestStatus, List<Quest>>();
+            }
+            List<Quest> availables;
+            List<Quest> complates;
+            List<Quest> incomplates;
+
+            if(!this.npcQuests[npcID].TryGetValue(NpcQuestStatus.Available,out availables))
+            {
+                availables = new List<Quest>();
+                this.npcQuests[npcID][NpcQuestStatus.Available] = availables;
+            }
+            if (!this.npcQuests[npcID].TryGetValue(NpcQuestStatus.Complete, out complates))
+            {
+                complates = new List<Quest>();
+                this.npcQuests[npcID][NpcQuestStatus.Complete] = complates;
+            }
+            if (!this.npcQuests[npcID].TryGetValue(NpcQuestStatus.Available, out incomplates))
+            {
+                incomplates = new List<Quest>();
+                this.npcQuests[npcID][NpcQuestStatus.Incomplete] = incomplates;
+            }
+            if (quest.Info == null)
+            {
+                if (npcID == quest.Define.AcceptNPC && !this.npcQuests[npcID][NpcQuestStatus.Available].Contains(quest))
+                {
+                    this.npcQuests[npcID][NpcQuestStatus.Available].Add(quest);
+                }
+            }
+            else
+            {
+                if (npcID == quest.Define.SubmitNPC&&quest.Info.Status==QuestStatus.Complated)
+                {
+                    if (!this.npcQuests[npcID][NpcQuestStatus.Complete].Contains(quest))
+                    {
+                        this.npcQuests[npcID][NpcQuestStatus.Complete].Add(quest);
+                    }
+                }
+                if (npcID == quest.Define.SubmitNPC && quest.Info.Status == QuestStatus.InProgress)
+                {
+                    if (!this.npcQuests[npcID][NpcQuestStatus.Incomplete].Contains(quest))
+                    {
+                        this.npcQuests[npcID][NpcQuestStatus.Incomplete].Add(quest);
+                    }
+                }
+
+            }
+        }
+
+        //获取NPC任务状态
+        public NpcQuestStatus GetQuestStatusByNpc(int npcID)
+        {
+            Dictionary<NpcQuestStatus, List<Quest>> status = new Dictionary<NpcQuestStatus, List<Quest>>();
+            if(this.npcQuests.TryGetValue(npcID,out status))//获取NPC任务
+            {
+                if (status[NpcQuestStatus.Complete].Count > 0)
+                {
+                    return NpcQuestStatus.Complete;
+                }
+                if (status[NpcQuestStatus.Available].Count > 0)
+                {
+                    return NpcQuestStatus.Available;
+                }
+                if (status[NpcQuestStatus.Incomplete].Count > 0)
+                {
+                    return NpcQuestStatus.Incomplete;
+                }
+            }
+            return NpcQuestStatus.None;
+        }
+
+        public bool OpenNpcQuest(int npcID)
+        {
+            Dictionary<NpcQuestStatus, List<Quest>> status = new Dictionary<NpcQuestStatus, List<Quest>>();
+            if (this.npcQuests.TryGetValue(npcID, out status))//获取NPC任务
+            {
+                if (status[NpcQuestStatus.Complete].Count > 0)
+                {
+                    return ShowQuestDialog(status[NpcQuestStatus.Complete].First());
+                }
+                if (status[NpcQuestStatus.Available].Count > 0)
+                {
+                    return ShowQuestDialog(status[NpcQuestStatus.Available].First());
+                }
+                if (status[NpcQuestStatus.Incomplete].Count > 0)
+                {
+                    return ShowQuestDialog(status[NpcQuestStatus.Incomplete].First());
+                }
+            }
+            return false;
+        }
+
+        private bool ShowQuestDialog(Quest quest)
+        {
+            if (quest.Info == null || quest.Info.Status == QuestStatus.Complated)
+            {
+                UIQuestDialog dialog = UIManager.Instance.Show<UIQuestDialog>();
+                dialog.SetQuest(quest);
+                //dialog.OnClose += OnQuestDialogClose;
+                return true;
+            }
+            if (quest.Info != null || quest.Info.Status == QuestStatus.Complated)
+            {
+                if (!string.IsNullOrEmpty(quest.Define.DialogIncomplete))
+                {
+                    MessageBox.Show(quest.Define.DialogIncomplete);//展示未完成任务对话
+                }
+            }
+            return true;
+        }
+
+        void OnQuestDialogClose(UIWindow sender, UIWindow.WindowResult result)
+        {
+            UIQuestDialog dialog = (UIQuestDialog)sender;
+            if (result == UIWindow.WindowResult.Yes)
+            {
+                MessageBox.Show(dialog.quest.Define.DialogAccept);
+            }
+            else if(result == UIWindow.WindowResult.No)
+            {
+                MessageBox.Show(dialog.quest.Define.DialogDeny);
+            }
+        }
+
+        public void OnQuestAccepted(Quest quest)
+        {
+
         }
     }
 }

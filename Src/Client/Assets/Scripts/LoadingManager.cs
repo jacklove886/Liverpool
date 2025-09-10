@@ -42,7 +42,6 @@ public class LoadingManager : MonoBehaviour {
         //初始化服务器
         MapService.Instance.Init();
         UserService.Instance.Init();
-        NpcTestManager.Instance.Init();
         ShopManager.Instance.Init();
 
 
