@@ -6327,7 +6327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1533169996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7374,6 +7374,31 @@ Prefab:
     - target: {fileID: 1983897723090878, guid: 6b7e64eac4c99d54780d10e83263fc99, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224342416254928512, guid: 6b7e64eac4c99d54780d10e83263fc99,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -42
+      objectReference: {fileID: 0}
+    - target: {fileID: 224125727092190616, guid: 6b7e64eac4c99d54780d10e83263fc99,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 133
+      objectReference: {fileID: 0}
+    - target: {fileID: 224125727092190616, guid: 6b7e64eac4c99d54780d10e83263fc99,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 224342416254928512, guid: 6b7e64eac4c99d54780d10e83263fc99,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 114882295318302032, guid: 6b7e64eac4c99d54780d10e83263fc99,
+        type: 2}
+      propertyPath: m_Text
+      value: "\u62D2\u7EDD"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b7e64eac4c99d54780d10e83263fc99, type: 2}

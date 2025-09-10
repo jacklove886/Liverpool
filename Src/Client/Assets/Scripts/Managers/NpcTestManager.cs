@@ -9,7 +9,7 @@ namespace Managers
 {
     class NpcTestManager:Singleton<NpcTestManager>
     {
-        /*public void Init()//游戏启动时被LoadingManager调用
+        public void Init()//游戏启动时被LoadingManager调用
         {
             NpcManager.Instance.RegisterNpcEvent(Common.Data.NpcFunction.InvokeShop, OnNpcInvokeShop);//商店功能
             NpcManager.Instance.RegisterNpcEvent(Common.Data.NpcFunction.InvokeInsrance, OnNpcInvokeInsrance);//副本功能
@@ -43,7 +43,7 @@ namespace Managers
                 //什么都不做;
             };    
             return true;
-        }*/
+        }
 
     }
 }
