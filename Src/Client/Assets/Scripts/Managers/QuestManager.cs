@@ -39,7 +39,7 @@ namespace Managers
             //初始化已有任务
             foreach(var info in this.questInfos)
             {
-                Quest quest = new Quest();
+                Quest quest = new Quest(info);
                 this.AddNpcQuest(quest.Define.AcceptNPC, quest);
                 this.AddNpcQuest(quest.Define.SubmitNPC, quest);
                 this.allQuests[quest.Info.QuestId] = quest;
@@ -63,7 +63,7 @@ namespace Managers
                 {
                     continue;
                 }
-                if (kv.Value.PreQuest > 0)
+                if (kv.Value.PreQuest > 0)//如果有前置任务
                 {
                     Quest preQuest;
                     if (this.allQuests.TryGetValue(kv.Value.PreQuest,out preQuest))//获取前置任务
@@ -76,11 +76,11 @@ namespace Managers
                         {
                             continue;//接了前置任务但未完成
                         }  
-                    }
-                    else if(kv.Value.PreQuest<=0)//前置任务还没接
-                    {
-                        continue;
-                    }
+                    }        
+                }
+                else
+                {
+                    continue;//前置任务不存在 
                 }
                 Quest quest = new Quest(kv.Value);
                 this.AddNpcQuest(quest.Define.AcceptNPC, quest);
@@ -111,7 +111,7 @@ namespace Managers
                 complates = new List<Quest>();
                 this.npcQuests[npcID][NpcQuestStatus.Complete] = complates;
             }
-            if (!this.npcQuests[npcID].TryGetValue(NpcQuestStatus.Available, out incomplates))
+            if (!this.npcQuests[npcID].TryGetValue(NpcQuestStatus.Incomplete, out incomplates))
             {
                 incomplates = new List<Quest>();
                 this.npcQuests[npcID][NpcQuestStatus.Incomplete] = incomplates;
@@ -188,6 +188,7 @@ namespace Managers
 
         private bool ShowQuestDialog(Quest quest)
         {
+            //任务为空或者任务已完成
             if (quest.Info == null || quest.Info.Status == QuestStatus.Complated)
             {
                 UIQuestDialog dialog = UIManager.Instance.Show<UIQuestDialog>();
@@ -195,7 +196,8 @@ namespace Managers
                 //dialog.OnClose += OnQuestDialogClose;
                 return true;
             }
-            if (quest.Info != null || quest.Info.Status == QuestStatus.Complated)
+            //任务不为空且任务未完成
+            if (quest.Info != null && quest.Info.Status != QuestStatus.Complated)
             {
                 if (!string.IsNullOrEmpty(quest.Define.DialogIncomplete))
                 {
