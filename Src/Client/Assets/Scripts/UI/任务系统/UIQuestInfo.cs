@@ -10,7 +10,7 @@ public class UIQuestInfo : MonoBehaviour {
     public Text title;
     public Text[] targets;
     public Text description;
-    public UIBagItemIcon rewardItems;
+    public UIBagItemIcon[] rewardItems;
 
     public Text rewardMoney;
     public Text rewardExp;
