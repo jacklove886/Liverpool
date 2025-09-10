@@ -5,6 +5,7 @@ using Network;
 using SkillBridge.Message;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,8 @@ namespace GameServer.Managers
                 }
             }
             UpdateEquip(character.Data.Equips, slot, itemID, isEquip);//更新装备
+            //强制标记实体为已修改
+            DBService.Instance.Entities.Entry(character.Data).State = EntityState.Modified;
             DBService.Instance.Save();
             return Result.Success;
         }

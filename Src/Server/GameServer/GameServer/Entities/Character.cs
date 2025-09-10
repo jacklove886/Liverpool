@@ -45,7 +45,7 @@ namespace GameServer.Entities
             Info.Bag = new NBagInfo();
             Info.Bag.Items = this.Data.Bag.Items;
             Info.Bag.Unlocked = this.Data.Bag.Unlocked;
-            //装备系统
+            //装备系统数据初始化
             Info.Equips = this.Data.Equips;
 
             //状态管理器

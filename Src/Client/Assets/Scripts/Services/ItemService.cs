@@ -49,10 +49,11 @@ namespace Services
 
         //pendingEquip里有装备信息  发送请求的时候记录下来
         Item pendingEquip = null;
-        bool isEquip = false;
+        bool isEquip = false;//是否为装备操作 false为脱装备
+
         public bool SendEquip(Item equip, bool isEquip)
         {
-            if (pendingEquip!= null)
+            if (pendingEquip!= null)//如果当前有正在处理的请求 比如连续点击
             {
                 return false;
             }
@@ -65,7 +66,7 @@ namespace Services
             message.Request.itemEquip = new ItemEquipRequest();
             message.Request.itemEquip.Slot = (int)equip.EquipInfo.Slot;//传入装备槽
             message.Request.itemEquip.itemId = equip.Id;//传入商品ID
-            message.Request.itemEquip.isEquip = isEquip;//传入商品ID
+            message.Request.itemEquip.isEquip = isEquip;//传入是否穿戴
             NetClient.Instance.SendMessage(message);//发送消息
             return true;
         }

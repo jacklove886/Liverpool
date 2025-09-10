@@ -36,12 +36,13 @@ public class UIEquipItem : MonoBehaviour,IPointerClickHandler
 
     private bool isEquiped = false;//代表是否是装备列表 false为道具列表
 
-    public void SetEquipItem(int idx,Item item,UICharEquip owner,bool equiped)
+    //设置信息
+    public void SetEquipItem(int idx,Item item,UICharEquip UICharEquip, bool equiped)
     {
         Debug.Log("SetEquipItem called: equiped = " + equiped);
-        this.UICharEquip = owner;
-        this.index = idx;
-        this.item = item;
+        this.UICharEquip = UICharEquip;
+        this.index = idx;//保存装备的索引
+        this.item = item;//保存道具对象
         this.isEquiped = equiped;      
         if (!isEquiped)
         {
@@ -53,8 +54,9 @@ public class UIEquipItem : MonoBehaviour,IPointerClickHandler
                 case "Wizard": this.LimitClass.text = "法师"; break;
                 case "Archer": this.LimitClass.text = "游侠"; break;
             }
-            this.limitCategory.text = this.item.Define.Category;  
+            this.limitCategory.text = this.item.Define.Category;  //装备类型
         }
+        //两个列表的图标都要显示
         this.icon.overrideSprite = Resloader.Load<Sprite>(this.item.Define.Icon);
     }
 
@@ -65,17 +67,16 @@ public class UIEquipItem : MonoBehaviour,IPointerClickHandler
         {
             UnEquip();
         }
-        else
+        else//如果没装备
         {
-            if (this.selected)
+            if (this.selected)//表示当前已选中
             {
-                DoEquip();
-                this.Selected = false;
-                this.UICharEquip.SelectEquipItem(null);
+                DoEquip();//穿装备
+                this.UICharEquip.SelectEquipItem(null);//清除选中项
             }
-            else
+            else//当前没选中
             {
-                this.UICharEquip.SelectEquipItem(this);
+                this.UICharEquip.SelectEquipItem(this);//设为选中状态
             }
         }
     }
@@ -85,8 +86,9 @@ public class UIEquipItem : MonoBehaviour,IPointerClickHandler
         var msg = MessageBox.Show(string.Format("要装备{0}吗?", this.item.Define.Name), "确认", MessageBoxType.Confirm);
         msg.OnYes = () =>
         {
+            //获取槽位上的装备
             var oldEquip = EquipManager.Instance.GetEquip(item.EquipInfo.Slot);
-            if (oldEquip != null)
+            if (oldEquip != null)//如果不为空 说明已有装备
             {
                 var newmsg= MessageBox.Show(string.Format("要替换掉{0}吗?", oldEquip.Define.Name), "确认", MessageBoxType.Confirm);
                 newmsg.OnYes = () =>

@@ -12,24 +12,44 @@ namespace Managers
     {
         public event System.Action OnEquipChange;
 
+        //因为EquipSlot枚举是从0开始 所以加一个字段SlotMax表示枚举最大长度
         public Item[] Equips = new Item[(int)EquipSlot.SlotMax];//数组的长度是7
 
         byte[] Data;
 
-        unsafe public void Init(byte[] data)
+        unsafe public void Init(byte[] data)//在Uservice里调用 初始化装备管理器
         {
-            this.Data = data;
-            this.ParseEquipData(data);//解析数据
+            this.Data = data;//保存装备数据
+            this.AnalyzeEquipData(data);//解析数据
+        }
+   
+        unsafe void AnalyzeEquipData(byte[] data)//解析装备
+        {
+            fixed (byte* pt = this.Data)//固定内存地址
+            {
+                for(int i = 0; i < this.Equips.Length; i++)
+                {
+                    int itemID = *(int*)(pt + i * sizeof(int));
+                    if (itemID > 0)//说明该槽位有装备
+                    {
+                        Equips[i] = ItemManager.Instance.Items[itemID];
+                    }
+                    else//没装备
+                    {
+                        Equips[i] = null;//槽位设置为空
+                    }
+                }
+            }
         }
 
         public bool Contains(int equipID)//看有没有穿这个装备
         {
-            for(int i = 0; i < this.Equips.Length; i++)
+            for (int i = 0; i < this.Equips.Length; i++)
             {
                 if (Equips[i] != null && Equips[i].Id == equipID)
                 {
-                    return true;
-                }       
+                    return true;//该槽位穿了装备
+                }
             }
             return false;
         }
@@ -37,25 +57,6 @@ namespace Managers
         public Item GetEquip(EquipSlot slot)//EquipSlot是枚举
         {
             return Equips[(int)slot];//返回枚举的int值 判断是哪个槽位
-        }
-
-        unsafe void ParseEquipData(byte[] data)
-        {
-            fixed (byte* pt = this.Data)
-            {
-                for(int i = 0; i < this.Equips.Length; i++)
-                {
-                    int itemID = *(int*)(pt + i * sizeof(int));
-                    if (itemID > 0)
-                    {
-                        Equips[i] = ItemManager.Instance.Items[itemID];
-                    }
-                    else
-                    {
-                        Equips[i] = null;
-                    }
-                }
-            }
         }
 
         unsafe public byte[] GetEquipData()
@@ -92,6 +93,7 @@ namespace Managers
         //接受服务器响应后 由ItemService调用
         public void OnEquipItem(Item equip)
         {
+            //如果该槽位已经是这个装备
             if (this.Equips[(int)equip.EquipInfo.Slot] != null && this.Equips[(int)equip.EquipInfo.Slot].Id == equip.Id)
                 {
                 return;
@@ -107,7 +109,7 @@ namespace Managers
         {
             if (this.Equips[(int)slot] != null)
             {
-                this.Equips[(int)slot] = null;
+                this.Equips[(int)slot] = null;//清空槽位
                 if (OnEquipChange != null)
                 {
                     OnEquipChange();

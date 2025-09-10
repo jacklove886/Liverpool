@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222035304215943356}
   - component: {fileID: 114503980171316162}
   m_Layer: 5
-  m_Name: Text
+  m_Name: "\u526F\u624BText"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 222679929349843714}
   - component: {fileID: 114438804466446280}
   m_Layer: 5
-  m_Name: Text
+  m_Name: "\u9774\u5B50Text"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 222243209547831402}
   - component: {fileID: 114762317094885646}
   m_Layer: 5
-  m_Name: Text
+  m_Name: "\u6B66\u5668Text"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 222820027022751850}
   - component: {fileID: 114966497161952878}
   m_Layer: 5
-  m_Name: Text
+  m_Name: "\u88E4\u5B50Text"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 222086965088577898}
   - component: {fileID: 114816483599082364}
   m_Layer: 5
-  m_Name: Text
+  m_Name: "\u5934\u76D4Text"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 222314595484360462}
   - component: {fileID: 114354728129057278}
   m_Layer: 5
-  m_Name: Text
+  m_Name: "\u62A4\u80A9Text"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -600,7 +600,7 @@ GameObject:
   - component: {fileID: 222900472497705520}
   - component: {fileID: 114042837091635962}
   m_Layer: 5
-  m_Name: Text
+  m_Name: "\u80F8\u7532Text"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1009,14 +1009,14 @@ MonoBehaviour:
   - {fileID: 224072731918628590}
   - {fileID: 224624332886822688}
   - {fileID: 224385217289113878}
-  EquipRoot:
-  - {fileID: 1482237563851636}
-  - {fileID: 1631471970961552}
-  - {fileID: 1292050962595486}
-  - {fileID: 1948451290435328}
-  - {fileID: 1257344259100362}
-  - {fileID: 1682203608675628}
-  - {fileID: 1165535850293896}
+  EquipText:
+  - {fileID: 1103210670007370}
+  - {fileID: 1013927884167138}
+  - {fileID: 1416080947490340}
+  - {fileID: 1445031208759946}
+  - {fileID: 1533305114359878}
+  - {fileID: 1148216669393698}
+  - {fileID: 1038547505094258}
 --- !u!114 &114016465080074020
 MonoBehaviour:
   m_ObjectHideFlags: 1
