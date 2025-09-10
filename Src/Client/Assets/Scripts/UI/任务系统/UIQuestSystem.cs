@@ -26,7 +26,7 @@ public class UIQuestSystem : UIWindow {
     {
         this.listMain.onItemSelected += this.OnQuestSelected;
         this.listBranch.onItemSelected += this.OnQuestSelected;
-        //this.Tabs.OnTabSelect += OnSelectTab;
+        this.Tabs.OnTabSelect += OnSelectTab;
         RefreshUI();
         //QuestManager.Instance.OnQuestChanged+=RefreshUI;
     }

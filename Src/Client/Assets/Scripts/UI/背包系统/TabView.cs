@@ -10,6 +10,7 @@ public class TabView: MonoBehaviour//标签管理器
 {
     public TabButton[] tabButtons;//按钮
     public GameObject[] tabPages;//页码
+    public System.Action<int> OnTabSelect;
 
     public int index = -1;
 
@@ -34,6 +35,10 @@ public class TabView: MonoBehaviour//标签管理器
                 tabPages[i].SetActive(i == tabindex);
             }
             this.index = tabindex;//更新索引
+            if (OnTabSelect != null)
+            {
+                OnTabSelect(tabindex);
+            }
         }
     }
     
