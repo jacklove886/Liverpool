@@ -90,7 +90,8 @@ message NCharacterInfo {
 	int64 gold=9;
 	repeated NItemInfo Items=10;//可重复类型的 即数组
 	NBagInfo Bag=11; //背包系统
-	bytes Equips=12;
+	bytes Equips=12;//装备
+	repeated NQuestInfo quests=13;//任务列表
 }
 
 message NItemInfo
@@ -201,6 +202,9 @@ message NetMessageRequest{
 	MapTeleportRequest mapTeleport = 10;
 	ItemBuyRequest itemBuy=11;
 	ItemEquipRequest itemEquip=12;
+
+	QuestListRequest questList=13;//任务列表
+	QuestAcceptRequest questAccept=14;//接受任务
 }
 
 message NetMessageResponse{
@@ -217,6 +221,9 @@ message NetMessageResponse{
 	MapEntitySyncResponse mapEntitySync = 9;
 	ItemBuyResponse itemBuy=11;
 	ItemEquipResponse itemEquip=12;
+
+	QuestListResponse questList=13;
+	QuestAcceptResponse questAccept=14;
 
 	StatusNotify statusNotify=100;
 
@@ -363,6 +370,54 @@ message ItemEquipRequest
 }
 
 message ItemEquipResponse
+{
+	RESULT result=1;
+	string errormsg=2;
+}
+
+//任务系统
+
+enum QUEST_STATUS
+{
+	IN_PROGRESS=0;//接受未完成
+	COMPLATED=1;//已完成 未提交
+	FINISHED=2;//已完成
+	FAILED=3;//失败
+}
+
+enum QUEST_LIST_TYPE//任务列表的类型(不一定用得到)
+{
+	ALL=0;
+	IN_PROGRESS=1;
+	FINISHED=2;
+}
+
+message NQuestInfo
+{
+	int32 quest_id=1;//任务ID
+	int32 quest_dbid=2;//对应数据库的ID 暂时用不到
+	QUEST_STATUS status=3;//任务状态
+	repeated int32 targets=4;
+}
+
+message QuestListRequest
+{
+	QUEST_LIST_TYPE listType=1;
+}
+
+message QuestListResponse
+{
+	RESULT result=1;
+	string errormsg=2;
+	repeated NQuestInfo quests=3;//任务内容
+}
+
+message QuestAcceptRequest
+{
+	int32 quest_id=1;
+}
+
+message QuestAcceptResponse
 {
 	RESULT result=1;
 	string errormsg=2;

@@ -29,6 +29,8 @@ namespace Managers
         public Dictionary<int, Dictionary<int, ShopItemDefine>> ShopItems = null;
         //装备字典
         public Dictionary<int, EquipDefine> Equips = null;
+        //任务字典
+        public Dictionary<int, QuestDefine> Quests = null;
 
 
         public DataManager()
@@ -62,6 +64,9 @@ namespace Managers
 
             json = File.ReadAllText(this.DataPath + "EquipDefine.txt");
             this.Equips = JsonConvert.DeserializeObject<Dictionary<int, EquipDefine>>(json);
+
+            json = File.ReadAllText(this.DataPath + "QuestDefine.txt");
+            this.Quests = JsonConvert.DeserializeObject<Dictionary<int, QuestDefine>>(json);
         }
 
 
@@ -104,6 +109,11 @@ namespace Managers
 
             json = File.ReadAllText(this.DataPath + "EquipDefine.txt");
             this.Equips = JsonConvert.DeserializeObject<Dictionary<int, EquipDefine>>(json);
+
+            yield return null;
+
+            json = File.ReadAllText(this.DataPath + "QuestDefine.txt");
+            this.Quests = JsonConvert.DeserializeObject<Dictionary<int, QuestDefine>>(json);
 
             yield return null;
         }
