@@ -19,15 +19,13 @@ public class TabButton : MonoBehaviour //单个标签按钮  是TabView的子物
     private void Start()
     {
         tabImage = this.GetComponent<Image>();
-        if(normalImage!=null)
         normalImage = tabImage.sprite;
         this.GetComponent<Button>().onClick.AddListener(OnClick);
     }
 
     public void Select(bool select)
     {
-        if (normalImage != null&& activeImage!=null)
-            tabImage.overrideSprite = select ? activeImage : normalImage;
+        tabImage.overrideSprite = select ? activeImage : normalImage;
     }
 
     void OnClick()

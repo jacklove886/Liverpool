@@ -32,13 +32,13 @@ public class TabView: MonoBehaviour//标签管理器
             for(int i = 0; i < tabButtons.Length; i++)
             {
                 tabButtons[i].Select(i == tabindex);
-                if (tabPages[i]== null)
+                if (tabPages[i]!= null)
                 {
-                    return;   
+                    tabPages[i].SetActive(i == tabindex);
                 }
                 else
                 {
-                    tabPages[i].SetActive(i == tabindex);
+                    continue;
                 }
             }
             this.index = tabindex;//更新索引

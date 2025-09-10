@@ -45,23 +45,23 @@ public class UIQuestSystem : UIWindow {
     void RefreshUI()
     {
         ClearAllQuestList();
-        //InitAllQuestItems();
+        InitAllQuestItems();
     }
 
-    /*void InitAllQuestItems()
+    void InitAllQuestItems()
     {
-        foreach(var kv in QuestManager.Instance.allQuestt)
+        foreach(var kv in QuestManager.Instance.allQuests)
         {
             if (showAvaiableList)
             {
-                if (kv.value.Info != null)
+                if (kv.Value.Info != null)
                 {
                     continue;
                 }
             }
             else
             {
-                if(kv.value.Info == null)
+                if(kv.Value.Info == null)
                 {
                     continue;
                 }
@@ -80,7 +80,7 @@ public class UIQuestSystem : UIWindow {
                 this.listBranch.AddItem(ui);
             }
         }
-    }*/
+    }
 
 
     void ClearAllQuestList()

@@ -12,7 +12,6 @@ namespace Managers
         public void Init()//游戏启动时被LoadingManager调用
         {
             NpcManager.Instance.RegisterNpcEvent(Common.Data.NpcFunction.InvokeShop, OnNpcInvokeShop);//商店功能
-            NpcManager.Instance.RegisterNpcEvent(Common.Data.NpcFunction.InvokeInsrance, OnNpcInvokeInsrance);//副本功能
         }
 
         //方法匹配委托定义public delegate bool NpcActionHandler(NpcDefine npc)
@@ -28,22 +27,5 @@ namespace Managers
             uIDialog.shopParam = npc.Param;
             return true;
         }
-
-        private bool OnNpcInvokeInsrance(NpcDefine npc)
-        {
-            UIMessageBox msgBox = MessageBox.Show("你好旅行者", npc.Name, MessageBoxType.Confirm, "开始对话", "取消");
-            msgBox.OnYes = () =>
-            {
-                UIDialog uIDialog = UIManager.Instance.Show<UIDialog>();
-                uIDialog.title.text = npc.Name;
-                uIDialog.Introduce.text = npc.Introduction;
-            };
-            msgBox.OnNo = () =>
-            {
-                //什么都不做;
-            };    
-            return true;
-        }
-
     }
 }

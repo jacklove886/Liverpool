@@ -75,12 +75,12 @@ namespace Managers
                         if (preQuest.Info.Status != QuestStatus.Finished)
                         {
                             continue;//接了前置任务但未完成
-                        }  
-                    }        
-                }
-                else
-                {
-                    continue;//前置任务不存在 
+                        }
+                    }
+                    else//前置任务未解锁
+                    {
+                        continue;
+                    }
                 }
                 Quest quest = new Quest(kv.Value);
                 this.AddNpcQuest(quest.Define.AcceptNPC, quest);
@@ -193,7 +193,7 @@ namespace Managers
             {
                 UIQuestDialog dialog = UIManager.Instance.Show<UIQuestDialog>();
                 dialog.SetQuest(quest);
-                //dialog.OnClose += OnQuestDialogClose;
+                dialog.OnClose += OnQuestDialogClose;
                 return true;
             }
             //任务不为空且任务未完成
@@ -216,7 +216,10 @@ namespace Managers
             }
             else if(result == UIWindow.WindowResult.No)
             {
-                MessageBox.Show(dialog.quest.Define.DialogDeny);
+                UIDialog uidialog = UIManager.Instance.Show<UIDialog>();
+                uidialog.Introduce.text = dialog.quest.Define.DialogDeny;
+                uidialog.title.text = "那很坏了";
+                uidialog.ButtonText.text = "确认";
             }
         }
 
