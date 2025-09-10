@@ -36,7 +36,7 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
             }
             if (quest.Info.Status == SkillBridge.Message.QuestStatus.InProgress)
             {
-                this.description.text = quest.Define.DialogIncomplete;
+                this.description.text = string.Format("任务目标:"+quest.Define.DialogIncomplete).ToString();
             }
         }
         this.rewardMoney.text = quest.Define.RewardGold.ToString();
