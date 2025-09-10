@@ -26,7 +26,7 @@ public class UIQuestSystem : UIWindow {
     {
         this.listMain.onItemSelected += this.OnQuestSelected;
         this.listBranch.onItemSelected += this.OnQuestSelected;
-        this.Tabs.OnTabSelect += OnSelectTab;
+        //this.Tabs.OnTabSelect += OnSelectTab;
         RefreshUI();
         //QuestManager.Instance.OnQuestChanged+=RefreshUI;
     }
@@ -45,10 +45,10 @@ public class UIQuestSystem : UIWindow {
     void RefreshUI()
     {
         ClearAllQuestList();
-        InitAllQuestItems();
+        //InitAllQuestItems();
     }
 
-    void InitAllQuestItems()
+    /*void InitAllQuestItems()
     {
         foreach(var kv in QuestManager.Instance.allQuestt)
         {
@@ -67,9 +67,20 @@ public class UIQuestSystem : UIWindow {
                 }
             }
 
-            GameObject go=Instantiate(UIQuestItem,kv.Value.Define.Type==QuestType.Main)
+            //如果是主线 放到主线任务列里
+            GameObject go = Instantiate(UIQuestItem, kv.Value.Define.Type == QuestType.Main ? this.listMain.transform : this.listBranch.transform);
+            UIQuestItem ui = go.GetComponent<UIQuestItem>();
+            ui.SetQuestInfo(kv.Value);
+            if (kv.Value.Define.Type == QuestType.Main)
+            {
+                this.listMain.AddItem(ui);
+            }
+            else
+            {
+                this.listBranch.AddItem(ui);
+            }
         }
-    }
+    }*/
     
 
     void ClearAllQuestList()
@@ -78,19 +89,10 @@ public class UIQuestSystem : UIWindow {
         this.listBranch.RemoveAll();
     }
 
-    public void DoEquip(Item item)
-    {
-        EquipManager.Instance.OnEquipItem(item);
-    }
-
-    public void UnEquip(Item item)
-    {
-        EquipManager.Instance.UnEuqipItem(item);
-    }
     public void OnQuestSelected(ListView.ListViewItem item)
     {
-        UIQuestItem questItem = item as QIQuestItem;
-        this.questInfo.SetQuestInfo(questInfo.quest);
+        UIQuestItem questItem = item as UIQuestItem;
+        this.questInfo.SetQuestInfo(questItem.quest);
     }
 
 
