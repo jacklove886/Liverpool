@@ -51,5 +51,10 @@ public class UIQuestDialog : MonoBehaviour {
             }
         }
     }
-            
+
+    public void OnClickClose()
+    {
+        UIManager.Instance.Close(typeof(UIQuestDialog));
+    }
+
 }

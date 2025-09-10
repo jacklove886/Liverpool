@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Models
 {
-    public class Quest
+    public class Quest//实体类 具体的任务Quest
     {
         public QuestDefine Define;
         public NQuestInfo Info;

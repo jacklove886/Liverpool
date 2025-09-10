@@ -108,4 +108,9 @@ public class UIMain : MonoSingleton<UIMain> {
     {
         UIManager.Instance.Show<UICharEquip>();//商店
     }
+
+    public void OnClickQuest()
+    {
+        UIManager.Instance.Show<UIQuestSystem>();//任务
+    }
 }

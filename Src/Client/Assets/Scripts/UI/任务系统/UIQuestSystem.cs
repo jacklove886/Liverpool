@@ -22,7 +22,7 @@ public class UIQuestSystem : UIWindow {
     private bool showAvaiableList = false;//是否显示可接任务
 
 
-    void Start ()
+    void Start()
     {
         this.listMain.onItemSelected += this.OnQuestSelected;//订阅主线任务列表选中的事件
         this.listBranch.onItemSelected += this.OnQuestSelected;//订阅支线任务列表选中的事件
@@ -81,7 +81,7 @@ public class UIQuestSystem : UIWindow {
             }
         }
     }*/
-    
+
 
     void ClearAllQuestList()
     {
@@ -95,5 +95,9 @@ public class UIQuestSystem : UIWindow {
         this.questInfo.SetQuestInfo(questItem.quest);
     }
 
+    public void OnClickClose()
+    {
+        UIManager.Instance.Close(typeof(UIQuestSystem));
+    }
 
 }
