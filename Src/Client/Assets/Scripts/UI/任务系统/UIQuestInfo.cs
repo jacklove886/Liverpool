@@ -36,11 +36,11 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
             }
             if (quest.Info.Status == SkillBridge.Message.QuestStatus.InProgress)
             {
-                this.description.text = string.Format("任务目标:"+quest.Define.DialogIncomplete).ToString();
+                this.description.text = quest.Define.DialogIncomplete;
             }
         }
-        this.rewardMoney.text = quest.Define.RewardGold.ToString();
-        this.rewardExp.text = quest.Define.RewardExp.ToString();
+        this.rewardMoney.text = "金币 : "+quest.Define.RewardGold.ToString();
+        this.rewardExp.text = "经验值 : " + quest.Define.RewardExp.ToString();
 
         //自动设置为LayoutVertical
         foreach (var fitter in this.GetComponentsInChildren<ContentSizeFitter>())

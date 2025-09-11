@@ -75,6 +75,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
                 entityController.entity = character;
                 entityController.isPlayer = character.Info.Name == User.Instance.CurrentCharacter.Name;
             }
+            //创建角色血量条
             UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, character);
             InitGameObject(Characters[character.entityId], character, entityController);
         }

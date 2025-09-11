@@ -17,6 +17,7 @@ public class UIWorldElementManager : MonoSingleton<UIWorldElementManager> {
     protected override void OnStart()
     {
         namePrefab.SetActive(false);
+        npcStatusPrefab.SetActive(false);
     }
 
 
@@ -28,8 +29,12 @@ public class UIWorldElementManager : MonoSingleton<UIWorldElementManager> {
     public void AddCharacterNameBar(Transform owner,Character character)
     {
         GameObject goNameBar = Instantiate(namePrefab, this.transform);
-        goNameBar.name = "角色" + character.Name;
-        goNameBar.GetComponent<UINameBar>().owner = owner;
+        goNameBar.name = character.Name;
+
+        UIWorldElement worldElement = goNameBar.GetComponent<UIWorldElement>();
+        worldElement.owner = owner;
+        worldElement.Camera = Camera.main.transform;
+
         goNameBar.GetComponent<UINameBar>().character = character;
         goNameBar.SetActive(true);
         this.elementsNames[owner] = goNameBar;
@@ -52,12 +57,15 @@ public class UIWorldElementManager : MonoSingleton<UIWorldElementManager> {
         }
         else
         {
-            GameObject go = Instantiate(npcStatusPrefab, this.transform);
-            go.name = "NPC状态" + owner.name;
-            go.GetComponent<UINameBar>().owner = owner;
-            go.GetComponent<UIQuestStatus>().SetQuestStatus(status);
-            go.SetActive(true);
-            this.elementsStatus[owner] = go;
+            GameObject goNpcBar = Instantiate(npcStatusPrefab, this.transform);
+            goNpcBar.name = owner.name;
+
+            UIWorldElement worldElement = goNpcBar.GetComponent<UIWorldElement>();
+            worldElement.owner = owner;
+
+            goNpcBar.GetComponent<UIQuestStatus>().SetQuestStatus(status);
+            goNpcBar.SetActive(true);
+            this.elementsStatus[owner] = goNpcBar;
         }      
     }
 

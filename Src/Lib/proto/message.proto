@@ -205,6 +205,7 @@ message NetMessageRequest{
 
 	QuestListRequest questList=13;//任务列表
 	QuestAcceptRequest questAccept=14;//接受任务
+	QuestSubmitRequest questSubmit=15;//提交任务
 }
 
 message NetMessageResponse{
@@ -224,6 +225,7 @@ message NetMessageResponse{
 
 	QuestListResponse questList=13;
 	QuestAcceptResponse questAccept=14;
+	QuestSubmitResponse questSubmit=15;//提交任务
 
 	StatusNotify statusNotify=100;
 
@@ -421,4 +423,17 @@ message QuestAcceptResponse
 {
 	RESULT result=1;
 	string errormsg=2;
+	NQuestInfo quest=3;
+}
+
+message QuestSubmitRequest
+{
+	int32 quest_id=1;
+}
+
+message QuestSubmitResponse
+{
+	RESULT result=1;
+	string errormsg=2;
+	NQuestInfo quest=3;
 }

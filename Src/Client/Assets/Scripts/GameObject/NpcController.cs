@@ -32,6 +32,8 @@ public class NpcController : MonoBehaviour {
 
         originColor = meshrenderer.sharedMaterial.color;//原始颜色是初始化时候的颜色
         StartCoroutine(Actions());
+        NpcQuestStatus status = QuestManager.Instance.GetQuestStatusByNpc(npcId);
+        UIWorldElementManager.Instance.AddNpcQuestStatus(this.transform, status);
     }
 
     //休闲动作的行为
@@ -41,7 +43,10 @@ public class NpcController : MonoBehaviour {
         {
             if (inInteractive) yield return new WaitForSeconds(3f);//如果在交互 等两秒
             else yield return new WaitForSeconds(Random.Range(8f, 15f));//等8-15秒播放Relax动画
-            Relax();
+            if (!inInteractive)
+            {
+                Relax();
+            }      
         }
     }
 
