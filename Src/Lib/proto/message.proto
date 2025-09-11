@@ -206,6 +206,7 @@ message NetMessageRequest{
 	QuestListRequest questList=13;//任务列表
 	QuestAcceptRequest questAccept=14;//接受任务
 	QuestSubmitRequest questSubmit=15;//提交任务
+	QuestAbandonRequest questAbandon=16;//放弃任务
 }
 
 message NetMessageResponse{
@@ -226,6 +227,7 @@ message NetMessageResponse{
 	QuestListResponse questList=13;
 	QuestAcceptResponse questAccept=14;
 	QuestSubmitResponse questSubmit=15;//提交任务
+	QuestAbandonResponse questAbandon=16;//放弃任务
 
 	StatusNotify statusNotify=100;
 
@@ -414,7 +416,7 @@ message QuestListResponse
 	repeated NQuestInfo quests=3;//任务内容
 }
 
-message QuestAcceptRequest
+message QuestAcceptRequest//接受
 {
 	int32 quest_id=1;
 }
@@ -426,7 +428,7 @@ message QuestAcceptResponse
 	NQuestInfo quest=3;
 }
 
-message QuestSubmitRequest
+message QuestSubmitRequest//提交
 {
 	int32 quest_id=1;
 }
@@ -436,4 +438,15 @@ message QuestSubmitResponse
 	RESULT result=1;
 	string errormsg=2;
 	NQuestInfo quest=3;
+}
+
+message QuestAbandonRequest//放弃
+{
+	int32 quest_id=1;
+}
+
+message QuestAbandonResponse
+{
+	RESULT result=1;
+	string errormsg=2;
 }

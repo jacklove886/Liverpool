@@ -223,7 +223,12 @@ namespace Managers
             }
         }
 
-        public void OnQuestAccepted(Quest quest)
+        public void OnQuestAccepted(NQuestInfo quest)
+        {
+
+        }
+
+        public void OnQuestSubmited(NQuestInfo quest)
         {
 
         }

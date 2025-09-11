@@ -14,7 +14,7 @@ namespace Services
     {
         public ItemService()//构造函数
         {
-            //订阅ItemBuyResponse类型的响应消息  发送响应调用OnItemBuy
+            //发送请求 订阅响应消息并调用方法  
             MessageDistributer.Instance.Subscribe<ItemBuyResponse>(this.OnItemBuy);
             MessageDistributer.Instance.Subscribe<ItemEquipResponse>(this.OnItemEquip);
         }

@@ -17,7 +17,8 @@ public class NpcController : MonoBehaviour {
     private Color originColor;
     private Renderer meshrenderer;
 
-    NpcDefine npc;
+    private NpcDefine npc;
+    private NpcQuestStatus status;
 
 
     void Start()
@@ -32,7 +33,7 @@ public class NpcController : MonoBehaviour {
 
         originColor = meshrenderer.sharedMaterial.color;//原始颜色是初始化时候的颜色
         StartCoroutine(Actions());
-        NpcQuestStatus status = QuestManager.Instance.GetQuestStatusByNpc(npcId);
+        status = QuestManager.Instance.GetQuestStatusByNpc(npcId);
         UIWorldElementManager.Instance.AddNpcQuestStatus(this.transform, status);
     }
 

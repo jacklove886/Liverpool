@@ -16,7 +16,7 @@ namespace GameServer.Entities
         public TCharacter Data;
         public StatusManager StatusManager;
         public ItemManager ItemManager;
-        //public StatusManager StatusManager;
+        public QuestManager QuestManager;
         
         
          //T开头是数据库的
