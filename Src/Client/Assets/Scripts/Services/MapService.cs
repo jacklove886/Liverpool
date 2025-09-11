@@ -40,7 +40,7 @@ namespace Services
 
             foreach (var cha in response.Characters)
             {
-               if(User.Instance.CurrentCharacter.Name==cha.Name)
+               if(User.Instance.CurrentCharacter==null||(cha.Type==CharacterType.Player&&User.Instance.CurrentCharacter.Id==cha.Id))
                {
                     User.Instance.CurrentCharacter=cha;
                }
@@ -72,11 +72,11 @@ namespace Services
 
         private void OnMapCharacterLeave(object sender, MapCharacterLeaveResponse response)
         {
-            Debug.LogFormat("{0}离开了地图", response.characterId);
+            Debug.LogFormat("{0}离开了地图", response.entityId);
 
-            if (response.characterId != User.Instance.CurrentCharacter.Id)
+            if (response.entityId != User.Instance.CurrentCharacter.EntityId)
             {
-                CharacterManager.Instance.RemoveCharacter(response.characterId);//离开的是其他人 移除离开的人
+                CharacterManager.Instance.RemoveCharacter(response.entityId);//离开的是其他人 移除离开的人
             }
             else
             {

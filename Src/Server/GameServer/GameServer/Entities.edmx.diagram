@@ -5,17 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d5312fb67cf346d8bed3825252f1d401" Name="Diagram1" ZoomLevel="98">
-        <EntityTypeShape EntityType="ExtremeWorldModel.TUser" Width="1.5" PointX="1" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ExtremeWorldModel.TPlayer" Width="1.5" PointX="4.25" PointY="2.375" />
+        <EntityTypeShape EntityType="ExtremeWorldModel.TUser" Width="1.5" PointX="5.375" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExtremeWorldModel.TPlayer" Width="1.5" PointX="5.375" PointY="3.625" />
         <AssociationConnector Association="ExtremeWorldModel.UserPlayer" />
-        <EntityTypeShape EntityType="ExtremeWorldModel.TCharacter" Width="1.5" PointX="7.25" PointY="2.75" />
+        <EntityTypeShape EntityType="ExtremeWorldModel.TCharacter" Width="1.5" PointX="7.75" PointY="1.125" />
         <AssociationConnector Association="ExtremeWorldModel.PlayerCharacter" />
-        <EntityTypeShape EntityType="ExtremeWorldModel.TCharacterItem" Width="1.5" PointX="9.75" PointY="2.75" />
+        <EntityTypeShape EntityType="ExtremeWorldModel.TCharacterItem" Width="1.5" PointX="9.75" PointY="2.125" />
         <AssociationConnector Association="ExtremeWorldModel.CharacterItem" />
         <EntityTypeShape EntityType="ExtremeWorldModel.TCharacterBag" Width="1.5" PointX="12.375" PointY="2.25" />
         <AssociationConnector Association="ExtremeWorldModel.CharacterBag" />
-        <EntityTypeShape EntityType="ExtremeWorldModel.TCharacterQuest" Width="1.5" PointX="15.875" PointY="2.375" />
+        <EntityTypeShape EntityType="ExtremeWorldModel.TCharacterQuest" Width="1.5" PointX="12.5" PointY="4.375" />
         <AssociationConnector Association="ExtremeWorldModel.TCharacterTCharacterQuest" />
+        <EntityTypeShape EntityType="ExtremeWorldModel.TCharacterFriend" Width="1.5" PointX="9.75" PointY="4.375" />
+        <AssociationConnector Association="ExtremeWorldModel.CharacterFriend" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

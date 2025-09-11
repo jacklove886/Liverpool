@@ -10,15 +10,16 @@ using System.Threading.Tasks;
 
 namespace GameServer.Entities
 {
-    public class Character : CharacterBase
+    public class Character : CharacterBase//基类是Entity
     {
        
         public TCharacter Data;
         public StatusManager StatusManager;
         public ItemManager ItemManager;
         public QuestManager QuestManager;
-        
-        
+        public FriendManager FriendManager;
+
+
          //T开头是数据库的
         public Character(CharacterType type,TCharacter cha)://构造函数
             base(new Core.Vector3Int(cha.MapPosX, cha.MapPosY, cha.MapPosZ),new Core.Vector3Int(100,0,0))
@@ -28,14 +29,15 @@ namespace GameServer.Entities
             Info = new NCharacterInfo();//NCharacterInfo是自定义的协议
             Info.Type = type;
             Info.Id = cha.ID;
+            Info.EntityId = this.entityId;//继承自Entity
             Info.Name = cha.Name;
             Info.Level = 10; //cha.Level
-            Info.Tid = cha.TID;
+            Info.ConfigId = cha.TID;
             Info.Class = (CharacterClass)cha.Class;
             Info.mapId = cha.MapID;
             Info.Gold = cha.Gold;
             Info.Entity = this.EntityData;
-            Define = DataManager.Instance.Characters[this.Info.Tid];
+            Define = DataManager.Instance.Characters[this.Info.ConfigId];
 
             //道具系统
             ItemManager = new ItemManager(this);
@@ -54,6 +56,11 @@ namespace GameServer.Entities
             //任务系统
             this.QuestManager = new QuestManager(this);
             this.QuestManager.GetQuestInfos(Info.Quests);
+
+            //好友系统
+            //任务系统
+            this.FriendManager = new FriendManager(this);
+            this.FriendManager.GetFrinedInfos(Info.Quests);
         }
 
         public long Gold

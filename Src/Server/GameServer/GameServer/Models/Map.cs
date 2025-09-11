@@ -29,6 +29,7 @@ namespace GameServer.Models
         }
         internal MapDefine Define;
 
+        //字典以角色的CharacterID为Key
         Dictionary<int, MapCharacter> MapCharacters = new Dictionary<int, MapCharacter>();
 
         //刷怪管理器
@@ -102,7 +103,7 @@ namespace GameServer.Models
         private void SendCharacterLeaveMap(NetConnection<NetSession> connection, Character character)
         {
             connection.Session.Response.mapCharacterLeave = new MapCharacterLeaveResponse();
-            connection.Session.Response.mapCharacterLeave.characterId = character.Id;
+            connection.Session.Response.mapCharacterLeave.entityId = character.entityId;
             connection.SendResponse();
         }
 

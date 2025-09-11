@@ -65,7 +65,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
                 return;
             }
             GameObject go = (GameObject)Instantiate(obj, this.transform);
-            go.name = character.Info.Name;
+            go.name = "角色" + character.Id +"_"+ character.Name;
             Characters[character.entityId] = go;
 
             EntityController entityController = go.GetComponent<EntityController>();
@@ -87,11 +87,18 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
         go.transform.position = GameObjectTool.LogicToWorld(character.position);
         go.transform.forward = GameObjectTool.LogicToWorld(character.direction);
 
-        PlayerInputController pc = go.GetComponent<PlayerInputController>();
+        EntityController ec = go.GetComponent<EntityController>();
 
-        if (pc != null)
+        if (ec != null)
         {
-            if (User.Instance.CurrentCharacter != null && character.Info.Name == User.Instance.CurrentCharacter.Name)
+            ec.entity = character;
+            ec.isPlayer = character.IsCurrentPlayer;//判断是否是当前玩家 即是否是我自己
+        }
+
+        PlayerInputController pc= go.GetComponent<PlayerInputController>();
+        if (ec != null)
+        {
+            if (character.IsCurrentPlayer)
             {
                 User.Instance.CurrentCharacterObject = go;
                 MainPlayerCamera.Instance.player = go;
@@ -103,7 +110,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
             {
                 pc.enabled = false;
             }
-        }
+        } 
     }
 }
 

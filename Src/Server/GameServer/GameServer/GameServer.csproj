@@ -113,6 +113,7 @@
     <Compile Include="Managers\DataManager.cs" />
     <Compile Include="Managers\EntityManager.cs" />
     <Compile Include="Managers\EquipManager.cs" />
+    <Compile Include="Managers\FriendManager.cs" />
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Managers\QuestManager.cs" />
@@ -149,6 +150,9 @@
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="TCharacterBag.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCharacterFriend.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="TCharacterItem.cs">

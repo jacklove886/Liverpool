@@ -39,7 +39,7 @@ namespace Managers
         {
             Debug.LogFormat("加入角色姓名:{0},地图:{1}",cha.Name,cha.mapId);
             Character character=new Character(cha);
-            this.Characters[cha.Id]=character;
+            this.Characters[cha.EntityId]=character;
             EntityManager.Instance.AddEntity(character);
 
             //这句话永远不会执行
@@ -49,18 +49,18 @@ namespace Managers
             }
         }
 
-        public void RemoveCharacter(int characterId)
+        public void RemoveCharacter(int entityId)
         {
-            Debug.LogFormat("移除角色ID：{0}",characterId);
-            if (this.Characters.ContainsKey(characterId))
+            Debug.LogFormat("移除角色ID：{0}", entityId);
+            if (this.Characters.ContainsKey(entityId))
             {
-                EntityManager.Instance.RemoveEntity(Characters[characterId].Info.Entity);
+                EntityManager.Instance.RemoveEntity(Characters[entityId].Info.Entity);
                 if (OnCharacterLeave != null)
                 {
-                    OnCharacterLeave(Characters[characterId]);
+                    OnCharacterLeave(Characters[entityId]);
                 }
             }
-            this.Characters.Remove(characterId);
+            this.Characters.Remove(entityId);
         }
     }
 }
