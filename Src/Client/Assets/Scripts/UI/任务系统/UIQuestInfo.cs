@@ -87,7 +87,7 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
         int[] rewardIds = { quest.Define.RewardItem1, quest.Define.RewardItem2, quest.Define.RewardItem3 };
         int[] rewardCounts = { quest.Define.RewardItem1Count, quest.Define.RewardItem2Count, quest.Define.RewardItem3Count };
 
-        //小于奖励数量长度  小于图标数量长度
+        //小于奖励数量长度且小于图标数量长度 比如奖励数量四个 图标数量三个 那最多显示三个 取两者的最小数
         for (int i = 0; i < rewardIds.Length && rewardIndex < rewardItems.Length; i++)
         {
             if (rewardIds[i] > 0)

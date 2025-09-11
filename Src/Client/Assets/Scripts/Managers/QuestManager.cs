@@ -27,7 +27,7 @@ namespace Managers
 
         public event System.Action<Quest> OnQuestStatusChanged;
 
-        public void Init(List<NQuestInfo> quests)
+        public void Init(List<NQuestInfo> quests)//初始化后执行的方法
         {
             this.questInfos = quests;
             allQuests.Clear();
@@ -42,7 +42,7 @@ namespace Managers
             foreach (var info in this.questInfos)//服务器传回来的信息 如果没有就是没有这个任务
             {
                 Quest quest = new Quest(info);
-                this.allQuests[quest.Info.QuestId] = quest;
+                this.allQuests[quest.Info.QuestId] = quest;//将任务添加到可用任务字典中
             }
 
             this.CheakAvailableQuests();//可接任务
@@ -59,7 +59,7 @@ namespace Managers
         {
             foreach(var kv in DataManager.Instance.Quests)
             {
-                //如果不是通用任务或者职业不符合
+                //如果有职业要求且职业不匹配
                 if (kv.Value.LimitClass != CharacterClass.None && kv.Value.LimitClass != User.Instance.CurrentCharacter.Class)
                 {
                     continue;
@@ -93,9 +93,10 @@ namespace Managers
                         continue;
                     }
                 }
+                //满足所有要求
                 Quest quest = new Quest(kv.Value);
-
-                this.allQuests[quest.Define.ID] = quest;
+                //allQuests是字典
+                this.allQuests[quest.Define.ID] = quest;//将任务添加进去
             }
         }
 
@@ -107,34 +108,42 @@ namespace Managers
                 //如果是新npc 建立任务分类索引
                 this.npcQuests[npcID] = new Dictionary<NpcQuestStatus, List<Quest>>();
             }
+
+            //为每个NPC创立三个人物列表
             List<Quest> availables;
             List<Quest> complates;
             List<Quest> incomplates;
 
+            //可接任务列表
             if(!this.npcQuests[npcID].TryGetValue(NpcQuestStatus.Available,out availables))
             {
                 availables = new List<Quest>();
                 this.npcQuests[npcID][NpcQuestStatus.Available] = availables;
             }
+            //完成列表
             if (!this.npcQuests[npcID].TryGetValue(NpcQuestStatus.Complete, out complates))
             {
                 complates = new List<Quest>();
                 this.npcQuests[npcID][NpcQuestStatus.Complete] = complates;
             }
+            //进行中列表
             if (!this.npcQuests[npcID].TryGetValue(NpcQuestStatus.Incomplete, out incomplates))
             {
                 incomplates = new List<Quest>();
                 this.npcQuests[npcID][NpcQuestStatus.Incomplete] = incomplates;
             }
-            if (quest.Info == null)
+
+            //根据任务状态添加到相应的列表中
+            if (quest.Info == null)//如果还没接受
             {
                 if (npcID == quest.Define.AcceptNPC && !this.npcQuests[npcID][NpcQuestStatus.Available].Contains(quest))
                 {
                     this.npcQuests[npcID][NpcQuestStatus.Available].Add(quest);
                 }
             }
-            else
+            else//已经接受
             {
+                //已经完成
                 if (npcID == quest.Define.SubmitNPC&&quest.Info.Status==QuestStatus.Complated)
                 {
                     if (!this.npcQuests[npcID][NpcQuestStatus.Complete].Contains(quest))
@@ -142,6 +151,7 @@ namespace Managers
                         this.npcQuests[npcID][NpcQuestStatus.Complete].Add(quest);
                     }
                 }
+                //进行中
                 if (npcID == quest.Define.SubmitNPC && quest.Info.Status == QuestStatus.InProgress)
                 {
                     if (!this.npcQuests[npcID][NpcQuestStatus.Incomplete].Contains(quest))

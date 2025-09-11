@@ -28,7 +28,7 @@ public class UIQuestSystem : UIWindow {
         this.listBranch.onItemSelected += this.OnQuestSelected;//订阅支线任务列表选中的事件
         this.Tabs.OnTabSelect += OnSelectTab;//进行中任务和可接任务之间的切换
         RefreshUI();
-        QuestManager.Instance.OnQuestStatusChanged += RefreshUI;
+        QuestManager.Instance.OnQuestStatusChanged += RefreshUI;//任务状态改变要刷新UI
     }
 
     void OnSelectTab(int index)
@@ -44,7 +44,7 @@ public class UIQuestSystem : UIWindow {
 
     void RefreshUI()
     {
-        ClearAllQuestList();
+        ClearAllQuestList();//清空再初始化
         InitAllQuestItems();
     }
 
@@ -57,7 +57,7 @@ public class UIQuestSystem : UIWindow {
 
     void InitAllQuestItems()
     {
-        foreach(var kv in QuestManager.Instance.allQuests)
+        foreach(var kv in QuestManager.Instance.allQuests)//遍历所有可用任务
         {
             if (showAvaiableList)//可接任务列表
             {

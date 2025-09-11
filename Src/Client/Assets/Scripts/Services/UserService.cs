@@ -294,7 +294,8 @@ namespace Services
                 if (response.Character != null)
                 {
                     //进入游戏 初始化
-                    User.Instance.CurrentCharacter = response.Character;
+                    User.Instance.CurrentCharacter = response.Character;//服务器传过来的人物数据
+                    //传给各个系统 并初始化
                     ItemManager.Instance.Init(response.Character.Items);
                     BagManager.Instance.Init(response.Character.Bag);
                     EquipManager.Instance.Init(response.Character.Equips);
