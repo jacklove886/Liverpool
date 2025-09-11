@@ -50,6 +50,12 @@ namespace GameServer.Managers
             json = File.ReadAllText(this.DataPath + "ItemDefine.txt");
             this.Items = JsonConvert.DeserializeObject<Dictionary<int, ItemDefine>>(json);
 
+            json = File.ReadAllText(this.DataPath + "SpawnPointDefine.txt");
+            this.SpawnPoints = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, SpawnPointDefine>>>(json);
+
+            json = File.ReadAllText(this.DataPath + "SpawnRuleDefine.txt");
+            this.SpawnRules = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, SpawnRuleDefine>>>(json);
+
             json = File.ReadAllText(this.DataPath + "ShopDefine.txt");
             this.Shops = JsonConvert.DeserializeObject<Dictionary<int, ShopDefine>>(json);
 

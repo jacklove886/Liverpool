@@ -56,5 +56,62 @@ public class MapTools{
         EditorUtility.DisplayDialog("提示", "传送点导出完成", "确定");
 
     }
-	
+
+
+    [MenuItem("Map Tools/Export SpawnPoints")]
+    public static void ExportSpawnPoints()
+    {
+        DataManager.Instance.Load();
+
+        Scene current = EditorSceneManager.GetActiveScene();//获取当前场景
+        string currentScene = current.name;
+        if (current.isDirty)//如果还没保存
+        {
+            EditorUtility.DisplayDialog("提示", "请先保存当前场景", "确定");
+            return;
+        }
+        //当前刷怪点为空
+        if (DataManager.Instance.SpawnPoints == null)
+        {
+            // 创建二级字典：MapID -> SpawnPointID -> SpawnPointDefine
+            DataManager.Instance.SpawnPoints = new Dictionary<int, Dictionary<int, SpawnPointDefine>>();
+        }
+
+        foreach (var map in DataManager.Instance.Maps)
+        {
+            string sceneFile = "Assets/Levels/" + map.Value.Resource + ".unity";
+            if (!System.IO.File.Exists(sceneFile))
+            {
+                Debug.LogWarningFormat("场景{0}不存在", sceneFile);
+                continue;
+            }
+            EditorSceneManager.OpenScene(sceneFile, OpenSceneMode.Single);
+
+            SpawnPoint[] spawnPoints = GameObject.FindObjectsOfType<SpawnPoint>();
+            // 确保当前地图在SpawnPoints字典中
+            if (!DataManager.Instance.SpawnPoints.ContainsKey(map.Value.ID))
+            {
+                DataManager.Instance.SpawnPoints[map.Value.ID] = new Dictionary<int, SpawnPointDefine>();
+            }
+            //处理每个刷怪点
+            foreach (var sp in spawnPoints)
+            {
+                //如果刷怪点ID不存在
+                if (!DataManager.Instance.SpawnPoints[map.Value.ID].ContainsKey(sp.ID))
+                {
+                    DataManager.Instance.SpawnPoints[map.Value.ID][sp.ID] = new SpawnPointDefine();
+                }
+                //保存刷怪点信息
+                SpawnPointDefine def = DataManager.Instance.SpawnPoints[map.Value.ID][sp.ID];
+                def.ID = sp.ID;
+                def.MapID = map.Value.ID;
+                def.Position = GameObjectTool.WorldToLogicN(sp.transform.position);
+            }
+        }
+        DataManager.Instance.SaveSpawnPoints();
+        EditorSceneManager.OpenScene("Assets/Levels/" + currentScene + ".unity");
+        EditorUtility.DisplayDialog("提示", "刷怪点导出完成", "确定");
+
+    }
+
 }

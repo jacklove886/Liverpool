@@ -37,27 +37,23 @@ namespace GameServer.Services
         {
             Log.InfoFormat("UserRegisterRequest: User:{0}  Pass:{1}", request.User, request.Passward);
 
-            NetMessage message = new NetMessage();
-            message.Response = new NetMessageResponse();
-            message.Response.userRegister = new UserRegisterResponse();
+            sender.Session.Response.userRegister = new UserRegisterResponse();
 
             TUser user = DBService.Instance.Entities.Users.Where(u => u.Username == request.User).FirstOrDefault();
             if (user != null)
             {
-                message.Response.userRegister.Result = Result.Failed;
-                message.Response.userRegister.Errormsg = "用户已存在.";
+                sender.Session.Response.userRegister.Result = Result.Failed;
+                sender.Session.Response.userRegister.Errormsg = "用户已存在.";
             }
             else
             {
                 TPlayer player = DBService.Instance.Entities.Players.Add(new TPlayer());
                 DBService.Instance.Entities.Users.Add(new TUser() { Username = request.User, Password = request.Passward, Player = player });
                 DBService.Instance.Entities.SaveChanges();
-                message.Response.userRegister.Result = Result.Success;
-                message.Response.userRegister.Errormsg = "None";
+                sender.Session.Response.userRegister.Result = Result.Success;
+                sender.Session.Response.userRegister.Errormsg = "None";
             }
-
-            byte[] data = PackageHandler.PackMessage(message);
-            sender.SendData(data, 0, data.Length);
+            sender.SendResponse();
         }
         //登录请求
         void OnLogin(NetConnection<NetSession> sender, UserLoginRequest request)
@@ -248,9 +244,9 @@ namespace GameServer.Services
 
             //进入成功,发送初始角色信息
             sender.Session.Response.gameEnter.Character = character.Info;
+            sender.SendResponse();
 
             //发送响应客户端
-            sender.SendResponse();
             sender.Session.Character = character;
             MapManager.Instance[databaseCharacter.MapID].CharacterEnter(sender, character);
         }

@@ -18,7 +18,6 @@ namespace Managers
         public Dictionary<int, MapDefine> Maps = null;
         public Dictionary<int, CharacterDefine> Characters = null;
         public Dictionary<int, TeleporterDefine> Teleporters = null;
-        public Dictionary<int, Dictionary<int, SpawnPointDefine>> SpawnPoints = null;
         //NPC×Öµä
         public Dictionary<int, NpcDefine> Npcs = null;
         //µÀ¾ß×Öµä
@@ -31,6 +30,9 @@ namespace Managers
         public Dictionary<int, EquipDefine> Equips = null;
         //ÈÎÎñ×Öµä
         public Dictionary<int, QuestDefine> Quests = null;
+        //Ë¢¹Ö
+        public Dictionary<int, Dictionary<int, SpawnPointDefine>> SpawnPoints = null;
+        public Dictionary<int, Dictionary<int, SpawnRuleDefine>> SpawnRules = null;
 
 
         public DataManager()
@@ -67,6 +69,12 @@ namespace Managers
 
             json = File.ReadAllText(this.DataPath + "QuestDefine.txt");
             this.Quests = JsonConvert.DeserializeObject<Dictionary<int, QuestDefine>>(json);
+
+            json = File.ReadAllText(this.DataPath + "SpawnPointDefine.txt");
+            this.SpawnPoints = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, SpawnPointDefine>>>(json);
+
+            json = File.ReadAllText(this.DataPath + "SpawnRuleDefine.txt");
+            this.SpawnRules = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, SpawnRuleDefine>>>(json);
         }
 
 
@@ -114,6 +122,16 @@ namespace Managers
 
             json = File.ReadAllText(this.DataPath + "QuestDefine.txt");
             this.Quests = JsonConvert.DeserializeObject<Dictionary<int, QuestDefine>>(json);
+
+            yield return null;
+
+            json = File.ReadAllText(this.DataPath + "SpawnPointDefine.txt");
+            this.SpawnPoints = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, SpawnPointDefine>>>(json);
+
+            yield return null;
+
+            json = File.ReadAllText(this.DataPath + "SpawnRuleDefine.txt");
+            this.SpawnRules = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, SpawnRuleDefine>>>(json);
 
             yield return null;
         }
