@@ -28,7 +28,7 @@ public class UIQuestSystem : UIWindow {
         this.listBranch.onItemSelected += this.OnQuestSelected;//订阅支线任务列表选中的事件
         this.Tabs.OnTabSelect += OnSelectTab;//进行中任务和可接任务之间的切换
         RefreshUI();
-        //QuestManager.Instance.OnQuestChanged+=RefreshUI;
+        QuestManager.Instance.OnQuestStatusChanged += RefreshUI;
     }
 
     void OnSelectTab(int index)
@@ -39,7 +39,7 @@ public class UIQuestSystem : UIWindow {
 
     private void OnDestroy()
     {
-        //QuestManager.Instance.OnQuestChanged-=RefreshUI;
+        QuestManager.Instance.OnQuestStatusChanged -= RefreshUI;
     }
 
     void RefreshUI()
@@ -47,6 +47,13 @@ public class UIQuestSystem : UIWindow {
         ClearAllQuestList();
         InitAllQuestItems();
     }
+
+    void RefreshUI(Quest quest)
+    {
+        ClearAllQuestList();
+        InitAllQuestItems();
+    }
+
 
     void InitAllQuestItems()
     {
@@ -95,11 +102,15 @@ public class UIQuestSystem : UIWindow {
             OnQuestSelected(this.listMain.items[0]);//手动调用设置属性
             return;
         }
-        if (this.listBranch.items.Count > 0)
+        if (this.listBranch.items.Count > 0)//如果有支线任务
         {
             this.listBranch.SelectedItem = this.listBranch.items[0];
             OnQuestSelected(this.listBranch.items[0]);
             return;
+        }
+        else//列表为空
+        {
+            this.questInfo.ShowEmptyQuestState();
         }
     }
 

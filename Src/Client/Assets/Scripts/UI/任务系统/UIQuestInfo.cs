@@ -61,6 +61,22 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
         }  
     }
 
+    public void ShowEmptyQuestState()//空列表
+    {
+        rewardMoney.gameObject.SetActive(false);
+        rewardExp.gameObject.SetActive(false);
+        image.gameObject.SetActive(false);
+        button1.gameObject.SetActive(false);
+        button2.gameObject.SetActive(false);
+        for (int i = 0; i < rewardItems.Length; i++)
+        {
+            rewardItems[i].gameObject.SetActive(false);
+        }
+        guimie.gameObject.SetActive(true);
+        title.text = "暂时没有任务呢";
+        description.text = "";
+    }
+
     void SetRewardItem(Quest quest)
     {
         for (int i = 0; i < rewardItems.Length; i++)

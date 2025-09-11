@@ -1705,6 +1705,18 @@ Prefab:
       objectReference: {fileID: 1457596707}
     - target: {fileID: 1983897723090878, guid: 6b7e64eac4c99d54780d10e83263fc99, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1465860480951908, guid: 6b7e64eac4c99d54780d10e83263fc99, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717573412712838, guid: 6b7e64eac4c99d54780d10e83263fc99, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1212126872880144, guid: 6b7e64eac4c99d54780d10e83263fc99, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6292,7 +6304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1533169996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8371,10 +8383,6 @@ Prefab:
     - target: {fileID: 224168379406318906, guid: f4702d43daa974d4ebdf2c8666dbb63a,
         type: 2}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1958267979683948, guid: f4702d43daa974d4ebdf2c8666dbb63a, type: 2}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
