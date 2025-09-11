@@ -106,19 +106,19 @@ namespace GameServer.Managers
                         //character.Exp += quest.RewardExp; 暂时还没写经验
                     }
 
-                    if (quest.RewardGItem1 > 0)
+                    if (quest.RewardItem1 > 0)
                     {
-                        character.ItemManager.AddItem(quest.RewardGItem1, quest.RewardGItem1Count);
+                        character.ItemManager.AddItem(quest.RewardItem1, quest.RewardItem1Count);
                     }
 
-                    if (quest.RewardGItem2 > 0)
+                    if (quest.RewardItem2 > 0)
                     {
-                        character.ItemManager.AddItem(quest.RewardGItem2, quest.RewardGItem2Count);
+                        character.ItemManager.AddItem(quest.RewardItem2, quest.RewardItem2Count);
                     }
 
-                    if (quest.RewardGItem3 > 0)
+                    if (quest.RewardItem3 > 0)
                     {
-                        character.ItemManager.AddItem(quest.RewardGItem3, quest.RewardGItem3Count);
+                        character.ItemManager.AddItem(quest.RewardItem3, quest.RewardItem3Count);
                     }
                     DBService.Instance.Save();
                     return Result.Success;                   

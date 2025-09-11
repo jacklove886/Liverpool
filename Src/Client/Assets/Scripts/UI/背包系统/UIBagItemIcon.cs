@@ -12,7 +12,7 @@ public class UIBagItemIcon : MonoBehaviour {
 
 	public void SetMainIcon(string iconName,string text)
     {
-        this.iconImage.overrideSprite = Resloader.Load<Sprite>(iconName);
+        iconImage.overrideSprite = Resloader.Load<Sprite>(iconName);
         if(this.countText!=null)
         this.countText.text = text;
     }

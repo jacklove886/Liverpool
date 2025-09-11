@@ -47,13 +47,13 @@ public class ListView : MonoBehaviour
     }
 
     //ListViewItem列表
-    List<ListViewItem> items = new List<ListViewItem>();
+    public List<ListViewItem> items = new List<ListViewItem>();
 
     public ListViewItem selectedItem = null;
     public ListViewItem SelectedItem//标记当前选中的是具体哪个Item
     {
         get { return selectedItem; }
-        private set
+        set
         {
             //如果有选中的物体 并且不是当前物体
             if (selectedItem != null && selectedItem != value)
@@ -63,10 +63,20 @@ public class ListView : MonoBehaviour
             }
             //选中物体设为当前物体
             selectedItem = value;
+
+            if (selectedItem != null)
+            {
+                selectedItem.Selected = true;
+            }
             if (onItemSelected != null)
                 //执行事件
                 onItemSelected.Invoke(value);
         }
+    }
+
+    public void Start()
+    {
+        
     }
 
     public void AddItem(ListViewItem item)

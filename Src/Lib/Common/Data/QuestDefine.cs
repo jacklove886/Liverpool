@@ -60,12 +60,12 @@ namespace Common.Data
 
         public int RewardGold { get; set; }
         public int RewardExp { get; set; }
-        public int RewardGItem1 { get; set; }
-        public int RewardGItem1Count { get; set; }
-        public int RewardGItem2 { get; set; }
-        public int RewardGItem2Count { get; set; }
-        public int RewardGItem3 { get; set; }
-        public int RewardGItem3Count { get; set; }
+        public int RewardItem1 { get; set; }
+        public int RewardItem1Count { get; set; }
+        public int RewardItem2 { get; set; }
+        public int RewardItem2Count { get; set; }
+        public int RewardItem3 { get; set; }
+        public int RewardItem3Count { get; set; }
 
     }
 }

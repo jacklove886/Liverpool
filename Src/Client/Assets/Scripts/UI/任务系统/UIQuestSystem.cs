@@ -52,16 +52,20 @@ public class UIQuestSystem : UIWindow {
     {
         foreach(var kv in QuestManager.Instance.allQuests)
         {
-            if (showAvaiableList)
+            if (showAvaiableList)//可接任务列表
             {
                 if (kv.Value.Info != null)
                 {
                     continue;
                 }
             }
-            else
+            else//进行中的任务列表
             {
-                if(kv.Value.Info == null)
+                if(kv.Value.Info == null)//没接的任务
+                {
+                    continue;
+                }
+                if (kv.Value.Info.Status == SkillBridge.Message.QuestStatus.Complated|| kv.Value.Info.Status == SkillBridge.Message.QuestStatus.Finished)
                 {
                     continue;
                 }
@@ -80,6 +84,23 @@ public class UIQuestSystem : UIWindow {
                 this.listBranch.AddItem(ui);
             }
         }
+        SetDefaultSelection();
+    }
+
+    void SetDefaultSelection()
+    {
+        if (this.listMain.items.Count > 0)//如果有主线任务
+        {
+            this.listMain.SelectedItem = this.listMain.items[0];//默认选第一个任务
+            OnQuestSelected(this.listMain.items[0]);//手动调用设置属性
+            return;
+        }
+        if (this.listBranch.items.Count > 0)
+        {
+            this.listBranch.SelectedItem = this.listBranch.items[0];
+            OnQuestSelected(this.listBranch.items[0]);
+            return;
+        }
     }
 
 
@@ -93,11 +114,19 @@ public class UIQuestSystem : UIWindow {
     {
         if (item.owner == this.listMain)
         {
-            this.listBranch.selectedItem = null;
+            if (this.listBranch.selectedItem != null)
+            {
+                this.listBranch.selectedItem.Selected = false;//用属性
+                this.listBranch.selectedItem = null;  // 清除引用  不清除的话listBranch.selectedItem仍然是上次点击的那个物体
+            }
         }
         if (item.owner == this.listBranch)
         {
-            this.listMain.selectedItem = null;
+            if (this.listMain.selectedItem != null)
+            {
+                this.listMain.selectedItem.Selected = false;
+                this.listMain.selectedItem = null; 
+            }       
         }
         UIQuestItem questItem = item as UIQuestItem;
         this.questInfo.SetQuestInfo(questItem.quest);

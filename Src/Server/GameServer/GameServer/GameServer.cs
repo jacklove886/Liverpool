@@ -29,8 +29,8 @@ namespace GameServer
 
             DBService.Instance.Init();
             DataManager.Instance.Load();
-            MapService.Instance.Init();
             UserService.Instance.Init();
+            MapService.Instance.Init();
             ItemService.Instance.Init();
             QuestService.Instance.Init();
 

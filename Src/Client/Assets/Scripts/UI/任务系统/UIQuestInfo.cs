@@ -16,8 +16,12 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
 
     public Text rewardMoney;//奖励金额
     public Text rewardExp;//奖励经验
+    public GameObject image;
+    public GameObject guimie;
+    public GameObject button1;
+    public GameObject button2;
 
-	void Start () {
+    void Start () {
 		
 	}
 	
@@ -43,6 +47,12 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
         SetRewardItem(quest);
         this.rewardMoney.text = "金币 : "+quest.Define.RewardGold.ToString();
         this.rewardExp.text = "经验值 : " + quest.Define.RewardExp.ToString();
+        this.rewardMoney.gameObject.SetActive(true);
+        this.rewardExp.gameObject.SetActive(true);
+        image.gameObject.SetActive(true);
+        button1.gameObject.SetActive(true);
+        button2.gameObject.SetActive(true);
+        guimie.gameObject.SetActive(false);
 
         //自动设置为LayoutVertical
         foreach (var fitter in this.GetComponentsInChildren<ContentSizeFitter>())
@@ -58,8 +68,8 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
             rewardItems[i].gameObject.SetActive(false);
         }
         int rewardIndex = 0;
-        int[] rewardIds = { quest.Define.RewardGItem1, quest.Define.RewardGItem2, quest.Define.RewardGItem3 };
-        int[] rewardCounts = { quest.Define.RewardGItem1Count, quest.Define.RewardGItem2Count, quest.Define.RewardGItem3Count };
+        int[] rewardIds = { quest.Define.RewardItem1, quest.Define.RewardItem2, quest.Define.RewardItem3 };
+        int[] rewardCounts = { quest.Define.RewardItem1Count, quest.Define.RewardItem2Count, quest.Define.RewardItem3Count };
 
         //小于奖励数量长度  小于图标数量长度
         for (int i = 0; i < rewardIds.Length && rewardIndex < rewardItems.Length; i++)
