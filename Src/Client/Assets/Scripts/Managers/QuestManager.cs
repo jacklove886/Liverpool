@@ -32,20 +32,28 @@ namespace Managers
             InitQuests();
         }
 
-        
+
         void InitQuests()
         {
-
             //初始化已有任务
-            foreach(var info in this.questInfos)
+            foreach (var info in this.questInfos)//服务器传回来的信息 如果没有就是没有这个任务
             {
                 Quest quest = new Quest(info);
-                this.AddNpcQuest(quest.Define.AcceptNPC, quest);
-                this.AddNpcQuest(quest.Define.SubmitNPC, quest);
                 this.allQuests[quest.Info.QuestId] = quest;
             }
 
+            this.CheakAvailableQuests();//可接任务
+
             //初始化可用任务
+            foreach (var kv in this.allQuests)//遍历所有任务  一条一条加  试一试能不能加  条件符合就能加
+            {
+                this.AddNpcQuest(kv.Value.Define.AcceptNPC, kv.Value);
+                this.AddNpcQuest(kv.Value.Define.SubmitNPC, kv.Value);
+            }
+        }
+
+        void CheakAvailableQuests()
+        {
             foreach(var kv in DataManager.Instance.Quests)
             {
                 //如果不是通用任务或者职业不符合
@@ -54,7 +62,7 @@ namespace Managers
                     continue;
                 }
                 //等级不够
-                if (kv.Value.LimitLevel >User.Instance.CurrentCharacter.Level)
+                if (kv.Value.LimitLevel > User.Instance.CurrentCharacter.Level)
                 {
                     continue;
                 }
@@ -66,7 +74,7 @@ namespace Managers
                 if (kv.Value.PreQuest > 0)//如果有前置任务
                 {
                     Quest preQuest;
-                    if (this.allQuests.TryGetValue(kv.Value.PreQuest,out preQuest))//获取前置任务
+                    if (this.allQuests.TryGetValue(kv.Value.PreQuest, out preQuest))//获取前置任务
                     {
                         if (preQuest.Info == null)
                         {
@@ -83,8 +91,7 @@ namespace Managers
                     }
                 }
                 Quest quest = new Quest(kv.Value);
-                this.AddNpcQuest(quest.Define.AcceptNPC, quest);
-                this.AddNpcQuest(quest.Define.SubmitNPC, quest);
+
                 this.allQuests[quest.Define.ID] = quest;
             }
         }

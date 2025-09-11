@@ -29,7 +29,7 @@ public class UIQuestDialog : UIWindow
         }
         else
         {
-            if (this.quest.Info.Status == QuestStatus.Complated)//如果任务已完成
+            if (this.quest.Info.Status == QuestStatus.Complated)//如果任务已完成  可以提交
             {
                 submitButtons.SetActive(true);
                 openButtons.SetActive(false);
