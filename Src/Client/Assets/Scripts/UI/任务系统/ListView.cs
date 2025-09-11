@@ -16,7 +16,7 @@ public class ListView : MonoBehaviour
     //ListViewItem类 单个Item元素
     public class ListViewItem : MonoBehaviour, IPointerClickHandler
     {
-        private bool selected;
+        public bool selected;
         public bool Selected//单个项目的选中状态
         {
             get { return selected; }
@@ -49,7 +49,7 @@ public class ListView : MonoBehaviour
     //ListViewItem列表
     List<ListViewItem> items = new List<ListViewItem>();
 
-    private ListViewItem selectedItem = null;
+    public ListViewItem selectedItem = null;
     public ListViewItem SelectedItem//标记当前选中的是具体哪个Item
     {
         get { return selectedItem; }

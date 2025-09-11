@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
 using Models;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,6 +40,7 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
                 this.description.text = quest.Define.DialogIncomplete;
             }
         }
+        SetRewardItem(quest);
         this.rewardMoney.text = "金币 : "+quest.Define.RewardGold.ToString();
         this.rewardExp.text = "经验值 : " + quest.Define.RewardExp.ToString();
 
@@ -49,8 +51,30 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
         }  
     }
 
-    public void OnClickAbandon()
+    void SetRewardItem(Quest quest)
     {
+        for (int i = 0; i < rewardItems.Length; i++)
+        {
+            rewardItems[i].gameObject.SetActive(false);
+        }
+        int rewardIndex = 0;
+        int[] rewardIds = { quest.Define.RewardGItem1, quest.Define.RewardGItem2, quest.Define.RewardGItem3 };
+        int[] rewardCounts = { quest.Define.RewardGItem1Count, quest.Define.RewardGItem2Count, quest.Define.RewardGItem3Count };
 
+        //小于奖励数量长度  小于图标数量长度
+        for (int i = 0; i < rewardIds.Length && rewardIndex < rewardItems.Length; i++)
+        {
+            if (rewardIds[i] > 0)
+            {
+                var itemDefine = DataManager.Instance.Items[rewardIds[i]];
+                rewardItems[rewardIndex].SetMainIcon(itemDefine.Icon, rewardCounts[i].ToString());
+                rewardItems[rewardIndex].gameObject.SetActive(true);
+                rewardIndex++;
+            }
+            else
+            {
+
+            }
+        }
     }
 }

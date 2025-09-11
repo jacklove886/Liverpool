@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace GameServer.Services
 {
-    class QuestService
+    class QuestService:Singleton<QuestService>
     {
 
         public QuestService()//构造函数
         {
             //订阅请求消息并调用方法    发送响应
-            MessageDistributer.Instance.Subscribe<QuestAcceptRequest>(this.OnQuestAccept);
-            MessageDistributer.Instance.Subscribe<QuestSubmitRequest>(this.OnQuestSubmit);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<QuestAcceptRequest>(this.OnQuestAccept);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<QuestSubmitRequest>(this.OnQuestSubmit);
         }
 
         public void Init()

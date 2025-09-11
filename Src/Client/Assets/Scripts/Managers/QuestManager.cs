@@ -1,4 +1,5 @@
 ﻿using Models;
+using Services;
 using SkillBridge.Message;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,8 @@ namespace Managers
         public Dictionary<int, Quest> allQuests = new Dictionary<int, Quest>();
         //key代表NPCID  Value的Key代表上面的枚举  value代表allQuests
         public Dictionary<int, Dictionary<NpcQuestStatus, List<Quest>>> npcQuests = new Dictionary<int, Dictionary<NpcQuestStatus, List<Quest>>>();
+
+        public event System.Action<Quest> OnQuestStatusChanged;
 
         public void Init(List<NQuestInfo> quests)
         {
@@ -52,7 +55,7 @@ namespace Managers
             }
         }
 
-        void CheakAvailableQuests()
+        void CheakAvailableQuests()//检查任务
         {
             foreach(var kv in DataManager.Instance.Quests)
             {
@@ -156,15 +159,15 @@ namespace Managers
             Dictionary<NpcQuestStatus, List<Quest>> status = new Dictionary<NpcQuestStatus, List<Quest>>();
             if(this.npcQuests.TryGetValue(npcID,out status))//获取NPC任务
             {
-                if (status[NpcQuestStatus.Complete].Count > 0)
+                if (status[NpcQuestStatus.Complete].Count > 0)//如果有已完成的任务
                 {
                     return NpcQuestStatus.Complete;
                 }
-                if (status[NpcQuestStatus.Available].Count > 0)
+                if (status[NpcQuestStatus.Available].Count > 0)//如果有可接任务
                 {
                     return NpcQuestStatus.Available;
                 }
-                if (status[NpcQuestStatus.Incomplete].Count > 0)
+                if (status[NpcQuestStatus.Incomplete].Count > 0)//如果有未完成任务
                 {
                     return NpcQuestStatus.Incomplete;
                 }
@@ -219,7 +222,14 @@ namespace Managers
             UIQuestDialog dialog = (UIQuestDialog)sender;
             if (result == UIWindow.WindowResult.Yes)
             {
-                MessageBox.Show(dialog.quest.Define.DialogAccept);
+                if (dialog.quest.Info == null)
+                {
+                    QuestService.Instance.SendQuestAccept(dialog.quest);
+                }
+                else if (dialog.quest.Info.Status == QuestStatus.Complated)
+                {
+                    QuestService.Instance.SendQuestSubmit(dialog.quest);
+                }
             }
             else if(result == UIWindow.WindowResult.No)
             {
@@ -230,14 +240,48 @@ namespace Managers
             }
         }
 
-        public void OnQuestAccepted(NQuestInfo quest)
+        Quest RefreshQuestStatus(NQuestInfo quest)
         {
+            this.npcQuests.Clear();
+            Quest result;
+            if (this.allQuests.ContainsKey(quest.QuestId))//曾经接过的任务
+            {
+                //更新新的任务状态
+                this.allQuests[quest.QuestId].Info = quest;
+                result = this.allQuests[quest.QuestId];
+            }
+            else//新接的任务
+            {
+                result = new Quest(quest);
+                this.allQuests[quest.QuestId] = result;
+            }
 
+            CheakAvailableQuests();
+
+            foreach (var kv in this.allQuests)//遍历所有任务  一条一条加  试一试能不能加  条件符合就能加
+            {
+                this.AddNpcQuest(kv.Value.Define.AcceptNPC, kv.Value);
+                this.AddNpcQuest(kv.Value.Define.SubmitNPC, kv.Value);
+            }
+            if (OnQuestStatusChanged != null)
+            {
+                OnQuestStatusChanged(result);
+            }
+            return result;
         }
 
-        public void OnQuestSubmited(NQuestInfo quest)
+        public void OnQuestAccepted(NQuestInfo info)
         {
+            var quest = this.RefreshQuestStatus(info);
+            UIDialog uidialog = UIManager.Instance.Show<UIDialog>();
+            uidialog.Introduce.text = quest.Define.DialogAccept;
+        }
 
+        public void OnQuestSubmited(NQuestInfo info)
+        {
+            var quest = this.RefreshQuestStatus(info);
+            UIDialog uidialog = UIManager.Instance.Show<UIDialog>();
+            uidialog.Introduce.text = quest.Define.DialogFinish;
         }
     }
 }

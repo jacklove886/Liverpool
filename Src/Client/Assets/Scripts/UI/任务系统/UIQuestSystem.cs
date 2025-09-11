@@ -91,6 +91,14 @@ public class UIQuestSystem : UIWindow {
 
     public void OnQuestSelected(ListView.ListViewItem item)
     {
+        if (item.owner == this.listMain)
+        {
+            this.listBranch.selectedItem = null;
+        }
+        if (item.owner == this.listBranch)
+        {
+            this.listMain.selectedItem = null;
+        }
         UIQuestItem questItem = item as UIQuestItem;
         this.questInfo.SetQuestInfo(questItem.quest);
     }

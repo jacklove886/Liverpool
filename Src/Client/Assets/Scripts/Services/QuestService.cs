@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Services
 {
-    class QuestService
+    class QuestService:Singleton<QuestService>
     {
         public QuestService()//构造函数
         {

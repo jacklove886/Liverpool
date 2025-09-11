@@ -18,7 +18,7 @@ public class NpcController : MonoBehaviour {
     private Renderer meshrenderer;
 
     private NpcDefine npc;
-    private NpcQuestStatus status;
+    private NpcQuestStatus questStatus;
 
 
     void Start()
@@ -33,8 +33,29 @@ public class NpcController : MonoBehaviour {
 
         originColor = meshrenderer.sharedMaterial.color;//原始颜色是初始化时候的颜色
         StartCoroutine(Actions());
-        status = QuestManager.Instance.GetQuestStatusByNpc(npcId);
-        UIWorldElementManager.Instance.AddNpcQuestStatus(this.transform, status);
+
+        RefreshNpcStatus();
+        QuestManager.Instance.OnQuestStatusChanged += OnQuestStatusChanged;
+    }
+
+    void OnQuestStatusChanged(Quest quest)
+    {
+        this.RefreshNpcStatus();
+    }
+
+    void RefreshNpcStatus()
+    {
+        questStatus= QuestManager.Instance.GetQuestStatusByNpc(npcId);
+        UIWorldElementManager.Instance.AddNpcQuestStatus(this.transform, questStatus);
+    }
+
+    private void OnDestroy()
+    {
+        QuestManager.Instance.OnQuestStatusChanged -= OnQuestStatusChanged;
+        if (UIWorldElementManager.Instance != null)
+        {
+            UIWorldElementManager.Instance.RemoveNpcQuestStatus(this.transform);
+        }
     }
 
     //休闲动作的行为

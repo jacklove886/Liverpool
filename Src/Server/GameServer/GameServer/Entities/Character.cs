@@ -29,7 +29,7 @@ namespace GameServer.Entities
             Info.Type = type;
             Info.Id = cha.ID;
             Info.Name = cha.Name;
-            Info.Level = cha.Level;
+            Info.Level = 10; //cha.Level
             Info.Tid = cha.TID;
             Info.Class = (CharacterClass)cha.Class;
             Info.mapId = cha.MapID;
@@ -41,6 +41,7 @@ namespace GameServer.Entities
             //道具系统
             ItemManager = new ItemManager(this);
             ItemManager.GetItemInfos(Info.Items);
+
             //背包系统
             Info.Bag = new NBagInfo();
             Info.Bag.Items = this.Data.Bag.Items;
@@ -50,6 +51,10 @@ namespace GameServer.Entities
 
             //状态管理器
             this.StatusManager = new StatusManager(this);
+
+            //任务系统
+            this.QuestManager = new QuestManager(this);
+            this.QuestManager.GetQuestInfos(Info.Quests);
         }
 
         public long Gold
