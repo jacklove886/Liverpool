@@ -34,14 +34,11 @@ namespace GameServer.Services
 
         internal void SendEntityUpdate(NetConnection<NetSession> sender, NEntitySync entity)
         {
-            NetMessage message = new NetMessage();
-            message.Response = new NetMessageResponse();
-            message.Response.mapEntitySync = new MapEntitySyncResponse();
-            message.Response.mapEntitySync.entitySyncs.Add(entity);
+            sender.Session.Response.mapEntitySync = new MapEntitySyncResponse();
+            sender.Session.Response.mapEntitySync.entitySyncs.Add(entity);
 
             //消息打包成数据流发给客户端
-            byte[] data = PackageHandler.PackMessage(message);
-            sender.SendData(data, 0, data.Length);
+            sender.SendResponse();
         }
 
         private void OnMapTeleport(NetConnection<NetSession> sender, MapTeleportRequest request)

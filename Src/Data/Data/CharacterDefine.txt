@@ -7,7 +7,13 @@
     "Resource": "Character/Warrior",
     "Description": "身披重甲的山岭族战士，擅长以盾刃正面开路与守护同伴，能聚焦怒气发动强力突击，并为队伍提供坚韧护卫与嘲讽控制。",
     "InitLevel": 1,
-    "Speed": 300
+    "Speed": 300,
+    "HP": 360.0,
+    "MP": 210.0,
+    "STR": 10.0,
+    "INT": 3.0,
+    "DEX": 5.0,
+    "CRI": 0.02
   },
   "2": {
     "TID": 2,
@@ -17,7 +23,13 @@
     "Resource": "Character/Wizard",
     "Description": "操纵元素魔法的地灵族法师，灵活的运用万物中所蕴含的风地水火四大元素的力量进行战斗，也可以为自己和盟友提供额外的魔法增益。",
     "InitLevel": 1,
-    "Speed": 300
+    "Speed": 300,
+    "HP": 300.0,
+    "MP": 390.0,
+    "STR": 3.0,
+    "INT": 10.0,
+    "DEX": 5.0,
+    "CRI": 0.02
   },
   "3": {
     "TID": 3,
@@ -27,33 +39,77 @@
     "Resource": "Character/Archer",
     "Description": "身法敏捷的林野游侠，精通弓弩与陷阱，借自然之力穿梭战场，远程点杀与持续压制兼备，并可为团队侦察索敌、施加减速与易伤。",
     "InitLevel": 1,
-    "Speed": 300
+    "Speed": 300,
+    "HP": 320.0,
+    "MP": 300.0,
+    "STR": 7.0,
+    "INT": 4.0,
+    "DEX": 7.0,
+    "CRI": 0.05
   },
   "1001": {
     "TID": 1001,
-    "Name": "恶鬼",
+    "Name": "落日恶鬼",
     "Type": "Normal",
     "Class": "WARRIOR",
     "Resource": "Monster/M1001",
-    "InitLevel": 1,
-    "Speed": 300
+    "Description": "出没落日森林的邪恶鬼魂，威胁村民安全",
+    "InitLevel": 5,
+    "Speed": 300,
+    "HP": 500.0,
+    "MP": 250.0,
+    "CRI": 0.01
   },
   "1002": {
     "TID": 1002,
-    "Name": "-",
+    "Name": "古神祭司",
     "Type": "Normal",
-    "Class": "WIZARD",
+    "Class": "WARRIOR",
     "Resource": "Monster/M1002",
-    "InitLevel": 1,
-    "Speed": 300
+    "Description": "被邪恶力量腐蚀的失落神殿守护者",
+    "InitLevel": 10,
+    "Speed": 300,
+    "HP": 3000.0,
+    "MP": 500.0,
+    "CRI": 0.03
   },
   "1003": {
     "TID": 1003,
-    "Name": "-",
+    "Name": "小恶魔",
+    "Type": "Normal",
+    "Class": "WARRIOR",
+    "Resource": "Monster/M1003",
+    "Description": "森林深处的小型恶魔，阻挡采药村民",
+    "InitLevel": 10,
+    "Speed": 300,
+    "HP": 2000.0,
+    "MP": 1000.0,
+    "CRI": 0.01
+  },
+  "1004": {
+    "TID": 1004,
+    "Name": "苍龙骷髅",
     "Type": "Normal",
     "Class": "ARCHER",
-    "Resource": "Monster/M1003",
-    "InitLevel": 1,
-    "Speed": 300
+    "Resource": "Monster/M1004",
+    "Description": "苍龙山脉的不死骷髅战士，持弓善射",
+    "InitLevel": 10,
+    "Speed": 300,
+    "HP": 2000.0,
+    "MP": 1000.0,
+    "CRI": 0.01
+  },
+  "1005": {
+    "TID": 1005,
+    "Name": "失落死神",
+    "Type": "Normal",
+    "Class": "WIZARD",
+    "Resource": "Monster/M1005",
+    "Description": "失落神殿孕育的邪恶死神，异常能量源头",
+    "InitLevel": 10,
+    "Speed": 300,
+    "HP": 20000.0,
+    "MP": 10000.0,
+    "CRI": 0.05
   }
 }

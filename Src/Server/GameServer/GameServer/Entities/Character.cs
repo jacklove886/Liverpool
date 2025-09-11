@@ -36,7 +36,6 @@ namespace GameServer.Entities
             Info.Gold = cha.Gold;
             Info.Entity = this.EntityData;
             Define = DataManager.Instance.Characters[this.Info.Tid];
-            //StatusManager = new StatusManager(this);
 
             //道具系统
             ItemManager = new ItemManager(this);

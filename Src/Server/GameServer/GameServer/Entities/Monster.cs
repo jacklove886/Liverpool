@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace GameServer.Entities
 {
-    public class Monster : CharacterBase
+    public class Monster : CharacterBase//继承
     {
+        //构造函数
         public Monster(int tid, int level, Vector3Int pos, Vector3Int dir) : base(CharacterType.Monster, tid, level, pos, dir)
         {
 

@@ -38,13 +38,13 @@ namespace GameServer.Models
         internal Map(MapDefine define)//构造函数 初始化
         {
             this.Define = define;
-            //this.SpawnManager.Init(this);
+            this.SpawnManager.Init(this);
             this.MonsterManager.Init(this);
         }
 
         internal void Update()//每秒运行10帧
         {
-            //SpawnManager.Update();
+            SpawnManager.Update();
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace GameServer.Models
                 connection.Session.Response.mapCharacterEnter.mapId = this.Define.ID;
             } 
             connection.Session.Response.mapCharacterEnter.Characters.Add(character);
-            connection.SendResponse();
+            connection.SendResponse();//为了性能 以后不加这句话
         }
 
         private void SendCharacterLeaveMap(NetConnection<NetSession> connection, Character character)
@@ -126,8 +126,10 @@ namespace GameServer.Models
         internal void MonsterEnter(Monster monster)
         {
             Log.InfoFormat("怪物进入地图:{0},怪物ID:{1}", this.Define.ID, monster.Id);
+            //遍历地图上所有玩家
             foreach(var kv in this.MapCharacters)
             {
+                //向玩家发送进入地图的消息
                 this.AddCharacterEnterMap(kv.Value.connection, monster.Info);
             }
         }

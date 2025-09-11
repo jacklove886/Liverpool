@@ -34,6 +34,7 @@ public class UIWorldElementManager : MonoSingleton<UIWorldElementManager> {
         UIWorldElement worldElement = goNameBar.GetComponent<UIWorldElement>();
         worldElement.owner = owner;
         worldElement.Camera = Camera.main.transform;
+        worldElement.SetHeight(character);
 
         goNameBar.GetComponent<UINameBar>().character = character;
         goNameBar.SetActive(true);

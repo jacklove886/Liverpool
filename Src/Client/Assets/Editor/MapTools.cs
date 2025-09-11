@@ -76,6 +76,7 @@ public class MapTools{
             // 创建二级字典：MapID -> SpawnPointID -> SpawnPointDefine
             DataManager.Instance.SpawnPoints = new Dictionary<int, Dictionary<int, SpawnPointDefine>>();
         }
+        DataManager.Instance.SpawnPoints.Clear(); // 清空所有旧数据
 
         foreach (var map in DataManager.Instance.Maps)
         {
@@ -106,6 +107,7 @@ public class MapTools{
                 def.ID = sp.ID;
                 def.MapID = map.Value.ID;
                 def.Position = GameObjectTool.WorldToLogicN(sp.transform.position);
+                def.Direction= GameObjectTool.WorldToLogicN(sp.transform.forward);
             }
         }
         DataManager.Instance.SaveSpawnPoints();
