@@ -28,8 +28,34 @@ namespace GameServer.Services
         private void OnMapEntitySync(NetConnection<NetSession> sender, MapEntitySyncRequest request)
         {
             Character character = sender.Session.Character;
-            //Log.InfoFormat("接收到请求OnMapEntitySync:{0}:{1} Entity.Id{2} Entity:{3}", character.Id, character.Info.Name, request.entitySync.Id,request.entitySync.Entity.String());
-            MapManager.Instance[character.Info.mapId].UpdateEntity(request.entitySync);  
+
+            // 添加空值检查
+            if (character == null)
+            {
+                Log.WarningFormat("OnMapEntitySync: character is null, ignoring request");
+                return;
+            }
+
+            if (character.Info == null)
+            {
+                Log.WarningFormat("OnMapEntitySync: character.Info is null for character {0}", character.Id);
+                return;
+            }
+
+            if (request?.entitySync == null)
+            {
+                Log.WarningFormat("OnMapEntitySync: entitySync is null for character {0}", character.Id);
+                return;
+            }
+
+            // 检查地图是否存在
+            if (!MapManager.Instance.Maps.ContainsKey(character.Info.mapId))
+            {
+                Log.WarningFormat("OnMapEntitySync: Map {0} not found for character {1}", character.Info.mapId, character.Id);
+                return;
+            }
+
+            MapManager.Instance[character.Info.mapId].UpdateEntity(request.entitySync);
         }
 
         internal void SendEntityUpdate(NetConnection<NetSession> sender, NEntitySync entity)

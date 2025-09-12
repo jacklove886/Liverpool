@@ -27,7 +27,12 @@ public class UIFriendItem : ListView.ListViewItem {
     {
         Info = itemInfo;
         chaCame.text = Info.friendInfo.Name;
-        chaClass.text = Info.friendInfo.Class.ToString();
+        switch (this.Info.friendInfo.Class.ToString())
+        {
+            case "Warrior": this.chaClass.text = "战士"; break;
+            case "Wizard": this.chaClass.text = "法师"; break;
+            case "Archer": this.chaClass.text = "游侠"; break;
+        }
         level.text = (Info.friendInfo.Level+" 级").ToString();
         status.text = Info.Status == 1 ? "在线" : "离线";
     }

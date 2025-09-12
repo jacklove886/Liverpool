@@ -68,7 +68,7 @@ namespace GameServer.Managers
 
         public bool RemoveFriendByID(int id)
         {
-            var removeId = this.Owner.Data.Friends.FirstOrDefault(v => v.FriendID == id);
+            var removeId = this.Owner.Data.Friends.FirstOrDefault(v => v.Id == id);
             if (removeId != null)
             {
                 DBService.Instance.Entities.CharacterFriends.Remove(removeId);

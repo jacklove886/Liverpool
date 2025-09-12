@@ -27,6 +27,7 @@ namespace GameServer.Entities
         {
 
             Data = cha;
+            this.Id=cha.ID;
             Info = new NCharacterInfo();//NCharacterInfo是自定义的协议
             Info.Type = type;
             Info.Id = cha.ID;

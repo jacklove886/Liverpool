@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIFriend : UIWindow {
 
@@ -13,15 +14,30 @@ public class UIFriend : UIWindow {
     public ListView listMain;
     public Transform itemRoot;//Content
     public UIFriendItem selectedItem;
-	
-	void Start ()
+    public InputField inputField;
+
+    void Start ()
     {
         if (listMain == null || this == null) 
             return;
         FriendService.Instance.OnFriendUpdate = RefreshUI;//打开就接收通知 会自动刷新
         listMain.onItemSelected += OnFriendSelected;
         RefreshUI();
-	}
+        inputField.onEndEdit.AddListener(OnInputFinished);//监听搜索内容
+
+    }
+
+    private void OnInputFinished(string nameOrId)
+    {
+        inputField.text = nameOrId;
+    }
+
+
+
+    private void OnDestroy()
+    {
+        
+    }
 
     public void OnFriendSelected(ListView.ListViewItem item)
     {
@@ -81,6 +97,10 @@ public class UIFriend : UIWindow {
         foreach (var item in FriendManager.Instance.allfriends)
         {
             GameObject go = Instantiate(itemPrefab, this.listMain.transform);
+            if (item.Status == 1)
+            {              
+                go.transform.SetAsFirstSibling();               
+            }
             UIFriendItem ui = go.GetComponent<UIFriendItem>();
             ui.SetFriendInfo(item);
             listMain.AddItem(ui);

@@ -13,6 +13,7 @@ namespace Services
     class FriendService : Singleton<FriendService>, IDisposable
     {
         public System.Action OnFriendUpdate; // 好友列表更新事件
+
         public FriendService()//构造函数
         {
             MessageDistributer.Instance.Subscribe<FriendAddRequest>(this.OnFriendAddRequest);
@@ -20,6 +21,8 @@ namespace Services
             MessageDistributer.Instance.Subscribe<FriendListResponse>(this.OnFriendList);
             MessageDistributer.Instance.Subscribe<FriendRemoveResponse>(this.OnFriendRemove);
         }
+
+
 
         public void Dispose()
         {
@@ -78,7 +81,7 @@ namespace Services
         {
             if (response.Result == Result.Success)
             {
-                MessageBox.Show(response.Request.ToName + "接受了您的请求", "添加成功");
+                MessageBox.Show(response.Errormsg,"添加成功");
             }
             else if (response.Result == Result.Failed)
             {
