@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\Managers\NpcTestManager.cs" />
     <Compile Include="Assets\Scripts\Managers\QuestManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ShopManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\SpriteManager.cs" />
     <Compile Include="Assets\Scripts\Models\BagItem.cs" />
     <Compile Include="Assets\Scripts\Models\Item.cs" />
     <Compile Include="Assets\Scripts\Models\Quest.cs" />
@@ -124,6 +125,8 @@
     <Compile Include="Assets\Scripts\UI\好友系统\UIFriendItem.cs" />
     <Compile Include="Assets\Scripts\UI\登录注册场景\UILogin.cs" />
     <Compile Include="Assets\Scripts\UI\登录注册场景\UIRegister.cs" />
+    <Compile Include="Assets\Scripts\UI\组队系统\UITeam.cs" />
+    <Compile Include="Assets\Scripts\UI\组队系统\UITeamItem.cs" />
     <Compile Include="Assets\Scripts\UI\背包系统\TabButton.cs" />
     <Compile Include="Assets\Scripts\UI\背包系统\TabView.cs" />
     <Compile Include="Assets\Scripts\UI\背包系统\UIBag.cs" />

@@ -210,10 +210,17 @@ message NetMessageRequest{
 	QuestSubmitRequest questSubmit=15;//提交任务
 	QuestAbandonRequest questAbandon=16;//放弃任务
 
+	//好友
 	FriendAddRequest friendAddRequest=17;//双向
 	FriendAddResponse friendAddResponse=18;
 	FriendListRequest friendList=19;
 	FriendRemoveRequest friendRemove=20;
+
+	//组队
+	TeamInviteRequest teamInviteRequest=21;
+	TeamInviteResponse teamInviteResponse=22;
+	TeamInfoRequest teamInfo=23;
+	TeamLeaveRequest teamLeave=24;
 }
 
 message NetMessageResponse{
@@ -240,6 +247,12 @@ message NetMessageResponse{
 	FriendAddResponse friendAddResponse=18;
 	FriendListResponse friendList=19;
 	FriendRemoveResponse friendRemove=20;
+
+	//组队
+	TeamInviteRequest teamInviteRequest=21;
+	TeamInviteResponse teamInviteResponse=22;
+	TeamInfoResponse teamInfo=23;
+	TeamLeaveResponse teamLeave=24;
 
 	StatusNotify statusNotify=100;
 
@@ -510,4 +523,53 @@ message FriendRemoveResponse
 	RESULT result=1;
 	string errormsg=2;
 	int32 id=3;
+}
+
+//组队系统
+message NTeamInfo
+{
+	int32 id=1;
+	int32 leader=2;//队长
+	repeated NCharacterInfo members=3;
+}
+
+message TeamInviteRequest
+{
+	int32 team_id=1;//队伍Id
+	int32 from_id=2;
+	string from_name=3;
+	int32 to_id=4;
+	string to_name=5;
+}
+
+message TeamInviteResponse
+{
+	RESULT result=1;
+	string errormsg=2;
+	TeamInviteRequest request=3;
+}
+
+message TeamInfoRequest
+{
+
+}
+
+message TeamInfoResponse
+{
+	RESULT result=1;
+	string errormsg=2;
+	NTeamInfo team=3;
+}
+
+message TeamLeaveRequest
+{
+	int32 team_id=1;
+	int32 characterId=2;
+}
+
+message TeamLeaveResponse
+{
+	RESULT result=1;
+	string errormsg=2;
+	int32 characterId=3;
 }

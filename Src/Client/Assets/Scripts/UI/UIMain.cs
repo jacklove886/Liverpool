@@ -118,4 +118,9 @@ public class UIMain : MonoSingleton<UIMain> {
     {
         UIManager.Instance.Show<UIFriend>();//好友
     }
+
+    public void ShowTeamUI(bool show)
+    {
+        //TeamWindow.ShowTeam(show);//组队
+    }
 }
