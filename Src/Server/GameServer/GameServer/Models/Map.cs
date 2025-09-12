@@ -57,7 +57,6 @@ namespace GameServer.Models
             Log.InfoFormat("CharacterEnter: Map:{0} characterId:{1}", this.Define.ID, character.Id);
 
             character.Info.mapId = this.ID;
-
             this.MapCharacters[character.Id] = new MapCharacter(connection, character);
 
             connection.Session.Response.mapCharacterEnter = new MapCharacterEnterResponse();

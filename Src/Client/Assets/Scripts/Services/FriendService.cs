@@ -82,7 +82,7 @@ namespace Services
             }
             else if (response.Result == Result.Failed)
             {
-                MessageBox.Show(response.Request.ToName + "拒绝了您的请求", "添加失败");
+                MessageBox.Show(response.Errormsg, "添加失败");
             }
         }
 

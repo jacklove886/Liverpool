@@ -113,4 +113,9 @@ public class UIMain : MonoSingleton<UIMain> {
     {
         UIManager.Instance.Show<UIQuestSystem>();//任务
     }
+
+    public void OnClickFriend()
+    {
+        UIManager.Instance.Show<UIFriend>();//好友
+    }
 }

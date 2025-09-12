@@ -133,7 +133,7 @@ public class PlayerInputController : MonoBehaviour {
         // 计算旋转差值
         float rotationOffset = Mathf.Abs(Mathf.DeltaAngle(lastSyncRotation, currentRotation));
 
-        if (logicOffset > 5f|| rotationOffset>5f)
+        if (logicOffset > 2f|| rotationOffset>5f)
         {
             this.character.SetPosition(GameObjectTool.WorldToLogic(this.rb.transform.position));//同步位置
 

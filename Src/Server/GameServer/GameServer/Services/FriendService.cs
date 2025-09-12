@@ -36,7 +36,7 @@ namespace GameServer.Services
             {
                 foreach(var cha in CharacterManager.Instance.Characters)
                 {
-                    if (cha.Value.Define.Name == request.ToName)
+                    if (cha.Value.Data.Name == request.ToName)
                     {
                         request.ToId = cha.Key;
                         break;
@@ -56,13 +56,14 @@ namespace GameServer.Services
                     sender.SendResponse();
                     return;
                 }
-                friend = SessionManager.Instance.GetSession(request.ToId);
             }
+            friend = SessionManager.Instance.GetSession(request.ToId);
             if (friend == null)//有可能该玩家突然离线
             {
                 sender.Session.Response.friendAddResponse = new FriendAddResponse();
                 sender.Session.Response.friendAddResponse.Result = Result.Failed;
                 sender.Session.Response.friendAddResponse.Errormsg = "该玩家不存在或不在线";
+                sender.Session.Response.friendAddResponse.Request = request;
                 sender.SendResponse();
                 return;
             }
@@ -95,9 +96,9 @@ namespace GameServer.Services
                     //A把B添加进好友管理器
                     requster.Session.Character.FriendManager.AddFriend(character);
                     DBService.Instance.Save();
-                    sender.Session.Response.friendAddResponse = response;
-                    sender.Session.Response.friendAddResponse.Result = Result.Success;
-                    sender.Session.Response.friendAddResponse.Errormsg = "添加好友成功";
+                    requster.Session.Response.friendAddResponse = response;
+                    requster.Session.Response.friendAddResponse.Result = Result.Success;
+                    requster.Session.Response.friendAddResponse.Errormsg = "添加好友成功";
                     requster.SendResponse();
                 }
             }
@@ -127,7 +128,7 @@ namespace GameServer.Services
                 }
                 else//B不在线  直接操作数据库删除
                 {
-                    RemoveFriend(request.frinedId, character.Id);
+                    RemoveFriend(character.Id,request.frinedId);
                 }
             }
             else

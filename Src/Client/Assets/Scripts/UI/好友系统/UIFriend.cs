@@ -16,6 +16,8 @@ public class UIFriend : UIWindow {
 	
 	void Start ()
     {
+        if (listMain == null || this == null) 
+            return;
         FriendService.Instance.OnFriendUpdate = RefreshUI;//打开就接收通知 会自动刷新
         listMain.onItemSelected += OnFriendSelected;
         RefreshUI();
@@ -74,14 +76,16 @@ public class UIFriend : UIWindow {
 
     void InitFriendItems()
     {
-        foreach(var item in FriendManager.Instance.allfriends)
+        if (listMain == null || itemPrefab == null) 
+            return;
+        foreach (var item in FriendManager.Instance.allfriends)
         {
             GameObject go = Instantiate(itemPrefab, this.listMain.transform);
             UIFriendItem ui = go.GetComponent<UIFriendItem>();
             ui.SetFriendInfo(item);
             listMain.AddItem(ui);
         }
-        if (listMain.items.Count > 0)
+        if (listMain != null && listMain.items.Count > 0)
         {
             listMain.SelectedItem = listMain.items[0];//默认选中第一个
         }
@@ -92,5 +96,8 @@ public class UIFriend : UIWindow {
         listMain.RemoveAll();
     }
 
-
+    public void OnClickClose()
+    {
+        UIManager.Instance.Close(typeof(UIFriend));
+    }
 }

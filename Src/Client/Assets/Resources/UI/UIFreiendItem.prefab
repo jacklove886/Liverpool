@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222255378162000520}
   - component: {fileID: 114406474483964082}
   m_Layer: 5
-  m_Name: Text1 (4)
+  m_Name: name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 222980085547729598}
   - component: {fileID: 114899506381890154}
   m_Layer: 5
-  m_Name: Text1 (5)
+  m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 224035326770817998}
   - component: {fileID: 222262518894448058}
   - component: {fileID: 114112403308038418}
+  - component: {fileID: 114823637003636966}
   m_Layer: 5
   m_Name: UIFreiendItem
   m_TagString: Untagged
@@ -73,7 +74,7 @@ GameObject:
   - component: {fileID: 222988528728869870}
   - component: {fileID: 114393852293009720}
   m_Layer: 5
-  m_Name: Text1 (6)
+  m_Name: class
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,7 +91,7 @@ GameObject:
   - component: {fileID: 222998322545836676}
   - component: {fileID: 114247866375568388}
   m_Layer: 5
-  m_Name: Text1 (7)
+  m_Name: status
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +116,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 719869e428f9ff442b3238d335328a3d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 52fe4950dca93ca4fb6000e0d58a4929, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -222,6 +223,26 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Alice
+--- !u!114 &114823637003636966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1103916030362638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135fefd03cf979a4f84c10c8760c9c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: 0
+  owner: {fileID: 0}
+  chaCame: {fileID: 114406474483964082}
+  chaClass: {fileID: 114393852293009720}
+  level: {fileID: 114899506381890154}
+  status: {fileID: 114247866375568388}
+  background: {fileID: 114112403308038418}
+  normalBg: {fileID: 21300000, guid: 52fe4950dca93ca4fb6000e0d58a4929, type: 3}
+  selectedBg: {fileID: 21300000, guid: 719869e428f9ff442b3238d335328a3d, type: 3}
 --- !u!114 &114899506381890154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -301,8 +322,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224641598001465176}
-  - {fileID: 224296701385750548}
   - {fileID: 224321257040825482}
+  - {fileID: 224296701385750548}
   - {fileID: 224713391354163642}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -323,7 +344,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224035326770817998}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -341,7 +362,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224035326770817998}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

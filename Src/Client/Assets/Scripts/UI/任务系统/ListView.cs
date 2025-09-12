@@ -89,7 +89,10 @@ public class ListView : MonoBehaviour
     {
         foreach (var it in items)
         {
-            Destroy(it.gameObject);
+            if (it != null && it.gameObject != null)
+            {
+                Destroy(it.gameObject);
+            }
         }
         items.Clear();//清空列表
     }

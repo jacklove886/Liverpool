@@ -102,14 +102,14 @@ namespace Services
         //客户端接收到服务器发送的同步消息  进行移动同步
         private void OnMapEntitySync(object sender, MapEntitySyncResponse response)
         {
-            //System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            //sb.AppendFormat("MapEntityUpdateResponse:Entity:{0}", response.entitySyncs.Count);
-            //sb.AppendLine();
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.AppendFormat("MapEntityUpdateResponse:Entity:{0}", response.entitySyncs.Count);
+            sb.AppendLine();
             foreach(var entity in response.entitySyncs)
             {
                 EntityManager.Instance.OnEntitySync(entity);//真正有用的只有这一行 其余都是日志输出
-                //sb.AppendFormat("[{0}]evt:{1} entity:{2}", entity.Id, entity.Event, entity.Entity.String());
-                //sb.AppendLine();
+                sb.AppendFormat("[{0}]evt:{1} entity:{2}", entity.Id, entity.Event, entity.Entity.String());
+                sb.AppendLine();
             }
             //Debug.Log(sb.ToString());
         }
