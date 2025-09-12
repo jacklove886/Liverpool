@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Managers\DataManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EntityManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EquipManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\FriendManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ItemManager.cs" />
     <Compile Include="Assets\Scripts\Managers\MinimapManager.cs" />
     <Compile Include="Assets\Scripts\Managers\NpcManager.cs" />
@@ -94,12 +95,15 @@
     <Compile Include="Assets\Scripts\Models\User.cs" />
     <Compile Include="Assets\Scripts\Network\NetClient.cs" />
     <Compile Include="Assets\Scripts\Scene\SceneManager.cs" />
+    <Compile Include="Assets\Scripts\Services\FriendService.cs" />
     <Compile Include="Assets\Scripts\Services\ItemService.cs" />
     <Compile Include="Assets\Scripts\Services\MapService.cs" />
     <Compile Include="Assets\Scripts\Services\QuestService.cs" />
     <Compile Include="Assets\Scripts\Services\StatusService.cs" />
     <Compile Include="Assets\Scripts\Services\UserService.cs" />
+    <Compile Include="Assets\Scripts\UI\InputBox.cs" />
     <Compile Include="Assets\Scripts\UI\UIDialog.cs" />
+    <Compile Include="Assets\Scripts\UI\UIInputBox.cs" />
     <Compile Include="Assets\Scripts\UI\UIMain.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\UI\UIWindow.cs" />
@@ -116,6 +120,8 @@
     <Compile Include="Assets\Scripts\UI\商店系统\PageView.cs" />
     <Compile Include="Assets\Scripts\UI\商店系统\UIShop.cs" />
     <Compile Include="Assets\Scripts\UI\商店系统\UIShopItem.cs" />
+    <Compile Include="Assets\Scripts\UI\好友系统\UIFriend.cs" />
+    <Compile Include="Assets\Scripts\UI\好友系统\UIFriendItem.cs" />
     <Compile Include="Assets\Scripts\UI\登录注册场景\UILogin.cs" />
     <Compile Include="Assets\Scripts\UI\登录注册场景\UIRegister.cs" />
     <Compile Include="Assets\Scripts\UI\背包系统\TabButton.cs" />

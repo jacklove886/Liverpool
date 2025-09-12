@@ -28,6 +28,7 @@ public class UIManager : Singleton<UIManager> {
         UIResources.Add(typeof(UICharEquip), new UIElement() { Resources = "UI/UICharEquip", Cache = false });
         UIResources.Add(typeof(UIQuestSystem), new UIElement() { Resources = "UI/UIQuestSystem", Cache = false });
         UIResources.Add(typeof(UIQuestDialog), new UIElement() { Resources = "UI/UIQuestDialog", Cache = false });
+        UIResources.Add(typeof(UIFriend), new UIElement() { Resources = "UI/UIFriend", Cache = false });
     }
 
     ~UIManager()
@@ -46,7 +47,7 @@ public class UIManager : Singleton<UIManager> {
             {
                 if (info.gameObject.activeInHierarchy)//如果已经激活 返回当前实例
                 {
-                    return info.gameObject.GetComponent<T>();
+                    return default(T);
                 }
                 info.gameObject.SetActive(true);//如果有实例 直接开启
             }

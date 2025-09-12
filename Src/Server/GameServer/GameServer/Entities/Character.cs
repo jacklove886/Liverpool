@@ -1,6 +1,7 @@
 ﻿using Common.Data;
 using GameServer.Core;
 using GameServer.Managers;
+using Network;
 using SkillBridge.Message;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GameServer.Entities
 {
-    public class Character : CharacterBase//基类是Entity
+    public class Character : CharacterBase, IPostResponser//基类是Entity
     {
        
         public TCharacter Data;
@@ -58,9 +59,8 @@ namespace GameServer.Entities
             this.QuestManager.GetQuestInfos(Info.Quests);
 
             //好友系统
-            //任务系统
             this.FriendManager = new FriendManager(this);
-            this.FriendManager.GetFrinedInfos(Info.Quests);
+            this.FriendManager.GetFriendInfos(Info.Friends);
         }
 
         public long Gold
@@ -75,6 +75,20 @@ namespace GameServer.Entities
                 this.StatusManager.AddGoldChange((int)(value - this.Data.Gold));//新金币减去老金币
                 this.Data.Gold = value;//新金币赋值
             }
+        }
+
+        public void PostProcess(NetMessageResponse message)
+        {
+            this.FriendManager.PostProcess(message);//好友管理器后处理
+            if (this.StatusManager.HasStatus)
+            {
+                this.StatusManager.PostProcess(message);//状态管理器后处理
+            }
+        }
+
+        public void Clear()
+        {
+            this.FriendManager.UpdateFriendInfo(this.Info, 0);
         }
     }
 }

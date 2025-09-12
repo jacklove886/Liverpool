@@ -18,10 +18,18 @@ public class UILogin : MonoBehaviour {
     {
         # region  如果启动了LoadingManager脚本 就不需要这些话 如果没启动 就要加上这些话来加载数据库
         MapService.Instance.Init();//初始化服务器
+
         UserService.Instance.Init();//初始化服务器
+
         DataManager.Instance.Load();//同步加载(测试用)  LoadingManager用的是携程分帧加载
+
         ShopManager.Instance.Init();//初始化商店管理器
+
         NpcTestManager.Instance.Init();//初始化商店管理器
+
+        StatusService.Instance.Init();
+
+        FriendService.Instance.Init();
         #endregion
 
         UserService.Instance.OnLogin += OnLogin;

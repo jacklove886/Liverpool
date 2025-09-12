@@ -19,6 +19,9 @@ public class SoundManager : MonoSingleton<SoundManager>
     [Header("主城背景音乐")]
     public AudioClip bgmInMainCityClip;
 
+    [Header("野外1音乐")]
+    public AudioClip bgmInoutDoors1Clip;
+
     [Header("角色创建音效")]
     public AudioClip[] characterAudioClip1;                      
 

@@ -37,11 +37,15 @@ public class LoadingManager : MonoBehaviour {
         yield return new WaitForSeconds(2.5f);
         UITips.SetActive(false);
         print("加载完毕2");
-        yield return DataManager.Instance.LoadData();
+        yield return DataManager.Instance.LoadData();//携程加载数据库
 
         //初始化服务器
         MapService.Instance.Init();
         UserService.Instance.Init();
+        StatusService.Instance.Init();
+        FriendService.Instance.Init();
+
+        //初始化管理器
         ShopManager.Instance.Init();
 
 

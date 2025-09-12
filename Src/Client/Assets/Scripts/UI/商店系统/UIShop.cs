@@ -40,7 +40,7 @@ public class UIShop : MonoBehaviour {
         {
             if(kv.Value.Status>0)//可出售状态
             {
-                if (count > 16)//如果道具超过16个 超过的放到下一页
+                if (count >=16)//如果道具超过16个 超过的放到下一页
                 {
                     count = 0;
                     page++;  

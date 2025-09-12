@@ -238,6 +238,8 @@ namespace GameServer.Services
             Log.InfoFormat("UserGameEnterRequest: characterID:{0}:{1} Map:{2}", databaseCharacter.ID, databaseCharacter.Name, databaseCharacter.MapID);
             Character character = CharacterManager.Instance.CharacterAdd(databaseCharacter);
 
+            SessionManager.Instance.AddSession(character.Id, sender);//添加连接
+
             sender.Session.Response.gameEnter = new UserGameEnterResponse();
             sender.Session.Response.gameEnter.Result = Result.Success;
             sender.Session.Response.gameEnter.Errormsg = "None";
@@ -248,6 +250,7 @@ namespace GameServer.Services
 
             //发送响应客户端
             sender.Session.Character = character;
+            sender.Session.PostResponser = character;
             MapManager.Instance[databaseCharacter.MapID].CharacterEnter(sender, character);
         }
 
@@ -256,6 +259,7 @@ namespace GameServer.Services
             Character character = sender.Session.Character;
             Log.InfoFormat("UserGameLeaveRequest: characterID:{0}:{1} Map:{2}", character.Id, character.Info.Name, character.Info.mapId);
 
+            SessionManager.Instance.Remove(character.Id);//移除连接
             CharacterLeave(character);
 
             sender.Session.Response.gameLeave = new UserGameLeaveResponse();
@@ -269,6 +273,7 @@ namespace GameServer.Services
         {
             CharacterManager.Instance.CharacterRemove(character.Id);
             MapManager.Instance[character.Info.mapId].CharacterLeave(character);
+            character.Clear();
         }
     }
 }

@@ -16,9 +16,11 @@ namespace Network
         public TUser User { get; set; }
         public Character Character { get; set; }
         public NEntity Entity { get; set; }
+        public IPostResponser PostResponser { get; set; }
 
         public void Disconnected()
         {
+            this.PostResponser = null;
             if (Character != null)
             {
                 UserService.Instance.CharacterLeave(Character);
@@ -45,9 +47,9 @@ namespace Network
         {
             if (response != null)
             {
-                if (this.Character != null && this.Character.StatusManager.HasStatus)
+                if (PostResponser != null)
                 {
-                    this.Character.StatusManager.ApplyResponse(Response);
+                    this.PostResponser.PostProcess(Response);
                 }
                 byte[] data = PackageHandler.PackMessage(response);//打包发送response
                 response = null;//response设为空  保证了消息不会重复
