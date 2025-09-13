@@ -136,7 +136,7 @@ namespace GameServer.Services
             {
                 sender.Session.Response.friendRemove.Result = Result.Success;
 
-                //在A的好友列表中B  friend是B
+                //在A的好友列表中删除B  friend是B
                 var friend = SessionManager.Instance.GetSession(request.frinedId);//获取到B
                 if (friend != null)//B在线
                 {
@@ -159,15 +159,11 @@ namespace GameServer.Services
 
         void RemoveFriend(int characterId,int friendId)
         {
-            var removeItemA = DBService.Instance.Entities.CharacterFriends.FirstOrDefault(v => v.CharacterID == characterId && v.FriendID == friendId);
-            if (removeItemA != null)
+            //characterId是A  friendId是B
+            var removeItem = DBService.Instance.Entities.CharacterFriends.FirstOrDefault(v => v.FriendID == characterId && v.CharacterID == friendId);
+            if (removeItem != null)
             {
-                DBService.Instance.Entities.CharacterFriends.Remove(removeItemA);
-            }
-            var removeItemB = DBService.Instance.Entities.CharacterFriends.FirstOrDefault(v => v.FriendID == characterId && v.CharacterID == friendId);
-            if (removeItemB != null)
-            {
-                DBService.Instance.Entities.CharacterFriends.Remove(removeItemB);
+                DBService.Instance.Entities.CharacterFriends.Remove(removeItem);
             }
         }
     }

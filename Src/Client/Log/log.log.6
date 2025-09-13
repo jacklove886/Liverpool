@@ -1,108 +1,58 @@
-2025-09-13 16:22:28,761 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-13 16:22:31,454 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-13 16:22:31,455 [ 1] INFO  Unity: 连接成功
-2025-09-13 16:22:31,457 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-13 16:22:33,503 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:269)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:166)
-Services.UserService:ConnectToServer() (at Assets/Scripts/Services/UserService.cs:65)
-Services.UserService:SendLogin(String, String) (at Assets/Scripts/Services/UserService.cs:180)
-UILogin:OnClickLogin() (at Assets/Scripts/UI/登录注册场景/UILogin.cs:76)
-UnityEngine.EventSystems.EventSystem:Update()
-
-2025-09-13 16:22:33,507 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
-
-  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
-UnityEngine.Debug:LogErrorFormat(String, Object[])
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:271)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:166)
-Services.UserService:ConnectToServer() (at Assets/Scripts/Services/UserService.cs:65)
-Services.UserService:SendLogin(String, String) (at Assets/Scripts/Services/UserService.cs:180)
-UILogin:OnClickLogin() (at Assets/Scripts/UI/登录注册场景/UILogin.cs:76)
-UnityEngine.EventSystems.EventSystem:Update()
-
-2025-09-13 16:22:33,508 [ 1] INFO  Unity: 连接成功
-2025-09-13 16:22:33,508 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-13 16:22:35,542 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:269)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:166)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:310)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:425)
-
-2025-09-13 16:22:35,543 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
-
-  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
-UnityEngine.Debug:LogErrorFormat(String, Object[])
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:271)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:166)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:310)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:425)
-
-2025-09-13 16:22:35,586 [ 1] INFO  Unity: 连接成功
-2025-09-13 16:22:35,586 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-13 16:22:37,626 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:269)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:166)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:310)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:425)
-
-2025-09-13 16:22:37,627 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
-
-  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
-UnityEngine.Debug:LogErrorFormat(String, Object[])
-Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:271)
-Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:166)
-Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:310)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:425)
-
-2025-09-13 16:22:37,628 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :1 reason:Cannot connect to server
-2025-09-13 16:22:41,470 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-13 16:22:41,471 [ 1] INFO  Unity: 连接成功
-2025-09-13 16:22:41,472 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-13 16:22:41,473 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-13 16:22:43,682 [ 1] INFO  Unity: 登录成功
-2025-09-13 16:22:43,866 [ 1] INFO  Unity: 当前角色数量为2
-2025-09-13 16:22:45,578 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-13 16:22:45,718 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-13 16:22:45,720 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-13 16:22:45,721 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-13 16:22:45,722 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-13 16:22:45,722 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
-2025-09-13 16:22:45,741 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-13 16:22:45,743 [ 1] INFO  Unity: 加入角色姓名:Cyx,地图:1
-2025-09-13 16:22:45,745 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-13 16:22:45,746 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-13 16:22:47,593 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-13 16:22:47,593 [ 1] INFO  Unity: 加入角色姓名:无畏,地图:1
-2025-09-13 16:23:21,951 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-13 16:23:21,953 [ 1] INFO  Unity: 加入角色姓名:Op,地图:1
-2025-09-13 16:23:28,807 [ 1] INFO  Unity: SendTeamInviteResponse
-2025-09-13 16:23:28,835 [ 1] INFO  Unity: 收到组队更新响应
-2025-09-13 16:23:39,057 [ 1] INFO  Unity: 收到组队更新响应
-2025-09-13 16:24:51,304 [ 1] INFO  Unity: 2离开了地图
-2025-09-13 16:24:51,306 [ 1] INFO  Unity: 移除角色ID：2
-2025-09-13 16:24:51,310 [ 1] INFO  Unity: 消失的玩家：2,位置(4175, 2857, 807)
-2025-09-13 16:24:56,116 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-13 16:24:56,117 [ 1] INFO  Unity: 加入角色姓名:无畏,地图:1
-2025-09-13 16:25:11,890 [ 1] INFO  Unity: 12离开了地图
-2025-09-13 16:25:11,891 [ 1] INFO  Unity: 移除角色ID：12
-2025-09-13 16:25:11,892 [ 1] INFO  Unity: 消失的玩家：12,位置(4150, 3000, 807)
-2025-09-13 16:25:13,335 [ 1] INFO  Unity: 3离开了地图
-2025-09-13 16:25:13,336 [ 1] INFO  Unity: 移除角色ID：3
-2025-09-13 16:25:13,336 [ 1] INFO  Unity: 消失的玩家：3,位置(4090, 3067, 805)
-2025-09-13 16:25:14,529 [ 1] INFO  Unity: 网络断开
-2025-09-13 16:25:14,530 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-13 16:35:38,455 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-13 16:35:40,575 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-13 16:35:40,577 [ 1] INFO  Unity: 连接成功
+2025-09-13 16:35:40,578 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-13 16:35:40,582 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-13 16:35:42,765 [ 1] INFO  Unity: 登录成功
+2025-09-13 16:35:42,956 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-13 16:35:46,285 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-13 16:35:46,428 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-13 16:35:46,430 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-13 16:35:46,430 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-13 16:35:46,431 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-13 16:35:46,432 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
+2025-09-13 16:35:46,440 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-13 16:35:46,442 [ 1] INFO  Unity: 加入角色姓名:Cyx,地图:1
+2025-09-13 16:35:46,444 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-13 16:35:46,445 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-13 16:36:04,175 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-13 16:36:04,176 [ 1] INFO  Unity: 加入角色姓名:无畏,地图:1
+2025-09-13 16:36:11,426 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-13 16:36:11,428 [ 1] INFO  Unity: 加入角色姓名:Op,地图:1
+2025-09-13 16:36:17,259 [ 1] INFO  Unity: SendTeamInviteResponse
+2025-09-13 16:36:17,290 [ 1] INFO  Unity: 收到组队更新响应
+2025-09-13 16:36:24,384 [ 1] INFO  Unity: 发送邀请好友请求
+2025-09-13 16:36:26,414 [ 1] INFO  Unity: 发送邀请好友请求
+2025-09-13 16:38:22,349 [ 1] INFO  Unity: 3离开了地图
+2025-09-13 16:38:22,350 [ 1] INFO  Unity: 移除角色ID：3
+2025-09-13 16:38:22,354 [ 1] INFO  Unity: 消失的玩家：3,位置(4150, 3000, 805)
+2025-09-13 16:38:29,964 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
+2025-09-13 16:38:29,966 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-13 16:38:29,990 [ 1] INFO  Unity: 1离开了地图
+2025-09-13 16:38:29,991 [ 1] INFO  Unity: 移除角色ID：1
+2025-09-13 16:38:29,992 [ 1] INFO  Unity: 移除角色ID：2
+2025-09-13 16:38:29,994 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-13 16:38:29,995 [ 1] INFO  Unity: 消失的玩家：1,位置(4455, 3238, 804)
+2025-09-13 16:38:29,996 [ 1] INFO  Unity: 消失的玩家：2,位置(4150, 3000, 807)
+2025-09-13 16:38:30,143 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-13 16:38:37,157 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-13 16:38:37,171 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-13 16:38:37,172 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-13 16:38:37,173 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-13 16:38:37,174 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-13 16:38:37,175 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
+2025-09-13 16:38:37,175 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:2
+2025-09-13 16:38:37,176 [ 1] INFO  Unity: 加入角色姓名:Cyx,地图:1
+2025-09-13 16:38:37,178 [ 1] INFO  Unity: 加入角色姓名:无畏,地图:1
+2025-09-13 16:38:37,180 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-13 16:38:37,182 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-13 16:38:42,582 [ 1] INFO  Unity: 2离开了地图
+2025-09-13 16:38:42,583 [ 1] INFO  Unity: 移除角色ID：2
+2025-09-13 16:38:42,584 [ 1] INFO  Unity: 消失的玩家：2,位置(4150, 3000, 807)
+2025-09-13 16:38:43,311 [ 1] INFO  Unity: 网络断开
+2025-09-13 16:38:43,312 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:172)
 
-2025-09-13 16:25:14,532 [ 1] INFO  Unity: 消失的玩家：1,位置(4150, 3000, 804)
+2025-09-13 16:38:43,318 [ 1] INFO  Unity: 消失的玩家：12,位置(4150, 3000, 804)
