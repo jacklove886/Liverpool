@@ -9,7 +9,7 @@ class MessageBox
     {
         if (cacheObject==null)
         {
-            cacheObject = Resloader.Load<Object>("UI/UIMessageBox");//缓存机制 只用加载第一次
+            cacheObject = Resloader.Load<Object>("UI/UIBox/UIMessageBox");//缓存机制 只用加载第一次
         }
 
         GameObject go = (GameObject)GameObject.Instantiate(cacheObject);

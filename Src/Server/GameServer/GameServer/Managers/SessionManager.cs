@@ -30,6 +30,16 @@ namespace GameServer.Managers
             return session;
         }
 
-
+        public bool GetSessionByUserId(long userId)
+        {
+            foreach(var session in Sessions.Values)//遍历所有会话
+            {
+                if (session.Session.User != null && session.Session.User.ID == userId)//如果有和当前输入的用户ID相同的
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

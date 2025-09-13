@@ -11,7 +11,7 @@ public class UIMain : MonoSingleton<UIMain> {
     public GameObject escPanel;//返回选择角色界面的按钮
     private GameObject go;//预制体局部变量
     public bool escPanelState = false;//开启状态 按ESC进行开启关闭
-    public UITeam TeamWindow;
+    public UITeam UITeam;
 
     protected override void OnStart ()
     {
@@ -122,6 +122,6 @@ public class UIMain : MonoSingleton<UIMain> {
 
     public void ShowTeamUI(bool show)
     {
-        TeamWindow.ShowTeam(show);//组队
+        UITeam.ShowTeam(show);//组队
     }
 }

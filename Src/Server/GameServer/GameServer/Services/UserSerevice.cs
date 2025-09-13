@@ -73,6 +73,11 @@ namespace GameServer.Services
                 sender.Session.Response.userLogin.Result = Result.Failed;
                 sender.Session.Response.userLogin.Errormsg = "密码错误";
             }
+            else if (SessionManager.Instance.GetSessionByUserId(user.ID))
+            {
+                sender.Session.Response.userLogin.Result = Result.Failed;
+                sender.Session.Response.userLogin.Errormsg = "用户已登录.";
+            }
             else
             {
                 sender.Session.User = user;
@@ -91,7 +96,7 @@ namespace GameServer.Services
                     info.Class = (CharacterClass)c.Class;
                     info.Type = CharacterType.Player;
                     info.Level = c.Level;
-                    info.ConfigId = c.ID;
+                    info.ConfigId = c.TID;
                     sender.Session.Response.userLogin.Userinfo.Player.Characters.Add(info);
                 }
             }
