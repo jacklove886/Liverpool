@@ -53,9 +53,4 @@ public class UIQuestDialog : UIWindow
         }
     }
 
-    public void OnClickClose()
-    {
-        UIManager.Instance.Close(typeof(UIQuestDialog));
-    }
-
 }

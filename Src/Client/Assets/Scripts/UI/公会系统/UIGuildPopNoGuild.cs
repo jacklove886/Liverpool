@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIGuildPopNoGuild : MonoBehaviour {
+public class UIGuildPopNoGuild : UIWindow
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+
 }

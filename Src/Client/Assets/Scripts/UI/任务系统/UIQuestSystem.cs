@@ -142,10 +142,4 @@ public class UIQuestSystem : UIWindow {
         UIQuestItem questItem = item as UIQuestItem;
         this.questInfo.SetQuestInfo(questItem.quest);
     }
-
-    public void OnClickClose()
-    {
-        UIManager.Instance.Close(typeof(UIQuestSystem));
-    }
-
 }

@@ -1,12 +1,72 @@
-2025-09-13 17:48:39,674 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-13 17:48:42,144 [ 1] INFO  Unity: 用户名 :1 密码:1
-2025-09-13 17:48:42,145 [ 1] INFO  Unity: 连接成功
-2025-09-13 17:48:42,147 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-13 17:48:42,150 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-13 17:48:44,310 [ 1] INFO  Unity: 登录成功
-2025-09-13 17:48:44,505 [ 1] INFO  Unity: 当前角色数量为3
-2025-09-13 17:48:55,330 [ 1] INFO  Unity: 网络断开
-2025-09-13 17:48:55,330 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-13 17:49:23,848 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-13 17:49:25,883 [ 1] INFO  Unity: 用户名 :1 密码:1
+2025-09-13 17:49:25,885 [ 1] INFO  Unity: 连接成功
+2025-09-13 17:49:25,887 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-13 17:49:27,914 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
+UnityEngine.Debug:LogWarning(Object)
+Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
+Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:269)
+Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:166)
+Services.UserService:ConnectToServer() (at Assets/Scripts/Services/UserService.cs:65)
+Services.UserService:SendLogin(String, String) (at Assets/Scripts/Services/UserService.cs:180)
+UILogin:OnClickLogin() (at Assets/Scripts/UI/登录注册场景/UILogin.cs:76)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-13 17:49:27,918 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
+
+  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
+  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
+UnityEngine.Debug:LogErrorFormat(String, Object[])
+Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:271)
+Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:166)
+Services.UserService:ConnectToServer() (at Assets/Scripts/Services/UserService.cs:65)
+Services.UserService:SendLogin(String, String) (at Assets/Scripts/Services/UserService.cs:180)
+UILogin:OnClickLogin() (at Assets/Scripts/UI/登录注册场景/UILogin.cs:76)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-13 17:49:27,919 [ 1] INFO  Unity: 连接成功
+2025-09-13 17:49:27,920 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-13 17:49:29,969 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
+UnityEngine.Debug:LogWarning(Object)
+Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
+Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:269)
+Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:166)
+Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:310)
+Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:425)
+
+2025-09-13 17:49:29,970 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
+
+  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
+  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
+UnityEngine.Debug:LogErrorFormat(String, Object[])
+Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:271)
+Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:166)
+Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:310)
+Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:425)
+
+2025-09-13 17:49:30,010 [ 1] INFO  Unity: 连接成功
+2025-09-13 17:49:30,011 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-13 17:49:32,041 [ 1] WARN  Unity: CloseConnection(), errorCode: 1005
+UnityEngine.Debug:LogWarning(Object)
+Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
+Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:269)
+Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:166)
+Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:310)
+Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:425)
+
+2025-09-13 17:49:32,041 [ 1] ERROR Unity: DoConnect SocketException:[10061,ConnectionRefused,10061]System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。
+
+  at System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy) [0x00000] in <filename unknown>:0 
+  at System.Net.Sockets.Socket+Worker.Connect () [0x00000] in <filename unknown>:0  
+UnityEngine.Debug:LogErrorFormat(String, Object[])
+Network.NetClient:DoConnect() (at Assets/Scripts/Network/NetClient.cs:271)
+Network.NetClient:Connect(Int32) (at Assets/Scripts/Network/NetClient.cs:166)
+Network.NetClient:KeepConnect() (at Assets/Scripts/Network/NetClient.cs:310)
+Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:425)
+
+2025-09-13 17:49:32,042 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :1 reason:Cannot connect to server
+2025-09-13 17:49:36,434 [ 1] INFO  Unity: 网络断开
+2025-09-13 17:49:36,435 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:172)

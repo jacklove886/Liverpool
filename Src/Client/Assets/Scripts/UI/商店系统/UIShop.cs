@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIShop : MonoBehaviour {
+public class UIShop : UIWindow {
 
     public Text title;//标题
     public Text money;//价格
@@ -87,11 +87,6 @@ public class UIShop : MonoBehaviour {
             return;
         }
         ShopManager.Instance.BuyItem(this.shop.ID, this.selectedItem.shopItemID);
-    }
-
-    public void OnClickClose()
-    {
-        UIManager.Instance.Close(typeof(UIShop));
     }
 
     private bool OnMoneyChanged(Nstatus status)

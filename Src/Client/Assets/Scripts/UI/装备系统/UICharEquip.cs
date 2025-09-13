@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UICharEquip : MonoBehaviour
+public class UICharEquip : UIWindow
 {
     public Text title;
     public Text money;
@@ -132,10 +132,4 @@ public class UICharEquip : MonoBehaviour
     {
         EquipManager.Instance.UnEuqipItem(item);
     }
-
-    public void OnClickClose()
-    {
-        UIManager.Instance.Close(typeof(UICharEquip));
-    }
-
 }

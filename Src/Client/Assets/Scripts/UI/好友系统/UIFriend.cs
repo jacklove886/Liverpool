@@ -134,8 +134,4 @@ public class UIFriend : UIWindow {
         listMain.RemoveAll();
     }
 
-    public void OnClickClose()
-    {
-        UIManager.Instance.Close(typeof(UIFriend));
-    }
 }

@@ -71,9 +71,4 @@ public class UIBag : UIWindow
         Clear();
         StartCoroutine(InitBags());//重新初始化
     }
-
-    public void OnClickClose()
-    {
-        UIManager.Instance.Close(typeof(UIBag));
-    }
 }

@@ -249,13 +249,14 @@ namespace GameServer.Services
             sender.Session.Response.gameEnter.Result = Result.Success;
             sender.Session.Response.gameEnter.Errormsg = "None";
 
+            //发送响应客户端  后处理赋值放在发送响应前
+            sender.Session.Character = character;
+            sender.Session.PostResponser = character;
+
             //进入成功,发送初始角色信息
             sender.Session.Response.gameEnter.Character = character.Info;
             sender.SendResponse();
-
-            //发送响应客户端
-            sender.Session.Character = character;
-            sender.Session.PostResponser = character;
+         
             MapManager.Instance[databaseCharacter.MapID].CharacterEnter(sender, character);
         }
 
