@@ -46,6 +46,7 @@ public class UITeam : UIWindow
 
     private void UpdateTeamUI()
     {
+        teamInfo = User.Instance.TeamInfo;
         if (teamInfo == null) return;
         this.text.text = string.Format("我的队伍({0}/5", teamInfo.Members.Count);
 

@@ -70,7 +70,7 @@ namespace Services
             message.Request = new NetMessageRequest();
             message.Request.friendAddResponse = new FriendAddResponse();
             message.Request.friendAddResponse.Result = accept ? Result.Success : Result.Failed;
-            message.Request.friendAddResponse.Errormsg = accept ? "对方同意" : "对方拒绝了你的好友请求";
+            message.Request.friendAddResponse.Errormsg = accept ? "对方同意了你的好友" : "对方拒绝了你的好友请求";
             message.Request.friendAddResponse.Request = request;
             NetClient.Instance.SendMessage(message);          
         }
@@ -89,7 +89,6 @@ namespace Services
 
         public void OnFriendList(object sender, FriendListResponse response)
         {
-            Debug.LogFormat("收到好友列表响应");
             FriendManager.Instance.Init(response.Friends);
             //通知好友管理器刷新列表
             if (OnFriendUpdate != null)

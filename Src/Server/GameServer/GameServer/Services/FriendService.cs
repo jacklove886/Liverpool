@@ -98,7 +98,6 @@ namespace GameServer.Services
                     DBService.Instance.Save();
                     requster.Session.Response.friendAddResponse = response;
                     requster.Session.Response.friendAddResponse.Result = Result.Success;
-                    requster.Session.Response.friendAddResponse.Errormsg = "对方同意了你的好友";
                     sender.Session.Response.friendAddResponse.Errormsg = "添加好友成功";
                     requster.SendResponse();
                 }
@@ -137,7 +136,7 @@ namespace GameServer.Services
             {
                 sender.Session.Response.friendRemove.Result = Result.Success;
 
-                //在别人的好友列表中删除自己
+                //在A的好友列表中B  friend是B
                 var friend = SessionManager.Instance.GetSession(request.frinedId);//获取到B
                 if (friend != null)//B在线
                 {
@@ -160,10 +159,15 @@ namespace GameServer.Services
 
         void RemoveFriend(int characterId,int friendId)
         {
-            var removeItem = DBService.Instance.Entities.CharacterFriends.FirstOrDefault(v => v.CharacterID == characterId && v.FriendID == friendId);
-            if (removeItem != null)
+            var removeItemA = DBService.Instance.Entities.CharacterFriends.FirstOrDefault(v => v.CharacterID == characterId && v.FriendID == friendId);
+            if (removeItemA != null)
             {
-                DBService.Instance.Entities.CharacterFriends.Remove(removeItem);
+                DBService.Instance.Entities.CharacterFriends.Remove(removeItemA);
+            }
+            var removeItemB = DBService.Instance.Entities.CharacterFriends.FirstOrDefault(v => v.FriendID == characterId && v.CharacterID == friendId);
+            if (removeItemB != null)
+            {
+                DBService.Instance.Entities.CharacterFriends.Remove(removeItemB);
             }
         }
     }

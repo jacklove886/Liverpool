@@ -92,7 +92,6 @@ namespace GameServer.Services
                     TeamManager.Instance.AddTeamMember(requster.Session.Character, character);
                     requster.Session.Response.teamInviteResponse = response;
                     requster.Session.Response.teamInviteResponse.Result = Result.Success;
-                    requster.Session.Response.teamInviteResponse.Errormsg = "对方同意了你的邀请";
                     sender.Session.Response.teamInviteResponse.Errormsg = "组队成功";
                     requster.SendResponse();
                 }

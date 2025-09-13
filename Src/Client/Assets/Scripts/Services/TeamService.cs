@@ -33,7 +33,7 @@ namespace Services
 
         }
 
-        public void SendTeamInviteRequest(int friendId, string friendName)//发送邀请好友请求
+        public void SendTeamInviteRequest(int friendId, string friendName)//A向B发送邀请好友请求
         {
             Debug.LogFormat("发送邀请好友请求");
             NetMessage message = new NetMessage();
@@ -67,7 +67,7 @@ namespace Services
             message.Request = new NetMessageRequest();
             message.Request.teamInviteResponse = new TeamInviteResponse();
             message.Request.teamInviteResponse.Result = accept ? Result.Success : Result.Failed;
-            message.Request.teamInviteResponse.Errormsg = accept ? "组队成功" : "对方拒绝了你的组队请求";
+            message.Request.teamInviteResponse.Errormsg = accept ? "对方同意了你的邀请" : "对方拒绝了你的组队请求";//A收到的
             message.Request.teamInviteResponse.Request = request;
             NetClient.Instance.SendMessage(message);
         }
@@ -76,7 +76,7 @@ namespace Services
         {
             if (response.Result == Result.Success)
             {
-                MessageBox.Show(response.Request.ToName+"加入您的队伍", "组队成功");
+                MessageBox.Show(response.Errormsg, "组队成功");
             }
             else if (response.Result == Result.Failed)
             {
@@ -107,6 +107,7 @@ namespace Services
             if (response.Result == Result.Success)
             {
                 MessageBox.Show("退出成功", "退出队伍");
+                TeamManager.Instance.UpdateTeamInfo(null);
             }
             else if (response.Result == Result.Failed)
             {

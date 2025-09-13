@@ -1,10 +1,64 @@
-2025-08-30 16:33:23,473 [ 1] INFO  Unity: LoadingManager start
-2025-08-30 16:33:25,629 [ 1] INFO  Unity: 加载完毕1
-2025-08-30 16:33:28,130 [ 1] INFO  Unity: 加载完毕2
-2025-08-30 16:33:28,131 [ 1] INFO  Unity: DataManager > DataManager()
-2025-08-30 16:33:31,764 [ 1] INFO  Unity: 网络断开
-2025-08-30 16:33:31,765 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-13 15:48:24,131 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-13 15:48:28,378 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-13 15:48:28,380 [ 1] INFO  Unity: 连接成功
+2025-09-13 15:48:28,382 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-13 15:48:28,385 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-13 15:48:30,611 [ 1] INFO  Unity: 登录成功
+2025-09-13 15:48:30,813 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-13 15:48:32,544 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-13 15:48:32,686 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-13 15:48:32,688 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-13 15:48:32,688 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-13 15:48:32,690 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-13 15:48:32,690 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
+2025-09-13 15:48:32,715 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-13 15:48:32,716 [ 1] INFO  Unity: 加入角色姓名:Cyx,地图:1
+2025-09-13 15:48:32,719 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-13 15:48:32,720 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-13 15:48:36,573 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-13 15:48:36,574 [ 1] INFO  Unity: 加入角色姓名:Op,地图:1
+2025-09-13 15:48:36,587 [ 1] INFO  Unity: 收到好友列表响应
+2025-09-13 15:48:37,121 [ 1] INFO  Unity: 收到好友列表响应
+2025-09-13 15:48:42,376 [ 1] INFO  Unity: SendTeamInviteResponse
+2025-09-13 15:48:42,409 [ 1] INFO  Unity: 收到好友列表响应
+2025-09-13 15:48:42,411 [ 1] INFO  Unity: 收到组队更新响应
+2025-09-13 15:48:42,414 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{IndexOutOfRangeException: Array index is out of range., UITeam.UpdateTeamUI () (at Assets/Scripts/UI/组队系统/UITeam.cs:58)
+UITeam.OnEnable () (at Assets/Scripts/UI/组队系统/UITeam.cs:36)
+UnityEngine.GameObject:SetActive(Boolean)
+UITeam:ShowTeam(Boolean) (at Assets/Scripts/UI/组队系统/UITeam.cs:41)
+UIMain:ShowTeamUI(Boolean) (at Assets/Scripts/UI/UIMain.cs:125)
+Managers.TeamManager:ShowTeamUI(Boolean) (at Assets/Scripts/Managers/TeamManager.cs:27)
+Managers.TeamManager:UpdateTeamInfo(NTeamInfo) (at Assets/Scripts/Managers/TeamManager.cs:20)
+Services.TeamService:OnTeamInfo(Object, TeamInfoResponse) (at Assets/Scripts/Services/TeamService.cs:90)
+Network.MessageDistributer`1:RaiseEvent(Object, TeamInfoResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:105)
+Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDispatch.cs:31)
+Network.MessageDistributer`1:Distribute() (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:148)
+Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:415)
+Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
+}</args></log4net.Error>
+2025-09-13 15:48:42,419 [ 1] ERROR UserService: Message handler exception:, Array index is out of range., Assembly-CSharp,   at UITeam.UpdateTeamUI () [0x0005a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\UI\组队系统\UITeam.cs:58 
+  at UITeam.ShowTeam (Boolean show) [0x00015] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\UI\组队系统\UITeam.cs:44 
+  at UIMain.ShowTeamUI (Boolean show) [0x00008] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\UI\UIMain.cs:125 
+  at Managers.TeamManager.ShowTeamUI (Boolean show) [0x00018] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\TeamManager.cs:27 
+  at Managers.TeamManager.UpdateTeamInfo (SkillBridge.Message.NTeamInfo team) [0x00014] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\TeamManager.cs:20 
+  at Services.TeamService.OnTeamInfo (System.Object sender, SkillBridge.Message.TeamInfoResponse response) [0x0001c] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\TeamService.cs:90 
+  at Network.MessageDistributer`1[System.Object].RaiseEvent[TeamInfoResponse] (System.Object sender, SkillBridge.Message.TeamInfoResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:105 
+2025-09-13 15:48:42,419 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{IndexOutOfRangeException: Array index is out of range., UITeam.UpdateTeamUI () (at Assets/Scripts/UI/组队系统/UITeam.cs:58)
+UITeam.ShowTeam (Boolean show) (at Assets/Scripts/UI/组队系统/UITeam.cs:44)
+UIMain.ShowTeamUI (Boolean show) (at Assets/Scripts/UI/UIMain.cs:125)
+Managers.TeamManager.ShowTeamUI (Boolean show) (at Assets/Scripts/Managers/TeamManager.cs:27)
+Managers.TeamManager.UpdateTeamInfo (SkillBridge.Message.NTeamInfo team) (at Assets/Scripts/Managers/TeamManager.cs:20)
+Services.TeamService.OnTeamInfo (System.Object sender, SkillBridge.Message.TeamInfoResponse response) (at Assets/Scripts/Services/TeamService.cs:90)
+Network.MessageDistributer`1[System.Object].RaiseEvent[TeamInfoResponse] (System.Object sender, SkillBridge.Message.TeamInfoResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:105)
+}</args></log4net.Error>
+2025-09-13 15:48:43,735 [ 1] INFO  Unity: 收到好友列表响应
+2025-09-13 15:48:51,666 [ 1] INFO  Unity: 消失的玩家：1,位置(4150, 3000, 804)
+2025-09-13 15:48:51,667 [ 1] INFO  Unity: 消失的玩家：2,位置(4150, 3000, 805)
+2025-09-13 15:48:51,667 [ 1] INFO  Unity: 网络断开
+2025-09-13 15:48:51,668 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
+Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
+Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:172)
 

@@ -1,23 +1,68 @@
-2025-08-30 17:11:08,935 [ 1] INFO  Unity: LoadingManager start
-2025-08-30 17:11:11,072 [ 1] INFO  Unity: 加载完毕1
-2025-08-30 17:11:13,575 [ 1] INFO  Unity: 加载完毕2
-2025-08-30 17:11:13,576 [ 1] INFO  Unity: DataManager > DataManager()
-2025-08-30 17:11:21,019 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-08-30 17:11:21,020 [ 1] INFO  Unity: 连接成功
-2025-08-30 17:11:21,021 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-08-30 17:11:21,024 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-08-30 17:11:26,851 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-08-30 17:11:34,950 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-08-30 17:11:36,727 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-08-30 17:11:40,826 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-08-30 17:11:46,837 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-08-30 17:11:50,289 [ 1] INFO  Unity: UserRegisterRequest::user :2 psw:2
-2025-08-30 17:11:54,163 [ 1] INFO  Unity: 用户名 :2 密码:2
-2025-08-30 17:11:58,507 [ 1] INFO  Unity: 用户名 :2 密码:1
-2025-08-30 17:12:04,441 [ 1] INFO  Unity: OnUserRegister:Success [None]
-2025-08-30 17:12:06,586 [ 1] INFO  Unity: 网络断开
-2025-08-30 17:12:06,587 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-13 16:01:16,497 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-13 16:01:20,228 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-13 16:01:20,230 [ 1] INFO  Unity: 连接成功
+2025-09-13 16:01:20,232 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-13 16:01:20,235 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-13 16:01:22,420 [ 1] INFO  Unity: 登录成功
+2025-09-13 16:01:22,599 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-13 16:01:23,590 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-13 16:01:23,725 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-13 16:01:23,727 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-13 16:01:23,728 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-13 16:01:23,729 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-13 16:01:23,730 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
+2025-09-13 16:01:23,738 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-13 16:01:23,738 [ 1] INFO  Unity: 加入角色姓名:Cyx,地图:1
+2025-09-13 16:01:23,741 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-13 16:01:23,742 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-13 16:01:35,488 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-13 16:01:35,489 [ 1] INFO  Unity: 加入角色姓名:Op,地图:1
+2025-09-13 16:01:35,502 [ 1] INFO  Unity: 收到好友列表响应
+2025-09-13 16:01:36,043 [ 1] INFO  Unity: 收到好友列表响应
+2025-09-13 16:01:42,251 [ 1] INFO  Unity: 收到好友列表响应
+2025-09-13 16:01:48,881 [ 1] INFO  Unity: 收到好友列表响应
+2025-09-13 16:01:49,985 [ 1] INFO  Unity: 收到好友列表响应
+2025-09-13 16:01:57,088 [ 1] INFO  Unity: 收到好友列表响应
+2025-09-13 16:01:59,254 [ 1] INFO  Unity: SendTeamInviteResponse
+2025-09-13 16:01:59,285 [ 1] INFO  Unity: 收到好友列表响应
+2025-09-13 16:01:59,288 [ 1] INFO  Unity: 收到组队更新响应
+2025-09-13 16:01:59,290 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{IndexOutOfRangeException: Array index is out of range., UITeam.UpdateTeamUI () (at Assets/Scripts/UI/组队系统/UITeam.cs:58)
+UITeam.OnEnable () (at Assets/Scripts/UI/组队系统/UITeam.cs:36)
+UnityEngine.GameObject:SetActive(Boolean)
+UITeam:ShowTeam(Boolean) (at Assets/Scripts/UI/组队系统/UITeam.cs:41)
+UIMain:ShowTeamUI(Boolean) (at Assets/Scripts/UI/UIMain.cs:125)
+Managers.TeamManager:ShowTeamUI(Boolean) (at Assets/Scripts/Managers/TeamManager.cs:27)
+Managers.TeamManager:UpdateTeamInfo(NTeamInfo) (at Assets/Scripts/Managers/TeamManager.cs:20)
+Services.TeamService:OnTeamInfo(Object, TeamInfoResponse) (at Assets/Scripts/Services/TeamService.cs:90)
+Network.MessageDistributer`1:RaiseEvent(Object, TeamInfoResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:105)
+Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDispatch.cs:31)
+Network.MessageDistributer`1:Distribute() (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:148)
+Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:415)
+Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
+}</args></log4net.Error>
+2025-09-13 16:01:59,295 [ 1] ERROR UserService: Message handler exception:, Array index is out of range., Assembly-CSharp,   at UITeam.UpdateTeamUI () [0x0005a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\UI\组队系统\UITeam.cs:58 
+  at UITeam.ShowTeam (Boolean show) [0x00015] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\UI\组队系统\UITeam.cs:44 
+  at UIMain.ShowTeamUI (Boolean show) [0x00008] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\UI\UIMain.cs:125 
+  at Managers.TeamManager.ShowTeamUI (Boolean show) [0x00018] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\TeamManager.cs:27 
+  at Managers.TeamManager.UpdateTeamInfo (SkillBridge.Message.NTeamInfo team) [0x00014] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\TeamManager.cs:20 
+  at Services.TeamService.OnTeamInfo (System.Object sender, SkillBridge.Message.TeamInfoResponse response) [0x0001c] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\TeamService.cs:90 
+  at Network.MessageDistributer`1[System.Object].RaiseEvent[TeamInfoResponse] (System.Object sender, SkillBridge.Message.TeamInfoResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:105 
+2025-09-13 16:01:59,296 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{IndexOutOfRangeException: Array index is out of range., UITeam.UpdateTeamUI () (at Assets/Scripts/UI/组队系统/UITeam.cs:58)
+UITeam.ShowTeam (Boolean show) (at Assets/Scripts/UI/组队系统/UITeam.cs:44)
+UIMain.ShowTeamUI (Boolean show) (at Assets/Scripts/UI/UIMain.cs:125)
+Managers.TeamManager.ShowTeamUI (Boolean show) (at Assets/Scripts/Managers/TeamManager.cs:27)
+Managers.TeamManager.UpdateTeamInfo (SkillBridge.Message.NTeamInfo team) (at Assets/Scripts/Managers/TeamManager.cs:20)
+Services.TeamService.OnTeamInfo (System.Object sender, SkillBridge.Message.TeamInfoResponse response) (at Assets/Scripts/Services/TeamService.cs:90)
+Network.MessageDistributer`1[System.Object].RaiseEvent[TeamInfoResponse] (System.Object sender, SkillBridge.Message.TeamInfoResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:105)
+}</args></log4net.Error>
+2025-09-13 16:02:00,340 [ 1] INFO  Unity: 收到好友列表响应
+2025-09-13 16:02:05,786 [ 1] INFO  Unity: 消失的玩家：1,位置(4150, 3000, 804)
+2025-09-13 16:02:05,787 [ 1] INFO  Unity: 消失的玩家：2,位置(4150, 3000, 805)
+2025-09-13 16:02:05,789 [ 1] INFO  Unity: 网络断开
+2025-09-13 16:02:05,790 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
+Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
+Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:172)
 
