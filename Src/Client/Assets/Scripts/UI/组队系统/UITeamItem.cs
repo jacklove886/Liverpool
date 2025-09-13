@@ -19,7 +19,7 @@ public class UITeamItem : ListView.ListViewItem
 
     public override void OnSelected(bool selected)
     {
-        background.sprite = selected ? selectedBg : normalBg;
+        background.overrideSprite = selected ? selectedBg : normalBg;
     }
 
     private void Start()
@@ -32,6 +32,7 @@ public class UITeamItem : ListView.ListViewItem
         this.index = index;
         this.info = item;
         this.characterName.text = this.info.Level.ToString().PadRight(4) + this.info.Name;
+        background.enabled = true;
         this.classIcon.overrideSprite = SpriteManager.Instance.classIcons[(int)this.info.Class - 1];
         this.LeaderIcon.gameObject.SetActive(isLeader);
     }

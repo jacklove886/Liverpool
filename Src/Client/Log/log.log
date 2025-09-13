@@ -1,37 +1,29 @@
-2025-09-13 17:51:04,456 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-13 17:51:05,946 [ 1] INFO  Unity: 用户名 :1 密码:1
-2025-09-13 17:51:05,948 [ 1] INFO  Unity: 连接成功
-2025-09-13 17:51:05,949 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-13 17:51:05,952 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-13 17:51:13,929 [ 1] INFO  Unity: 登录成功
-2025-09-13 17:51:14,104 [ 1] INFO  Unity: 当前角色数量为3
-2025-09-13 17:51:15,632 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-13 17:51:15,761 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-13 17:51:15,763 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-13 17:51:15,764 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-13 17:51:15,772 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-13 17:51:15,773 [ 1] INFO  Unity: 加入角色姓名:Op,地图:1
-2025-09-13 17:51:15,775 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-13 17:51:15,776 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-13 17:51:45,602 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
-2025-09-13 17:51:45,603 [ 1] INFO  Unity: 发出退出游戏的响应
-2025-09-13 17:51:45,723 [ 1] INFO  Unity: 9离开了地图
-2025-09-13 17:51:45,726 [ 1] INFO  Unity: 移除角色ID：9
-2025-09-13 17:51:45,729 [ 1] INFO  Unity: 角色离开游戏:Success
-2025-09-13 17:51:45,730 [ 1] INFO  Unity: 消失的玩家：9,位置(4150, 3000, 805)
-2025-09-13 17:51:45,789 [ 1] INFO  Unity: 当前角色数量为3
-2025-09-13 17:51:51,235 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-13 17:51:51,249 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-13 17:51:51,250 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-13 17:51:51,251 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-13 17:51:51,252 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-13 17:51:51,253 [ 1] INFO  Unity: 加入角色姓名:Op,地图:1
-2025-09-13 17:51:51,255 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-13 17:51:51,256 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-13 17:51:53,338 [ 1] INFO  Unity: 消失的玩家：11,位置(4150, 3000, 805)
-2025-09-13 17:51:53,339 [ 1] INFO  Unity: 网络断开
-2025-09-13 17:51:53,339 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-13 18:33:24,348 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-13 18:33:27,086 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-13 18:33:27,088 [ 1] INFO  Unity: 连接成功
+2025-09-13 18:33:27,089 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-13 18:33:27,092 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-13 18:33:29,192 [ 1] INFO  Unity: 登录成功
+2025-09-13 18:33:29,370 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-13 18:33:31,757 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-13 18:33:31,896 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-13 18:33:31,898 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-13 18:33:31,899 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-13 18:33:31,900 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-13 18:33:31,901 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
+2025-09-13 18:33:31,917 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-13 18:33:31,918 [ 1] INFO  Unity: 加入角色姓名:Cyx,地图:1
+2025-09-13 18:33:31,921 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-13 18:33:31,922 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-13 18:33:36,778 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-13 18:33:36,779 [ 1] INFO  Unity: 加入角色姓名:Op,地图:1
+2025-09-13 18:33:42,465 [ 1] INFO  Unity: SendTeamInviteResponse
+2025-09-13 18:33:42,492 [ 1] INFO  Unity: 收到组队更新响应
+2025-09-13 18:35:51,206 [ 1] INFO  Unity: 网络断开
+2025-09-13 18:35:51,207 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:172)
 
+2025-09-13 18:35:51,208 [ 1] INFO  Unity: 消失的玩家：1,位置(4444, 2836, 804)
+2025-09-13 18:35:51,209 [ 1] INFO  Unity: 消失的玩家：2,位置(4383, 3014, 805)

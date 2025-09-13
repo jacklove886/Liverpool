@@ -99,7 +99,7 @@ namespace GameServer.Entities
             this.FriendManager.PostProcess(message);//好友管理器后处理
             if (this.Team != null)
             {
-                Log.InfoFormat("PostProcess>Team:characterID:{0}:{1} {2}<{3}", this.Id, this.Info.Name, TeamUpdateTS, this, Team.changeTime);
+                //Log.InfoFormat("PostProcess>Team:characterID:{0}:{1} {2}<{3}", this.Id, this.Info.Name, TeamUpdateTS, this, Team.changeTime);
                 if (TeamUpdateTS < this.Team.changeTime)//时间戳小于队伍更新的时间
                 {
                     TeamUpdateTS = Team.changeTime;
