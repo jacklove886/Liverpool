@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\Managers\EntityManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EquipManager.cs" />
     <Compile Include="Assets\Scripts\Managers\FriendManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\GuildManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ItemManager.cs" />
     <Compile Include="Assets\Scripts\Managers\MinimapManager.cs" />
     <Compile Include="Assets\Scripts\Managers\NpcManager.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Assets\Scripts\Network\NetClient.cs" />
     <Compile Include="Assets\Scripts\Scene\SceneManager.cs" />
     <Compile Include="Assets\Scripts\Services\FriendService.cs" />
+    <Compile Include="Assets\Scripts\Services\GuildService.cs" />
     <Compile Include="Assets\Scripts\Services\ItemService.cs" />
     <Compile Include="Assets\Scripts\Services\MapService.cs" />
     <Compile Include="Assets\Scripts\Services\QuestService.cs" />
@@ -120,6 +122,10 @@
     <Compile Include="Assets\Scripts\UI\任务系统\UIQuestItem.cs" />
     <Compile Include="Assets\Scripts\UI\任务系统\UIQuestStatus.cs" />
     <Compile Include="Assets\Scripts\UI\任务系统\UIQuestSystem.cs" />
+    <Compile Include="Assets\Scripts\UI\公会系统\UIGuild.cs" />
+    <Compile Include="Assets\Scripts\UI\公会系统\UIGuildList.cs" />
+    <Compile Include="Assets\Scripts\UI\公会系统\UIGuildPopCreate.cs" />
+    <Compile Include="Assets\Scripts\UI\公会系统\UIGuildPopNoGuild.cs" />
     <Compile Include="Assets\Scripts\UI\商店系统\PageView.cs" />
     <Compile Include="Assets\Scripts\UI\商店系统\UIShop.cs" />
     <Compile Include="Assets\Scripts\UI\商店系统\UIShopItem.cs" />

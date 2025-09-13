@@ -43,6 +43,7 @@ public class LoadingManager : MonoBehaviour {
         StatusService.Instance.Init();
         FriendService.Instance.Init();
         TeamService.Instance.Init();
+        GuildService.Instance.Init();
 
         //初始化管理器
         ShopManager.Instance.Init();

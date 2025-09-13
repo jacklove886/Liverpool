@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Managers;
+using Models;
 using Services;
 using System.Collections;
 using System.Collections.Generic;
@@ -123,5 +124,25 @@ public class UIMain : MonoSingleton<UIMain> {
     public void ShowTeamUI(bool show)
     {
         UITeam.ShowTeam(show);//组队
+    }
+
+    public void OnClickGuild(bool show)//公会
+    {
+        GuildManager.Instance.ShowGuild();
+    }
+
+    public void OnClickRide()//坐骑
+    {
+        
+    }
+
+    public void OnClickSetting()//设置
+    {
+        
+    }
+
+    public void OnClickSkill()//技能
+    {
+
     }
 }

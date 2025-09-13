@@ -23,12 +23,22 @@ public class UIManager : Singleton<UIManager> {
         element.Resources = "UI/UIDialog";
         element.Cache = true;*/
         UIResources.Add(typeof(UIDialog), new UIElement() { Resources = "UI/UIDialog", Cache = true });
+
         UIResources.Add(typeof(UIBag), new UIElement() { Resources = "UI/UIBag/UIBag", Cache = false });
+
         UIResources.Add(typeof(UIShop), new UIElement() { Resources = "UI/UIShop/UIShop", Cache = false });
+
         UIResources.Add(typeof(UICharEquip), new UIElement() { Resources = "UI/UIEquip/UICharEquip", Cache = false });
+
         UIResources.Add(typeof(UIQuestSystem), new UIElement() { Resources = "UI/UIQuest/UIQuestSystem", Cache = false });
         UIResources.Add(typeof(UIQuestDialog), new UIElement() { Resources = "UI/UIQuest/UIQuestDialog", Cache = false });
+
         UIResources.Add(typeof(UIFriend), new UIElement() { Resources = "UI/UIFriend/UIFriend", Cache = false });
+
+        UIResources.Add(typeof(UIGuild), new UIElement() { Resources = "UI/UIGuild/UIGuild", Cache = false });
+        UIResources.Add(typeof(UIGuildList), new UIElement() { Resources = "UI/UIGuild/UIGuildList", Cache = false });
+        UIResources.Add(typeof(UIGuildPopNoGuild), new UIElement() { Resources = "UI/UIGuild/UIGuildPopNoGuild", Cache = false });
+        UIResources.Add(typeof(UIGuildPopCreate), new UIElement() { Resources = "UI/UIGuild/UIGuildPopCreate", Cache = false });
     }
 
     ~UIManager()
