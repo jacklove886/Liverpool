@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\Managers\QuestManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ShopManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpriteManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\TeamManager.cs" />
     <Compile Include="Assets\Scripts\Models\BagItem.cs" />
     <Compile Include="Assets\Scripts\Models\Item.cs" />
     <Compile Include="Assets\Scripts\Models\Quest.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Assets\Scripts\Services\MapService.cs" />
     <Compile Include="Assets\Scripts\Services\QuestService.cs" />
     <Compile Include="Assets\Scripts\Services\StatusService.cs" />
+    <Compile Include="Assets\Scripts\Services\TeamService.cs" />
     <Compile Include="Assets\Scripts\Services\UserService.cs" />
     <Compile Include="Assets\Scripts\UI\InputBox.cs" />
     <Compile Include="Assets\Scripts\UI\UIDialog.cs" />

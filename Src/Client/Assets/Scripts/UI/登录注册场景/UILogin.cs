@@ -17,6 +17,10 @@ public class UILogin : MonoBehaviour {
     private void Start()
     {
         # region  如果启动了LoadingManager脚本 就不需要这些话 如果没启动 就要加上这些话来加载数据库
+
+        log4net.Config.XmlConfigurator.ConfigureAndWatch(new System.IO.FileInfo("log4net.xml"));
+        UnityLogger.Init();
+
         MapService.Instance.Init();//初始化服务器
 
         UserService.Instance.Init();//初始化服务器
@@ -30,6 +34,8 @@ public class UILogin : MonoBehaviour {
         StatusService.Instance.Init();
 
         FriendService.Instance.Init();
+
+        TeamService.Instance.Init();
         #endregion
 
         UserService.Instance.OnLogin += OnLogin;

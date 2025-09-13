@@ -22,7 +22,7 @@ namespace GameServer.Managers
 
         public void GetQuestInfos(List<NQuestInfo> list)
         {
-            foreach(var quest in this.Owner.Data.Quests)
+            foreach(var quest in this.Owner.TCharacter.Quests)
             {
                 list.Add(GetQuestInfo(quest));
             }
@@ -62,7 +62,7 @@ namespace GameServer.Managers
                 }
                 //把操作完的任务状态发送给客户端
                 sender.Session.Response.questAccept.Quest = this.GetQuestInfo(dbquest);
-                character.Data.Quests.Add(dbquest);
+                character.TCharacter.Quests.Add(dbquest);
                 DBService.Instance.Save();//保存到数据库
                 return Result.Success;
             }
@@ -83,7 +83,7 @@ namespace GameServer.Managers
             if (DataManager.Instance.Quests.TryGetValue(questID, out quest))
             {
                 //在玩家数据表里查询任务ID是指定任务的任务 返回第一个元素
-                var dbquest = character.Data.Quests.Where(q => q.QuestID == questID).FirstOrDefault();
+                var dbquest = character.TCharacter.Quests.Where(q => q.QuestID == questID).FirstOrDefault();
                 if (dbquest != null)
                 {
                     if (dbquest.Status != (int)QuestStatus.Complated)//任务还未完成

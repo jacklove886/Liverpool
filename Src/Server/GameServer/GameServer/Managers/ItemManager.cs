@@ -21,7 +21,7 @@ namespace GameServer.Managers
         {
             this.Owner = owner;
 
-            foreach (var item in owner.Data.Items)//遍历角色身上的所有道具
+            foreach (var item in owner.TCharacter.Items)//遍历角色身上的所有道具
             {
                 this.Items.Add(item.ItemID, new Item(item));//添加道具 item是Tcharacter类型
             }
@@ -30,7 +30,7 @@ namespace GameServer.Managers
         public bool UseItem(int itemID,int count = 1)//默认使用一个道具
         {
             //中括号是装饰性符号(普通文本字符)  大括号是占位符
-            Log.InfoFormat("[角色:{0}]使用了:[{1}数量:{2}]", Owner.Data.ID, itemID, count);
+            Log.InfoFormat("[角色:{0}]使用了:[{1}数量:{2}]", Owner.TCharacter.ID, itemID, count);
             Item item = null;//用TrgGetValue前必须声明变量
             if(Items.TryGetValue(itemID,out item))//存在返回item 不存在返回null
             {
@@ -60,7 +60,7 @@ namespace GameServer.Managers
         {
             Item item = null;
             this.Items.TryGetValue(itemID, out item);//访问ID来尝试获取道具
-            Log.InfoFormat("[角色:{0}]查询了:[{1}]", Owner.Data.ID, item);
+            Log.InfoFormat("[角色:{0}]查询了:[{1}]", Owner.TCharacter.ID, item);
             return item;//如果获取到了返回item  否则TryGetValue返回null
         }
 
@@ -75,16 +75,16 @@ namespace GameServer.Managers
             else//从数据库里创建实体
             {
                 TCharacterItem dbItem = new TCharacterItem();
-                dbItem.CharacterID = Owner.Data.ID;
-                dbItem.Owner = Owner.Data;
+                dbItem.CharacterID = Owner.TCharacter.ID;
+                dbItem.Owner = Owner.TCharacter;
                 dbItem.ItemID = itemID;
                 dbItem.ItemCount = count;
-                Owner.Data.Items.Add(dbItem);//添加到角色数据中
+                Owner.TCharacter.Items.Add(dbItem);//添加到角色数据中
                 item = new Item(dbItem);
                 this.Items.Add(itemID, item);//添加到字典中
             }
             this.Owner.StatusManager.AddItemChange(itemID, count, StatusAction.Add);
-            Log.InfoFormat("[角色:{0}]添加了:[{1}]数量为:{2}", Owner.Data.ID, item,count);
+            Log.InfoFormat("[角色:{0}]添加了:[{1}]数量为:{2}", Owner.TCharacter.ID, item,count);
             //DBService.Instance.Save();
             return true;
         }
@@ -102,7 +102,7 @@ namespace GameServer.Managers
             }
             item.Remove(count);
             this.Owner.StatusManager.AddItemChange(itemID, count, StatusAction.Delete);
-            Log.InfoFormat("[角色:{0}]移除了:[{1}]数量为:{2}", Owner.Data.ID, item, count);
+            Log.InfoFormat("[角色:{0}]移除了:[{1}]数量为:{2}", Owner.TCharacter.ID, item, count);
             //DBService.Instance.Save();
             return true;
         }

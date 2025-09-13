@@ -29,7 +29,7 @@ namespace GameServer.Services
 
             if (request.BagInfo != null)
             {
-                character.Data.Bag.Items = request.BagInfo.Items;//更新背包数据
+                character.TCharacter.Bag.Items = request.BagInfo.Items;//更新背包数据
                 DBService.Instance.Save();
             }
         }

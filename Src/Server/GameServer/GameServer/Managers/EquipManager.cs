@@ -29,9 +29,9 @@ namespace GameServer.Managers
                     return Result.Failed; // 职业不符合
                 }
             }
-            UpdateEquip(character.Data.Equips, slot, itemID, isEquip);//更新装备
+            UpdateEquip(character.TCharacter.Equips, slot, itemID, isEquip);//更新装备
             //强制标记实体为已修改
-            DBService.Instance.Entities.Entry(character.Data).State = EntityState.Modified;
+            DBService.Instance.Entities.Entry(character.TCharacter).State = EntityState.Modified;
             DBService.Instance.Save();
             return Result.Success;
         }

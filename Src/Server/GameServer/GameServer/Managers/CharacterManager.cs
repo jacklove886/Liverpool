@@ -30,7 +30,7 @@ namespace GameServer.Managers
             if (this.Characters.ContainsKey(characerId))
             {
                 var cha = this.Characters[characerId];
-                EntityManager.Instance.RemoveEntity(cha.Data.MapID, cha);
+                EntityManager.Instance.RemoveEntity(cha.TCharacter.MapID, cha);
                 this.Characters.Remove(characerId);
             }
         }

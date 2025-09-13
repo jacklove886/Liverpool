@@ -51,7 +51,7 @@ namespace Services
         }
 
         //接收到A玩家发送添加B为好友的请求   返回一个接受或拒绝的结果 并把请求原封不动返回服务器
-        public void OnFriendAddRequest(object sender, FriendAddRequest request)//接受别人的好友请求
+        public void OnFriendAddRequest(object sender, FriendAddRequest request)
         {
             var confirm = MessageBox.Show(string.Format("{0}请求加你为好友", request.FromName), "好友请求", MessageBoxType.Confirm, "同意", "拒绝");
             confirm.OnYes = () =>
@@ -66,15 +66,13 @@ namespace Services
 
         public void SendFriendAddResponse(bool accept, FriendAddRequest request)//对方发来的请求
         {
-            Debug.LogFormat("发送添加好友请求");
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.friendAddResponse = new FriendAddResponse();
             message.Request.friendAddResponse.Result = accept ? Result.Success : Result.Failed;
             message.Request.friendAddResponse.Errormsg = accept ? "对方同意" : "对方拒绝了你的好友请求";
             message.Request.friendAddResponse.Request = request;
-            NetClient.Instance.SendMessage(message);
-            
+            NetClient.Instance.SendMessage(message);          
         }
 
         public void OnFriendAddResponse(object sender, FriendAddResponse response)

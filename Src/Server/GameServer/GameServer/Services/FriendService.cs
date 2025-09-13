@@ -28,7 +28,7 @@ namespace GameServer.Services
         //A玩家发送添加B为好友的请求  
         private void OnFriendAddRequest(NetConnection<NetSession> sender, FriendAddRequest request)
         {
-            //character代表A
+            //character代表A和sender代表A
             Character character = sender.Session.Character;
             Log.InfoFormat("收到添加好友请求:From角色ID:{0},Name:{1},To角色ID:{2},Name:{3}", request.FromId, request.FromName,request.ToId,request.ToName);
 
@@ -36,7 +36,7 @@ namespace GameServer.Services
             {
                 foreach(var cha in CharacterManager.Instance.Characters)
                 {
-                    if (cha.Value.Data.Name == request.ToName)
+                    if (cha.Value.TCharacter.Name == request.ToName)
                     {
                         request.ToId = cha.Key;
                         break;
@@ -76,7 +76,7 @@ namespace GameServer.Services
         //接收到B玩家对A玩家好友请求的结果响应(接收到B是接受了还是拒绝了)
         private void OnFriendAddResponse(NetConnection<NetSession> sender, FriendAddResponse response)
         {
-            //character代表B
+            //character和sender代表B
             Character character = sender.Session.Character;
             Log.InfoFormat("OnFriendAddResponse:角色:{0},结果:{1},FromID:{2},FromID:{3}", character, response.Result, response.Request.FromId, response.Request.ToId);
             sender.Session.Response.friendAddResponse = response;
@@ -98,10 +98,28 @@ namespace GameServer.Services
                     DBService.Instance.Save();
                     requster.Session.Response.friendAddResponse = response;
                     requster.Session.Response.friendAddResponse.Result = Result.Success;
-                    requster.Session.Response.friendAddResponse.Errormsg = "添加好友成功";
+                    requster.Session.Response.friendAddResponse.Errormsg = "对方同意了你的好友";
+                    sender.Session.Response.friendAddResponse.Errormsg = "添加好友成功";
                     requster.SendResponse();
                 }
             }
+            else//b拒绝了
+            {
+                var requster = SessionManager.Instance.GetSession(response.Request.FromId);
+                if (requster == null)
+                {
+                    sender.Session.Response.friendAddResponse.Result = Result.Failed;
+                    sender.Session.Response.friendAddResponse.Errormsg = "请求者已离线";
+                }
+                else
+                {
+                    requster.Session.Response.friendAddResponse = response;  // 把B的响应直接给A
+                    requster.SendResponse();
+                }
+                //b界面显示
+                sender.Session.Response.friendAddResponse.Errormsg = "添加好友失败";
+            }
+            //如果拒绝 原封不动发回去
             sender.SendResponse();
         }
 
@@ -124,6 +142,7 @@ namespace GameServer.Services
                 if (friend != null)//B在线
                 {
                     //从B的好友管理器中删除A
+                    //通过friendID删除记录
                     friend.Session.Character.FriendManager.RemoveFriendByFriendID(character.Id);
                 }
                 else//B不在线  直接操作数据库删除

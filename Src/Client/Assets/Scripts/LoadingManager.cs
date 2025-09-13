@@ -18,11 +18,9 @@ public class LoadingManager : MonoBehaviour {
     public Slider progressBar;
     public Text progressText;
     public Text progressNumber;
-    public AudioSource audioSource;
 
     IEnumerator Start()
     {
-        audioSource.Play();
         log4net.Config.XmlConfigurator.ConfigureAndWatch(new System.IO.FileInfo("log4net.xml"));
         UnityLogger.Init();
         Common.Log.Init("Unity");
@@ -44,6 +42,7 @@ public class LoadingManager : MonoBehaviour {
         UserService.Instance.Init();
         StatusService.Instance.Init();
         FriendService.Instance.Init();
+        TeamService.Instance.Init();
 
         //初始化管理器
         ShopManager.Instance.Init();
