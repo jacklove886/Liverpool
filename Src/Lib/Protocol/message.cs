@@ -323,6 +323,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(30, Name = @"guild")]
         public GuildRequest Guild { get; set; }
 
+        [global::ProtoBuf.ProtoMember(31)]
+        public GuildAdminRequest guildAdmin { get; set; }
+
     }
 
     [global::ProtoBuf.ProtoContract()]
@@ -419,6 +422,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(30, Name = @"guild")]
         public GuildResponse Guild { get; set; }
 
+        [global::ProtoBuf.ProtoMember(31)]
+        public GuildAdminResponse guildAdmin { get; set; }
+
         [global::ProtoBuf.ProtoMember(100)]
         public StatusNotify statusNotify { get; set; }
 
@@ -451,9 +457,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"userinfo")]
         public NUserInfo Userinfo { get; set; }
@@ -487,9 +493,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
     }
 
@@ -519,9 +525,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"characters")]
         public global::System.Collections.Generic.List<NCharacterInfo> Characters { get; } = new global::System.Collections.Generic.List<NCharacterInfo>();
@@ -551,9 +557,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"name")]
         [global::System.ComponentModel.DefaultValue("")]
@@ -586,9 +592,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"character")]
         public NCharacterInfo Character { get; set; }
@@ -614,9 +620,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
     }
 
@@ -720,9 +726,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
     }
 
@@ -748,9 +754,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
     }
 
@@ -782,9 +788,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
     }
 
@@ -831,9 +837,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"quests")]
         public global::System.Collections.Generic.List<NQuestInfo> Quests { get; } = new global::System.Collections.Generic.List<NQuestInfo>();
@@ -862,9 +868,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"quest")]
         public NQuestInfo Quest { get; set; }
@@ -893,9 +899,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"quest")]
         public NQuestInfo Quest { get; set; }
@@ -924,9 +930,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
     }
 
@@ -981,9 +987,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"request")]
         public FriendAddRequest Request { get; set; }
@@ -1009,9 +1015,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"friends")]
         public global::System.Collections.Generic.List<NFriendInfo> Friends { get; } = new global::System.Collections.Generic.List<NFriendInfo>();
@@ -1043,9 +1049,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"id")]
         public int Id { get; set; }
@@ -1106,9 +1112,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"request")]
         public TeamInviteRequest Request { get; set; }
@@ -1134,9 +1140,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"team")]
         public NTeamInfo Team { get; set; }
@@ -1168,9 +1174,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3)]
         public int characterId { get; set; }
@@ -1301,9 +1307,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"guild")]
         public NGuildInfo Guild { get; set; }
@@ -1332,9 +1338,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"apply")]
         public NGuildApplyInfo Apply { get; set; }
@@ -1360,9 +1366,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"guilds")]
         public global::System.Collections.Generic.List<NGuildInfo> Guilds { get; } = new global::System.Collections.Generic.List<NGuildInfo>();
@@ -1388,9 +1394,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
 
         [global::ProtoBuf.ProtoMember(3, Name = @"guild")]
         public NGuildInfo Guild { get; set; }
@@ -1416,9 +1422,43 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(1, Name = @"result")]
         public Result Result { get; set; }
 
-        [global::ProtoBuf.ProtoMember(2, Name = @"errormsg")]
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string Errormsg { get; set; } = "";
+        public string Msg { get; set; } = "";
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class GuildAdminRequest : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"command")]
+        public GuildAdminCommand Command { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"target")]
+        public int Target { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class GuildAdminResponse : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"result")]
+        public Result Result { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"msg")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Msg { get; set; } = "";
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"command")]
+        public GuildAdminRequest Command { get; set; }
 
     }
 
@@ -1594,6 +1634,19 @@ namespace SkillBridge.Message
         Accept = 1,
         [global::ProtoBuf.ProtoEnum(Name = @"REJECT")]
         Reject = 2,
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"GUILD_ADMIN_COMMAND")]
+    public enum GuildAdminCommand
+    {
+        [global::ProtoBuf.ProtoEnum(Name = @"KICKOUT")]
+        Kickout = 1,
+        [global::ProtoBuf.ProtoEnum(Name = @"PROMOTE")]
+        Promote = 2,
+        [global::ProtoBuf.ProtoEnum(Name = @"DEPOST")]
+        Depost = 3,
+        [global::ProtoBuf.ProtoEnum(Name = @"TRANSFER")]
+        Transfer = 4,
     }
 
 }

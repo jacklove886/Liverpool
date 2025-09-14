@@ -231,6 +231,7 @@ message NetMessageRequest{
 	GuildListRequest guildList=28;
 	GuildLeaveRequest guildLeave=29;
 	GuildRequest guild=30;
+	GuildAdminRequest guildAdmin=31;//管理协议
 }
 
 message NetMessageResponse{
@@ -272,6 +273,7 @@ message NetMessageResponse{
 	GuildListResponse guildList=28;
 	GuildLeaveResponse guildLeave=29;
 	GuildResponse guild=30;
+	GuildAdminResponse guildAdmin=31;
 
 	StatusNotify statusNotify=100;
 
@@ -288,7 +290,7 @@ message UserLoginRequest {
 
 message UserLoginResponse {
 	RESULT result = 1;
-	string errormsg = 2;
+	string msg = 2;
 	NUserInfo userinfo = 3;
 }
 
@@ -301,7 +303,7 @@ message UserRegisterRequest
 
 message UserRegisterResponse {
 	RESULT result = 1;
-	string errormsg = 2;
+	string msg = 2;
 }
 
 message UserCreateCharacterRequest
@@ -312,7 +314,7 @@ message UserCreateCharacterRequest
 
 message UserCreateCharacterResponse {
 	RESULT result = 1;
-	string errormsg = 2;
+	string msg = 2;
 	repeated NCharacterInfo characters = 3;
 }
 message UserDeleteCharacterRequest
@@ -322,7 +324,7 @@ message UserDeleteCharacterRequest
 
 message UserDeleteCharacterResponse {
     RESULT result = 1;
-    string errormsg = 2;
+    string msg = 2;
 	string name = 3;
     repeated NCharacterInfo characters = 4;
 
@@ -335,7 +337,7 @@ message UserGameEnterRequest
 
 message UserGameEnterResponse {
 	RESULT result = 1;
-	string errormsg = 2;
+	string msg = 2;
 	NCharacterInfo character=3; //返回角色信息
 }
 
@@ -345,7 +347,7 @@ message UserGameLeaveRequest
 
 message UserGameLeaveResponse {
 	RESULT result = 1;
-	string errormsg = 2;
+	string msg = 2;
 }
 
 // Map Protocol
@@ -393,7 +395,7 @@ message ItemBuyRequest
 message ItemBuyResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 }
 
 //背包保存请求
@@ -406,7 +408,7 @@ message BagSaveRequest
 message BagSaveResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 }
 
 //装备请求
@@ -420,7 +422,7 @@ message ItemEquipRequest
 message ItemEquipResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 }
 
 //任务系统
@@ -456,7 +458,7 @@ message QuestListRequest
 message QuestListResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 	repeated NQuestInfo quests=3;//任务内容
 }
 
@@ -468,7 +470,7 @@ message QuestAcceptRequest//接受
 message QuestAcceptResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 	NQuestInfo quest=3;
 }
 
@@ -480,7 +482,7 @@ message QuestSubmitRequest//提交
 message QuestSubmitResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 	NQuestInfo quest=3;
 }
 
@@ -492,7 +494,7 @@ message QuestAbandonRequest//放弃
 message QuestAbandonResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 }
 
 
@@ -515,7 +517,7 @@ message FriendAddRequest
 message FriendAddResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 	FriendAddRequest request=3;
 }
 
@@ -527,7 +529,7 @@ message FriendListRequest
 message FriendListResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 	repeated NFriendInfo friends=3;
 }
 
@@ -540,7 +542,7 @@ message FriendRemoveRequest
 message FriendRemoveResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 	int32 id=3;
 }
 
@@ -564,7 +566,7 @@ message TeamInviteRequest
 message TeamInviteResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 	TeamInviteRequest request=3;
 }
 
@@ -576,7 +578,7 @@ message TeamInfoRequest
 message TeamInfoResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 	NTeamInfo team=3;
 }
 
@@ -589,7 +591,7 @@ message TeamLeaveRequest
 message TeamLeaveResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 	int32 characterId=3;
 }
 
@@ -657,7 +659,7 @@ message GuildCreateRequest
 message GuildCreateResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 	NGuildInfo guild=3;
 }
 
@@ -670,7 +672,7 @@ message GuildJoinRequest
 message GuildJoinResponse//[服务器->会长]
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 	NGuildApplyInfo apply=3;
 }
 
@@ -683,7 +685,7 @@ message GuildListRequest
 message GuildListResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 	repeated NGuildInfo guilds=3;
 }
 
@@ -697,7 +699,7 @@ message GuildRequest
 message GuildResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
 	NGuildInfo guild=3;
 }
 
@@ -710,5 +712,27 @@ message GuildLeaveRequest
 message GuildLeaveResponse
 {
 	RESULT result=1;
-	string errormsg=2;
+	string msg=2;
+}
+
+//公会管理
+enum GUILD_ADMIN_COMMAND
+{
+	KICKOUT=1;//踢人
+	PROMOTE=2;//晋升
+	DEPOST=3;//罢免
+	TRANSFER=4;//转让会长
+}
+
+message GuildAdminRequest
+{
+	GUILD_ADMIN_COMMAND command=1;
+	int32 target=2;
+}
+
+message GuildAdminResponse
+{
+	RESULT result=1;
+	string msg=2;
+	GuildAdminRequest command=3;
 }

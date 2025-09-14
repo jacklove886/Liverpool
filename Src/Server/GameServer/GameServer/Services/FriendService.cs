@@ -52,7 +52,7 @@ namespace GameServer.Services
                 {
                     sender.Session.Response.friendAddResponse = new FriendAddResponse();
                     sender.Session.Response.friendAddResponse.Result = Result.Failed;
-                    sender.Session.Response.friendAddResponse.Errormsg = "已经是好友了";
+                    sender.Session.Response.friendAddResponse.Msg = "已经是好友了";
                     sender.SendResponse();
                     return;
                 }
@@ -62,7 +62,7 @@ namespace GameServer.Services
             {
                 sender.Session.Response.friendAddResponse = new FriendAddResponse();
                 sender.Session.Response.friendAddResponse.Result = Result.Failed;
-                sender.Session.Response.friendAddResponse.Errormsg = "该玩家不存在或不在线";
+                sender.Session.Response.friendAddResponse.Msg = "该玩家不存在或不在线";
                 sender.Session.Response.friendAddResponse.Request = request;
                 sender.SendResponse();
                 return;
@@ -87,7 +87,7 @@ namespace GameServer.Services
                 if (requster == null)
                 {
                     sender.Session.Response.friendAddResponse.Result = Result.Failed;
-                    sender.Session.Response.friendAddResponse.Errormsg = "请求者已离线";
+                    sender.Session.Response.friendAddResponse.Msg = "请求者已离线";
                 }
                 else//互相加好友 添加成功
                 {
@@ -98,7 +98,7 @@ namespace GameServer.Services
                     DBService.Instance.Save();
                     requster.Session.Response.friendAddResponse = response;
                     requster.Session.Response.friendAddResponse.Result = Result.Success;
-                    sender.Session.Response.friendAddResponse.Errormsg = "添加好友成功";
+                    sender.Session.Response.friendAddResponse.Msg = "添加好友成功";
                     requster.SendResponse();
                 }
             }
@@ -108,7 +108,7 @@ namespace GameServer.Services
                 if (requster == null)
                 {
                     sender.Session.Response.friendAddResponse.Result = Result.Failed;
-                    sender.Session.Response.friendAddResponse.Errormsg = "请求者已离线";
+                    sender.Session.Response.friendAddResponse.Msg = "请求者已离线";
                 }
                 else
                 {
@@ -116,7 +116,7 @@ namespace GameServer.Services
                     requster.SendResponse();
                 }
                 //b界面显示
-                sender.Session.Response.friendAddResponse.Errormsg = "添加好友失败";
+                sender.Session.Response.friendAddResponse.Msg = "添加好友失败";
             }
             //如果拒绝 原封不动发回去
             sender.SendResponse();

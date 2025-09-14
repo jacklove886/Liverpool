@@ -153,11 +153,11 @@ namespace Services
 
         void OnUserRegister(object sender, UserRegisterResponse response)
         {
-            Debug.LogFormat("OnUserRegister:{0} [{1}]", response.Result, response.Errormsg);
+            Debug.LogFormat("OnUserRegister:{0} [{1}]", response.Result, response.Msg);
 
             if (this.OnRegister != null)
             {
-                this.OnRegister(response.Result, response.Errormsg);
+                this.OnRegister(response.Result, response.Msg);
             }
         }
         public void SendLogin(string user, string psw)
@@ -191,7 +191,7 @@ namespace Services
             }
             if (this.OnLogin != null)
             {
-                this.OnLogin(response.Result, response.Errormsg);
+                this.OnLogin(response.Result, response.Msg);
             }
         }
 
@@ -228,7 +228,7 @@ namespace Services
             }
             if (this.OnCharacterCreate != null)
             {
-                this.OnCharacterCreate(response.Result, response.Errormsg);
+                this.OnCharacterCreate(response.Result, response.Msg);
             }
         }
 
@@ -262,7 +262,7 @@ namespace Services
             }
             if (this.OnCharacterDelete != null)
             {
-                this.OnCharacterDelete(response.Result, response.Errormsg);
+                this.OnCharacterDelete(response.Result, response.Msg);
             }
         }
 

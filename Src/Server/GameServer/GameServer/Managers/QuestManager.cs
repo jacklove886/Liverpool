@@ -68,7 +68,7 @@ namespace GameServer.Managers
             }
             else
             {
-                sender.Session.Response.questAccept.Errormsg = "任务不存在";
+                sender.Session.Response.questAccept.Msg = "任务不存在";
                 return Result.Failed;
             }
         }
@@ -88,7 +88,7 @@ namespace GameServer.Managers
                 {
                     if (dbquest.Status != (int)QuestStatus.Complated)//任务还未完成
                     {
-                        sender.Session.Response.questSubmit.Errormsg = "任务未完成";
+                        sender.Session.Response.questSubmit.Msg = "任务未完成";
                         return Result.Failed;
                     }
                     dbquest.Status = (int)QuestStatus.Finished;//任务已完成
@@ -123,12 +123,12 @@ namespace GameServer.Managers
                     DBService.Instance.Save();
                     return Result.Success;                   
                 }
-                sender.Session.Response.questSubmit.Errormsg = "数据库任务不存在";
+                sender.Session.Response.questSubmit.Msg = "数据库任务不存在";
                 return Result.Failed;
             }
             else
             {
-                sender.Session.Response.questSubmit.Errormsg = "数据配置文件里任务不存在";
+                sender.Session.Response.questSubmit.Msg = "数据配置文件里任务不存在";
                 return Result.Failed;
             }
         }

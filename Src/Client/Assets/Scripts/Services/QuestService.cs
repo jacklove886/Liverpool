@@ -45,7 +45,7 @@ namespace Services
             }
             else
             {
-                MessageBox.Show("任务接受失败！" + response.Errormsg, "任务失败", MessageBoxType.Error);
+                MessageBox.Show("任务接受失败！" + response.Msg, "任务失败", MessageBoxType.Error);
             }
         }
 
@@ -68,7 +68,7 @@ namespace Services
             }
             else
             {
-                MessageBox.Show("任务提交失败！" + response.Errormsg, "任务失败",MessageBoxType.Error);
+                MessageBox.Show("任务提交失败！" + response.Msg, "任务失败",MessageBoxType.Error);
             }
         }  
     }

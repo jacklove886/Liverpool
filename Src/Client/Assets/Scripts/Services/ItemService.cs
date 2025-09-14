@@ -43,7 +43,7 @@ namespace Services
             MessageBox.Show("购买成功！" ,"购买完成");
             else
             {
-                MessageBox.Show("购买失败！" + response.Errormsg, "购买失败");
+                MessageBox.Show("购买失败！" + response.Msg, "购买失败");
             }
         }
 

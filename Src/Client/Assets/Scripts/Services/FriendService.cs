@@ -70,7 +70,7 @@ namespace Services
             message.Request = new NetMessageRequest();
             message.Request.friendAddResponse = new FriendAddResponse();
             message.Request.friendAddResponse.Result = accept ? Result.Success : Result.Failed;
-            message.Request.friendAddResponse.Errormsg = accept ? "对方同意了你的好友" : "对方拒绝了你的好友请求";
+            message.Request.friendAddResponse.Msg = accept ? "对方同意了你的好友" : "对方拒绝了你的好友请求";
             message.Request.friendAddResponse.Request = request;
             NetClient.Instance.SendMessage(message);          
         }
@@ -79,11 +79,11 @@ namespace Services
         {
             if (response.Result == Result.Success)
             {
-                MessageBox.Show(response.Errormsg,"添加成功");
+                MessageBox.Show(response.Msg, "添加成功");
             }
             else if (response.Result == Result.Failed)
             {
-                MessageBox.Show(response.Errormsg, "添加失败");
+                MessageBox.Show(response.Msg, "添加失败");
             }
         }
 

@@ -10,6 +10,8 @@ namespace Managers
     {
         public NGuildInfo guildInfo;//公会信息
 
+        public NGuildMemberInfo myMemberInfo;
+
         public bool HasGuild//是否有公会
         {
             get { return this.guildInfo != null; }

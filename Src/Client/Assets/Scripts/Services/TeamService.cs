@@ -67,7 +67,7 @@ namespace Services
             message.Request = new NetMessageRequest();
             message.Request.teamInviteResponse = new TeamInviteResponse();
             message.Request.teamInviteResponse.Result = accept ? Result.Success : Result.Failed;
-            message.Request.teamInviteResponse.Errormsg = accept ? "对方同意了你的邀请" : "对方拒绝了你的组队请求";//A收到的
+            message.Request.teamInviteResponse.Msg = accept ? "对方同意了你的邀请" : "对方拒绝了你的组队请求";//A收到的
             message.Request.teamInviteResponse.Request = request;
             NetClient.Instance.SendMessage(message);
         }
@@ -76,11 +76,11 @@ namespace Services
         {
             if (response.Result == Result.Success)
             {
-                MessageBox.Show(response.Errormsg, "组队成功");
+                MessageBox.Show(response.Msg, "组队成功");
             }
             else if (response.Result == Result.Failed)
             {
-                MessageBox.Show(response.Errormsg, "邀请组队失败");
+                MessageBox.Show(response.Msg, "邀请组队失败");
             }
         }
 

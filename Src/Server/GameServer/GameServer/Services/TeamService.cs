@@ -37,7 +37,7 @@ namespace GameServer.Services
             {
                 sender.Session.Response.teamInviteResponse = new TeamInviteResponse();
                 sender.Session.Response.teamInviteResponse.Result = Result.Failed;
-                sender.Session.Response.teamInviteResponse.Errormsg = "好友不在线";
+                sender.Session.Response.teamInviteResponse.Msg = "好友不在线";
                 sender.SendResponse();
                 return;
             }         
@@ -45,7 +45,7 @@ namespace GameServer.Services
             {
                 sender.Session.Response.teamInviteResponse = new TeamInviteResponse();
                 sender.Session.Response.teamInviteResponse.Result = Result.Failed;
-                sender.Session.Response.teamInviteResponse.Errormsg = "对方已经有队伍";
+                sender.Session.Response.teamInviteResponse.Msg = "对方已经有队伍";
                 sender.SendResponse();
                 return;
             }
@@ -53,7 +53,7 @@ namespace GameServer.Services
             {
                 sender.Session.Response.teamInviteResponse = new TeamInviteResponse();
                 sender.Session.Response.teamInviteResponse.Result = Result.Failed;
-                sender.Session.Response.teamInviteResponse.Errormsg = "只有队长可以邀请队员";
+                sender.Session.Response.teamInviteResponse.Msg = "只有队长可以邀请队员";
                 sender.SendResponse();
                 return;
             }
@@ -61,7 +61,7 @@ namespace GameServer.Services
             {
                 sender.Session.Response.teamInviteResponse = new TeamInviteResponse();
                 sender.Session.Response.teamInviteResponse.Result = Result.Failed;
-                sender.Session.Response.teamInviteResponse.Errormsg = "您的队伍已满";
+                sender.Session.Response.teamInviteResponse.Msg = "您的队伍已满";
                 sender.SendResponse();
                 return;
             }
@@ -84,7 +84,7 @@ namespace GameServer.Services
                 if (requster == null)
                 {
                     sender.Session.Response.teamInviteResponse.Result = Result.Failed;
-                    sender.Session.Response.teamInviteResponse.Errormsg = "请求者已离线";
+                    sender.Session.Response.teamInviteResponse.Msg = "请求者已离线";
                 }
                 else
                 {
@@ -92,7 +92,7 @@ namespace GameServer.Services
                     TeamManager.Instance.AddTeamMember(requster.Session.Character, character);
                     requster.Session.Response.teamInviteResponse = response;
                     requster.Session.Response.teamInviteResponse.Result = Result.Success;
-                    sender.Session.Response.teamInviteResponse.Errormsg = "组队成功";
+                    sender.Session.Response.teamInviteResponse.Msg = "组队成功";
                     requster.SendResponse();
                 }
             }

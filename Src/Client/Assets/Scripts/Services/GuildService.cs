@@ -85,6 +85,11 @@ namespace Services
             NetClient.Instance.SendMessage(message);
         }
 
+        internal void SendAdminCommand(GuildAdminCommand promote, int id)
+        {
+            throw new NotImplementedException();
+        }
+
         private void OnGuildJoinRequest(object sender, GuildJoinRequest request)
         {
             var confirm = MessageBox.Show(string.Format("{0}申请加入公会", request.Apply.Name), "公会申请", MessageBoxType.Confirm, "同意", "拒绝");
@@ -117,11 +122,11 @@ namespace Services
             Debug.LogFormat("收到审批的结果,{0}",response.Result);
             if (response.Result == Result.Success)
             {
-                MessageBox.Show(response.Errormsg, "申请通过");
+                MessageBox.Show(response.Msg, "申请通过");
             }
             else if (response.Result == Result.Failed)
             {
-                MessageBox.Show(response.Errormsg, "申请失败", MessageBoxType.Error);
+                MessageBox.Show(response.Msg, "申请失败", MessageBoxType.Error);
             }
         }
 

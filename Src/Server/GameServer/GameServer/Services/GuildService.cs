@@ -36,14 +36,14 @@ namespace GameServer.Services
             {
                 sender.Session.Response.guildCreate = new GuildCreateResponse();
                 sender.Session.Response.guildCreate.Result = Result.Failed;
-                sender.Session.Response.guildCreate.Errormsg = "您已经有公会了";
+                sender.Session.Response.guildCreate.Msg = "您已经有公会了";
                 sender.SendResponse();
                 return;
             }
             if (GuildManager.Instance.CheckNameExisted(request.GuildName))//已经有队伍
             {
                 sender.Session.Response.guildCreate.Result = Result.Failed;
-                sender.Session.Response.guildCreate.Errormsg = "公会名称已经存在";
+                sender.Session.Response.guildCreate.Msg = "公会名称已经存在";
                 sender.SendResponse();
                 return;
             }     
@@ -74,7 +74,7 @@ namespace GameServer.Services
             {
                 sender.Session.Response.guildJoinResponse = new GuildJoinResponse();
                 sender.Session.Response.guildJoinResponse.Result = Result.Failed;
-                sender.Session.Response.guildJoinResponse.Errormsg = "公会不存在";
+                sender.Session.Response.guildJoinResponse.Msg = "公会不存在";
                 sender.SendResponse();
                 return;
             }
@@ -98,7 +98,7 @@ namespace GameServer.Services
             {
                 sender.Session.Response.guildJoinResponse = new GuildJoinResponse();
                 sender.Session.Response.guildJoinResponse.Result = Result.Failed;
-                sender.Session.Response.guildJoinResponse.Errormsg = "请勿重复申请";
+                sender.Session.Response.guildJoinResponse.Msg = "请勿重复申请";
                 sender.SendResponse();
                 return;
             }
@@ -121,23 +121,23 @@ namespace GameServer.Services
                 requester.Session.Character.TCharacter.GuildId = guild.Id;
                 requester.Session.Response.guildJoinResponse = new GuildJoinResponse();
                 requester.Session.Response.guildJoinResponse.Result = Result.Success;
-                requester.Session.Response.guildJoinResponse.Errormsg = "加入公会成功";
+                requester.Session.Response.guildJoinResponse.Msg = "加入公会成功";
                 requester.SendResponse();
 
                 sender.Session.Response.guildJoinResponse = new GuildJoinResponse();
                 sender.Session.Response.guildJoinResponse.Result = Result.Success;
-                sender.Session.Response.guildJoinResponse.Errormsg = character.Name+"审核通过";
+                sender.Session.Response.guildJoinResponse.Msg = character.Name+"审核通过";
             }
             else if(response.Apply.Result == ApplyResult.Reject)
             {
                 requester.Session.Response.guildJoinResponse = new GuildJoinResponse();
                 requester.Session.Response.guildJoinResponse.Result = Result.Failed;
-                requester.Session.Response.guildJoinResponse.Errormsg = "申请被拒绝";
+                requester.Session.Response.guildJoinResponse.Msg = "申请被拒绝";
                 requester.SendResponse();
 
                 sender.Session.Response.guildJoinResponse = new GuildJoinResponse();
                 sender.Session.Response.guildJoinResponse.Result = Result.Failed;
-                sender.Session.Response.guildJoinResponse.Errormsg = character.Name + "批准不通过";
+                sender.Session.Response.guildJoinResponse.Msg = character.Name + "批准不通过";
             }
             sender.SendResponse();
         }
