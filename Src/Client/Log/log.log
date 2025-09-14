@@ -1,21 +1,13 @@
-2025-09-14 09:52:12,715 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-14 09:52:15,183 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-14 09:52:15,185 [ 1] INFO  Unity: 连接成功
-2025-09-14 09:52:15,187 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-14 09:52:15,190 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-14 09:52:15,282 [ 1] INFO  Unity: 登录成功
-2025-09-14 09:52:15,461 [ 1] INFO  Unity: 当前角色数量为1
-2025-09-14 09:52:16,633 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-14 09:52:16,652 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-14 09:52:16,654 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-14 09:52:16,654 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-14 09:52:16,662 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-14 09:52:16,663 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-14 09:52:16,666 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-14 09:52:16,667 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-14 09:52:20,270 [ 1] INFO  Unity: 消失的玩家：12,位置(3708, 3931, 804)
-2025-09-14 09:52:20,271 [ 1] INFO  Unity: 网络断开
-2025-09-14 09:52:20,272 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-14 12:52:21,113 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-14 12:52:22,924 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-14 12:52:22,925 [ 1] INFO  Unity: 连接成功
+2025-09-14 12:52:22,927 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-14 12:52:22,930 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-14 12:52:23,596 [ 1] INFO  Unity: 登录成功
+2025-09-14 12:52:23,768 [ 1] INFO  Unity: 当前角色数量为0
+2025-09-14 12:52:26,749 [ 1] INFO  Unity: 创建角色 :Alice
+2025-09-14 12:52:35,784 [ 1] INFO  Unity: 网络断开
+2025-09-14 12:52:35,785 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:172)
