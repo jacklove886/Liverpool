@@ -5,6 +5,7 @@ using SkillBridge.Message;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,7 +51,8 @@ public class UIGuild : UIWindow
 
     private void InitItems()
     {
-        foreach (var item in GuildManager.Instance.guildInfo.Members)
+        var sortitems= GuildManager.Instance.guildInfo.Members.OrderBy(v=>v.Position== GuildTitle.President?0:v.Position==GuildTitle.VicePresident?1:2);//排序 会长在上面
+        foreach (var item in sortitems)
         {
             GameObject go = Instantiate(itemPrefab, this.listMain.transform);
             UIGuildMemberItem ui = go.GetComponent<UIGuildMemberItem>();
@@ -83,7 +85,7 @@ public class UIGuild : UIWindow
         }
         MessageBox.Show(string.Format("要踢出[{0}]吗", selectedItem.Info.Info.Name), "踢出成员", MessageBoxType.Confirm, "强势踢出", "容我三思").OnYes = () =>
         {
-            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Kickout, this.selectedItem.Info.Info.Id);
+            GuildService.Instance.SendGuildAdmin(GuildAdminCommand.Kickout, this.selectedItem.Info.Info.Id);
        
         };
     }
@@ -107,7 +109,7 @@ public class UIGuild : UIWindow
         }
         MessageBox.Show(string.Format("要晋升[{0}]为魂斗罗吗", selectedItem.Info.Info.Name), "晋升成员", MessageBoxType.Confirm, "光荣升职", "容我三思").OnYes = () =>
         {
-            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Promote, this.selectedItem.Info.Info.Id);
+            GuildService.Instance.SendGuildAdmin(GuildAdminCommand.Promote, this.selectedItem.Info.Info.Id);
         };
     }
     public void OnClickDepose()
@@ -134,7 +136,7 @@ public class UIGuild : UIWindow
         }
         MessageBox.Show(string.Format("罢免[{0}]为魂师吗", selectedItem.Info.Info.Name), "罢免成员", MessageBoxType.Confirm, "降职", "容我三思").OnYes = () =>
         {
-            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Depose, this.selectedItem.Info.Info.Id);
+            GuildService.Instance.SendGuildAdmin(GuildAdminCommand.Depose, this.selectedItem.Info.Info.Id);
         };
     }
 
@@ -152,7 +154,7 @@ public class UIGuild : UIWindow
         }
         MessageBox.Show(string.Format("要将封号斗罗转让给[{0}]吗", selectedItem.Info.Info.Name), "旺铺转让", MessageBoxType.Confirm, "转让", "容我三思").OnYes = () =>
         {
-            GuildService.Instance.SendAdminCommand(GuildAdminCommand.Transfer, this.selectedItem.Info.Info.Id);
+            GuildService.Instance.SendGuildAdmin(GuildAdminCommand.Transfer, this.selectedItem.Info.Info.Id);
         };
     }
     public void OnClickSetNotice()

@@ -199,7 +199,7 @@ public class UICharacterSelect : MonoBehaviour
             {
                 Animator animator = characterClassPrefab[i].GetComponentInChildren<Animator>();
                 animator.SetTrigger("Click");
-                SoundManager.Instance.PlayCharacterSoundOneShot(SoundManager.Instance.characterAudioClip2[(int)User.Instance.CurrentCharacter.Class - 1]);
+                SoundManager.Instance.PlayUISound(SoundManager.Instance.characterAudioClip2[(int)User.Instance.CurrentCharacter.Class - 1]);
             }
         }
         currentIndex = index;

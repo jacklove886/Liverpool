@@ -113,7 +113,7 @@ namespace GameServer.Models
         }
 
 
-        internal NGuildInfo GuildInfo(Character character)
+        public NGuildInfo GuildInfo(Character character)
         {
             NGuildInfo info = new NGuildInfo()//公会信息
             {
@@ -125,10 +125,11 @@ namespace GameServer.Models
                 createTime = (long)TimeUtil.GetTimestamp(this.Data.CreateTime),
                 memberCount = this.Data.Members.Count
             };
+            var currentmemer = GetDBMember(character.Id);
             if (character != null)//说明是当前公会成员  可以看到成员信息
             {
                 info.Members.AddRange(GetMemberInfos());
-                if (character.Id == this.Data.LeaderID)//判断是封号斗罗
+                if (currentmemer.Position!=(int)GuildTitle.None)//不是普通成员
                 {
                     info.Applies.AddRange(GetApplyInfos());//可以审批信息
                 }
@@ -226,7 +227,7 @@ namespace GameServer.Models
                     break;
                 case GuildAdminCommand.Transfer:
                     target.Position = (int)GuildTitle.President;
-                    source.Position = (int)GuildTitle.President;
+                    source.Position = (int)GuildTitle.None;
                     this.Data.LeaderID = targetId;
                     this.Data.LeaderName = target.Name;
                     break;

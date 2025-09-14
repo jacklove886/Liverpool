@@ -66,11 +66,11 @@ namespace Services
             if(response.Result == Result.Success)
             {
                 GuildManager.Instance.Init(response.Guild);
-                MessageBox.Show(string.Format("{0}公会成功", response.Guild.GuildName), "公会");
+                MessageBox.Show(string.Format("创建{0}公会成功", response.Guild.GuildName), "公会");
             }
             else
             {
-                MessageBox.Show(string.Format("{0}公会失败", response.Guild.GuildName), "公会");
+                MessageBox.Show(response.Msg, "公会");
             }
         }
 
@@ -87,10 +87,7 @@ namespace Services
             NetClient.Instance.SendMessage(message);
         }
 
-        internal void SendAdminCommand(GuildAdminCommand promote, int id)
-        {
-            throw new NotImplementedException();
-        }
+
 
         private void OnGuildJoinRequest(object sender, GuildJoinRequest request)
         {
@@ -122,13 +119,17 @@ namespace Services
         private void OnGuildJoinResponse(object sender, GuildJoinResponse response)
         {
             Debug.LogFormat("收到审批的结果,{0}",response.Result);
-            if (response.Result == Result.Success)
+            if (response.Result == Result.Success&&response.Apply.Result==ApplyResult.Accept)
             {
                 MessageBox.Show(response.Msg, "申请通过");
             }
-            else if (response.Result == Result.Failed)
+            else if (response.Result == Result.Failed && response.Apply.Result == ApplyResult.Reject)
             {
                 MessageBox.Show(response.Msg, "申请失败", MessageBoxType.Error);
+            }
+            else
+            {
+                MessageBox.Show(response.Msg, "等待结果");
             }
         }
 

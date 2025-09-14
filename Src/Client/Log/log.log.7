@@ -1,13 +1,37 @@
-2025-09-14 15:45:00,343 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-14 15:45:02,993 [ 1] INFO  Unity: 用户名 :12 密码:12
-2025-09-14 15:45:02,995 [ 1] INFO  Unity: 连接成功
-2025-09-14 15:45:02,996 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-14 15:45:02,999 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-14 15:45:03,742 [ 1] INFO  Unity: 登录成功
-2025-09-14 15:45:03,918 [ 1] INFO  Unity: 当前角色数量为3
-2025-09-14 15:45:04,868 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-14 15:47:04,409 [ 1] INFO  Unity: 网络断开
-2025-09-14 15:47:04,409 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-14 23:18:09,320 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-14 23:18:19,285 [ 1] INFO  Unity: 用户名 :12 密码:12
+2025-09-14 23:18:19,287 [ 1] INFO  Unity: 连接成功
+2025-09-14 23:18:19,288 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-14 23:18:19,291 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-14 23:18:20,030 [ 1] INFO  Unity: 登录成功
+2025-09-14 23:18:20,207 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-14 23:18:21,258 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-14 23:18:21,376 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-14 23:18:21,377 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-14 23:18:21,378 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-14 23:18:21,385 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-14 23:18:21,387 [ 1] INFO  Unity: 加入角色姓名:Vn,地图:1
+2025-09-14 23:18:21,388 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-14 23:18:21,390 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-14 23:18:29,840 [ 1] INFO  Unity: 发送创建公会请求
+2025-09-14 23:18:29,862 [ 1] INFO  Unity: 收到创建公会响应:Failed
+2025-09-14 23:18:29,863 [ 1] ERROR UserService: Message handler exception:, Object reference not set to an instance of an object, Assembly-CSharp,   at Services.GuildService.OnGuildCreate (System.Object sender, SkillBridge.Message.GuildCreateResponse response) [0x00099] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\GuildService.cs:73 
+  at Network.MessageDistributer`1[System.Object].RaiseEvent[GuildCreateResponse] (System.Object sender, SkillBridge.Message.GuildCreateResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:105 
+2025-09-14 23:18:29,863 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, Services.GuildService.OnGuildCreate (System.Object sender, SkillBridge.Message.GuildCreateResponse response) (at Assets/Scripts/Services/GuildService.cs:73)
+Network.MessageDistributer`1[System.Object].RaiseEvent[GuildCreateResponse] (System.Object sender, SkillBridge.Message.GuildCreateResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:105)
+}</args></log4net.Error>
+2025-09-14 23:19:00,619 [ 1] INFO  Unity: 发送创建公会请求
+2025-09-14 23:19:31,800 [ 1] INFO  Unity: 收到创建公会响应:Failed
+2025-09-14 23:19:31,801 [ 1] ERROR UserService: Message handler exception:, Object reference not set to an instance of an object, Assembly-CSharp,   at Services.GuildService.OnGuildCreate (System.Object sender, SkillBridge.Message.GuildCreateResponse response) [0x00099] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\GuildService.cs:73 
+  at Network.MessageDistributer`1[System.Object].RaiseEvent[GuildCreateResponse] (System.Object sender, SkillBridge.Message.GuildCreateResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:105 
+2025-09-14 23:19:31,801 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, Services.GuildService.OnGuildCreate (System.Object sender, SkillBridge.Message.GuildCreateResponse response) (at Assets/Scripts/Services/GuildService.cs:73)
+Network.MessageDistributer`1[System.Object].RaiseEvent[GuildCreateResponse] (System.Object sender, SkillBridge.Message.GuildCreateResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:105)
+}</args></log4net.Error>
+2025-09-14 23:19:56,991 [ 1] INFO  Unity: 消失的玩家：1,位置(4150, 3000, 805)
+2025-09-14 23:19:56,996 [ 1] INFO  Unity: 网络断开
+2025-09-14 23:19:56,997 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:172)

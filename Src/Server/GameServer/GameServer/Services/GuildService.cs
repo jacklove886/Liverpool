@@ -94,11 +94,22 @@ namespace GameServer.Services
                     leader.Session.Response.guildJoinRequest = request;
                     leader.SendResponse();
                 }
+                else//会长不在线
+                {
+                    sender.Session.Response.guildJoinResponse = new GuildJoinResponse();
+                    sender.Session.Response.guildJoinResponse.Apply= request.Apply;
+                    sender.Session.Response.guildJoinResponse.Apply.Result = request.Apply.Result;
+                    sender.Session.Response.guildJoinResponse.Msg = "申请已发送";
+                    sender.SendResponse();
+                    return;
+                }
             }
             else
             {
                 sender.Session.Response.guildJoinResponse = new GuildJoinResponse();
                 sender.Session.Response.guildJoinResponse.Result = Result.Failed;
+                sender.Session.Response.guildJoinResponse.Apply = request.Apply;
+                sender.Session.Response.guildJoinResponse.Apply.Result = request.Apply.Result;
                 sender.Session.Response.guildJoinResponse.Msg = "请勿重复申请";
                 sender.SendResponse();
                 return;
@@ -111,32 +122,44 @@ namespace GameServer.Services
             Character character = sender.Session.Character;
             Log.InfoFormat("加入公会响应:公会:{0}角色:[{1},{2}]", response.Apply.GuildId, character.Id, character.Info.Name);
             var guild = GuildManager.Instance.GetGuild(response.Apply.GuildId);
-            if (response.Result==Result.Success)//收到网络请求
-            {
-                guild.JoinAppove(response.Apply);
-            }
             var requester = SessionManager.Instance.GetSession(response.Apply.characterId);
-            if (requester != null&&response.Apply.Result==ApplyResult.Accept)
+            if (response.Apply.Result==ApplyResult.Accept)
             {
-                requester.Session.Character.Guild = guild;
-                requester.Session.Response.guildJoinResponse = new GuildJoinResponse();
-                requester.Session.Response.guildJoinResponse.Result = Result.Success;
-                requester.Session.Response.guildJoinResponse.Msg = "加入公会成功";
-                requester.SendResponse();
-
+                if (response.Result == Result.Success)//收到网络请求
+                {
+                    guild.JoinAppove(response.Apply);
+                }
+                if(requester != null)//如果在线
+                {
+                    requester.Session.Character.Guild = guild;
+                    requester.Session.Response.guildJoinResponse = new GuildJoinResponse();
+                    requester.Session.Response.guildJoinResponse.Result = Result.Success;
+                    requester.Session.Response.guildJoinResponse.Apply = response.Apply;
+                    requester.Session.Response.guildJoinResponse.Apply.Result = response.Apply.Result;
+                    requester.Session.Response.guildJoinResponse.Msg = "加入公会成功";
+                    requester.SendResponse();                   
+                }
                 sender.Session.Response.guildJoinResponse = new GuildJoinResponse();
                 sender.Session.Response.guildJoinResponse.Result = Result.Success;
-                sender.Session.Response.guildJoinResponse.Msg = character.Name+"审核通过";
+                sender.Session.Response.guildJoinResponse.Apply = response.Apply;
+                sender.Session.Response.guildJoinResponse.Apply.Result = response.Apply.Result;
+                sender.Session.Response.guildJoinResponse.Msg = character.Name + "审核通过";
             }
             else if(response.Apply.Result == ApplyResult.Reject)
             {
-                requester.Session.Response.guildJoinResponse = new GuildJoinResponse();
-                requester.Session.Response.guildJoinResponse.Result = Result.Failed;
-                requester.Session.Response.guildJoinResponse.Msg = "申请被拒绝";
-                requester.SendResponse();
-
+                if(requester != null)
+                {
+                    requester.Session.Response.guildJoinResponse = new GuildJoinResponse();
+                    requester.Session.Response.guildJoinResponse.Result = Result.Failed;
+                    requester.Session.Response.guildJoinResponse.Apply = response.Apply;
+                    requester.Session.Response.guildJoinResponse.Apply.Result = response.Apply.Result;
+                    requester.Session.Response.guildJoinResponse.Msg = "申请被拒绝";
+                    requester.SendResponse();
+                }
                 sender.Session.Response.guildJoinResponse = new GuildJoinResponse();
                 sender.Session.Response.guildJoinResponse.Result = Result.Failed;
+                sender.Session.Response.guildJoinResponse.Apply = response.Apply;
+                sender.Session.Response.guildJoinResponse.Apply.Result = response.Apply.Result;
                 sender.Session.Response.guildJoinResponse.Msg = character.Name + "批准不通过";
             }
             sender.SendResponse();

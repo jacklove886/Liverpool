@@ -49,6 +49,7 @@ namespace GameServer.Managers
             dbGuild.LeaderName = leader.Name;
             dbGuild.CreateTime = now;
             DBService.Instance.Entities.Guilds.Add(dbGuild);
+            DBService.Instance.Save();
 
             Guild guild = new Guild(dbGuild);//new一次model
             //把会长身份填进去

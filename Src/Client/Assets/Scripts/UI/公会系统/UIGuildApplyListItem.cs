@@ -40,7 +40,7 @@ public class UIGuildApplyListItem : ListView.ListViewItem
     public void OnClickReject()
     {
 
-        MessageBox.Show(string.Format("要通过:[{0}]的公会申请吗", Info.Name), "审批申请", MessageBoxType.Confirm, "同意", "拒绝")
+        MessageBox.Show(string.Format("要拒绝:[{0}]的公会申请吗", Info.Name), "审批申请", MessageBoxType.Confirm, "同意", "拒绝")
         .OnYes = () =>
         {
             GuildService.Instance.SendGuildJoinApply(false, this.Info);
