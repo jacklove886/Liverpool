@@ -720,7 +720,7 @@ enum GUILD_ADMIN_COMMAND
 {
 	KICKOUT=1;//踢人
 	PROMOTE=2;//晋升
-	DEPOST=3;//罢免
+	DEPOSE=3;//罢免
 	TRANSFER=4;//转让会长
 }
 
@@ -734,5 +734,5 @@ message GuildAdminResponse
 {
 	RESULT result=1;
 	string msg=2;
-	GuildAdminRequest command=3;
+	GuildAdminRequest commandRequest=3;
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Models;
 using SkillBridge.Message;
 
 namespace Managers
@@ -10,7 +11,7 @@ namespace Managers
     {
         public NGuildInfo guildInfo;//公会信息
 
-        public NGuildMemberInfo myMemberInfo;
+        public NGuildMemberInfo myMemberInfo=null;
 
         public bool HasGuild//是否有公会
         {
@@ -20,6 +21,19 @@ namespace Managers
         public void Init(NGuildInfo guild)
         {
             this.guildInfo = guild;
+            if (guild == null)
+            {
+                myMemberInfo = null;
+                return;
+            }
+            foreach(var member in guild.Members)//遍历所有成员
+            {
+                if (member.characterId == User.Instance.CurrentCharacter.Id)//如果是自己
+                {
+                    myMemberInfo = member;//把成员信息赋值给自己
+                    break;
+                }
+            }
         }
 
         public void ShowGuild()//点击公会图标

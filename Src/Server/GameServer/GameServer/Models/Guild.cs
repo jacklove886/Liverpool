@@ -17,11 +17,9 @@ namespace GameServer.Models
         public TGuild Data;
 
         public int Id { get { return this.Data.Id; } }
-        public Character Leader;
 
         public string Name { get { return this.Data.Name; } }
 
-        public List<Character> Members = new List<Character>();
 
         public double changeTime;
 
@@ -93,25 +91,27 @@ namespace GameServer.Models
                 GuildId=this.Id
             };
             this.Data.Members.Add(dbMember);
+            var character = CharacterManager.Instance.GetCharatcer(characterId);
+            if (character != null)
+            {
+                character.TCharacter.GuildId = this.Id;
+            }
+            else
+            {
+                TCharacter dbcharacter = DBService.Instance.Entities.Characters.SingleOrDefault(c => c.ID == characterId);
+                if(dbcharacter!=null)
+                dbcharacter.GuildId = this.Id;
+            }
+
             changeTime = TimeUtil.timestamp;
         }
 
-
-        //离开逻辑 作业
+        //离开公会 作业
         public void Leave(Character member)
         {
-            
+
         }
 
-        public void PostProcess(Character character,NetMessageResponse message)
-        {
-            if (message.Guild == null)
-            {
-                message.Guild = new GuildResponse();
-                message.Guild.Result = Result.Success;
-                message.Guild.Guild = this.GuildInfo(character);
-            }
-        }
 
         internal NGuildInfo GuildInfo(Character character)
         {
@@ -159,26 +159,18 @@ namespace GameServer.Models
                     member.Level = character.TCharacter.Level;
                     member.Name = character.TCharacter.Name;
                     member.LastTime = DateTime.Now;
-                    if (member.Id == this.Data.LeaderID)
-                    {
-                        this.Leader = character;
-                    }
                 }
                 else//角色离线
                 {
                     memberInfo.Info = this.GetMemberInfo(member);
                     memberInfo.Status = 0;
-                    if (member.Id == this.Data.LeaderID)
-                    {
-                        this.Leader = null;
-                    }
                 }
                 members.Add(memberInfo);
             }
             return members;
         }
 
-        private NCharacterInfo GetMemberInfo(TGuildMember member)
+        public NCharacterInfo GetMemberInfo(TGuildMember member)
         {
             return new NCharacterInfo()
             {
@@ -194,6 +186,7 @@ namespace GameServer.Models
             List<NGuildApplyInfo> applies = new List<NGuildApplyInfo>();
             foreach(var apply in this.Data.Applies)
             {
+                if (apply.Result != (int)ApplyResult.None) continue;//如果已经审批过 跳过这条审批 只发送未筛选的申请列表
                 applies.Add(new NGuildApplyInfo()
                 {
                     characterId = apply.CharacterId,
@@ -205,6 +198,55 @@ namespace GameServer.Models
                 });
             }
             return applies;
+        }
+
+        public TGuildMember GetDBMember(int characterId)
+        {
+            foreach(var member in this.Data.Members)//从数据库中查找成员
+            {
+                if (member.CharacterId == characterId)
+                {
+                    return member;
+                }
+            }
+            return null;
+        }
+
+        internal void ExcuteAdmin(GuildAdminCommand command, int targetId, int soureId)
+        {
+            var target = GetDBMember(targetId);
+            var source = GetDBMember(soureId);
+            switch (command)
+            {
+                case GuildAdminCommand.Promote:
+                    target.Position = (int)GuildTitle.VicePresident;
+                    break;
+                case GuildAdminCommand.Depose:
+                    target.Position = (int)GuildTitle.None;
+                    break;
+                case GuildAdminCommand.Transfer:
+                    target.Position = (int)GuildTitle.President;
+                    source.Position = (int)GuildTitle.President;
+                    this.Data.LeaderID = targetId;
+                    this.Data.LeaderName = target.Name;
+                    break;
+                case GuildAdminCommand.Kickout:
+                    /*作业 离开逻辑*/
+                    break;
+            }
+            DBService.Instance.Save();
+            changeTime = TimeUtil.timestamp;
+        }
+
+
+        public void PostProcess(Character character, NetMessageResponse message)
+        {
+            if (message.Guild == null)
+            {
+                message.Guild = new GuildResponse();
+                message.Guild.Result = Result.Success;
+                message.Guild.Guild = this.GuildInfo(character);
+            }
         }
 
     }

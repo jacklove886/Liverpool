@@ -1457,8 +1457,8 @@ namespace SkillBridge.Message
         [global::System.ComponentModel.DefaultValue("")]
         public string Msg { get; set; } = "";
 
-        [global::ProtoBuf.ProtoMember(3, Name = @"command")]
-        public GuildAdminRequest Command { get; set; }
+        [global::ProtoBuf.ProtoMember(3)]
+        public GuildAdminRequest commandRequest { get; set; }
 
     }
 
@@ -1643,8 +1643,8 @@ namespace SkillBridge.Message
         Kickout = 1,
         [global::ProtoBuf.ProtoEnum(Name = @"PROMOTE")]
         Promote = 2,
-        [global::ProtoBuf.ProtoEnum(Name = @"DEPOST")]
-        Depost = 3,
+        [global::ProtoBuf.ProtoEnum(Name = @"DEPOSE")]
+        Depose = 3,
         [global::ProtoBuf.ProtoEnum(Name = @"TRANSFER")]
         Transfer = 4,
     }

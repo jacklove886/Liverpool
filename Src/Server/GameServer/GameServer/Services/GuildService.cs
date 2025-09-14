@@ -20,6 +20,7 @@ namespace GameServer.Services
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildJoinResponse>(this.OnGuildJoinResponse);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildListRequest>(this.OnGuildGuildList);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildLeaveRequest>(this.OnGuildLeave);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<GuildAdminRequest>(this.OnGuildAdmin);
         }
 
         public void Init()
@@ -118,7 +119,6 @@ namespace GameServer.Services
             if (requester != null&&response.Apply.Result==ApplyResult.Accept)
             {
                 requester.Session.Character.Guild = guild;
-                requester.Session.Character.TCharacter.GuildId = guild.Id;
                 requester.Session.Response.guildJoinResponse = new GuildJoinResponse();
                 requester.Session.Response.guildJoinResponse.Result = Result.Success;
                 requester.Session.Response.guildJoinResponse.Msg = "加入公会成功";
@@ -150,6 +150,42 @@ namespace GameServer.Services
             character.Guild.Leave(character);
             sender.Session.Response.guildJoinResponse.Result = Result.Success;
             DBService.Instance.Save();
+            sender.SendResponse();
+        }
+
+        private void OnGuildAdmin(NetConnection<NetSession> sender, GuildAdminRequest request)
+        {
+            Character character = sender.Session.Character;
+            Log.InfoFormat("OnGuildAdmin:角色:[{0},{1}],操作:{2}", character.Id, character.Info.Name,request.Command);
+            sender.Session.Response.guildAdmin = new GuildAdminResponse();
+            if (character.Guild == null)
+            {
+                sender.Session.Response.guildAdmin = new GuildAdminResponse();
+                sender.Session.Response.guildAdmin.Result = Result.Failed;
+                sender.Session.Response.guildAdmin.Msg = "你没公会不要乱来";
+                return;
+            }
+            TGuildMember memberData = character.Guild.GetDBMember(character.Id);
+            if (memberData.Position == 0)
+            {
+                sender.Session.Response.guildAdmin = new GuildAdminResponse();
+                sender.Session.Response.guildAdmin.Result = Result.Failed;
+                sender.Session.Response.guildAdmin.Msg = "你没有资格进行操作";
+                return;
+            }
+            character.Guild.ExcuteAdmin(request.Command, request.Target, character.Id);
+            var target = SessionManager.Instance.GetSession(request.Target);//查找删除的角色
+            if (target != null)
+            {
+                target.Session.Response.guildAdmin = new GuildAdminResponse();
+                target.Session.Response.guildAdmin.Result = Result.Success;
+                target.Session.Response.guildAdmin.Msg = "你的公会申请被审核了";
+                target.Session.Response.guildAdmin.commandRequest = request;
+                target.SendResponse();
+            }
+            sender.Session.Response.guildAdmin.Result = Result.Success;
+            sender.Session.Response.guildAdmin.Msg = "操作完成";
+            sender.Session.Response.guildAdmin.commandRequest = request;
             sender.SendResponse();
         }
     }

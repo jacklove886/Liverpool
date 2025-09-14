@@ -30,6 +30,7 @@ namespace Services
             MessageDistributer.Instance.Subscribe<GuildJoinResponse>(this.OnGuildJoinResponse);
             MessageDistributer.Instance.Subscribe<GuildResponse>(this.OnGuild);
             MessageDistributer.Instance.Subscribe<GuildLeaveResponse>(this.OnGuildLeave);
+            MessageDistributer.Instance.Subscribe<GuildAdminResponse>(this.OnGuildAdmin);
         }
 
         public void Dispose()
@@ -40,6 +41,7 @@ namespace Services
             MessageDistributer.Instance.Unsubscribe<GuildJoinResponse>(this.OnGuildJoinResponse);
             MessageDistributer.Instance.Unsubscribe<GuildResponse>(this.OnGuild);
             MessageDistributer.Instance.Unsubscribe<GuildLeaveResponse>(this.OnGuildLeave);
+            MessageDistributer.Instance.Unsubscribe<GuildAdminResponse>(this.OnGuildAdmin);
         }
 
         //创建公会请求
@@ -182,10 +184,77 @@ namespace Services
             }
         }
 
+        //处理离线申请
+        public void SendGuildJoinApply(bool accept,NGuildApplyInfo apply)
+        {
+            Debug.LogFormat("SendGuildJoinApply处理离线申请");
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.guildJoinResponse = new GuildJoinResponse();
+            message.Request.guildJoinResponse.Result = Result.Success;
+            message.Request.guildJoinResponse.Apply = apply;
+            message.Request.guildJoinResponse.Apply.Result =accept?ApplyResult.Accept: ApplyResult.Reject;
+            NetClient.Instance.SendMessage(message);
+        }
 
 
-       
+        public void SendGuildAdmin(GuildAdminCommand command, int characterId)
+        {
+            Debug.Log("OnGuildAdmin请求");
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.guildAdmin = new GuildAdminRequest();
+            message.Request.guildAdmin.Command = command;
+            message.Request.guildAdmin.Target = characterId;
+            NetClient.Instance.SendMessage(message);
+        }
 
-       
+        private void OnGuildAdmin(object sender, GuildAdminResponse response)
+        {
+            Debug.Log("OnGuildAdmin响应");
+            switch (response.commandRequest.Command)
+            {
+                case GuildAdminCommand.Kickout:
+                    if (response.Result == Result.Success)
+                    {
+                        MessageBox.Show(response.Msg, "踢出成功");
+                    }
+                    else
+                    {
+                        MessageBox.Show(response.Msg, "踢出失败", MessageBoxType.Error);
+                    }
+                    break;
+                case GuildAdminCommand.Promote:
+                    if (response.Result == Result.Success)
+                    {
+                        MessageBox.Show(response.Msg, "晋升成功");
+                    }
+                    else
+                    {
+                        MessageBox.Show(response.Msg, "晋升失败", MessageBoxType.Error);
+                    }
+                    break;
+                case GuildAdminCommand.Depose:
+                    if (response.Result == Result.Success)
+                    {
+                        MessageBox.Show(response.Msg, "罢免成功");
+                    }
+                    else
+                    {
+                        MessageBox.Show(response.Msg, "罢免失败", MessageBoxType.Error);
+                    }
+                    break;
+                case GuildAdminCommand.Transfer:
+                    if (response.Result == Result.Success)
+                    {
+                        MessageBox.Show(response.Msg, "转让成功");
+                    }
+                    else
+                    {
+                        MessageBox.Show(response.Msg, "转让失败", MessageBoxType.Error);
+                    }
+                    break;
+            }          
+        }
     }
 }
