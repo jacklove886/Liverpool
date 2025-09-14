@@ -32,9 +32,22 @@ public class UIGuildMemberItem : ListView.ListViewItem
     {
         this.Info = item;
         this.nickname.text = this.Info.Info.Name;
-        this.@class.text = this.Info.Info.Class.ToString();
+        switch (this.Info.Info.Class.ToString())
+        {
+            case "Warrior": this.@class.text = "战士"; break;
+            case "Wizard": this.@class.text = "法师"; break;
+            case "Archer": this.@class.text = "游侠"; break;
+        }
         this.level.text = this.Info.Info.Level.ToString();
-        this.position.text = this.Info.Position.ToString();
+        switch ((int)this.Info.Position)
+        {
+            case 0:
+                this.position.text= "魂师"; break;
+            case 1: 
+                this.position.text = "魂斗罗"; break;
+            case 2: 
+                this.position.text = "封号斗罗"; break;
+        }
         this.joinTime.text = TimeUtil.GetTime(this.Info.joinTime).ToShortDateString();
         this.status.text = this.Info.Status == 1 ? "在线" : TimeUtil.GetTime(this.Info.lastTime).ToString();
     }

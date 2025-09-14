@@ -48,10 +48,6 @@
       <End Role="TGuild" EntitySet="Guilds" />
       <End Role="TGuildApply" EntitySet="TGuildApplies" />
     </AssociationSet>
-    <AssociationSet Name="Guild" Association="ExtremeWorldModel.Store.Guild">
-      <End Role="TCharacter" EntitySet="Characters" />
-      <End Role="TGuild" EntitySet="Guilds" />
-    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
     <Key>
@@ -85,9 +81,9 @@
     <Property Name="Gold" Type="bigint" Nullable="false" />
     <Property Name="Equips" Type="binary" Nullable="false" MaxLength="28" />
     <Property Name="Exp" Type="bigint" Nullable="false" />
+    <Property Name="GuildId" Type="int" Nullable="false" />
     <Property Name="Player_ID" Type="int" Nullable="false" />
     <Property Name="Bag_Id" Type="int" Nullable="false" />
-    <Property Name="Guild_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CharacterItems">
     <Key>
@@ -265,18 +261,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Guild">
-    <End Role="TCharacter" Type="ExtremeWorldModel.Store.Characters" Multiplicity="*" />
-    <End Role="TGuild" Type="ExtremeWorldModel.Store.Guilds" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="TGuild">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TCharacter">
-        <PropertyRef Name="Guild_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -334,10 +318,6 @@
             <End Role="TGuild" EntitySet="Guilds" />
             <End Role="TGuildApply" EntitySet="TGuildApplies" />
           </AssociationSet>
-          <AssociationSet Name="Guild" Association="ExtremeWorldModel.Guild">
-            <End Role="TCharacter" EntitySet="Characters" />
-            <End Role="TGuild" EntitySet="Guilds" />
-          </AssociationSet>
           </EntityContainer>
         <EntityType Name="TPlayer">
           <Key>
@@ -371,7 +351,7 @@
           <NavigationProperty Name="Quests" Relationship="ExtremeWorldModel.TCharacterTCharacterQuest" FromRole="TCharacter" ToRole="TCharacterQuest" />
           <Property Name="Exp" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Friends" Relationship="ExtremeWorldModel.CharacterFriend" FromRole="TCharacter" ToRole="TCharacterFriend" />
-          <NavigationProperty Name="Guild" Relationship="ExtremeWorldModel.Guild" FromRole="TCharacter" ToRole="TGuild" />
+          <Property Name="GuildId" Type="Int32" Nullable="false" />
           </EntityType>
         <Association Name="PlayerCharacter">
           <End Type="ExtremeWorldModel.TPlayer" Role="Player" Multiplicity="1" />
@@ -473,7 +453,6 @@
           <Property Name="CreateTime" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Members" Relationship="ExtremeWorldModel.GuildMember" FromRole="TGuild" ToRole="TGuildMember" />
           <NavigationProperty Name="Applies" Relationship="ExtremeWorldModel.GuildApply" FromRole="TGuild" ToRole="TGuildApply" />
-          <NavigationProperty Name="Owner" Relationship="ExtremeWorldModel.Guild" FromRole="TGuild" ToRole="TCharacter" />
         </EntityType>
         <EntityType Name="TGuildMember">
           <Key>
@@ -530,10 +509,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Guild">
-          <End Type="ExtremeWorldModel.TCharacter" Role="TCharacter" Multiplicity="1" />
-          <End Type="ExtremeWorldModel.TGuild" Role="TGuild" Multiplicity="1" />
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -572,6 +547,7 @@
           <ScalarProperty Name="Gold" ColumnName="Gold" />
           <ScalarProperty Name="Equips" ColumnName="Equips" />
           <ScalarProperty Name="Exp" ColumnName="Exp" />
+          <ScalarProperty Name="GuildId" ColumnName="GuildId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -681,14 +657,6 @@
     <AssociationSetMapping Name="CharacterBag" TypeName="ExtremeWorldModel.CharacterBag" StoreEntitySet="Characters">
       <EndProperty Name="TCharacterBag">
         <ScalarProperty Name="Id" ColumnName="Bag_Id" />
-      </EndProperty>
-      <EndProperty Name="TCharacter">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="Guild" TypeName="ExtremeWorldModel.Guild" StoreEntitySet="Characters">
-      <EndProperty Name="TGuild">
-        <ScalarProperty Name="Id" ColumnName="Guild_Id" />
       </EndProperty>
       <EndProperty Name="TCharacter">
         <ScalarProperty Name="ID" ColumnName="ID" />

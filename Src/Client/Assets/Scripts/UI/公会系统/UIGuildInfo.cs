@@ -35,7 +35,7 @@ public class UIGuildInfo : MonoBehaviour
         else
         {
             this.guildName.text = this.Info.GuildName;
-            this.guildID.text = "ID"+this.Info.Id;
+            this.guildID.text = "ID:"+this.Info.Id;
             this.leader.text = "会长:"+this.Info.leaderName;
             this.notice.text = this.Info.Notice;
             this.memberNumber.text = string.Format("成员数量:{0}/50", this.Info.memberCount);

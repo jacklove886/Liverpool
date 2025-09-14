@@ -55,7 +55,7 @@ namespace GameServer.Managers
             guild.AddMember(leader.Id, leader.Name, leader.TCharacter.Class, leader.TCharacter.Level, GuildTitle.President);
             leader.Guild = guild;
             DBService.Instance.Save();
-            leader.TCharacter.Guild.Id = dbGuild.Id;
+            leader.TCharacter.GuildId = dbGuild.Id;
             DBService.Instance.Save();
             this.AddGuild(guild);
             return true;

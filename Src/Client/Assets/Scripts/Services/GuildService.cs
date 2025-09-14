@@ -127,7 +127,7 @@ namespace Services
 
         private void OnGuild(object sender, GuildResponse response)
         {
-            Debug.LogFormat("OnGuild,[{0}][{1}][{2]}", response.Result,response.Guild.Id,response.Guild.GuildName);
+            Debug.LogFormat("OnGuild,[{0}][{1}][{2}]", response.Result,response.Guild.Id,response.Guild.GuildName);
             GuildManager.Instance.Init(response.Guild);
             if (OnGuildUpdate != null)//通知更新事件
             {

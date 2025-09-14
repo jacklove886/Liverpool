@@ -38,11 +38,12 @@ public class UIGuildPopCreate : UIWindow
         if (string.IsNullOrEmpty(inputNotice.text))
         {
             MessageBox.Show("请输入公会宣言", "错误", MessageBoxType.Error);
+            return;
         }
 
-        if (inputName.text.Length < 4 || inputName.text.Length > 50)
+        if (inputNotice.text.Length < 4 || inputNotice.text.Length > 50)
         {
-            MessageBox.Show("公会名称为4-50个字符", "错误", MessageBoxType.Error);
+            MessageBox.Show("公会宣言为4-50个字符", "错误", MessageBoxType.Error);
             return;
         }
 

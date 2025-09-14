@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/14/2025 10:08:32
+-- Date Created: 09/14/2025 13:16:17
 -- Generated from EDMX file: E:\Unity_code\mmorpg\mmorpg\Src\Server\GameServer\GameServer\Entities.edmx
 -- --------------------------------------------------
 
@@ -114,9 +114,9 @@ CREATE TABLE [dbo].[Characters] (
     [Gold] bigint  NOT NULL,
     [Equips] binary(28)  NOT NULL,
     [Exp] bigint  NOT NULL,
+    [GuildId] int  NOT NULL,
     [Player_ID] int  NOT NULL,
-    [Bag_Id] int  NOT NULL,
-    [Guild_Id] int  NOT NULL
+    [Bag_Id] int  NOT NULL
 );
 GO
 
@@ -386,21 +386,6 @@ GO
 CREATE INDEX [IX_FK_GuildApply]
 ON [dbo].[TGuildApplies]
     ([TGuildId]);
-GO
-
--- Creating foreign key on [Guild_Id] in table 'Characters'
-ALTER TABLE [dbo].[Characters]
-ADD CONSTRAINT [FK_Guild]
-    FOREIGN KEY ([Guild_Id])
-    REFERENCES [dbo].[Guilds]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_Guild'
-CREATE INDEX [IX_FK_Guild]
-ON [dbo].[Characters]
-    ([Guild_Id]);
 GO
 
 -- --------------------------------------------------

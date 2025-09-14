@@ -48,6 +48,10 @@ public class UIGuildList : MonoBehaviour {
             ui.SetGuildInfo(guild);
             this.listMain.AddItem(ui);
         }
+        if (listMain != null && listMain.items.Count > 0)
+        {
+            listMain.SelectedItem = listMain.items[0];//默认选中第一个
+        }
     }
 
     private void ClearList()

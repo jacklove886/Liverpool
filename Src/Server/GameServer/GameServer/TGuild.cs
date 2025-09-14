@@ -32,6 +32,5 @@ namespace GameServer
         public virtual ICollection<TGuildMember> Members { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TGuildApply> Applies { get; set; }
-        public virtual TCharacter Owner { get; set; }
     }
 }
