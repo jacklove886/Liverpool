@@ -12,6 +12,7 @@ namespace Services
 {
     class TeamService:Singleton<TeamService>
     {
+        public System.Action OnLeaveTeam;
         public TeamService()//构造函数
         {
             MessageDistributer.Instance.Subscribe<TeamInviteRequest>(this.OnTeamInviteRequest);
@@ -80,7 +81,7 @@ namespace Services
             }
             else if (response.Result == Result.Failed)
             {
-                MessageBox.Show(response.Msg, "邀请组队失败");
+                MessageBox.Show(response.Msg, "组队失败");
             }
         }
 

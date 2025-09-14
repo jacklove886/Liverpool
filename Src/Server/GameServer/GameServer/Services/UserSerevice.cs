@@ -15,6 +15,7 @@ namespace GameServer.Services
 {
     class UserService : Singleton<UserService>
     {
+        public System.Action OnTeamLeave;
 
 
         public UserService()
@@ -276,7 +277,7 @@ namespace GameServer.Services
             sender.SendResponse();
         }
 
-        public  void CharacterLeave(Character character)
+        public void CharacterLeave(Character character)
         {
             Log.InfoFormat("角色离开 ID:{0},{1}", character.Id, character.Info.Name);
             CharacterManager.Instance.CharacterRemove(character.Id);

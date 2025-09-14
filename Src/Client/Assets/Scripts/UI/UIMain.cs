@@ -84,8 +84,15 @@ public class UIMain : MonoSingleton<UIMain> {
         msgBox.OnYes = () =>
         {
             StopMainCityMusic();
+            UserService.Instance.SendGameLeave();
+            StartCoroutine(waitTime());
             Application.Quit();
         };
+    }
+
+    IEnumerator waitTime()
+    {
+        yield return new WaitForSeconds(1f);
     }
 
     private void StopMainCityMusic()

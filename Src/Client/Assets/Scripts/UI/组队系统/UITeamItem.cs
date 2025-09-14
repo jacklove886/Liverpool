@@ -22,17 +22,17 @@ public class UITeamItem : ListView.ListViewItem
         background.overrideSprite = selected ? selectedBg : normalBg;
     }
 
-    private void Start()
+    private void Awake()
     {
-        background.enabled = false;
+        background.enabled=false;
     }
 
     public void SetMemberInfo(int index, NCharacterInfo item, bool isLeader)
     {
+        background.enabled = true;
         this.index = index;
         this.info = item;
-        this.characterName.text = this.info.Level.ToString().PadRight(4) + this.info.Name;
-        background.enabled = true;
+        this.characterName.text = this.info.Level.ToString().PadRight(4)+"级"+ this.info.Name;
         this.classIcon.overrideSprite = SpriteManager.Instance.classIcons[(int)this.info.Class - 1];
         this.LeaderIcon.gameObject.SetActive(isLeader);
     }

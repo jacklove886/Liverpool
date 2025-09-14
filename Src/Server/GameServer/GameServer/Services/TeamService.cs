@@ -77,10 +77,10 @@ namespace GameServer.Services
             Character character = sender.Session.Character;
             Log.InfoFormat("OnFriendAddResponse:角色:{0},结果:{1},FromID:{2},FromID:{3}", character, response.Result, response.Request.FromId, response.Request.ToId);
             sender.Session.Response.teamInviteResponse = response;
+            var requster = SessionManager.Instance.GetSession(response.Request.FromId);
             if (response.Result == Result.Success)//B接受了
             {
-                //requester代表A
-                var requster = SessionManager.Instance.GetSession(response.Request.FromId);
+                //requester代表A               
                 if (requster == null)
                 {
                     sender.Session.Response.teamInviteResponse.Result = Result.Failed;
@@ -95,6 +95,13 @@ namespace GameServer.Services
                     sender.Session.Response.teamInviteResponse.Msg = "组队成功";
                     requster.SendResponse();
                 }
+            }
+            else//拒绝了
+            {
+                requster.Session.Response.teamInviteResponse = response;
+                requster.Session.Response.teamInviteResponse.Result = Result.Failed;
+                requster.SendResponse();
+                sender.Session.Response.teamInviteResponse.Msg = "成功拒绝";
             }
             sender.SendResponse();
         }

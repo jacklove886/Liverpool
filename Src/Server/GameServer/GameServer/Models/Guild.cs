@@ -124,12 +124,12 @@ namespace GameServer.Models
                 leaderName = this.Data.LeaderName,
                 createTime = (long)TimeUtil.GetTimestamp(this.Data.CreateTime),
                 memberCount = this.Data.Members.Count
-            };
-            var currentmemer = GetDBMember(character.Id);
+            };          
             if (character != null)//说明是当前公会成员  可以看到成员信息
             {
                 info.Members.AddRange(GetMemberInfos());
-                if (currentmemer.Position!=(int)GuildTitle.None)//不是普通成员
+                var currentmemer = GetDBMember(character.Id);
+                if (currentmemer!=null&&currentmemer.Position!=(int)GuildTitle.None)//不是普通成员
                 {
                     info.Applies.AddRange(GetApplyInfos());//可以审批信息
                 }

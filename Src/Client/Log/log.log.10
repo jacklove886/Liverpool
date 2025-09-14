@@ -1,29 +1,155 @@
-2025-09-14 23:11:37,719 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-14 23:11:39,521 [ 1] INFO  Unity: 用户名 :12 密码:12
-2025-09-14 23:11:39,523 [ 1] INFO  Unity: 连接成功
-2025-09-14 23:11:39,524 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-14 23:11:39,527 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-14 23:11:40,256 [ 1] INFO  Unity: 登录成功
-2025-09-14 23:11:40,429 [ 1] INFO  Unity: 当前角色数量为1
-2025-09-14 23:11:41,368 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-14 23:11:41,485 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-14 23:11:41,487 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-14 23:11:41,487 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-14 23:11:41,494 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-14 23:11:41,496 [ 1] INFO  Unity: 加入角色姓名:Vn,地图:1
-2025-09-14 23:11:41,498 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-14 23:11:41,500 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-14 23:11:48,969 [ 1] INFO  Unity: 发送创建公会请求
-2025-09-14 23:11:48,988 [ 1] INFO  Unity: 收到创建公会响应:Failed
-2025-09-14 23:11:48,990 [ 1] ERROR UserService: Message handler exception:, Object reference not set to an instance of an object, Assembly-CSharp,   at Services.GuildService.OnGuildCreate (System.Object sender, SkillBridge.Message.GuildCreateResponse response) [0x00099] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\GuildService.cs:73 
-  at Network.MessageDistributer`1[System.Object].RaiseEvent[GuildCreateResponse] (System.Object sender, SkillBridge.Message.GuildCreateResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:105 
-2025-09-14 23:11:48,991 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, Services.GuildService.OnGuildCreate (System.Object sender, SkillBridge.Message.GuildCreateResponse response) (at Assets/Scripts/Services/GuildService.cs:73)
-Network.MessageDistributer`1[System.Object].RaiseEvent[GuildCreateResponse] (System.Object sender, SkillBridge.Message.GuildCreateResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:105)
-}</args></log4net.Error>
-2025-09-14 23:12:09,517 [ 1] INFO  Unity: 消失的玩家：1,位置(4567, 3026, 805)
-2025-09-14 23:12:09,519 [ 1] INFO  Unity: 网络断开
-2025-09-14 23:12:09,520 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-15 00:19:44,654 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-15 00:19:47,101 [ 1] INFO  Unity: 用户名 :1 密码:1
+2025-09-15 00:19:47,102 [ 1] INFO  Unity: 连接成功
+2025-09-15 00:19:47,103 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-15 00:19:47,106 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-15 00:19:47,830 [ 1] INFO  Unity: 登录成功
+2025-09-15 00:19:48,014 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-15 00:19:49,487 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-15 00:19:49,661 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-15 00:19:49,663 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-15 00:19:49,664 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-15 00:19:49,671 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:19:49,672 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-15 00:19:49,673 [ 1] INFO  Unity: 加入角色姓名:A,地图:1
+2025-09-15 00:19:49,675 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-15 00:19:49,677 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-15 00:19:53,099 [ 1] INFO  Unity: 发送公会列表的请求
+2025-09-15 00:19:53,150 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:19:55,070 [ 1] INFO  Unity: SendGuildJoinApply处理离线申请
+2025-09-15 00:19:55,384 [ 1] INFO  Unity: 收到审批的结果,Success
+2025-09-15 00:19:55,386 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:00,814 [ 1] INFO  Unity: OnGuildAdmin请求
+2025-09-15 00:20:00,853 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:00,855 [ 1] INFO  Unity: OnGuildAdmin响应
+2025-09-15 00:20:10,076 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
+2025-09-15 00:20:10,077 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-15 00:20:10,095 [ 1] INFO  Unity: 1离开了地图
+2025-09-15 00:20:10,096 [ 1] INFO  Unity: 移除角色ID：1
+2025-09-15 00:20:10,098 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:10,099 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-15 00:20:10,100 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:10,100 [ 1] INFO  Unity: 消失的玩家：1,位置(4558, 4807, 804)
+2025-09-15 00:20:10,239 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-15 00:20:12,138 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-15 00:20:12,153 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-15 00:20:12,154 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-15 00:20:12,155 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-15 00:20:12,156 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:12,156 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-15 00:20:12,156 [ 1] INFO  Unity: 加入角色姓名:V,地图:1
+2025-09-15 00:20:12,158 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-15 00:20:12,159 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-15 00:20:17,231 [ 1] INFO  Unity: OnGuildAdmin请求
+2025-09-15 00:20:17,263 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:17,265 [ 1] INFO  Unity: OnGuildAdmin响应
+2025-09-15 00:20:19,763 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
+2025-09-15 00:20:19,764 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-15 00:20:19,870 [ 1] INFO  Unity: 2离开了地图
+2025-09-15 00:20:19,870 [ 1] INFO  Unity: 移除角色ID：2
+2025-09-15 00:20:19,871 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:19,872 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-15 00:20:19,872 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:19,873 [ 1] INFO  Unity: 消失的玩家：2,位置(5102, 4799, 807)
+2025-09-15 00:20:19,932 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-15 00:20:21,843 [ 1] INFO  Unity: 创建角色 :C
+2025-09-15 00:20:21,908 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-15 00:20:21,911 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:22,984 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-15 00:20:22,999 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-15 00:20:22,999 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-15 00:20:23,000 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-15 00:20:23,001 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-15 00:20:23,002 [ 1] INFO  Unity: 加入角色姓名:C,地图:1
+2025-09-15 00:20:23,003 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-15 00:20:23,004 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-15 00:20:25,758 [ 1] INFO  Unity: 发送公会列表的请求
+2025-09-15 00:20:27,192 [ 1] INFO  Unity: 发送加入公会请求
+2025-09-15 00:20:27,223 [ 1] INFO  Unity: 收到审批的结果,Success
+2025-09-15 00:20:28,995 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
+2025-09-15 00:20:28,996 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-15 00:20:29,101 [ 1] INFO  Unity: 3离开了地图
+2025-09-15 00:20:29,102 [ 1] INFO  Unity: 移除角色ID：3
+2025-09-15 00:20:29,103 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-15 00:20:29,104 [ 1] INFO  Unity: 消失的玩家：3,位置(4150, 3000, 805)
+2025-09-15 00:20:29,161 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-15 00:20:30,160 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-15 00:20:30,174 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-15 00:20:30,175 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-15 00:20:30,175 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-15 00:20:30,176 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:30,176 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-15 00:20:30,177 [ 1] INFO  Unity: 加入角色姓名:V,地图:1
+2025-09-15 00:20:30,179 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-15 00:20:30,180 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-15 00:20:34,765 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
+2025-09-15 00:20:34,766 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-15 00:20:34,876 [ 1] INFO  Unity: 4离开了地图
+2025-09-15 00:20:34,877 [ 1] INFO  Unity: 移除角色ID：4
+2025-09-15 00:20:34,877 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:34,878 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-15 00:20:34,879 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:34,879 [ 1] INFO  Unity: 消失的玩家：4,位置(3809, 3271, 807)
+2025-09-15 00:20:34,932 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-15 00:20:36,010 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-15 00:20:36,025 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-15 00:20:36,025 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-15 00:20:36,026 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-15 00:20:36,027 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:36,027 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-15 00:20:36,028 [ 1] INFO  Unity: 加入角色姓名:A,地图:1
+2025-09-15 00:20:36,030 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-15 00:20:36,031 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-15 00:20:39,878 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
+2025-09-15 00:20:39,879 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-15 00:20:39,973 [ 1] INFO  Unity: 13离开了地图
+2025-09-15 00:20:39,974 [ 1] INFO  Unity: 移除角色ID：13
+2025-09-15 00:20:39,974 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:39,975 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-15 00:20:39,976 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:39,976 [ 1] INFO  Unity: 消失的玩家：13,位置(3857, 3127, 804)
+2025-09-15 00:20:40,034 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-15 00:20:40,909 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-15 00:20:40,924 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-15 00:20:40,924 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-15 00:20:40,925 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-15 00:20:40,926 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:40,926 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-15 00:20:40,927 [ 1] INFO  Unity: 加入角色姓名:V,地图:1
+2025-09-15 00:20:40,929 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-15 00:20:40,929 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-15 00:20:45,806 [ 1] INFO  Unity: OnGuildAdmin请求
+2025-09-15 00:20:45,837 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:45,838 [ 1] INFO  Unity: OnGuildAdmin响应
+2025-09-15 00:20:47,161 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
+2025-09-15 00:20:47,162 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-15 00:20:47,262 [ 1] INFO  Unity: 14离开了地图
+2025-09-15 00:20:47,263 [ 1] INFO  Unity: 移除角色ID：14
+2025-09-15 00:20:47,264 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:47,264 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-15 00:20:47,265 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:47,265 [ 1] INFO  Unity: 消失的玩家：14,位置(4150, 3000, 807)
+2025-09-15 00:20:47,316 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-15 00:20:48,286 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-15 00:20:48,299 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-15 00:20:48,300 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-15 00:20:48,301 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-15 00:20:48,302 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:48,302 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-15 00:20:48,303 [ 1] INFO  Unity: 加入角色姓名:A,地图:1
+2025-09-15 00:20:48,305 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-15 00:20:48,306 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-15 00:20:52,111 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
+2025-09-15 00:20:52,112 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-15 00:20:52,206 [ 1] INFO  Unity: 15离开了地图
+2025-09-15 00:20:52,207 [ 1] INFO  Unity: 移除角色ID：15
+2025-09-15 00:20:52,207 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:52,208 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-15 00:20:52,209 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-15 00:20:52,209 [ 1] INFO  Unity: 消失的玩家：15,位置(3990, 2750, 804)
+2025-09-15 00:20:52,260 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-15 00:20:52,973 [ 1] INFO  Unity: 网络断开
+2025-09-15 00:20:52,973 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:172)

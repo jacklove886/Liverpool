@@ -72,8 +72,6 @@ namespace GameServer.Entities
             this.FriendManager.GetFriendInfos(Info.Friends);
 
             this.Guild = GuildManager.Instance.GetGuild(this.TCharacter.GuildId);
-            if(Guild!=null)
-            Info.Guild = this.Guild.GuildInfo(this);
             
         }
 
