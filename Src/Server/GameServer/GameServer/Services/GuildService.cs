@@ -29,7 +29,6 @@ namespace GameServer.Services
 
         private void OnGuildCreateRequest(NetConnection<NetSession> sender, GuildCreateRequest request)
         {
-            //character代表A和sender代表A  
             Character character = sender.Session.Character;
             Log.InfoFormat("收到创建公会请求:公会名称:{0},角色:[{1},{2}]", request.GuildName,character.Id,character.Info.Name);
             sender.Session.Response.guildCreate = new GuildCreateResponse();
@@ -47,8 +46,7 @@ namespace GameServer.Services
                 sender.Session.Response.guildCreate.Errormsg = "公会名称已经存在";
                 sender.SendResponse();
                 return;
-            }
-            //B转发请求         
+            }     
             GuildManager.Instance.CreateGuild(request.GuildName, request.GuildNotice, character);
             sender.Session.Response.guildCreate.Guild = character.Guild.GuildInfo(character);
             sender.Session.Response.guildCreate.Result = Result.Success;

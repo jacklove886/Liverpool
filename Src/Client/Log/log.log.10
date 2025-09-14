@@ -1,6 +1,36 @@
-2025-09-14 15:28:49,925 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-14 15:28:58,844 [ 1] INFO  Unity: 网络断开
-2025-09-14 15:28:58,845 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-14 15:29:57,129 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-14 15:30:04,948 [ 1] INFO  Unity: 用户名 :12 密码:12
+2025-09-14 15:30:04,955 [ 1] INFO  Unity: 连接成功
+2025-09-14 15:30:04,956 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-14 15:30:04,963 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-14 15:30:05,190 [ 1] INFO  Unity: 登录成功
+2025-09-14 15:30:05,402 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-14 15:30:06,303 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-14 15:30:06,332 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-14 15:30:06,341 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-14 15:30:06,341 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-14 15:30:06,381 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-14 15:30:06,386 [ 1] INFO  Unity: 加入角色姓名:Cyx,地图:1
+2025-09-14 15:30:06,400 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-14 15:30:06,401 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-14 15:30:23,250 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
+2025-09-14 15:30:23,251 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-14 15:30:23,276 [ 1] INFO  Unity: 12离开了地图
+2025-09-14 15:30:23,279 [ 1] INFO  Unity: 移除角色ID：12
+2025-09-14 15:30:23,281 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-14 15:30:23,288 [ 1] INFO  Unity: 消失的玩家：12,位置(4150, 3000, 804)
+2025-09-14 15:30:23,430 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-14 15:30:24,307 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-14 15:30:24,320 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-14 15:30:24,320 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-14 15:30:24,322 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-14 15:30:31,367 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-14 15:30:31,368 [ 1] INFO  Unity: 加入角色姓名:Cyx,地图:1
+2025-09-14 15:30:31,370 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-14 15:30:31,371 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-14 15:30:35,054 [ 1] INFO  Unity: 消失的玩家：13,位置(4150, 3000, 804)
+2025-09-14 15:30:35,057 [ 1] INFO  Unity: 网络断开
+2025-09-14 15:30:35,058 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:172)
