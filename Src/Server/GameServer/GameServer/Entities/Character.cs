@@ -25,6 +25,9 @@ namespace GameServer.Entities
         public Team Team;//没有DB数据 所以做了个Team类
         public int TeamUpdateTS;//队伍更新时间的时间戳   每个角色的都不一样
 
+        public Guild Guild;
+        public int GuildUpdateTS;
+
 
          //T开头是数据库的
         public Character(CharacterType type,TCharacter cha)://构造函数
@@ -67,6 +70,8 @@ namespace GameServer.Entities
             //好友系统
             this.FriendManager = new FriendManager(this);
             this.FriendManager.GetFriendInfos(Info.Friends);
+
+            this.Guild = GuildManager.Instance.GetGuild(this.TCharacter.Guild.Id);
         }
 
         public long Gold
@@ -104,6 +109,22 @@ namespace GameServer.Entities
                 {
                     TeamUpdateTS = Team.changeTime;
                     this.Team.PostProcess(message);
+                }
+            }
+            if (this.Guild != null)
+            {
+                if (this.Info.Guild == null)//本地没有公会信息
+                {
+                    this.Info.Guild = this.Guild.GuildInfo(this);
+                    if (message.mapCharacterEnter != null)//角色第一次登陆 获取公会信息
+                    {
+                        GuildUpdateTS = Guild.changeTime;
+                    }
+                }
+                if (GuildUpdateTS < this.Guild.changeTime&&message.mapCharacterEnter==null)//时间戳小于队伍更新的时间
+                {
+                    GuildUpdateTS = Guild.changeTime;
+                    this.Guild.PostProcess(this,message);
                 }
             }
 

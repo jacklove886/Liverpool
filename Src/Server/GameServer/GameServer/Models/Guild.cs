@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GameServer.Models
 {
-    class Guild
+    public class Guild
     {
         public TGuild Data;
 
@@ -20,12 +20,27 @@ namespace GameServer.Models
 
         public List<Character> Members = new List<Character>();
 
-        public double timestamp;
+        public int changeTime;
 
-        public Guild(TGuild Tguild)
+        public Guild(TGuild Tguild)//构造函数
         {
             this.Data = Tguild;
         }
 
+        //加入公会申请
+        public bool JoinApply()
+        {
+            return true;
+        }
+
+        internal NGuildInfo GuildInfo(Character character)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void PostProcess(Character character, NetMessageResponse message)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
