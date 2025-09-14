@@ -112,21 +112,36 @@ namespace GameServer.Services
             Character character = sender.Session.Character;
             Log.InfoFormat("加入公会响应:公会:{0}角色:[{1},{2}]", response.Apply.GuildId, character.Id, character.Info.Name);
             var guild = GuildManager.Instance.GetGuild(response.Apply.GuildId);
-            if (response.Result==Result.Success)//接受公会请求
+            if (response.Result==Result.Success)//收到网络请求
             {
                 guild.JoinAppove(response.Apply);
-                return;
             }
             var requester = SessionManager.Instance.GetSession(response.Apply.characterId);
-            if (requester != null)
+            if (requester != null&&response.Apply.Result==ApplyResult.Accept)
             {
                 requester.Session.Character.Guild = guild;
+                requester.Session.Character.TCharacter.GuildId = guild.Id;
                 requester.Session.Response.guildJoinResponse = new GuildJoinResponse();
                 requester.Session.Response.guildJoinResponse.Result = Result.Success;
                 requester.Session.Response.guildJoinResponse.Errormsg = "加入公会成功";
                 requester.SendResponse();
 
+                sender.Session.Response.guildJoinResponse = new GuildJoinResponse();
+                sender.Session.Response.guildJoinResponse.Result = Result.Success;
+                sender.Session.Response.guildJoinResponse.Errormsg = character.Name+"审核通过";
             }
+            else if(response.Apply.Result == ApplyResult.Reject)
+            {
+                requester.Session.Response.guildJoinResponse = new GuildJoinResponse();
+                requester.Session.Response.guildJoinResponse.Result = Result.Failed;
+                requester.Session.Response.guildJoinResponse.Errormsg = "申请被拒绝";
+                requester.SendResponse();
+
+                sender.Session.Response.guildJoinResponse = new GuildJoinResponse();
+                sender.Session.Response.guildJoinResponse.Result = Result.Failed;
+                sender.Session.Response.guildJoinResponse.Errormsg = character.Name + "批准不通过";
+            }
+            sender.SendResponse();
         }
 
         private void OnGuildLeave(NetConnection<NetSession> sender, GuildLeaveRequest request)

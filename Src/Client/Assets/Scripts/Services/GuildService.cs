@@ -64,11 +64,11 @@ namespace Services
             if(response.Result == Result.Success)
             {
                 GuildManager.Instance.Init(response.Guild);
-                MessageBox.Show(string.Format("{0}创建公会成功", response.Guild.GuildName), "公会");
+                MessageBox.Show(string.Format("{0}公会成功", response.Guild.GuildName), "公会");
             }
             else
             {
-                MessageBox.Show(string.Format("{0}创建公会失败", response.Guild.GuildName), "公会");
+                MessageBox.Show(string.Format("{0}公会失败", response.Guild.GuildName), "公会");
             }
         }
 
@@ -117,11 +117,11 @@ namespace Services
             Debug.LogFormat("收到审批的结果,{0}",response.Result);
             if (response.Result == Result.Success)
             {
-                MessageBox.Show("加入公会成功", "公会");
+                MessageBox.Show(response.Errormsg, "申请通过");
             }
             else if (response.Result == Result.Failed)
             {
-                MessageBox.Show("加入公会失败", "公会", MessageBoxType.Error);
+                MessageBox.Show(response.Errormsg, "申请失败", MessageBoxType.Error);
             }
         }
 
@@ -150,11 +150,11 @@ namespace Services
             if (response.Result == Result.Success)
             {
                 GuildManager.Instance.Init(null);
-                MessageBox.Show("离开工会成功", "公会");
+                MessageBox.Show("离开公会成功", "公会");
             }
             else if (response.Result == Result.Failed)
             {
-                MessageBox.Show("离开工会失败", "公会",MessageBoxType.Error);
+                MessageBox.Show("离开公会失败", "公会",MessageBoxType.Error);
             }
         }
 

@@ -1,33 +1,7 @@
-2025-09-14 13:54:28,239 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-14 13:54:30,354 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-14 13:54:30,355 [ 1] INFO  Unity: 连接成功
-2025-09-14 13:54:30,357 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-14 13:54:30,360 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-14 13:54:30,454 [ 1] INFO  Unity: 登录成功
-2025-09-14 13:54:30,633 [ 1] INFO  Unity: 当前角色数量为1
-2025-09-14 13:54:35,729 [ 1] INFO  Unity: 创建角色 :Op
-2025-09-14 13:54:36,040 [ 1] INFO  Unity: 当前角色数量为2
-2025-09-14 13:54:37,511 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-14 13:54:37,529 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-14 13:54:37,531 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-14 13:54:37,532 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-14 13:54:37,539 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-14 13:54:37,540 [ 1] INFO  Unity: 加入角色姓名:Op,地图:1
-2025-09-14 13:54:37,543 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-14 13:54:37,544 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-14 13:54:40,704 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UIGuild.InitItems () (at Assets/Scripts/UI/公会系统/UIGuild.cs:43)
-UIGuild.UpdateUI () (at Assets/Scripts/UI/公会系统/UIGuild.cs:33)
-UIGuild.Start () (at Assets/Scripts/UI/公会系统/UIGuild.cs:20)
-}</args></log4net.Error>
-2025-09-14 13:54:40,707 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, TabView+<Start>c__Iterator0.MoveNext () (at Assets/Scripts/UI/背包系统/TabView.cs:21)
-UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at D:/unity/Runtime/Export/Coroutines.cs:17)
-}</args></log4net.Error>
-2025-09-14 13:54:47,200 [ 1] INFO  Unity: 网络断开
-2025-09-14 13:54:47,201 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-14 15:28:49,925 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-14 15:28:58,844 [ 1] INFO  Unity: 网络断开
+2025-09-14 15:28:58,845 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:172)
 
-2025-09-14 13:54:47,202 [ 1] INFO  Unity: 消失的玩家：10,位置(4837, 3709, 805)

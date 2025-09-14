@@ -89,7 +89,8 @@ namespace GameServer.Models
                 Level=level,
                 Position= (int)position,
                 JoinTime=now,
-                LastTime=now
+                LastTime=now,
+                GuildId=this.Id
             };
             this.Data.Members.Add(dbMember);
             changeTime = TimeUtil.timestamp;
