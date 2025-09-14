@@ -1,44 +1,33 @@
-2025-09-14 13:24:49,074 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-14 13:24:51,227 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-14 13:24:51,230 [ 1] INFO  Unity: 连接成功
-2025-09-14 13:24:51,231 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-14 13:24:51,234 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-14 13:24:51,333 [ 1] INFO  Unity: 登录成功
-2025-09-14 13:24:51,508 [ 1] INFO  Unity: 当前角色数量为1
-2025-09-14 13:24:52,213 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-14 13:24:52,232 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-14 13:24:52,234 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-14 13:24:52,235 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-14 13:24:52,242 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-14 13:24:52,243 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-14 13:24:52,246 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-14 13:24:52,247 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-14 13:25:03,533 [ 1] INFO  Unity: 发送创建公会请求
-2025-09-14 13:25:03,697 [ 1] INFO  Unity: 收到创建公会响应:Success
-2025-09-14 13:25:03,699 [ 1] ERROR UserService: Message handler exception:, Input string was not in a correct format., mscorlib,   at System.String.ParseFormatSpecifier (System.String str, System.Int32& ptr, System.Int32& n, System.Int32& width, System.Boolean& left_align, System.String& format) [0x00114] in /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/String.cs:2535 
-  at System.String.FormatHelper (System.Text.StringBuilder result, IFormatProvider provider, System.String format, System.Object[] args) [0x000ce] in /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/String.cs:1923 
-  at System.String.Format (IFormatProvider provider, System.String format, System.Object[] args) [0x00000] in /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/String.cs:1873 
-  at System.String.Format (System.String format, System.Object[] args) [0x00000] in /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/String.cs:1868 
-  at UnityEngine.DebugLogHandler.LogFormat (LogType logType, UnityEngine.Object context, System.String format, System.Object[] args) [0x00005] in D:\unity\Runtime\Export\Logger\DebugLogHandler.cs:9 
-  at UnityEngine.Logger.LogFormat (LogType logType, System.String format, System.Object[] args) [0x00017] in D:\unity\Runtime\Export\Logger\Logger.cs:113 
-  at UnityEngine.Debug.LogFormat (System.String format, System.Object[] args) [0x00009] in D:\unity\Runtime\Export\Debug.bindings.cs:108 
-  at Services.GuildService.OnGuild (System.Object sender, SkillBridge.Message.GuildResponse response) [0x0003b] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\GuildService.cs:130 
-  at Network.MessageDistributer`1[System.Object].RaiseEvent[GuildResponse] (System.Object sender, SkillBridge.Message.GuildResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:105 
-2025-09-14 13:25:03,700 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{FormatException: Input string was not in a correct format., System.String.ParseFormatSpecifier (System.String str, System.Int32& ptr, System.Int32& n, System.Int32& width, System.Boolean& left_align, System.String& format) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/String.cs:2535)
-System.String.FormatHelper (System.Text.StringBuilder result, IFormatProvider provider, System.String format, System.Object[] args) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/String.cs:1923)
-System.String.Format (IFormatProvider provider, System.String format, System.Object[] args) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/String.cs:1873)
-System.String.Format (System.String format, System.Object[] args) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System/String.cs:1868)
-UnityEngine.DebugLogHandler.LogFormat (LogType logType, UnityEngine.Object context, System.String format, System.Object[] args) (at D:/unity/Runtime/Export/Logger/DebugLogHandler.cs:9)
-UnityEngine.Logger.LogFormat (LogType logType, System.String format, System.Object[] args) (at D:/unity/Runtime/Export/Logger/Logger.cs:113)
-UnityEngine.Debug.LogFormat (System.String format, System.Object[] args) (at D:/unity/Runtime/Export/Debug.bindings.cs:108)
-Services.GuildService.OnGuild (System.Object sender, SkillBridge.Message.GuildResponse response) (at Assets/Scripts/Services/GuildService.cs:130)
-Network.MessageDistributer`1[System.Object].RaiseEvent[GuildResponse] (System.Object sender, SkillBridge.Message.GuildResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:105)
+2025-09-14 13:54:28,239 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-14 13:54:30,354 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-14 13:54:30,355 [ 1] INFO  Unity: 连接成功
+2025-09-14 13:54:30,357 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-14 13:54:30,360 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-14 13:54:30,454 [ 1] INFO  Unity: 登录成功
+2025-09-14 13:54:30,633 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-14 13:54:35,729 [ 1] INFO  Unity: 创建角色 :Op
+2025-09-14 13:54:36,040 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-14 13:54:37,511 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-14 13:54:37,529 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-14 13:54:37,531 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-14 13:54:37,532 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-14 13:54:37,539 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-14 13:54:37,540 [ 1] INFO  Unity: 加入角色姓名:Op,地图:1
+2025-09-14 13:54:37,543 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-14 13:54:37,544 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-14 13:54:40,704 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UIGuild.InitItems () (at Assets/Scripts/UI/公会系统/UIGuild.cs:43)
+UIGuild.UpdateUI () (at Assets/Scripts/UI/公会系统/UIGuild.cs:33)
+UIGuild.Start () (at Assets/Scripts/UI/公会系统/UIGuild.cs:20)
 }</args></log4net.Error>
-2025-09-14 13:25:46,892 [ 1] INFO  Unity: 网络断开
-2025-09-14 13:25:46,893 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-14 13:54:40,707 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, TabView+<Start>c__Iterator0.MoveNext () (at Assets/Scripts/UI/背包系统/TabView.cs:21)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at D:/unity/Runtime/Export/Coroutines.cs:17)
+}</args></log4net.Error>
+2025-09-14 13:54:47,200 [ 1] INFO  Unity: 网络断开
+2025-09-14 13:54:47,201 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:172)
 
-2025-09-14 13:25:46,895 [ 1] INFO  Unity: 消失的玩家：14,位置(4679, 3621, 804)
+2025-09-14 13:54:47,202 [ 1] INFO  Unity: 消失的玩家：10,位置(4837, 3709, 805)

@@ -25,6 +25,7 @@ public class UIGuildItem : ListView.ListViewItem {
 
     public void SetGuildInfo(NGuildInfo item)
     {
+        Info = item;
         this.guildId.text = item.Id.ToString();
         this.guildName.text = item.GuildName;
         this.guildNumber.text = item.memberCount.ToString();

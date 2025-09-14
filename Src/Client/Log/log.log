@@ -1,27 +1,23 @@
-2025-09-14 13:55:46,821 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-14 13:55:52,409 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-14 13:55:52,416 [ 1] INFO  Unity: 连接成功
-2025-09-14 13:55:52,417 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-14 13:55:52,424 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-14 13:55:52,644 [ 1] INFO  Unity: 登录成功
-2025-09-14 13:55:52,865 [ 1] INFO  Unity: 当前角色数量为2
-2025-09-14 13:55:54,155 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-14 13:55:54,184 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-14 13:55:54,191 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-14 13:55:54,192 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-14 13:55:54,229 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-14 13:55:54,235 [ 1] INFO  Unity: 加入角色姓名:Op,地图:1
-2025-09-14 13:55:54,250 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-14 13:55:54,251 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-14 13:56:20,548 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UIGuild.InitItems () (at Assets/Scripts/UI/公会系统/UIGuild.cs:43)
-UIGuild.UpdateUI () (at Assets/Scripts/UI/公会系统/UIGuild.cs:33)
-UIGuild.Start () (at Assets/Scripts/UI/公会系统/UIGuild.cs:20)
-}</args></log4net.Error>
-2025-09-14 13:56:24,529 [ 1] INFO  Unity: 网络断开
-2025-09-14 13:56:24,530 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-14 14:19:29,283 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-14 14:19:31,254 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-14 14:19:31,255 [ 1] INFO  Unity: 连接成功
+2025-09-14 14:19:31,257 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-14 14:19:31,259 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-14 14:19:32,001 [ 1] INFO  Unity: 登录成功
+2025-09-14 14:19:32,186 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-14 14:19:33,887 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-14 14:19:34,001 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-14 14:19:34,003 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-14 14:19:34,004 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-14 14:19:34,011 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-14 14:19:34,013 [ 1] INFO  Unity: 加入角色姓名:Op,地图:1
+2025-09-14 14:19:34,015 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-14 14:19:34,016 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-14 14:19:36,285 [ 1] INFO  Unity: 发送公会列表的请求
+2025-09-14 14:19:47,340 [ 1] INFO  Unity: 消失的玩家：1,位置(4822, 3558, 805)
+2025-09-14 14:19:47,342 [ 1] INFO  Unity: 网络断开
+2025-09-14 14:19:47,343 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:172)
 
-2025-09-14 13:56:24,532 [ 1] INFO  Unity: 消失的玩家：12,位置(4522, 3187, 805)

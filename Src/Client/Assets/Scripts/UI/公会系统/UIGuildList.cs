@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIGuildList : MonoBehaviour {
+public class UIGuildList : UIWindow {
 
     public GameObject itemPrefab;
     public ListView listMain;
