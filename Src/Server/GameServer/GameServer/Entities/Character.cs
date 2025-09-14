@@ -118,12 +118,12 @@ namespace GameServer.Entities
                     this.Info.Guild = this.Guild.GuildInfo(this);
                     if (message.mapCharacterEnter != null)//角色第一次登陆 获取公会信息
                     {
-                        GuildUpdateTS = Guild.changeTime;
+                        GuildUpdateTS = (int)Guild.changeTime;
                     }
                 }
                 if (GuildUpdateTS < this.Guild.changeTime&&message.mapCharacterEnter==null)//时间戳小于队伍更新的时间
                 {
-                    GuildUpdateTS = Guild.changeTime;
+                    GuildUpdateTS = (int)Guild.changeTime;
                     this.Guild.PostProcess(this,message);
                 }
             }

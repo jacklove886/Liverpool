@@ -223,6 +223,7 @@ namespace GameServer.Services
                     characterInfo.Level = character.Level;
                     characterInfo.ConfigId = character.TID;
                     characterInfo.mapId = character.MapID;
+                    characterInfo.ConfigId = character.TID;
                     sender.Session.Response.deleteChar.Characters.Add(characterInfo);
                 }
             }
