@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Utils;
 using GameServer.Entities;
 using SkillBridge.Message;
 using System;
@@ -16,7 +17,7 @@ namespace GameServer.Models
 
         public List<Character> members = new List<Character>();
 
-        public int changeTime;//队伍发生变化时 记录当前时间
+        public double changeTime;//队伍发生变化时 记录当前时间
 
         public Team(Character leader)//构造函数
         {
@@ -50,7 +51,7 @@ namespace GameServer.Models
                 }
             }
             member.Team = null;
-            changeTime= Time.changeTime;
+            changeTime = TimeUtil.timestamp;
         }
 
         public void PostProcess(NetMessageResponse message)

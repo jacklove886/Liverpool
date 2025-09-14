@@ -13,6 +13,7 @@ public class UIGuildInfo : MonoBehaviour
     public Text leader;
     public Text notice;
     public Text memberNumber;
+    public Text applyCount;
 
     private NGuildInfo info;
     public NGuildInfo Info
@@ -30,6 +31,7 @@ public class UIGuildInfo : MonoBehaviour
             this.leader.text = "会长:无";
             this.notice.text = "";
             this.memberNumber.text ="成员数量:0/50";
+            this.applyCount.text = Info.Applies.Count.ToString()+"条待处理";
             //this.memberNumber.text = string.Format("成员数量:0/{0}",GameDefine.GuildMaxMemberCount);
         }
         else
@@ -39,6 +41,7 @@ public class UIGuildInfo : MonoBehaviour
             this.leader.text = "会长:"+this.Info.leaderName;
             this.notice.text = this.Info.Notice;
             this.memberNumber.text = string.Format("成员数量:{0}/50", this.Info.memberCount);
+            this.applyCount.text = "";
             //this.memberNumber.text = string.Format("成员数量:{0}/{1}", this.Info.memberCount,GameDefine.GuildMaxMemberCount);
         }
     }

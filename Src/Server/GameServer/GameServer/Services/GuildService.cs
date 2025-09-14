@@ -179,7 +179,14 @@ namespace GameServer.Services
             {
                 target.Session.Response.guildAdmin = new GuildAdminResponse();
                 target.Session.Response.guildAdmin.Result = Result.Success;
-                target.Session.Response.guildAdmin.Msg = "你的公会申请被审核了";
+                switch (request.Command)
+                {
+                    case GuildAdminCommand.Kickout: target.Session.Response.guildAdmin.Msg = string.Format("你被{0}踢出公会", character.Info.Name); break;
+                    case GuildAdminCommand.Depose: target.Session.Response.guildAdmin.Msg = string.Format("你被{0}罢免为魂师", character.Info.Name); break;
+                    case GuildAdminCommand.Promote: target.Session.Response.guildAdmin.Msg = string.Format("你被{0}晋升为魂斗罗",character.Info.Name); break;
+                    case GuildAdminCommand.Transfer: target.Session.Response.guildAdmin.Msg = "你现在是封号斗罗啦"; break;
+                }
+
                 target.Session.Response.guildAdmin.commandRequest = request;
                 target.SendResponse();
             }
