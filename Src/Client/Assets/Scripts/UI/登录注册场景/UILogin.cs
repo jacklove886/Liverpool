@@ -1,4 +1,4 @@
-﻿using Services;// 服务器命名空间
+using Services;// 服务器命名空间
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +41,6 @@ public class UILogin : MonoBehaviour {
         #endregion
 
         UserService.Instance.OnLogin += OnLogin;
-        SoundManager.Instance.audioClipPlay.PlayOneShot(SoundManager.Instance.openGameClip);
         string savedUsername = PlayerPrefs.GetString("SavedUsername", "");
         if (!string.IsNullOrEmpty(savedUsername))
         {

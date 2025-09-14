@@ -1,4 +1,4 @@
-﻿using Managers;
+using Managers;
 using Models;
 using Services;
 using System.Collections;
@@ -30,6 +30,7 @@ public class UIMain : MonoSingleton<UIMain> {
         backButton.onClick.AddListener(OnClickBackToChooseCharacter);
         returnButton.onClick.AddListener(OnClickReturnGame);
         quitButton.onClick.AddListener(OnClickQuitGame);
+        SoundManager.Instance.uiClipPlay.clip = null;
     }
 	
 	void Update ()
@@ -51,17 +52,11 @@ public class UIMain : MonoSingleton<UIMain> {
         escPanelState = !escPanelState;
         if (escPanelState == true)
         {
-            if (SoundManager.Instance.audioClipPlay.clip!=null&& SoundManager.Instance.audioClipPlay.isPlaying)
-            {
-                SoundManager.Instance.audioClipPlay.Stop();
-            }
+            SoundManager.Instance.StopCharacterSound();
         }
         else
         {
-            if(SoundManager.Instance.audioClipPlay.clip != null)
-            {
-                SoundManager.Instance.audioClipPlay.Play();
-            }
+            // ESC面板关闭时不需要重新播放角色音效
         }
         go.SetActive(escPanelState);
     }

@@ -73,11 +73,11 @@ namespace GameServer.Services
                 sender.Session.Response.userLogin.Result = Result.Failed;
                 sender.Session.Response.userLogin.Errormsg = "密码错误";
             }
-            else if (SessionManager.Instance.GetSessionByUserId(user.ID))
+            /*else if (SessionManager.Instance.GetSessionByUserId(user.ID))
             {
                 sender.Session.Response.userLogin.Result = Result.Failed;
                 sender.Session.Response.userLogin.Errormsg = "用户已登录.";
-            }
+            }*/
             else
             {
                 sender.Session.User = user;

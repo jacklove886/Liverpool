@@ -1,4 +1,4 @@
-﻿using SkillBridge.Message;  
+using SkillBridge.Message;  
 using System.Collections;  
 using UnityEngine;  
 using Entities;  
@@ -118,9 +118,9 @@ public class EntityController : MonoBehaviour, IEntityNotify
     
     private void StopMovementAudio()
     {
-        if (SoundManager.Instance.audioClipPlay.isPlaying)  
+        if (SoundManager.Instance.characterAudioSource.isPlaying)  
         {
-            SoundManager.Instance.audioClipPlay.Stop();  
+            SoundManager.Instance.characterAudioSource.Stop();  
         }
     }
 
@@ -141,8 +141,8 @@ public class EntityController : MonoBehaviour, IEntityNotify
     
     private void PlayMovementAudio()
     {
-        SoundManager.Instance.audioClipPlay.clip = SoundManager.Instance.walkAudioClip[currentCharacterClass];
-        SoundManager.Instance.audioClipPlay.Play();  
+        SoundManager.Instance.characterAudioSource.clip = SoundManager.Instance.walkAudioClip[currentCharacterClass];
+        SoundManager.Instance.characterAudioSource.Play();  
     }
 
     
@@ -155,8 +155,8 @@ public class EntityController : MonoBehaviour, IEntityNotify
     
     private void PlayRunAudio()
     {
-        SoundManager.Instance.audioClipPlay.clip = SoundManager.Instance.runAudioClip[currentCharacterClass];
-        SoundManager.Instance.audioClipPlay.Play();  
+        SoundManager.Instance.characterAudioSource.clip = SoundManager.Instance.runAudioClip[currentCharacterClass];
+        SoundManager.Instance.characterAudioSource.Play();  
     }
 
     //跳跃事件

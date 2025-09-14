@@ -1,60 +1,13 @@
-2025-09-13 18:29:02,773 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-13 18:29:08,392 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-13 18:29:08,393 [ 1] INFO  Unity: 连接成功
-2025-09-13 18:29:08,395 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-13 18:29:08,398 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-13 18:29:08,496 [ 1] INFO  Unity: 登录成功
-2025-09-13 18:29:08,688 [ 1] INFO  Unity: 当前角色数量为2
-2025-09-13 18:29:09,676 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-13 18:29:09,706 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-13 18:29:09,709 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-13 18:29:09,711 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-13 18:29:09,713 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-13 18:29:09,714 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
-2025-09-13 18:29:09,727 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:2
-2025-09-13 18:29:09,730 [ 1] INFO  Unity: 加入角色姓名:Op,地图:1
-2025-09-13 18:29:09,735 [ 1] INFO  Unity: 加入角色姓名:Cyx,地图:1
-2025-09-13 18:29:09,735 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-13 18:29:09,737 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-13 18:29:14,568 [ 1] INFO  Unity: 发送添加好友请求
-2025-09-13 18:29:22,956 [ 1] INFO  Unity: SendTeamInviteResponse
-2025-09-13 18:29:22,990 [ 1] INFO  Unity: 收到组队更新响应
-2025-09-13 18:29:22,994 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UITeam.UpdateTeamUI () (at Assets/Scripts/UI/组队系统/UITeam.cs:58)
-UITeam.OnEnable () (at Assets/Scripts/UI/组队系统/UITeam.cs:35)
-UnityEngine.GameObject:SetActive(Boolean)
-UITeam:ShowTeam(Boolean) (at Assets/Scripts/UI/组队系统/UITeam.cs:40)
-UIMain:ShowTeamUI(Boolean) (at Assets/Scripts/UI/UIMain.cs:125)
-Managers.TeamManager:ShowTeamUI(Boolean) (at Assets/Scripts/Managers/TeamManager.cs:27)
-Managers.TeamManager:UpdateTeamInfo(NTeamInfo) (at Assets/Scripts/Managers/TeamManager.cs:20)
-Services.TeamService:OnTeamInfo(Object, TeamInfoResponse) (at Assets/Scripts/Services/TeamService.cs:90)
-Network.MessageDistributer`1:RaiseEvent(Object, TeamInfoResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:105)
-Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDispatch.cs:31)
-Network.MessageDistributer`1:Distribute() (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:148)
-Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:415)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:432)
-}</args></log4net.Error>
-2025-09-13 18:29:22,999 [ 1] ERROR UserService: Message handler exception:, Object reference not set to an instance of an object, Assembly-CSharp,   at UITeam.UpdateTeamUI () [0x000a7] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\UI\组队系统\UITeam.cs:58 
-  at UITeam.ShowTeam (Boolean show) [0x00015] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\UI\组队系统\UITeam.cs:43 
-  at UIMain.ShowTeamUI (Boolean show) [0x00008] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\UI\UIMain.cs:125 
-  at Managers.TeamManager.ShowTeamUI (Boolean show) [0x00018] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\TeamManager.cs:27 
-  at Managers.TeamManager.UpdateTeamInfo (SkillBridge.Message.NTeamInfo team) [0x00014] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\TeamManager.cs:20 
-  at Services.TeamService.OnTeamInfo (System.Object sender, SkillBridge.Message.TeamInfoResponse response) [0x0001c] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\TeamService.cs:90 
-  at Network.MessageDistributer`1[System.Object].RaiseEvent[TeamInfoResponse] (System.Object sender, SkillBridge.Message.TeamInfoResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:105 
-2025-09-13 18:29:23,000 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UITeam.UpdateTeamUI () (at Assets/Scripts/UI/组队系统/UITeam.cs:58)
-UITeam.ShowTeam (Boolean show) (at Assets/Scripts/UI/组队系统/UITeam.cs:43)
-UIMain.ShowTeamUI (Boolean show) (at Assets/Scripts/UI/UIMain.cs:125)
-Managers.TeamManager.ShowTeamUI (Boolean show) (at Assets/Scripts/Managers/TeamManager.cs:27)
-Managers.TeamManager.UpdateTeamInfo (SkillBridge.Message.NTeamInfo team) (at Assets/Scripts/Managers/TeamManager.cs:20)
-Services.TeamService.OnTeamInfo (System.Object sender, SkillBridge.Message.TeamInfoResponse response) (at Assets/Scripts/Services/TeamService.cs:90)
-Network.MessageDistributer`1[System.Object].RaiseEvent[TeamInfoResponse] (System.Object sender, SkillBridge.Message.TeamInfoResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:105)
-}</args></log4net.Error>
-2025-09-13 18:29:49,357 [ 1] INFO  Unity: 网络断开
-2025-09-13 18:29:49,358 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-14 09:48:41,076 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-14 09:48:43,622 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-14 09:48:43,624 [ 1] INFO  Unity: 连接成功
+2025-09-14 09:48:43,626 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-14 09:48:43,629 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-14 09:48:43,723 [ 1] INFO  Unity: 登录成功
+2025-09-14 09:48:43,896 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-14 09:48:51,501 [ 1] INFO  Unity: 网络断开
+2025-09-14 09:48:51,503 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:177)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:172)
 
-2025-09-13 18:29:49,361 [ 1] INFO  Unity: 消失的玩家：1,位置(4715, 3328, 805)
-2025-09-13 18:29:49,362 [ 1] INFO  Unity: 消失的玩家：2,位置(5183, 3066, 804)

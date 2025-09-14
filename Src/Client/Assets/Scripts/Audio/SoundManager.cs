@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +6,11 @@ public class SoundManager : MonoSingleton<SoundManager>
 {
 
     [Header("音效播放器")]
-    public AudioSource audioClipPlay;//总的声音播放器
+    public AudioSource uiClipPlay;//UI音效专用播放器
     public AudioSource bgmaudioClipPlay;//背景音乐播放器
+    public AudioSource characterAudioSource;//角色音效专用播放器
     public AudioSource jumpaudioClipPlay;//角色跳跃声音
+    
 
     [Header("打开游戏音效")]
     public AudioClip openGameClip;
@@ -41,6 +43,60 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         DontDestroyOnLoad(gameObject);
         bgmaudioClipPlay.loop = true;
+        bgmaudioClipPlay.clip = openGameClip;
+        bgmaudioClipPlay.Play();
+    }
+    
+    // 音效播放方法
+    public void PlayUISoundOneShot(AudioClip clip)
+    {
+        if (uiClipPlay != null && clip != null)
+        {
+            uiClipPlay.PlayOneShot(clip);
+        }
+    }
+
+    public void PlayUISound(AudioClip clip)
+    {
+        if (uiClipPlay != null && clip != null)
+        {
+            uiClipPlay.clip = clip;
+            uiClipPlay.Play();
+        }
+    }
+
+    public void PlayBgmSound(AudioClip clip)
+    {
+        if (bgmaudioClipPlay != null && clip != null)
+        {
+            bgmaudioClipPlay.clip = clip;
+            bgmaudioClipPlay.Play();
+        }
+    }
+
+    public void PlayCharacterSound(AudioClip clip)
+    {
+        if (characterAudioSource != null && clip != null)
+        {
+            characterAudioSource.clip = clip;
+            characterAudioSource.Play();
+        }
+    }
+    
+    public void PlayCharacterSoundOneShot(AudioClip clip)
+    {
+        if (characterAudioSource != null && clip != null)
+        {
+            characterAudioSource.PlayOneShot(clip);
+        }
+    }
+    
+    public void StopCharacterSound()
+    {
+        if (characterAudioSource != null && characterAudioSource.isPlaying)
+        {
+            characterAudioSource.Stop();
+        }
     }
 
 }

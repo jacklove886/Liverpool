@@ -69,7 +69,8 @@ public class UICharacterSelect : MonoBehaviour
 
     void Start()
     {
-        InitCharacterSelect(true); 
+        InitCharacterSelect(true);
+        SoundManager.Instance.bgmaudioClipPlay.clip = null;
     }
 
     private void OnDestroy()
@@ -84,8 +85,7 @@ public class UICharacterSelect : MonoBehaviour
         originalPanel.SetActive(true);
         panelCreate.SetActive(false);
         panelSelect.SetActive(true);
-        SoundManager.Instance.audioClipPlay.clip= SoundManager.Instance.openChooseCharacterClip;
-        SoundManager.Instance.audioClipPlay.Play();
+        SoundManager.Instance.PlayUISound(SoundManager.Instance.openChooseCharacterClip);
         if (init)
         {
             foreach (var old in uiChars)
@@ -160,7 +160,7 @@ public class UICharacterSelect : MonoBehaviour
             //选择角色播放音效
             if (i == charClass - 1)
             {
-                SoundManager.Instance.audioClipPlay.PlayOneShot(SoundManager.Instance.characterAudioClip1[i]);
+                SoundManager.Instance.PlayCharacterSoundOneShot(SoundManager.Instance.characterAudioClip1[i]);
                 Animator animator = characterClassPrefab[i].GetComponentInChildren<Animator>();
                 animator.SetTrigger("SelectClass");
             }
@@ -199,8 +199,7 @@ public class UICharacterSelect : MonoBehaviour
             {
                 Animator animator = characterClassPrefab[i].GetComponentInChildren<Animator>();
                 animator.SetTrigger("Click");
-                SoundManager.Instance.audioClipPlay.clip = SoundManager.Instance.characterAudioClip2[(int)User.Instance.CurrentCharacter.Class - 1];
-                SoundManager.Instance.audioClipPlay.Play();
+                SoundManager.Instance.PlayCharacterSoundOneShot(SoundManager.Instance.characterAudioClip2[(int)User.Instance.CurrentCharacter.Class - 1]);
             }
         }
         currentIndex = index;
