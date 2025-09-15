@@ -20,8 +20,10 @@ namespace Services
         public UnityEngine.Events.UnityAction<Result, string> OnCharacterCreate;
         public UnityEngine.Events.UnityAction<Result, string> OnCharacterDelete;
         NetMessage pendingMessage = null;
+        private static bool logInitialized = false;
+
         bool connected = false;
-        private static bool logInitialized = false;  
+        bool isQuitGame = false;
 
         public UserService()//构造函数
         {
@@ -307,8 +309,9 @@ namespace Services
         }
 
 
-        public void SendGameLeave()
+        public void SendGameLeave(bool isQuitGame = false)
         {
+            this.isQuitGame = isQuitGame;
             Debug.Log("发出退出游戏的响应");
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
@@ -330,6 +333,14 @@ namespace Services
         {
             MapService.Instance.CurrentMapID = 0;
             Debug.LogFormat("角色离开游戏:{0}", response.Result);
+            if (this.isQuitGame)
+            {
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;//编辑器变成停止模式
+#else
+                Application.Quit;//游戏exe版本才生效
+#endif
+            }
         }
 
     }

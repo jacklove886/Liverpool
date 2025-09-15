@@ -10,6 +10,8 @@ public abstract class UIWindow : MonoBehaviour {//abstarct意义是防止直接�
 
     public virtual System.Type Type { get { return this.GetType(); } }//每个子类返回自己的具体类型
 
+    public GameObject Root;
+
     public enum WindowResult
     {
         None=0,

@@ -9,9 +9,6 @@ using UnityEngine.UI;
 public class UIMain : MonoSingleton<UIMain> {
 
     public Text myNameandLevel;
-    public GameObject escPanel;//返回选择角色界面的按钮
-    private GameObject go;//预制体局部变量
-    public bool escPanelState = false;//开启状态 按ESC进行开启关闭
     public UITeam UITeam;
 
     protected override void OnStart ()
@@ -20,89 +17,19 @@ public class UIMain : MonoSingleton<UIMain> {
         SoundManager.Instance.bgmaudioClipPlay.Play();
         UpdateAvatar();
 
-        go = Instantiate(escPanel, this.transform);//实例化返回面板
-        go.name = "ESC面板";
-
-        Button backButton = go.transform.Find("返回角色选择按钮").GetComponent<Button>();
-        Button returnButton = go.transform.Find("返回游戏按钮").GetComponent<Button>();
-        Button quitButton = go.transform.Find("退出游戏按钮").GetComponent<Button>();
-
-        backButton.onClick.AddListener(OnClickBackToChooseCharacter);
-        returnButton.onClick.AddListener(OnClickReturnGame);
-        quitButton.onClick.AddListener(OnClickQuitGame);
         SoundManager.Instance.uiClipPlay.clip = null;
     }
 	
 	void Update ()
     {
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "CharacterChoose") return;
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            EscPanel();
-        }
     }
 
     void UpdateAvatar()
     {
         myNameandLevel.text = User.Instance.CurrentCharacter.Name +"  "+ User.Instance.CurrentCharacter.Level.ToString()+"级";
     }
-
-    public void EscPanel()
-    {
-        escPanelState = !escPanelState;
-        if (escPanelState == true)
-        {
-            SoundManager.Instance.StopCharacterSound();
-        }
-        else
-        {
-            // ESC面板关闭时不需要重新播放角色音效
-        }
-        go.SetActive(escPanelState);
-    }
-
-    //返回选择角色的页面
-    public void OnClickBackToChooseCharacter()
-    {
-        escPanelState = !escPanelState;
-        go.SetActive(escPanelState);
-        StopMainCityMusic(); 
-        SceneManager.Instance.LoadScene("CharacterChoose");
-        Services.UserService.Instance.SendGameLeave();
-    }
-
-    //返回游戏
-    public void OnClickReturnGame()
-    {
-        EscPanel();
-    }
-
-    //退出游戏
-    public void OnClickQuitGame()
-    {
-        UIMessageBox msgBox = MessageBox.Show("确认要退出游戏吗？", "退出游戏", MessageBoxType.Confirm, "确认", "取消");
-        msgBox.OnYes = () =>
-        {
-            StopMainCityMusic();
-            UserService.Instance.SendGameLeave();
-            StartCoroutine(waitTime());
-            Application.Quit();
-        };
-    }
-
-    IEnumerator waitTime()
-    {
-        yield return new WaitForSeconds(1f);
-    }
-
-    private void StopMainCityMusic()
-    {
-        if (SoundManager.Instance.bgmaudioClipPlay.isPlaying)
-        {
-            SoundManager.Instance.bgmaudioClipPlay.Stop();  // 停止背景音乐
-        }
-    }
-
+      
     public void OnClickBag()
     {
         UIManager.Instance.Show<UIBag>();//背包
@@ -140,7 +67,8 @@ public class UIMain : MonoSingleton<UIMain> {
 
     public void OnClickSetting()//设置
     {
-        
+        UISetting ui= UIManager.Instance.Show<UISetting>();
+        ui.transform.SetParent(this.transform,false);
     }
 
     public void OnClickSkill()//技能

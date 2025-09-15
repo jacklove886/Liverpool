@@ -24,6 +24,8 @@ public class UIManager : Singleton<UIManager> {
         element.Cache = true;*/
         UIResources.Add(typeof(UIDialog), new UIElement() { Resources = "UI/UIDialog", Cache = true });
 
+        UIResources.Add(typeof(UISetting), new UIElement() { Resources = "UI/UISetting/UISetting", Cache = true });
+
         UIResources.Add(typeof(UIBag), new UIElement() { Resources = "UI/UIBag/UIBag", Cache = false });
 
         UIResources.Add(typeof(UIShop), new UIElement() { Resources = "UI/UIShop/UIShop", Cache = false });
@@ -40,6 +42,8 @@ public class UIManager : Singleton<UIManager> {
         UIResources.Add(typeof(UIGuildPopNoGuild), new UIElement() { Resources = "UI/UIGuild/UIGuildPopNoGuild", Cache = false });
         UIResources.Add(typeof(UIGuildPopCreate), new UIElement() { Resources = "UI/UIGuild/UIGuildPopCreate", Cache = false });
         UIResources.Add(typeof(UIGuildApplyList), new UIElement() { Resources = "UI/UIGuild/UIGuildApplyList", Cache = false });
+        UIResources.Add(typeof(UIPopCharMenu), new UIElement() { Resources = "UI/UIPopCharMenu/UIPopCharMenu", Cache = false });
+        
     }
 
     ~UIManager()
