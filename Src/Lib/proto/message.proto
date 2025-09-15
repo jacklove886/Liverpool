@@ -232,6 +232,7 @@ message NetMessageRequest{
 	GuildLeaveRequest guildLeave=29;
 	GuildRequest guild=30;
 	GuildAdminRequest guildAdmin=31;//管理协议
+	ChatRequest chat=32;
 }
 
 message NetMessageResponse{
@@ -274,6 +275,7 @@ message NetMessageResponse{
 	GuildLeaveResponse guildLeave=29;
 	GuildResponse guild=30;
 	GuildAdminResponse guildAdmin=31;
+	ChatResponse chat=32;
 
 	StatusNotify statusNotify=100;
 
@@ -735,4 +737,48 @@ message GuildAdminResponse
 	RESULT result=1;
 	string msg=2;
 	GuildAdminRequest commandRequest=3;
+}
+
+
+
+
+//聊天
+enum CHAT_CHANNEL
+{
+	ALL=-1;//综合
+	LOCAL=1;//本地
+	WORLD=2;//世界
+	SYSTEM=3;//系统
+	PRIVATE=4;//私聊
+	TEAM=16;//队伍
+	GUILD=32;//公会
+}
+
+message ChatMessage
+{
+	CHAT_CHANNEL channel=1;
+	int32 id=2;
+	int32 from_id=3;
+	string from_name=4;
+	int32 to_id=5;
+	string to_name=6;
+	string message=7;
+	double time=8;
+}
+
+message ChatRequest
+{
+	ChatMessage message=1;
+}
+
+message ChatResponse
+{
+	RESULT result=1;
+	string msg=2;
+	repeated ChatMessage localMessages=3;
+	repeated ChatMessage worldMessages=4;
+	repeated ChatMessage systemMessages=5;
+	repeated ChatMessage privateMessages=6;
+	repeated ChatMessage teamMessages=7;
+	repeated ChatMessage guildMessages=8;
 }

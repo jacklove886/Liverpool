@@ -60,6 +60,7 @@ public class PlayerInputController : MonoBehaviour {
     {
         if (character == null) return;
 
+        if (InputManager.Instance.IsInputMode) return;//如果正在输入模式
         vertical = Input.GetAxis("Vertical");   
         horizontal = Input.GetAxis("Horizontal");
         // 按住shift进入跑步状态

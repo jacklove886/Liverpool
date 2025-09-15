@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Managers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,8 +7,8 @@ using UnityEngine.UI;
 
 public class UIPopCharMenu : UIWindow,IDeselectHandler
 {
-    public int targetId;
-    public string targetName;
+    public int targetId;//目标ID
+    public string targetName;//目标名字
 
 
 
@@ -30,15 +31,16 @@ public class UIPopCharMenu : UIWindow,IDeselectHandler
 
     public void OnClickChat()//私聊
     {
+        ChatManager.Instance.StartPrivateChat(targetId, targetName);//开始私聊
         Close(WindowResult.No);
     }
 
-    public void OnClickAddFriend()
+    public void OnClickAddFriend()//作业
     {
         Close(WindowResult.No);
     }
 
-    public void OnInviteTeam()
+    public void OnInviteTeam()//作业
     {
         Close(WindowResult.No);
     }
