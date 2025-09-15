@@ -28,6 +28,8 @@ namespace GameServer.Entities
         public Guild Guild;
         public int GuildUpdateTS;
 
+        public Chat Chat;
+
 
          //T开头是数据库的
         public Character(CharacterType type,TCharacter cha)://构造函数
@@ -72,6 +74,8 @@ namespace GameServer.Entities
             this.FriendManager.GetFriendInfos(Info.Friends);
 
             this.Guild = GuildManager.Instance.GetGuild(this.TCharacter.GuildId);
+
+            this.Chat = new Chat(this);
             
         }
 
@@ -134,6 +138,7 @@ namespace GameServer.Entities
             {
                 this.StatusManager.PostProcess(message);//状态管理器后处理
             }
+            this.Chat.PostProcess(message);
         }
 
         public void Clear()

@@ -271,6 +271,9 @@ namespace Services
         public void SendGameEnter(int characterIndex)
         {
             Debug.Log("发出进入游戏的响应");
+
+            ChatManager.Instance.Init();//初始化聊天系统
+
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.gameEnter = new UserGameEnterRequest();

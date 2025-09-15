@@ -12,7 +12,7 @@ public class UIPopCharMenu : UIWindow,IDeselectHandler
 
 
 
-    public void OnDeselect(BaseEventData eventData)//取消选择事件
+    public void OnDeselect(BaseEventData eventData)//失去焦点时自动调用
     {
         var ed = eventData as PointerEventData;
         if (ed.hovered.Contains(this.gameObject))//检查鼠标是否还悬停在当前窗口上
@@ -26,7 +26,7 @@ public class UIPopCharMenu : UIWindow,IDeselectHandler
     {
         //Select()方法作用是:有这个组件的物体变为已选择状态
         this.GetComponent<Selectable>().Select();
-        this.Root.transform.position = Input.mousePosition + new Vector3(80, 0, 0);//保证弹出位置在鼠标的右边
+        this.Root.transform.position = Input.mousePosition + new Vector3(80, 0, 0);//保证弹出位置在右边
     }
 
     public void OnClickChat()//私聊

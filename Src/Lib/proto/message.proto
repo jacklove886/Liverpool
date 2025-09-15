@@ -748,8 +748,8 @@ enum CHAT_CHANNEL
 	ALL=-1;//综合
 	LOCAL=1;//本地
 	WORLD=2;//世界
-	SYSTEM=3;//系统
-	PRIVATE=4;//私聊
+	SYSTEM=4;//系统
+	PRIVATE=8;//私聊
 	TEAM=16;//队伍
 	GUILD=32;//公会
 }

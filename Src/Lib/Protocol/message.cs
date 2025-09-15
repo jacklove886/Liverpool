@@ -1747,9 +1747,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoEnum(Name = @"WORLD")]
         World = 2,
         [global::ProtoBuf.ProtoEnum(Name = @"SYSTEM")]
-        System = 3,
+        System = 4,
         [global::ProtoBuf.ProtoEnum(Name = @"PRIVATE")]
-        Private = 4,
+        Private = 8,
         [global::ProtoBuf.ProtoEnum(Name = @"TEAM")]
         Team = 16,
         [global::ProtoBuf.ProtoEnum(Name = @"GUILD")]

@@ -22,7 +22,7 @@ public class UIChat : MonoBehaviour {
     public Dropdown channelDropdown;//下拉框
 
     void Start () {
-        this.channelTabs.OnTabSelect += OnDisplayChannelSelected;
+        this.channelTabs.OnTabSelect += OnDisplayChannelSelected;//切换按钮就调用方法
         ChatManager.Instance.Onchat += RefreshUI;//有聊天消息发出 更新UI
 	}
 
@@ -34,12 +34,12 @@ public class UIChat : MonoBehaviour {
 
     void Update()
     {
-        InputManager.Instance.IsInputMode = messageInputField.isFocused;//如果正在输入模式
+        InputManager.Instance.IsInputMode = messageInputField.isFocused;//如果正在输入  IsInputMode为false
     }
 
     public void OnDisplayChannelSelected(int index)
     {
-        //切换选择频道
+        //切换选择频道  
         ChatManager.Instance.displayChannel = (ChatManager.LocalChannel)index;
         RefreshUI();
     }
@@ -53,43 +53,71 @@ public class UIChat : MonoBehaviour {
         if (ChatManager.Instance.sendChannel == ChatManager.LocalChannel.Private)//如果频道是私聊
         {
             this.chatTargetPersonImage.SetActive(true);//显示私聊对象
-            if (ChatManager.Instance.PrivateID != 0)
+            if (ChatManager.Instance.toId != 0)
             {
-                this.chatTargetPerson.text = ChatManager.Instance.PrivateName + ":";
+                //设置文本为私聊对象名字
+                this.chatTargetPerson.text = ChatManager.Instance.toName + ":";
             }
             else
             {
                 this.chatTargetPerson.text = "<无>";
             }
         }
-        else
+        else//非私聊频道不显示
         {
             this.chatTargetPersonImage.SetActive(false);
+        }
+    }
+
+    public void OnChanelChanged()//下拉框发生改变
+    {
+        //举例:本来就是世界 又选了世界 不发生变化
+        if (ChatManager.Instance.sendChannel == (ChatManager.LocalChannel)(channelDropdown.value + 1))
+        {
+            return;
+        }
+        //选了队伍或者公会  但本身又没有
+        if (!ChatManager.Instance.SetSendChannel((ChatManager.LocalChannel)channelDropdown.value + 1))
+        {
+            //(int)sendChannel不是综合的时候  切换回原本的频道
+            if ((int)ChatManager.Instance.sendChannel - 1 >= 0)
+            {
+                this.channelDropdown.value = (int)ChatManager.Instance.sendChannel-1;
+            }
+            //因为(int)sendChannel初始默认是0  再-1会出现枚举值异常的情况
+            else
+            {
+                this.channelDropdown.value = 0;
+            }
+        }
+        else//成功发生变化 刷新UI
+        {
+            this.RefreshUI();
         }
     }
 
     public void OnClickChatLink(HyperText text, HyperText.LinkInfo link)
     {
         if (string.IsNullOrEmpty(link.Name)) return;//链接为空
-        if (link.Name.StartsWith("c:"))//c是Character的缩写
+        if (link.Name.StartsWith("c:"))//以c开头的才能点击
         {
             string[] strs = link.Name.Split(":".ToCharArray());//用:分割字符串
             UIPopCharMenu menu = UIManager.Instance.Show<UIPopCharMenu>();
             //例如<a name="c:1001:Name" class="player">Name</a> 角色 Character
             //<a name="i:1001:Name" class="player">Name</a> 道具 Item
-            menu.targetName = strs[2]; 
-            menu.targetId = int.Parse(strs[1]);
+            menu.targetName = strs[2];//对应分割后索引是2的元素
+            menu.targetId = int.Parse(strs[1]);//对应分割后索引是1的元素
             Canvas canvas = menu.GetComponent<Canvas>();
-            canvas.sortingOrder = 10;        
+            canvas.sortingOrder = 10;//设置层级
         }
     }
 
-    public void OnClickSend()
+    public void OnClickSend()//点击发送按钮
     {
         OnEndInput();
     }
 
-    public void OnEndInput()
+    public void OnEndInput()//点击发送按钮或者回车都会调用这个方法
     {
         if (!string.IsNullOrEmpty(messageInputField.text.Trim()))//Trim会过滤空白字符 也就是过滤输入为空或者全是空白字符
         {
@@ -104,19 +132,4 @@ public class UIChat : MonoBehaviour {
     }
 
 
-    public void OnChanelChanged()
-    {
-        if (ChatManager.Instance.sendChannel == (ChatManager.LocalChannel)(channelDropdown.value + 1))
-        {
-            return;
-        }
-        if(!ChatManager.Instance.SetSendChannel((ChatManager.LocalChannel)channelDropdown.value + 1))
-        {
-            this.channelDropdown.value = (int)ChatManager.Instance.sendChannel - 1;
-        }
-        else
-        {
-            this.RefreshUI();
-        }
-    }
 }

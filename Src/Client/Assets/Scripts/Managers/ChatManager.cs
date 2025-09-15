@@ -1,4 +1,5 @@
 ﻿using Models;
+using Services;
 using SkillBridge.Message;
 using System;
 using System.Collections.Generic;
@@ -12,18 +13,34 @@ namespace Managers
     {
         public Action Onchat { get; internal set; }
 
-        public int PrivateID=0;//私聊对象的ID和名字
-        public string PrivateName="";
+        public int toId=0;//私聊对象的ID和名字
+        public string toName="";
 
-        public List<ChatMessage> Messages = new List<ChatMessage>();
-
-        public LocalChannel sendChannel= LocalChannel.ALL;
-
-        public LocalChannel displayChannel;
-
-        public enum LocalChannel//枚举
+        public List<ChatMessage>[] Messages = new List<ChatMessage>[6]
         {
-            ALL=0,//所有
+            new List<ChatMessage>(),
+            new List<ChatMessage>(),
+            new List<ChatMessage>(),
+            new List<ChatMessage>(),
+            new List<ChatMessage>(),
+            new List<ChatMessage>(),
+        };
+
+        public LocalChannel sendChannel;//下拉框的频道
+
+        public LocalChannel displayChannel;//展示内容的频道
+
+        public void Init()
+        {
+            foreach(var messages in Messages)
+            {
+                messages.Clear();
+            }
+        }
+
+        public enum LocalChannel
+        {
+            ALL=0,//综合
             Local=1,//本地
             World=2,//世界
             Team=3,//队伍
@@ -31,9 +48,10 @@ namespace Managers
             Private=5,//私聊
         }
 
+        //建立了一个长度为6 类型为ChatChannel的数组的过滤方法
         private ChatChannel[] ChannelFilter = new ChatChannel[6]
         {
-            //All[0]显示所有
+            //All[0]显示所有  利用|操作符 操作Flags枚举
             ChatChannel.Local|ChatChannel.World|ChatChannel.Team|ChatChannel.Guild|ChatChannel.Private,
             ChatChannel.Local,
             ChatChannel.World,
@@ -41,11 +59,13 @@ namespace Managers
             ChatChannel.Guild,
             ChatChannel.Private
         };
+    
 
+        //私聊
         public void StartPrivateChat(int targetId, string targetName)
         {
-            this.PrivateID = targetId;
-            this.PrivateName = targetName;
+            this.toId = targetId;
+            this.toName = targetName;
 
             this.sendChannel = LocalChannel.Private;//强制变成私聊频道
             if (Onchat != null)
@@ -54,44 +74,28 @@ namespace Managers
             }
         }
 
-        public void SendChat(string text)//发送信息到公屏
+        public void SendChat(string text)
         {
-            this.Messages.Add(new ChatMessage()
-            {
-                Channel = ChatChannel.Local,
-                Message = text,
-                FromId = User.Instance.CurrentCharacter.Id,
-                FromName = User.Instance.CurrentCharacter.Name,
-            });
+            ChatService.Instance.SendChat(this.sendChannel, text, toId, toName);
         }
 
-        public bool SetSendChannel(LocalChannel channel)
+        private void AddMessages(ChatChannel channel, List<ChatMessage> messages)
         {
-            if (channel == LocalChannel.Team)
+            for (int ch = 0; ch < 6; ch++)
             {
-                if (User.Instance.TeamInfo == null)
+                if ((this.ChannelFilter[ch] & channel) == channel)
                 {
-                    this.AddSystemMessage("你没有加入任何队伍");
-                    return false;
+                    this.Messages[ch].AddRange(messages);
                 }
             }
-
-            if (channel == LocalChannel.Guild)
-            {
-                if (User.Instance.CurrentCharacter.Guild == null)
-                {
-                    this.AddSystemMessage("你没有加入任何公会");
-                    return false;
-                }
-            }
-            this.sendChannel = channel;
-            Debug.LogFormat("Set Channel:{0}", this.sendChannel);
-            return true;
+            if (Onchat != null)
+                Onchat();
         }
 
-        private void AddSystemMessage(string message,string fromName="")
+        //把传入的参数  新建消息汇总进去
+        private void AddSystemMessage(string message,string fromName = "")
         {
-            Messages.Add(new ChatMessage()
+            this.Messages[(int)LocalChannel.ALL].Add(new ChatMessage()
             {
                 Channel = ChatChannel.System,
                 Message = message,
@@ -103,16 +107,42 @@ namespace Managers
             }
         }
 
+        public bool SetSendChannel(LocalChannel channel)
+        {
+            if (channel == LocalChannel.Team)//传入的参数是频道
+            {
+                if (User.Instance.TeamInfo == null)
+                {
+                    this.AddSystemMessage("你没有加入任何队伍");
+                    return false;
+                }
+            }
+            if (channel == LocalChannel.Guild)//传入的参数是公会
+            {
+                if (User.Instance.CurrentCharacter.Guild == null)
+                {
+                    this.AddSystemMessage("你没有加入任何公会");
+                    return false;
+                }
+            }
+            this.sendChannel = channel;//把当前频道设置为传入的参数
+            Debug.LogFormat("Set Channel:{0}", this.sendChannel);
+            return true;
+        }
+
+        //获取当前所有消息
         public string GetCurrentMessages()
         {
+            //StringBuilder便于拼接消息
             StringBuilder sb = new StringBuilder();
-            foreach(var message in Messages)//遍历所有message
+            foreach(var message in this.Messages[(int)displayChannel])//遍历所有message
             {
                 sb.AppendLine(FormatMessage(message));//格式化message
             }
             return sb.ToString();
         }
 
+        //根据不同频道  格式化消息
         private string FormatMessage(ChatMessage message)
         {
             switch (message.Channel)
@@ -133,7 +163,6 @@ namespace Managers
             return "";
         }
 
-        //发送的玩家
         private string FormatFromPlayer(ChatMessage message)
         {
             if (message.FromId == User.Instance.CurrentCharacter.Id)//自己发的消息

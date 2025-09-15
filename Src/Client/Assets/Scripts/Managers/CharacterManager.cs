@@ -62,5 +62,12 @@ namespace Managers
             }
             this.Characters.Remove(entityId);
         }
+
+        public Character GetCharacter(int id)
+        {
+            Character character = null;
+            this.Characters.TryGetValue(id, out character);
+            return character;
+        }
     }
 }

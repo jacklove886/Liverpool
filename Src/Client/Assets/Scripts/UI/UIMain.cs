@@ -58,7 +58,7 @@ public class UIMain : MonoSingleton<UIMain> {
 
     public void OnClickRide()//坐骑
     {
-        UIPopCharMenu menu = UIManager.Instance.Show<UIPopCharMenu>();
+
     }
 
     public void OnClickSetting()//设置

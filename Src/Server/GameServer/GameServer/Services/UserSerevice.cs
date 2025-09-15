@@ -267,7 +267,6 @@ namespace GameServer.Services
             Character character = sender.Session.Character;
             Log.InfoFormat("UserGameLeaveRequest: characterID:{0}:{1} Map:{2}", character.Id, character.Info.Name, character.Info.mapId);
 
-            SessionManager.Instance.Remove(character.Id);//移除连接
             CharacterLeave(character);
 
             sender.Session.Response.gameLeave = new UserGameLeaveResponse();
@@ -280,6 +279,7 @@ namespace GameServer.Services
         public void CharacterLeave(Character character)
         {
             Log.InfoFormat("角色离开 ID:{0},{1}", character.Id, character.Info.Name);
+            SessionManager.Instance.Remove(character.Id);//移除连接
             CharacterManager.Instance.CharacterRemove(character.Id);
             character.Clear();
             MapManager.Instance[character.Info.mapId].CharacterLeave(character);

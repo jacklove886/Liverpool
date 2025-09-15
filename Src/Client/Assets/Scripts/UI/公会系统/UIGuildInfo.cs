@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Common;
 
 public class UIGuildInfo : MonoBehaviour
 {
@@ -31,13 +32,11 @@ public class UIGuildInfo : MonoBehaviour
             this.guildID.text = "ID:0";
             this.leader.text = "会长:无";
             this.notice.text = "";
-            this.memberNumber.text ="成员数量:0/50";
             if(huizhangapplyCount != null)
             this.huizhangapplyCount.text = "";
             if (fuhuizhangapplyCount != null)
             this.fuhuizhangapplyCount.text = "";
-
-            //this.memberNumber.text = string.Format("成员数量:0/{0}",GameDefine.GuildMaxMemberCount);
+            this.memberNumber.text = string.Format("成员数量:0/{0}",GameDefine.GuildMaxMemberCount);
         }
         else
         {
@@ -45,13 +44,11 @@ public class UIGuildInfo : MonoBehaviour
             this.guildID.text = "ID:"+this.Info.Id;
             this.leader.text = "会长:"+this.Info.leaderName;
             this.notice.text = this.Info.Notice;
-            this.memberNumber.text = string.Format("成员数量:{0}/50", this.Info.memberCount);
             if (huizhangapplyCount != null)
             this.huizhangapplyCount.text = Info.Applies.Count.ToString() + "条待处理";
             if (fuhuizhangapplyCount != null)
             this.fuhuizhangapplyCount.text = Info.Applies.Count.ToString() + "条待处理";
-
-            //this.memberNumber.text = string.Format("成员数量:{0}/{1}", this.Info.memberCount,GameDefine.GuildMaxMemberCount);
+            this.memberNumber.text = string.Format("成员数量:{0}/{1}", this.Info.memberCount,GameDefine.GuildMaxMemberCount);
         }
     }
 }
