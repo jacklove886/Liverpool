@@ -25,6 +25,7 @@ public class UIPopCharMenu : UIWindow,IDeselectHandler
     {
         //Select()方法作用是:有这个组件的物体变为已选择状态
         this.GetComponent<Selectable>().Select();
+        this.Root.transform.position = Input.mousePosition + new Vector3(80, 0, 0);//保证弹出位置在鼠标的右边
     }
 
     public void OnClickChat()//私聊
@@ -32,7 +33,12 @@ public class UIPopCharMenu : UIWindow,IDeselectHandler
         Close(WindowResult.No);
     }
 
-    public void OnAddFriend()
+    public void OnClickAddFriend()
+    {
+        Close(WindowResult.No);
+    }
+
+    public void OnInviteTeam()
     {
         Close(WindowResult.No);
     }
