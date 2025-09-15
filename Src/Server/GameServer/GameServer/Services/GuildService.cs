@@ -35,7 +35,6 @@ namespace GameServer.Services
             sender.Session.Response.guildCreate = new GuildCreateResponse();
             if (character.Guild != null)//已经有公会
             {
-                sender.Session.Response.guildCreate = new GuildCreateResponse();
                 sender.Session.Response.guildCreate.Result = Result.Failed;
                 sender.Session.Response.guildCreate.Msg = "您已经有公会了";
                 sender.SendResponse();
@@ -87,7 +86,7 @@ namespace GameServer.Services
 
             if (guild.JoinApply(request.Apply))
             {
-                var leader = SessionManager.Instance.GetSession(guild.Data.LeaderID);
+                var leader = SessionManager.Instance.GetSession(guild.TGuild.LeaderID);
                 if (leader != null)//会长在线
                 {
                     //给会长发申请加入请求
@@ -183,7 +182,6 @@ namespace GameServer.Services
             sender.Session.Response.guildAdmin = new GuildAdminResponse();
             if (character.Guild == null)
             {
-                sender.Session.Response.guildAdmin = new GuildAdminResponse();
                 sender.Session.Response.guildAdmin.Result = Result.Failed;
                 sender.Session.Response.guildAdmin.Msg = "你没公会不要乱来";
                 return;
@@ -191,7 +189,6 @@ namespace GameServer.Services
             TGuildMember memberData = character.Guild.GetDBMember(character.Id);
             if (memberData.Position == 0)
             {
-                sender.Session.Response.guildAdmin = new GuildAdminResponse();
                 sender.Session.Response.guildAdmin.Result = Result.Failed;
                 sender.Session.Response.guildAdmin.Msg = "你没有资格进行操作";
                 return;

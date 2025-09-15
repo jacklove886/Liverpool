@@ -55,10 +55,8 @@ namespace GameServer.Managers
             //把会长身份填进去
             guild.AddMember(leader.Id, leader.Name, leader.TCharacter.Class, leader.TCharacter.Level, GuildTitle.President);
             leader.Guild = guild;
-            DBService.Instance.Save();
-            leader.TCharacter.GuildId = dbGuild.Id;
-            DBService.Instance.Save();
             this.AddGuild(guild);
+            DBService.Instance.Save();
             return true;
         }
 

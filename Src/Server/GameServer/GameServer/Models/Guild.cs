@@ -14,25 +14,25 @@ namespace GameServer.Models
 {
     public class Guild//限于当前公会的事情
     {
-        public TGuild Data;
+        public TGuild TGuild;
 
-        public int Id { get { return this.Data.Id; } }
+        public int Id { get { return this.TGuild.Id; } }
 
-        public string Name { get { return this.Data.Name; } }
+        public string Name { get { return this.TGuild.Name; } }
 
 
         public double changeTime;
 
         public Guild(TGuild Tguild)//构造函数
         {
-            this.Data = Tguild;
+            this.TGuild = Tguild;
         }
 
         //加入公会申请
         public bool JoinApply(NGuildApplyInfo apply)
         {
             //从数据库里查找
-            var oldApply = this.Data.Applies.FirstOrDefault(v => v.CharacterId == apply.characterId);
+            var oldApply = this.TGuild.Applies.FirstOrDefault(v => v.CharacterId == apply.characterId);
             if (oldApply != null)//已经申请过了
             {
                 return false;
@@ -48,7 +48,7 @@ namespace GameServer.Models
 
             //公会申请表里将这个信息加进去
             //DBService.Instance.Entities.TGuildApplies.Add(dbApply);这句话可能是多余的  因为virtual属性会被EF自动跟踪
-            this.Data.Applies.Add(dbApply);
+            this.TGuild.Applies.Add(dbApply);
             DBService.Instance.Save();
 
             this.changeTime = TimeUtil.timestamp;
@@ -60,7 +60,7 @@ namespace GameServer.Models
         public bool JoinAppove(NGuildApplyInfo apply)
         {
             //Result==0表示没审批过
-            var oldApply = this.Data.Applies.FirstOrDefault(v => v.CharacterId == apply.characterId&&v.Result==0);
+            var oldApply = this.TGuild.Applies.FirstOrDefault(v => v.CharacterId == apply.characterId&&v.Result==0);
             if (oldApply == null)//没有这条申请请求
             {
                 return false;
@@ -90,13 +90,13 @@ namespace GameServer.Models
                 LastTime=now,
                 GuildId=this.Id
             };
-            this.Data.Members.Add(dbMember);
+            this.TGuild.Members.Add(dbMember);
             var character = CharacterManager.Instance.GetCharatcer(characterId);
-            if (character != null)
+            if (character != null)//如果角色在线
             {
                 character.TCharacter.GuildId = this.Id;
             }
-            else
+            else//不在线 直接操作数据库  支持离线玩家被邀请进入公会
             {
                 TCharacter dbcharacter = DBService.Instance.Entities.Characters.SingleOrDefault(c => c.ID == characterId);
                 if(dbcharacter!=null)
@@ -119,11 +119,11 @@ namespace GameServer.Models
             {
                 Id = this.Id,
                 GuildName = this.Name,
-                Notice = this.Data.Notice,
-                leaderId = this.Data.LeaderID,
-                leaderName = this.Data.LeaderName,
-                createTime = (long)TimeUtil.GetTimestamp(this.Data.CreateTime),
-                memberCount = this.Data.Members.Count
+                Notice = this.TGuild.Notice,
+                leaderId = this.TGuild.LeaderID,
+                leaderName = this.TGuild.LeaderName,
+                createTime = (long)TimeUtil.GetTimestamp(this.TGuild.CreateTime),
+                memberCount = this.TGuild.Members.Count
             };          
             if (character != null)//说明是当前公会成员  可以看到成员信息
             {
@@ -141,7 +141,7 @@ namespace GameServer.Models
         private List<NGuildMemberInfo> GetMemberInfos()
         {
             List<NGuildMemberInfo> members = new List<NGuildMemberInfo>();
-            foreach(var member in this.Data.Members)
+            foreach(var member in this.TGuild.Members)
             {
                 var memberInfo = new NGuildMemberInfo()
                 {
@@ -185,7 +185,7 @@ namespace GameServer.Models
         private List<NGuildApplyInfo> GetApplyInfos()
         {
             List<NGuildApplyInfo> applies = new List<NGuildApplyInfo>();
-            foreach(var apply in this.Data.Applies)
+            foreach(var apply in this.TGuild.Applies)
             {
                 if (apply.Result != (int)ApplyResult.None) continue;//如果已经审批过 跳过这条审批 只发送未筛选的申请列表
                 applies.Add(new NGuildApplyInfo()
@@ -203,7 +203,7 @@ namespace GameServer.Models
 
         public TGuildMember GetDBMember(int characterId)
         {
-            foreach(var member in this.Data.Members)//从数据库中查找成员
+            foreach(var member in this.TGuild.Members)//从数据库中查找成员
             {
                 if (member.CharacterId == characterId)
                 {
@@ -228,8 +228,8 @@ namespace GameServer.Models
                 case GuildAdminCommand.Transfer:
                     target.Position = (int)GuildTitle.President;
                     source.Position = (int)GuildTitle.None;
-                    this.Data.LeaderID = targetId;
-                    this.Data.LeaderName = target.Name;
+                    this.TGuild.LeaderID = targetId;
+                    this.TGuild.LeaderName = target.Name;
                     break;
                 case GuildAdminCommand.Kickout:
                     /*作业 离开逻辑*/

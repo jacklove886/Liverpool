@@ -68,7 +68,6 @@ public class UIGuildList : UIWindow {
         }
         MessageBox.Show(string.Format("确定要加入公会[{0}]吗", selectedItem.Info.GuildName), "申请加入公会", MessageBoxType.Confirm).OnYes = () =>
         {
-            //this.selectedItem.Info.Id是characterID
             GuildService.Instance.SendGuildJoinRequest(this.selectedItem.Info.Id);//发加入公会的请求
         };
     }

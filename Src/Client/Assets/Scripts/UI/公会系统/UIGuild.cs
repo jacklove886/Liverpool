@@ -13,7 +13,7 @@ public class UIGuild : UIWindow
 {
     public GameObject itemPrefab;
     public ListView listMain;
-    public UIGuildInfo uiInfo;
+    public UIGuildInfo UIGuildInfo;
     public UIGuildMemberItem selectedItem;
 
     public GameObject panelNormal;//普通成员界面
@@ -34,7 +34,7 @@ public class UIGuild : UIWindow
 
     private void UpdateUI()
     {
-        this.uiInfo.Info = GuildManager.Instance.guildInfo;
+        this.UIGuildInfo.Info = GuildManager.Instance.guildInfo;
 
         ClearList();
         InitItems();

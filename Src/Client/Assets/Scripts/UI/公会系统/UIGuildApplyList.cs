@@ -16,7 +16,6 @@ public class UIGuildApplyList : UIWindow {
     void Start ()
     {
         GuildService.Instance.OnGuildUpdate += UpdateList;//注册公会更新信息
-        GuildService.Instance.SendGuildListRequest();//打开界面就发送消息给服务器 强制刷新
         this.UpdateList();
 	}
 
