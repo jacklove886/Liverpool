@@ -40,7 +40,7 @@ public class UIPopCharMenu : UIWindow,IDeselectHandler
         Close(WindowResult.No);
     }
 
-    public void OnInviteTeam()//作业
+    public void OnClickInviteTeam()//作业
     {
         Close(WindowResult.No);
     }

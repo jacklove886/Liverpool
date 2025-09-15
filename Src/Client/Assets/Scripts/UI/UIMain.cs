@@ -20,10 +20,6 @@ public class UIMain : MonoSingleton<UIMain> {
         SoundManager.Instance.uiClipPlay.clip = null;
     }
 	
-	void Update ()
-    {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "CharacterChoose") return;
-    }
 
     void UpdateAvatar()
     {
@@ -62,7 +58,7 @@ public class UIMain : MonoSingleton<UIMain> {
 
     public void OnClickRide()//坐骑
     {
-        
+        UIPopCharMenu menu = UIManager.Instance.Show<UIPopCharMenu>();
     }
 
     public void OnClickSetting()//设置

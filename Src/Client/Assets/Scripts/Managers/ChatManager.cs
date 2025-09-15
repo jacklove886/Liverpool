@@ -17,7 +17,7 @@ namespace Managers
 
         public List<ChatMessage> Messages = new List<ChatMessage>();
 
-        public LocalChannel sendChannel;
+        public LocalChannel sendChannel= LocalChannel.ALL;
 
         public LocalChannel displayChannel;
 
@@ -118,7 +118,7 @@ namespace Managers
             switch (message.Channel)
             {
                 case ChatChannel.Local:
-                    return string.Format("[本地]{0}{1}", FormatFromPlayer(message), message.Message);
+                    return string.Format("<color=white>[本地]{0}{1}</color>", FormatFromPlayer(message), message.Message);
                 case ChatChannel.World:
                     return string.Format("<color=cyan>[世界]{0}{1}</color>", FormatFromPlayer(message), message.Message);
                 case ChatChannel.System:

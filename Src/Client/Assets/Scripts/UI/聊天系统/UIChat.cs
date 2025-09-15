@@ -17,6 +17,7 @@ public class UIChat : MonoBehaviour {
     public InputField messageInputField;//消息输入框
 
     public Text chatTargetPerson;//私聊对象
+    public GameObject chatTargetPersonImage;//私聊对象
 
     public Dropdown channelDropdown;//下拉框
 
@@ -36,7 +37,7 @@ public class UIChat : MonoBehaviour {
         InputManager.Instance.IsInputMode = messageInputField.isFocused;//如果正在输入模式
     }
 
-    private void OnDisplayChannelSelected(int index)
+    public void OnDisplayChannelSelected(int index)
     {
         //切换选择频道
         ChatManager.Instance.displayChannel = (ChatManager.LocalChannel)index;
@@ -49,9 +50,9 @@ public class UIChat : MonoBehaviour {
         this.chatMessage.text = ChatManager.Instance.GetCurrentMessages();
         //确保左下角的频道是正确的
         this.channelDropdown.value = (int)ChatManager.Instance.sendChannel - 1;
-        if ((int)ChatManager.Instance.sendChannel-1 == (int)ChatChannel.Private)//如果频道是私聊
+        if (ChatManager.Instance.sendChannel == ChatManager.LocalChannel.Private)//如果频道是私聊
         {
-            this.chatTargetPerson.gameObject.SetActive(true);//显示私聊对象
+            this.chatTargetPersonImage.SetActive(true);//显示私聊对象
             if (ChatManager.Instance.PrivateID != 0)
             {
                 this.chatTargetPerson.text = ChatManager.Instance.PrivateName + ":";
@@ -63,7 +64,7 @@ public class UIChat : MonoBehaviour {
         }
         else
         {
-            this.chatTargetPerson.gameObject.SetActive(false);
+            this.chatTargetPersonImage.SetActive(false);
         }
     }
 
@@ -76,21 +77,23 @@ public class UIChat : MonoBehaviour {
             UIPopCharMenu menu = UIManager.Instance.Show<UIPopCharMenu>();
             //例如<a name="c:1001:Name" class="player">Name</a> 角色 Character
             //<a name="i:1001:Name" class="player">Name</a> 道具 Item
+            menu.targetName = strs[2]; 
             menu.targetId = int.Parse(strs[1]);
-            menu.targetName = strs[2];
+            Canvas canvas = menu.GetComponent<Canvas>();
+            canvas.sortingOrder = 10;        
         }
     }
 
     public void OnClickSend()
     {
-        OnEndInput(this.messageInputField.text);
+        OnEndInput();
     }
 
-    public void OnEndInput(string text)
+    public void OnEndInput()
     {
-        if (!string.IsNullOrEmpty(text.Trim()))//Trim会过滤空白字符 也就是过滤输入为空或者全是空白字符
+        if (!string.IsNullOrEmpty(messageInputField.text.Trim()))//Trim会过滤空白字符 也就是过滤输入为空或者全是空白字符
         {
-            SendChat(text);
+            SendChat(messageInputField.text);
         }
         this.messageInputField.text = "";//清空输入框
     }
@@ -101,13 +104,13 @@ public class UIChat : MonoBehaviour {
     }
 
 
-    public void OnSendChanelChanged(int index)
+    public void OnChanelChanged()
     {
-        if (ChatManager.Instance.sendChannel == (ChatManager.LocalChannel)(index + 1))
+        if (ChatManager.Instance.sendChannel == (ChatManager.LocalChannel)(channelDropdown.value + 1))
         {
             return;
         }
-        if(!ChatManager.Instance.SetSendChannel((ChatManager.LocalChannel)index + 1))
+        if(!ChatManager.Instance.SetSendChannel((ChatManager.LocalChannel)channelDropdown.value + 1))
         {
             this.channelDropdown.value = (int)ChatManager.Instance.sendChannel - 1;
         }
