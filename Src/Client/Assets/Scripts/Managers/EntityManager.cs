@@ -9,8 +9,8 @@ namespace Managers
     interface IEntityNotify
     {
         void OnEntityRemoved();
-        void OnEntityChange(Entity entity);
-        void OnEntityEvent(EntityEvent @event);
+        void OnEntityChange(Entity entity,int param);
+        void OnEntityEvent(EntityEvent @event,int param=0);
     }
 
     class EntityManager:Singleton<EntityManager>
@@ -54,7 +54,7 @@ namespace Managers
                 if (notifies.ContainsKey(data.Id))
                 {
                     //通知EntityController实体数据发生变化
-                    notifies[entity.entityId].OnEntityChange(entity);
+                    notifies[entity.entityId].OnEntityChange(entity,data.Param);
                     // 通知EntityController处理实体事件
                     notifies[entity.entityId].OnEntityEvent(data.Event);
                 }

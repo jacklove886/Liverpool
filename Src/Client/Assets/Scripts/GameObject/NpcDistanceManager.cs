@@ -19,9 +19,9 @@ public class NpcDistanceManager : MonoSingleton<NpcDistanceManager> {
     {
         if(Time.time-lastCheakTime>= checkInterval)
         {
-            if (User.Instance.CurrentCharacterObject != null)
+            if (User.Instance.CurrentCharacterPlayerInput != null)
             {
-                Vector3 playerPosition = User.Instance.CurrentCharacterObject.transform.position;
+                Vector3 playerPosition = User.Instance.CurrentCharacterPlayerInput.transform.position;
                 foreach(var npc in allNpc)
                 {
                     float sqrDistance = (playerPosition - npc.transform.position).sqrMagnitude;//玩家与npc的距离的平方

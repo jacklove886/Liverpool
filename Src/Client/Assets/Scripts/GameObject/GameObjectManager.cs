@@ -93,6 +93,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
         {
             ec.entity = character;
             ec.isPlayer = character.IsCurrentPlayer;//判断是否是当前玩家 即是否是我自己
+            ec.Ride(character.Info.Ride);
         }
 
         PlayerInputController pc= go.GetComponent<PlayerInputController>();
@@ -100,7 +101,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
         {
             if (character.IsCurrentPlayer)
             {
-                User.Instance.CurrentCharacterObject = go;
+                User.Instance.CurrentCharacterPlayerInput= pc;
                 MainPlayerCamera.Instance.player = go;
                 pc.enabled = true;
                 pc.character = character;
@@ -111,6 +112,20 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
                 pc.enabled = false;
             }
         } 
+    }
+
+    public RideController LoadRide(int rideId,Transform parent)
+    {
+        var rideDefine = DataManager.Instance.Rides[rideId];
+        Object obj = Resloader.Load<Object>(rideDefine.Resouce);
+        if (obj == null)
+        {
+            Debug.Log("坐骑不存在");
+            return null;
+        }
+        GameObject go = (GameObject)Instantiate(obj, parent);
+        go.name = "坐骑" + rideDefine.ID + "_" + rideDefine.Name;
+        return go.GetComponent<RideController>();
     }
 }
 

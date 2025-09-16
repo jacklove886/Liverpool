@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Common.Data
 {
-    class RideDefine
+    public class RideDefine
     {
         public int ID { get; set; }
         public string Name { get; set; }

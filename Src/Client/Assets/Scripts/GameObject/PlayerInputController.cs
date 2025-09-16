@@ -60,7 +60,7 @@ public class PlayerInputController : MonoBehaviour {
     {
         if (character == null) return;
 
-        if (InputManager.Instance.IsInputMode) return;//如果正在输入模式
+        if (InputManager.Instance!=null&&InputManager.Instance.IsInputMode) return;//如果正在输入模式
         vertical = Input.GetAxis("Vertical");   
         horizontal = Input.GetAxis("Horizontal");
         // 按住shift进入跑步状态
@@ -149,14 +149,14 @@ public class PlayerInputController : MonoBehaviour {
 	}
 
 
-    void SendEntityEvent(EntityEvent entityEvent)
+    public void SendEntityEvent(EntityEvent entityEvent,int param=0)
     {
         // 本地动画立即执行
         if (entityController != null)
         {
-            entityController.OnEntityEvent(entityEvent);
+            entityController.OnEntityEvent(entityEvent,param);
         }
 
-        MapService.Instance.SendMapEntitySync(entityEvent, character.EntityData);
+        MapService.Instance.SendMapEntitySync(entityEvent, character.EntityData, param);
     }
 }

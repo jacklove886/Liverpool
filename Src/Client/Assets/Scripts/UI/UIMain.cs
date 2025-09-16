@@ -58,7 +58,7 @@ public class UIMain : MonoSingleton<UIMain> {
 
     public void OnClickRide()//坐骑
     {
-
+        UIManager.Instance.Show<UIRide>();
     }
 
     public void OnClickSetting()//设置

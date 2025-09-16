@@ -45,9 +45,9 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
 
     void Update()
     {
-        if (player == null)
+        if (player == null&&User.Instance.CurrentCharacterPlayerInput!=null)
         {
-            player = User.Instance.CurrentCharacterObject;
+            player = User.Instance.CurrentCharacterPlayerInput.gameObject;
         }
 
         if (!enableMouseControl)

@@ -110,13 +110,17 @@ namespace GameServer.Models
         {
             foreach(var kv in MapCharacters)
             {
-                if (kv.Value.character.entityId == entity.Id)
+                if (kv.Value.character.entityId == entity.Id)//如果发送同步的是自己 保存位置方向速度
                 {
                     kv.Value.character.Position = entity.Entity.Position;
                     kv.Value.character.Direction= entity.Entity.Direction;
                     kv.Value.character.Speed = entity.Entity.Speed;
+                    if (entity.Event == EntityEvent.EventRide)
+                    {
+                        kv.Value.character.Ride = entity.Param;//如果上马 把ID传进来
+                    }
                 }
-                else
+                else//如果是别人 发送同步请求
                 {
                     MapService.Instance.SendEntityUpdate(kv.Value.connection, entity);
                 }

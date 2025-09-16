@@ -21,9 +21,9 @@ namespace Managers
         {
             get
             {
-                if (User.Instance.CurrentCharacterObject == null)
+                if (User.Instance.CurrentCharacterPlayerInput == null)
                     return null;
-                return User.Instance.CurrentCharacterObject.transform;
+                return User.Instance.CurrentCharacterPlayerInput.transform;
             }
         }
 

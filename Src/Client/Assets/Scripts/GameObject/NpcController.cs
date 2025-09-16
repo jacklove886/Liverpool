@@ -106,7 +106,7 @@ public class NpcController : MonoBehaviour {
 
     IEnumerator FaceToPlayer()
     {
-        Vector3 faceTo = (User.Instance.CurrentCharacterObject.transform.position - this.transform.position).normalized;
+        Vector3 faceTo = (User.Instance.CurrentCharacterPlayerInput.transform.position - this.transform.position).normalized;
         //Angle计算的是两个向量之间的夹角
         while (Mathf.Abs(Vector3.Angle(this.gameObject.transform.forward, faceTo)) > 5)//角度差大于5度
         {

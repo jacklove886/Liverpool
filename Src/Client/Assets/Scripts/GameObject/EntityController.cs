@@ -1,9 +1,10 @@
-using SkillBridge.Message;  
-using System.Collections;  
-using UnityEngine;  
-using Entities;  
+using SkillBridge.Message;
+using System.Collections;
+using UnityEngine;
+using Entities;
 using Models;
 using Managers;
+using System;
 
 public class EntityController : MonoBehaviour, IEntityNotify
 {
@@ -23,6 +24,10 @@ public class EntityController : MonoBehaviour, IEntityNotify
 
     [Header("角色类型")]
     public bool isPlayer=false;  // 是否为玩家角色
+
+    public RideController rideController;//坐骑控制器
+    private int currentRide = 0;
+    public Transform rideBone;//坐骑骨骼
 
     void Start()
     {
@@ -84,7 +89,7 @@ public class EntityController : MonoBehaviour, IEntityNotify
         Destroy(this.gameObject);
     }
 
-    public void OnEntityEvent(EntityEvent entityEvent)
+    public void OnEntityEvent(EntityEvent entityEvent,int param)
     {
         int currentCharacter = (int)User.Instance.CurrentCharacter.Class;  // 获取当前角色职业类型
 
@@ -110,12 +115,47 @@ public class EntityController : MonoBehaviour, IEntityNotify
 
             case EntityEvent.EventJump:
 
-                HandleJumpEvent(); 
+                Jump(); 
                 break;
+            case EntityEvent.EventRide:
+                Ride(param);
+                break;
+        }
+        //坐骑也有单独的动画事件  人移动 坐骑也要移动
+        if (this.rideController != null) this.rideController.OnEntityEvent(entityEvent, param);
+    }
+
+    public void Ride(int rideId)
+    {
+        if (currentRide == rideId) return;
+        currentRide = rideId;
+        if(currentRide>0)
+        {
+            //加载坐骑
+            this.rideController = GameObjectManager.Instance.LoadRide(rideId, this.transform);
+        }
+        else
+        {
+            Destroy(this.rideController.gameObject);
+            this.rideController = null;
+        }
+        if (this.rideController == null)
+        {
+            this.anim.transform.localPosition = Vector3.zero;//// 重置动画位置
+            this.anim.SetLayerWeight(1, 0); //关闭动画层1权重
+        }
+        else
+        {
+            this.rideController.SetRider(this);//设置自己是骑乘者
+            this.anim.SetLayerWeight(1, 1);
         }
     }
 
-    
+    public void SetRidePosition(Vector3 position)//设置位置
+    {
+        this.anim.transform.position = position + (this.anim.transform.position - this.rideBone.position);
+    }
+
     private void StopMovementAudio()
     {
         if (SoundManager.Instance.characterAudioSource.isPlaying)  
@@ -160,7 +200,7 @@ public class EntityController : MonoBehaviour, IEntityNotify
     }
 
     //跳跃事件
-    private void HandleJumpEvent()
+    private void Jump()
     {
         anim.SetTrigger("Jump");  
 
@@ -180,6 +220,14 @@ public class EntityController : MonoBehaviour, IEntityNotify
         yield return new WaitForSeconds(jumpTime[currentCharacterClass]);  
     }
 
+    private void HandleRideEvent()
+    {
+        anim.SetTrigger("Ride");
+
+        StopMovementAudio();
+
+    }
+
     void OnDestroy()
     {
         if (entity != null)  
@@ -192,7 +240,7 @@ public class EntityController : MonoBehaviour, IEntityNotify
         }
     }
 
-    public void OnEntityChange(Entity entity)
+    public void OnEntityChange(Entity entity, int param)
     {
 
     }
