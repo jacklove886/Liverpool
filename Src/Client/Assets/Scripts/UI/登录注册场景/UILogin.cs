@@ -38,6 +38,8 @@ public class UILogin : MonoBehaviour {
         TeamService.Instance.Init();
 
         GuildService.Instance.Init();
+
+        ChatService.Instance.Init();
         #endregion
 
         UserService.Instance.OnLogin += OnLogin;

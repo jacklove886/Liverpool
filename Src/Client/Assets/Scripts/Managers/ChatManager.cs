@@ -26,7 +26,22 @@ namespace Managers
             new List<ChatMessage>(),
         };
 
-        public LocalChannel sendChannel;//下拉框的频道
+        public LocalChannel sendChannel;
+        public ChatChannel SendChannel//下拉框的频道
+        {
+            get
+            {
+                switch (sendChannel)
+                {
+                    case LocalChannel.Local:return ChatChannel.Local;
+                    case LocalChannel.World: return ChatChannel.World;
+                    case LocalChannel.Team: return ChatChannel.Team;
+                    case LocalChannel.Guild: return ChatChannel.Guild;
+                    case LocalChannel.Private: return ChatChannel.Private;
+                    default: return ChatChannel.Local;
+                }
+            }
+        }
 
         public LocalChannel displayChannel;//展示内容的频道
 
@@ -76,14 +91,14 @@ namespace Managers
 
         public void SendChat(string text)
         {
-            ChatService.Instance.SendChat(this.sendChannel, text, toId, toName);
+            ChatService.Instance.SendChat(this.SendChannel, text, toId, toName);
         }
 
-        private void AddMessages(ChatChannel channel, List<ChatMessage> messages)
+        public void AddMessages(ChatChannel channel, List<ChatMessage> messages)
         {
             for (int ch = 0; ch < 6; ch++)
             {
-                if ((this.ChannelFilter[ch] & channel) == channel)
+                if ((this.ChannelFilter[ch] & channel) == channel)//flag枚举判断是不是包含该频道
                 {
                     this.Messages[ch].AddRange(messages);
                 }
@@ -93,7 +108,7 @@ namespace Managers
         }
 
         //把传入的参数  新建消息汇总进去
-        private void AddSystemMessage(string message,string fromName = "")
+        public void AddSystemMessage(string message,string fromName = "")
         {
             this.Messages[(int)LocalChannel.ALL].Add(new ChatMessage()
             {
