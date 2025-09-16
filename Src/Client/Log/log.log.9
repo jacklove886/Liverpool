@@ -1,28 +1,33 @@
-2025-09-16 15:12:20,425 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-16 15:12:22,375 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-16 15:12:22,377 [ 1] INFO  Unity: 连接成功
-2025-09-16 15:12:22,379 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-16 15:12:22,382 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-16 15:12:22,480 [ 1] INFO  Unity: 收到登录响应
-2025-09-16 15:12:22,480 [ 1] INFO  Unity: 登录成功
-2025-09-16 15:12:22,688 [ 1] INFO  Unity: 当前角色数量为2
-2025-09-16 15:12:23,488 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-16 15:12:23,515 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-16 15:12:23,516 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-16 15:12:23,518 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-16 15:12:23,518 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-16 15:12:23,526 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 15:12:23,527 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-16 15:12:23,528 [ 1] INFO  Unity: 加入角色姓名:Yc,地图:1
-2025-09-16 15:12:23,530 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-16 15:12:23,531 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-16 15:12:23,533 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 15:12:24,549 [ 1] INFO  Unity: Set Channel:Local
-2025-09-16 15:12:28,420 [ 1] INFO  Unity: 发送添加好友请求
-2025-09-16 15:12:28,690 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 15:12:38,473 [ 1] INFO  Unity: 消失的玩家：21,位置(5104, 5221, 807)
-2025-09-16 15:12:38,476 [ 1] INFO  Unity: 网络断开
-2025-09-16 15:12:38,477 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-16 19:48:20,768 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-16 19:48:23,041 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-16 19:48:23,043 [ 1] INFO  Unity: 连接成功
+2025-09-16 19:48:23,045 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-16 19:48:23,048 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-16 19:48:23,162 [ 1] INFO  Unity: 收到登录响应
+2025-09-16 19:48:23,163 [ 1] INFO  Unity: 登录成功
+2025-09-16 19:48:23,288 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-16 19:48:24,142 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-16 19:48:24,169 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-16 19:48:24,171 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-16 19:48:24,172 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-16 19:48:24,180 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-16 19:48:24,181 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 19:48:24,182 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-16 19:48:24,183 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-16 19:48:24,185 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-16 19:48:24,186 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-16 19:48:24,187 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 19:48:25,142 [ 1] ERROR Unity: 角色：[战士] 资源[Character/Warrior] 不存在.
+UnityEngine.Debug:LogErrorFormat(String, Object[])
+GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:64)
+<InitGameObjects>c__Iterator0:MoveNext() (at Assets/Scripts/GameObject/GameObjectManager.cs:52)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+GameObjectManager:OnStart() (at Assets/Scripts/GameObject/GameObjectManager.cs:19)
+MonoSingleton`1:Awake() (at Assets/Scripts/Utilities/MonoSingleton.cs:33)
+
+2025-09-16 19:48:25,254 [ 1] INFO  Unity: Set Channel:Local
+2025-09-16 19:48:36,216 [ 1] INFO  Unity: 网络断开
+2025-09-16 19:48:36,216 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)

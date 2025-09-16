@@ -1,27 +1,112 @@
-2025-09-16 16:23:47,567 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-16 16:23:49,441 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-16 16:23:49,443 [ 1] INFO  Unity: 连接成功
-2025-09-16 16:23:49,444 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-16 16:23:49,447 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-16 16:23:49,542 [ 1] INFO  Unity: 收到登录响应
-2025-09-16 16:23:49,543 [ 1] INFO  Unity: 登录成功
-2025-09-16 16:23:49,729 [ 1] INFO  Unity: 当前角色数量为2
-2025-09-16 16:23:51,227 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-16 16:23:51,251 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-16 16:23:51,253 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-16 16:23:51,254 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-16 16:23:51,255 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-16 16:23:51,263 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 16:23:51,264 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-16 16:23:51,266 [ 1] INFO  Unity: 加入角色姓名:Yc,地图:1
-2025-09-16 16:23:51,268 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-16 16:23:51,269 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-16 16:23:51,271 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 16:23:52,324 [ 1] INFO  Unity: Set Channel:Local
-2025-09-16 16:24:23,286 [ 1] INFO  Unity: 消失的玩家：16,位置(4567, 5771, 807)
-2025-09-16 16:24:23,287 [ 1] INFO  Unity: 网络断开
-2025-09-16 16:24:23,288 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-16 20:14:33,427 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-16 20:14:35,465 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-16 20:14:35,467 [ 1] INFO  Unity: 连接成功
+2025-09-16 20:14:35,468 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-16 20:14:35,471 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-16 20:14:36,214 [ 1] INFO  Unity: 收到登录响应
+2025-09-16 20:14:36,214 [ 1] INFO  Unity: 登录成功
+2025-09-16 20:14:36,401 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-16 20:14:37,397 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-16 20:14:37,590 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-16 20:14:37,592 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-16 20:14:37,593 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-16 20:14:37,594 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-16 20:14:37,594 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:1]
+2025-09-16 20:14:37,595 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
+2025-09-16 20:14:37,603 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-16 20:14:37,604 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 20:14:37,605 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-16 20:14:37,606 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-16 20:14:37,608 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-16 20:14:37,609 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-16 20:14:37,610 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 20:14:38,713 [ 1] INFO  Unity: Set Channel:Local
+2025-09-16 20:14:42,734 [ 1] WARN  Unity: Parameter 'Run' does not exist.
+UnityEngine.Animator:SetBool(String, Boolean)
+RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
+EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
+PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:157)
+PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:79)
+
+2025-09-16 20:14:45,617 [ 1] WARN  Unity: Parameter 'Run' does not exist.
+UnityEngine.Animator:SetBool(String, Boolean)
+RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:47)
+EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
+PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:157)
+PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
+
+2025-09-16 20:14:47,352 [ 1] WARN  Unity: Parameter 'Run' does not exist.
+UnityEngine.Animator:SetBool(String, Boolean)
+RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
+EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
+PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:157)
+PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:79)
+
+2025-09-16 20:14:52,736 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][500]
+2025-09-16 20:14:52,737 [ 1] INFO  Unity: StatusNotify:[Item[Add][4][10]
+2025-09-16 20:14:52,738 [ 1] INFO  Unity: 收到任务提交响应:Success
+2025-09-16 20:14:52,743 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-16 20:14:52,743 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 20:14:53,781 [ 1] WARN  Unity: Parameter 'Run' does not exist.
+UnityEngine.Animator:SetBool(String, Boolean)
+RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
+EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
+PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:157)
+PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:79)
+
+2025-09-16 20:14:55,452 [ 1] WARN  Unity: Parameter 'Run' does not exist.
+UnityEngine.Animator:SetBool(String, Boolean)
+RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
+EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
+PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:157)
+PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:79)
+
+2025-09-16 20:14:56,423 [ 1] INFO  Unity: 收到任务接受响应:Success
+2025-09-16 20:14:56,424 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-16 20:14:56,425 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 20:14:57,277 [ 1] WARN  Unity: Parameter 'Run' does not exist.
+UnityEngine.Animator:SetBool(String, Boolean)
+RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
+EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
+PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:157)
+PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:79)
+
+2025-09-16 20:15:00,376 [ 1] WARN  Unity: Parameter 'Run' does not exist.
+UnityEngine.Animator:SetBool(String, Boolean)
+RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
+EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
+PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:157)
+PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:79)
+
+2025-09-16 20:15:04,865 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][700]
+2025-09-16 20:15:04,865 [ 1] INFO  Unity: 收到任务提交响应:Success
+2025-09-16 20:15:04,866 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-16 20:15:04,867 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 20:15:05,584 [ 1] WARN  Unity: Parameter 'Run' does not exist.
+UnityEngine.Animator:SetBool(String, Boolean)
+RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
+EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
+PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:157)
+PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:79)
+
+2025-09-16 20:15:44,674 [ 1] WARN  Unity: Parameter 'Run' does not exist.
+UnityEngine.Animator:SetBool(String, Boolean)
+RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
+EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
+PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:157)
+PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:79)
+
+2025-09-16 20:15:50,597 [ 1] WARN  Unity: Parameter 'Run' does not exist.
+UnityEngine.Animator:SetBool(String, Boolean)
+RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
+EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
+PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:157)
+PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:79)
+
+2025-09-16 20:15:57,416 [ 1] INFO  Unity: 网络断开
+2025-09-16 20:15:57,417 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)
 
+2025-09-16 20:15:57,419 [ 1] INFO  Unity: 消失的玩家：1,位置(4896, 4209, 804)

@@ -14,6 +14,6 @@ namespace Common.Data
         public int Level { get; set; }
         public CharacterClass LimitClass { get; set; }
         public string Icon { get; set; }
-        public string Resouce { get; set; }
+        public string Resource { get; set; }
     }
 }

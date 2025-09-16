@@ -1,27 +1,44 @@
-2025-09-16 16:17:16,222 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-16 16:17:17,997 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-16 16:17:17,998 [ 1] INFO  Unity: 连接成功
-2025-09-16 16:17:18,000 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-16 16:17:18,003 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-16 16:17:18,103 [ 1] INFO  Unity: 收到登录响应
-2025-09-16 16:17:18,104 [ 1] INFO  Unity: 登录成功
-2025-09-16 16:17:18,297 [ 1] INFO  Unity: 当前角色数量为2
-2025-09-16 16:17:19,109 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-16 16:17:19,133 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-16 16:17:19,135 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-16 16:17:19,136 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-16 16:17:19,137 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-16 16:17:19,145 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 16:17:19,146 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-16 16:17:19,147 [ 1] INFO  Unity: 加入角色姓名:Yc,地图:1
-2025-09-16 16:17:19,149 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-16 16:17:19,150 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-16 16:17:19,152 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 16:17:20,213 [ 1] INFO  Unity: Set Channel:Local
-2025-09-16 16:17:36,600 [ 1] INFO  Unity: 网络断开
-2025-09-16 16:17:36,601 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-16 19:57:42,257 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-16 19:57:45,905 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-16 19:57:45,912 [ 1] INFO  Unity: 连接成功
+2025-09-16 19:57:45,913 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-16 19:57:45,920 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-16 19:57:46,170 [ 1] INFO  Unity: 收到登录响应
+2025-09-16 19:57:46,172 [ 1] INFO  Unity: 登录成功
+2025-09-16 19:57:46,407 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-16 19:57:47,384 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-16 19:57:47,438 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-16 19:57:47,445 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-16 19:57:47,446 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-16 19:57:47,446 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-16 19:57:47,447 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:1]
+2025-09-16 19:57:47,486 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-16 19:57:47,487 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 19:57:47,488 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-16 19:57:47,494 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-16 19:57:47,503 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-16 19:57:47,504 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-16 19:57:47,507 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 19:57:48,729 [ 1] INFO  Unity: Set Channel:Local
+2025-09-16 19:57:53,684 [ 1] INFO  Unity: 发送购买商品请求
+2025-09-16 19:57:53,727 [ 1] INFO  Unity: StatusNotify:[Item[Add][8002][1]
+2025-09-16 19:57:53,728 [ 1] INFO  Unity: StatusNotify:[Money[Delete][0][5000]
+2025-09-16 19:57:53,739 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-16 19:57:53,740 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 20:00:02,668 [ 1] INFO  Unity: 坐骑不存在
+2025-09-16 20:00:02,669 [ 1] WARN  Unity: Invalid Layer Index '1'
+UnityEngine.Animator:SetLayerWeight(Int32, Single)
+EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:141)
+EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:117)
+PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:157)
+Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:44)
+UIRide:OnClickRide() (at Assets/Scripts/UI/坐骑系统/UIRide.cs:65)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-16 20:00:04,030 [ 1] INFO  Unity: 网络断开
+2025-09-16 20:00:04,031 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)
 
-2025-09-16 16:17:36,608 [ 1] INFO  Unity: 消失的玩家：12,位置(5194, 4272, 807)
+2025-09-16 20:00:04,036 [ 1] INFO  Unity: 消失的玩家：17,位置(5106, 3443, 804)

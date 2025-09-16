@@ -117,7 +117,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
     public RideController LoadRide(int rideId,Transform parent)
     {
         var rideDefine = DataManager.Instance.Rides[rideId];
-        Object obj = Resloader.Load<Object>(rideDefine.Resouce);
+        Object obj = Resloader.Load<Object>(rideDefine.Resource);
         if (obj == null)
         {
             Debug.Log("坐骑不存在");

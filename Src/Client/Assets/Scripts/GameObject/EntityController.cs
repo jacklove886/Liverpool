@@ -96,25 +96,21 @@ public class EntityController : MonoBehaviour, IEntityNotify
         switch (entityEvent)
         {
             case EntityEvent.EventIdle:
-
                 StopMovementAudio();  
                 SetIdleAnimation();  
                 break;
 
             case EntityEvent.EventMove:
-
                 SetMovementAnimation();  
                 PlayMovementAudio();  
                 break;
 
             case EntityEvent.EventRun:
-
                 SetRunAnimation(); 
                 PlayRunAudio();  
                 break;
 
             case EntityEvent.EventJump:
-
                 Jump(); 
                 break;
             case EntityEvent.EventRide:
@@ -151,8 +147,9 @@ public class EntityController : MonoBehaviour, IEntityNotify
         }
     }
 
-    public void SetRidePosition(Vector3 position)//设置位置
+    public void SetRidePosition(Vector3 position)
     {
+        //绑定角色的位置永远在马屁股那里
         this.anim.transform.position = position + (this.anim.transform.position - this.rideBone.position);
     }
 
