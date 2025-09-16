@@ -1,5 +1,6 @@
 ﻿using Candlelight.UI;
 using Managers;
+using Models;
 using SkillBridge.Message;
 using System;
 using System.Collections;
@@ -40,6 +41,24 @@ public class UIChat : MonoBehaviour {
     public void OnDisplayChannelSelected(int index)
     {
         //切换选择频道  
+        if (User.Instance.TeamInfo == null && index == 3)
+        {
+            ChatManager.Instance.Messages[3].Add(new ChatMessage()
+            {
+                Channel=ChatChannel.Team,
+                Message = "你没有加入任何队伍",
+                FromName = "系统"
+            });               
+        }
+        else if (User.Instance.CurrentCharacter.Guild == null && index == 4)
+        {
+            ChatManager.Instance.Messages[4].Add(new ChatMessage()
+            {
+                Channel = ChatChannel.Guild,
+                Message = "你没有加入任何公会",
+                FromName = "系统"
+            });
+        }
         ChatManager.Instance.displayChannel = (ChatManager.LocalChannel)index;
         RefreshUI();
     }

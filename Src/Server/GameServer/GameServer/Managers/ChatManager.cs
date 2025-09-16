@@ -107,7 +107,7 @@ namespace GameServer.Managers
 
         public int GetWorldMessage(int index, List<ChatMessage> result)
         {
-            return GetNewMessage(index, result, this.System);
+            return GetNewMessage(index, result, this.World);
         }
 
         public int GetLocalMessage(int mapId,int index,List<ChatMessage> result)

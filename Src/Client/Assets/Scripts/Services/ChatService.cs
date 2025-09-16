@@ -73,7 +73,7 @@ namespace Services
             }
             else
             {
-                ChatManager.Instance.AddSystemMessages(response.Msg);
+                ChatManager.Instance.AddSystemMessage(response.Msg);
             }
         }
         

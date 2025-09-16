@@ -1,25 +1,45 @@
-2025-09-15 22:02:55,632 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-15 22:02:57,739 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-15 22:02:57,741 [ 1] INFO  Unity: 连接成功
-2025-09-15 22:02:57,742 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-15 22:02:57,745 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-15 22:02:57,840 [ 1] INFO  Unity: 登录成功
-2025-09-15 22:02:58,018 [ 1] INFO  Unity: 当前角色数量为2
-2025-09-15 22:02:59,063 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-15 22:02:59,082 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-15 22:02:59,084 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-15 22:02:59,084 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-15 22:02:59,092 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-15 22:02:59,094 [ 1] INFO  Unity: 加入角色姓名:Yc,地图:1
-2025-09-15 22:02:59,096 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-15 22:02:59,097 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-15 22:03:00,121 [ 1] INFO  Unity: Set Channel:Local
-2025-09-15 22:03:37,238 [ 1] INFO  Unity: Set Channel:World
-2025-09-15 22:03:38,227 [ 1] INFO  Unity: Set Channel:Local
-2025-09-15 22:04:30,179 [ 1] INFO  Unity: 消失的玩家：19,位置(3856, 3338, 807)
-2025-09-15 22:04:30,180 [ 1] INFO  Unity: 网络断开
-2025-09-15 22:04:30,181 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-16 13:56:51,162 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-16 13:56:53,198 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-16 13:56:53,200 [ 1] INFO  Unity: 连接成功
+2025-09-16 13:56:53,201 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-16 13:56:53,204 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-16 13:56:53,299 [ 1] INFO  Unity: 登录成功
+2025-09-16 13:56:53,482 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-16 13:56:54,618 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-16 13:56:54,642 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-16 13:56:54,644 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-16 13:56:54,644 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-16 13:56:54,652 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 13:56:54,653 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-16 13:56:54,655 [ 1] INFO  Unity: 加入角色姓名:Yc,地图:1
+2025-09-16 13:56:54,657 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-16 13:56:54,658 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-16 13:56:54,659 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 13:56:55,686 [ 1] INFO  Unity: Set Channel:Local
+2025-09-16 13:57:09,974 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
+2025-09-16 13:57:09,975 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-16 13:57:10,007 [ 1] INFO  Unity: 15离开了地图
+2025-09-16 13:57:10,008 [ 1] INFO  Unity: 移除角色ID：15
+2025-09-16 13:57:10,010 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 13:57:10,011 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-16 13:57:10,011 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 13:57:10,012 [ 1] INFO  Unity: 消失的玩家：15,位置(4193, 5078, 807)
+2025-09-16 13:57:10,167 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-16 13:57:11,196 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-16 13:57:11,217 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-16 13:57:11,218 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-16 13:57:11,218 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-16 13:57:11,220 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-16 13:57:11,220 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 13:57:11,221 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-16 13:57:11,221 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-16 13:57:11,224 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-16 13:57:11,224 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-16 13:57:11,225 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 13:58:40,113 [ 1] INFO  Unity: 网络断开
+2025-09-16 13:58:40,114 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)
 
+2025-09-16 13:58:40,116 [ 1] INFO  Unity: 消失的玩家：16,位置(3380, 4888, 804)

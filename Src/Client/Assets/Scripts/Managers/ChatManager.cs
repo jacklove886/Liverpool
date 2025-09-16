@@ -38,7 +38,7 @@ namespace Managers
                     case LocalChannel.Team: return ChatChannel.Team;
                     case LocalChannel.Guild: return ChatChannel.Guild;
                     case LocalChannel.Private: return ChatChannel.Private;
-                    default: return ChatChannel.Local;
+                    default: return ChatChannel.All;
                 }
             }
         }
@@ -107,7 +107,7 @@ namespace Managers
                 Onchat();
         }
 
-        //把传入的参数  新建消息汇总进去
+        //把传入的参数  新建消息汇总进系统里
         public void AddSystemMessage(string message,string fromName = "")
         {
             this.Messages[(int)LocalChannel.ALL].Add(new ChatMessage()
