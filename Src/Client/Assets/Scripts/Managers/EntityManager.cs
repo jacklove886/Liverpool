@@ -56,7 +56,7 @@ namespace Managers
                     //通知EntityController实体数据发生变化
                     notifies[entity.entityId].OnEntityChange(entity,data.Param);
                     // 通知EntityController处理实体事件
-                    notifies[entity.entityId].OnEntityEvent(data.Event);
+                    notifies[entity.entityId].OnEntityEvent(data.Event,data.Param);
                 }
             }
         }

@@ -108,10 +108,11 @@ namespace GameServer.Models
 
         internal void UpdateEntity(NEntitySync entity)
         {
-            foreach(var kv in MapCharacters)
+            foreach(var kv in MapCharacters)//遍历当前地图上所有玩家
             {
-                if (kv.Value.character.entityId == entity.Id)//如果发送同步的是自己 保存位置方向速度
+                if (kv.Value.character.entityId == entity.Id)//如果发送同步的是自己
                 {
+                    //更新客户端数据到服务端
                     kv.Value.character.Position = entity.Entity.Position;
                     kv.Value.character.Direction= entity.Entity.Direction;
                     kv.Value.character.Speed = entity.Entity.Speed;
@@ -120,7 +121,7 @@ namespace GameServer.Models
                         kv.Value.character.Ride = entity.Param;//如果上马 把ID传进来
                     }
                 }
-                else//如果是别人 发送同步请求
+                else//通知其他人需要移动同步
                 {
                     MapService.Instance.SendEntityUpdate(kv.Value.connection, entity);
                 }

@@ -91,7 +91,6 @@ public class EntityController : MonoBehaviour, IEntityNotify
 
     public void OnEntityEvent(EntityEvent entityEvent,int param)
     {
-        int currentCharacter = (int)User.Instance.CurrentCharacter.Class;  // 获取当前角色职业类型
 
         switch (entityEvent)
         {

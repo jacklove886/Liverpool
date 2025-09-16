@@ -32,39 +32,40 @@ namespace GameServer.Services
             // 添加空值检查
             if (character == null)
             {
-                Log.WarningFormat("OnMapEntitySync: character is null, ignoring request");
+                Log.WarningFormat("OnMapEntitySync: 角色为空");
                 return;
             }
 
             if (character.Info == null)
             {
-                Log.WarningFormat("OnMapEntitySync: character.Info is null for character {0}", character.Id);
+                Log.WarningFormat("OnMapEntitySync: 角色的Info为空", character.Info);
                 return;
             }
 
             if (request?.entitySync == null)
             {
-                Log.WarningFormat("OnMapEntitySync: entitySync is null for character {0}", character.Id);
+                Log.WarningFormat("OnMapEntitySync: entitySync为空 {0}", request.entitySync);
                 return;
             }
 
             // 检查地图是否存在
             if (!MapManager.Instance.Maps.ContainsKey(character.Info.mapId))
             {
-                Log.WarningFormat("OnMapEntitySync: Map {0} not found for character {1}", character.Info.mapId, character.Id);
+                Log.WarningFormat("OnMapEntitySync: 地图 {0} 找不到 角色id: {1}", character.Info.mapId, character.Id);
                 return;
             }
 
             MapManager.Instance[character.Info.mapId].UpdateEntity(request.entitySync);
         }
 
-        internal void SendEntityUpdate(NetConnection<NetSession> sender, NEntitySync entity)
+        //广播给其他人
+        internal void SendEntityUpdate(NetConnection<NetSession> receiver, NEntitySync entity)
         {
-            sender.Session.Response.mapEntitySync = new MapEntitySyncResponse();
-            sender.Session.Response.mapEntitySync.entitySyncs.Add(entity);
+            receiver.Session.Response.mapEntitySync = new MapEntitySyncResponse();
+            receiver.Session.Response.mapEntitySync.entitySyncs.Add(entity);
 
             //消息打包成数据流发给客户端
-            sender.SendResponse();
+            receiver.SendResponse();
         }
 
         private void OnMapTeleport(NetConnection<NetSession> sender, MapTeleportRequest request)
