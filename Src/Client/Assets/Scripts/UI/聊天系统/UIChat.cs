@@ -22,6 +22,8 @@ public class UIChat : MonoBehaviour {
 
     public Dropdown channelDropdown;//下拉框
 
+    public UIMain UIMain;
+
     void Start () {
         this.channelTabs.OnTabSelect += OnDisplayChannelSelected;//切换按钮就调用方法
         ChatManager.Instance.Onchat += RefreshUI;//有聊天消息发出 更新UI
@@ -128,6 +130,7 @@ public class UIChat : MonoBehaviour {
             menu.targetId = int.Parse(strs[1]);//对应分割后索引是1的元素
             Canvas canvas = menu.GetComponent<Canvas>();
             canvas.sortingOrder = 10;//设置层级
+            menu.gameObject.transform.SetParent(UIMain.gameObject.transform);
         }
     }
 

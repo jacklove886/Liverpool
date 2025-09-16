@@ -14,7 +14,7 @@ class MessageBox
 
         GameObject go = (GameObject)GameObject.Instantiate(cacheObject);
         Canvas canvas = go.GetComponent<Canvas>();
-        canvas.sortingOrder = 10;//设置层级 在最前面显示
+        canvas.sortingOrder = 20;//设置层级 在最前面显示
         UIMessageBox msgbox = go.GetComponent<UIMessageBox>();
         msgbox.Init(title, message, type, btnOK, btnCancel);//初始化
         return msgbox;

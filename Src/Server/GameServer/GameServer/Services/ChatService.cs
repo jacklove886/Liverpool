@@ -36,7 +36,7 @@ namespace GameServer.Services
                     sender.Session.Response.Chat.Result = Result.Failed;
                     sender.Session.Response.Chat.Msg = "对方不在线";
                     sender.SendResponse();
-                    //return;
+                    return;
                 }
                 else
                 {
@@ -46,8 +46,8 @@ namespace GameServer.Services
                     }
                     request.Message.FromId = character.Id;
                     request.Message.FromName = character.Name;
-                    sender.Session.Response.Chat.Result = Result.Success;
-                    sender.Session.Response.Chat.privateMessages.Add(request.Message);
+                    chatTo.Session.Response.Chat.Result = Result.Success;
+                    chatTo.Session.Response.Chat.privateMessages.Add(request.Message);
                     chatTo.SendResponse();
 
                     if (sender.Session.Response.Chat == null)
@@ -56,7 +56,8 @@ namespace GameServer.Services
                     }
                     sender.Session.Response.Chat.Result = Result.Success;
                     sender.Session.Response.Chat.privateMessages.Add(request.Message);
-                }
+                    sender.SendResponse();
+                }              
             }
 
             else//不是私聊

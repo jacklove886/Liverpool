@@ -185,6 +185,7 @@ namespace Services
 
         void OnUserLogin(object sender, UserLoginResponse response)
         {
+            Debug.LogFormat("收到登录响应");
             // 登录成功时设置用户数据
             if (response.Result == Result.Success && response.Userinfo != null)
             {
@@ -341,7 +342,7 @@ namespace Services
 #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;//编辑器变成停止模式
 #else
-                Application.Quit;//游戏exe版本才生效
+                Application.Quit();//游戏exe版本才生效
 #endif
             }
         }
