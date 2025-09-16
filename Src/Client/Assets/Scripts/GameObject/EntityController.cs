@@ -26,7 +26,7 @@ public class EntityController : MonoBehaviour, IEntityNotify
     public bool isPlayer=false;  // 是否为玩家角色
 
     public RideController rideController;//坐骑控制器
-    private int currentRide = 0;
+    public int currentRide = 0;
     public Transform rideBone;//坐骑骨骼
 
     void Start()

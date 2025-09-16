@@ -20,6 +20,7 @@ public class UIWorldElement : MonoBehaviour {
 
     void Update ()
     {
+        if (owner == null) return;
         this.transform.position = owner.position + Vector3.up * height;//永远在玩家头上
         if (Camera != null) 
         this.transform.forward = Camera.transform.forward;//永远朝向摄像机

@@ -9,7 +9,7 @@ using Services;
 
 public class PlayerInputController : MonoBehaviour {
 
-	[Header("角色状态")]
+    [Header("角色状态")]
     SkillBridge.Message.CharacterState state;//角色的状态(移动，停止)
     public Character character; //角色实体
 
@@ -54,6 +54,18 @@ public class PlayerInputController : MonoBehaviour {
 				entityController.entity=this.character;
 			}
 		}
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UIManager.Instance.Show<UISetting>();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            User.Instance.Ride(entityController.currentRide);
+        }
     }
 
     void FixedUpdate()

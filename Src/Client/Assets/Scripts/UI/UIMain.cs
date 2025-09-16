@@ -64,7 +64,6 @@ public class UIMain : MonoSingleton<UIMain> {
     public void OnClickSetting()//设置
     {
         UISetting ui= UIManager.Instance.Show<UISetting>();
-        ui.transform.SetParent(this.transform,false);
     }
 
     public void OnClickSkill()//技能

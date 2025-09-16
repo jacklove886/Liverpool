@@ -1,110 +1,31 @@
-2025-09-16 19:42:08,284 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-16 19:42:10,423 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-16 19:42:10,425 [ 1] INFO  Unity: 连接成功
-2025-09-16 19:42:10,426 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-16 19:42:10,429 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-16 19:42:10,524 [ 1] INFO  Unity: 收到登录响应
-2025-09-16 19:42:10,525 [ 1] INFO  Unity: 登录成功
-2025-09-16 19:42:10,716 [ 1] INFO  Unity: 当前角色数量为2
-2025-09-16 19:42:12,300 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-16 19:42:12,322 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-16 19:42:12,324 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-16 19:42:12,325 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-16 19:42:12,326 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-16 19:42:12,333 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 19:42:12,334 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-16 19:42:12,336 [ 1] INFO  Unity: 加入角色姓名:Yc,地图:1
-2025-09-16 19:42:12,337 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-16 19:42:12,338 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-16 19:42:12,339 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 19:42:13,299 [ 1] WARN  Unity: The referenced script (Unknown) on this Behaviour is missing!
-UnityEngine.Resources:Load(String)
-Resloader:Load(String) (at Assets/Scripts/Assets/Resloader.cs:11)
-GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:61)
-<InitGameObjects>c__Iterator0:MoveNext() (at Assets/Scripts/GameObject/GameObjectManager.cs:52)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-GameObjectManager:OnStart() (at Assets/Scripts/GameObject/GameObjectManager.cs:19)
-MonoSingleton`1:Awake() (at Assets/Scripts/Utilities/MonoSingleton.cs:33)
-
-2025-09-16 19:42:13,300 [ 1] WARN  Unity: The referenced script (Unknown) on this Behaviour is missing!
-UnityEngine.Resources:Load(String)
-Resloader:Load(String) (at Assets/Scripts/Assets/Resloader.cs:11)
-GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:61)
-<InitGameObjects>c__Iterator0:MoveNext() (at Assets/Scripts/GameObject/GameObjectManager.cs:52)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-GameObjectManager:OnStart() (at Assets/Scripts/GameObject/GameObjectManager.cs:19)
-MonoSingleton`1:Awake() (at Assets/Scripts/Utilities/MonoSingleton.cs:33)
-
-2025-09-16 19:42:13,301 [ 1] WARN  Unity: The referenced script on this Behaviour (Game Object 'Wizard') is missing!
-UnityEngine.Resources:Load(String)
-Resloader:Load(String) (at Assets/Scripts/Assets/Resloader.cs:11)
-GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:61)
-<InitGameObjects>c__Iterator0:MoveNext() (at Assets/Scripts/GameObject/GameObjectManager.cs:52)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-GameObjectManager:OnStart() (at Assets/Scripts/GameObject/GameObjectManager.cs:19)
-MonoSingleton`1:Awake() (at Assets/Scripts/Utilities/MonoSingleton.cs:33)
-
-2025-09-16 19:42:13,302 [ 1] WARN  Unity: The referenced script on this Behaviour (Game Object 'Wizard') is missing!
-UnityEngine.Resources:Load(String)
-Resloader:Load(String) (at Assets/Scripts/Assets/Resloader.cs:11)
-GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:61)
-<InitGameObjects>c__Iterator0:MoveNext() (at Assets/Scripts/GameObject/GameObjectManager.cs:52)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-GameObjectManager:OnStart() (at Assets/Scripts/GameObject/GameObjectManager.cs:19)
-MonoSingleton`1:Awake() (at Assets/Scripts/Utilities/MonoSingleton.cs:33)
-
-2025-09-16 19:42:13,310 [ 1] WARN  Unity: The referenced script on this Behaviour (Game Object '<null>') is missing!
-UnityEngine.Object:Instantiate(Object, Transform)
-GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:67)
-<InitGameObjects>c__Iterator0:MoveNext() (at Assets/Scripts/GameObject/GameObjectManager.cs:52)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-GameObjectManager:OnStart() (at Assets/Scripts/GameObject/GameObjectManager.cs:19)
-MonoSingleton`1:Awake() (at Assets/Scripts/Utilities/MonoSingleton.cs:33)
-
-2025-09-16 19:42:13,311 [ 1] WARN  Unity: The referenced script on this Behaviour (Game Object '<null>') is missing!
-UnityEngine.Object:Instantiate(Object, Transform)
-GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:67)
-<InitGameObjects>c__Iterator0:MoveNext() (at Assets/Scripts/GameObject/GameObjectManager.cs:52)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-GameObjectManager:OnStart() (at Assets/Scripts/GameObject/GameObjectManager.cs:19)
-MonoSingleton`1:Awake() (at Assets/Scripts/Utilities/MonoSingleton.cs:33)
-
-2025-09-16 19:42:13,311 [ 1] WARN  Unity: The referenced script on this Behaviour (Game Object 'Wizard') is missing!
-UnityEngine.Object:Instantiate(Object, Transform)
-GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:67)
-<InitGameObjects>c__Iterator0:MoveNext() (at Assets/Scripts/GameObject/GameObjectManager.cs:52)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-GameObjectManager:OnStart() (at Assets/Scripts/GameObject/GameObjectManager.cs:19)
-MonoSingleton`1:Awake() (at Assets/Scripts/Utilities/MonoSingleton.cs:33)
-
-2025-09-16 19:42:13,312 [ 1] WARN  Unity: The referenced script on this Behaviour (Game Object 'Wizard') is missing!
-UnityEngine.Object:Instantiate(Object, Transform)
-GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:67)
-<InitGameObjects>c__Iterator0:MoveNext() (at Assets/Scripts/GameObject/GameObjectManager.cs:52)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-GameObjectManager:OnStart() (at Assets/Scripts/GameObject/GameObjectManager.cs:19)
-MonoSingleton`1:Awake() (at Assets/Scripts/Utilities/MonoSingleton.cs:33)
-
-2025-09-16 19:42:13,313 [ 1] WARN  Unity: The referenced script on this Behaviour (Game Object 'Wizard') is missing!
-UnityEngine.Object:Instantiate(Object, Transform)
-GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:67)
-<InitGameObjects>c__Iterator0:MoveNext() (at Assets/Scripts/GameObject/GameObjectManager.cs:52)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-GameObjectManager:OnStart() (at Assets/Scripts/GameObject/GameObjectManager.cs:19)
-MonoSingleton`1:Awake() (at Assets/Scripts/Utilities/MonoSingleton.cs:33)
-
-2025-09-16 19:42:13,313 [ 1] WARN  Unity: The referenced script on this Behaviour (Game Object 'Wizard') is missing!
-UnityEngine.Object:Instantiate(Object, Transform)
-GameObjectManager:CreateCharacterObject(Character) (at Assets/Scripts/GameObject/GameObjectManager.cs:67)
-<InitGameObjects>c__Iterator0:MoveNext() (at Assets/Scripts/GameObject/GameObjectManager.cs:52)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-GameObjectManager:OnStart() (at Assets/Scripts/GameObject/GameObjectManager.cs:19)
-MonoSingleton`1:Awake() (at Assets/Scripts/Utilities/MonoSingleton.cs:33)
-
-2025-09-16 19:42:13,458 [ 1] INFO  Unity: Set Channel:Local
-2025-09-16 19:42:39,573 [ 1] INFO  Unity: 网络断开
-2025-09-16 19:42:39,573 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-16 20:53:08,642 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-16 20:53:10,711 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-16 20:53:10,728 [ 1] INFO  Unity: 连接成功
+2025-09-16 20:53:10,730 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-16 20:53:10,733 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-16 20:53:10,829 [ 1] INFO  Unity: 收到登录响应
+2025-09-16 20:53:10,830 [ 1] INFO  Unity: 登录成功
+2025-09-16 20:53:11,019 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-16 20:53:11,986 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-16 20:53:12,014 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-16 20:53:12,016 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-16 20:53:12,018 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-16 20:53:12,018 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-16 20:53:12,019 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:1]
+2025-09-16 20:53:12,020 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
+2025-09-16 20:53:12,020 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
+2025-09-16 20:53:12,028 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-16 20:53:12,029 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 20:53:12,030 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-16 20:53:12,031 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-16 20:53:12,033 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-16 20:53:12,034 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-16 20:53:12,035 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-16 20:53:13,091 [ 1] INFO  Unity: Set Channel:Local
+2025-09-16 20:53:20,453 [ 1] INFO  Unity: 网络断开
+2025-09-16 20:53:20,454 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)
 
+2025-09-16 20:53:20,457 [ 1] INFO  Unity: 消失的玩家：15,位置(4150, 3000, 804)
