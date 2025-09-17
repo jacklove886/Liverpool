@@ -70,7 +70,6 @@ public class UICharacterSelect : MonoBehaviour
     void Start()
     {
         InitCharacterSelect(true);
-        SoundManager.Instance.bgmaudioClipPlay.clip = null;
     }
 
     private void OnDestroy()
@@ -85,7 +84,6 @@ public class UICharacterSelect : MonoBehaviour
         originalPanel.SetActive(true);
         panelCreate.SetActive(false);
         panelSelect.SetActive(true);
-        SoundManager.Instance.PlayUISound(SoundManager.Instance.openChooseCharacterClip);
         if (init)
         {
             foreach (var old in uiChars)
@@ -158,12 +156,7 @@ public class UICharacterSelect : MonoBehaviour
             //角色3D模型控制
             characterClassPrefab[i].SetActive(i == charClass - 1);
             //选择角色播放音效
-            if (i == charClass - 1)
-            {
-                SoundManager.Instance.PlayCharacterSoundOneShot(SoundManager.Instance.characterAudioClip1[i]);
-                Animator animator = characterClassPrefab[i].GetComponentInChildren<Animator>();
-                animator.SetTrigger("SelectClass");
-            }
+            SoundManager.Instance.PlayUI(SoundDefine.CharacterBuild[classIndex]);
             //播放动画
 
         }
@@ -195,12 +188,7 @@ public class UICharacterSelect : MonoBehaviour
             characterClassPrefab[i].SetActive(i == classIndex);
 
             imageBackGround[i].gameObject.SetActive(i == classIndex);
-            if (i == classIndex)
-            {
-                Animator animator = characterClassPrefab[i].GetComponentInChildren<Animator>();
-                animator.SetTrigger("Click");
-                SoundManager.Instance.PlayUISound(SoundManager.Instance.characterAudioClip2[(int)User.Instance.CurrentCharacter.Class - 1]);
-            }
+            SoundManager.Instance.PlayUI(SoundDefine.CharacterSelect[classIndex]);
         }
         currentIndex = index;
     }
@@ -225,6 +213,7 @@ public class UICharacterSelect : MonoBehaviour
             MessageBox.Show("请输入角色昵称");
             return;
         }
+        SoundManager.Instance.PlayUI(SoundDefine.Click);
         UserService.Instance.SendCharacterCreate(this.nameInputField.text, this.charClass);
     }
 
@@ -242,6 +231,7 @@ public class UICharacterSelect : MonoBehaviour
             msgBox.OnYes = () =>
             {
                 // 发送删除请求，传入当前选中角色的名字
+                SoundManager.Instance.PlayUI(SoundDefine.Click);
                 UserService.Instance.SendCharacterDelete(User.Instance.CurrentCharacter.Name);
             };
             msgBox.OnNo = () =>
@@ -263,6 +253,7 @@ public class UICharacterSelect : MonoBehaviour
         else
         {
             //传入进入游戏角色的索引值(按职业划分的)
+            SoundManager.Instance.PlayUI(SoundDefine.Click);
             UserService.Instance.SendGameEnter(currentIndex);
         }
     }

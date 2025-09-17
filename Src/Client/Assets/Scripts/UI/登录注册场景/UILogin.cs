@@ -1,3 +1,4 @@
+
 using Services;// 服务器命名空间
 using System.Collections;
 using System.Collections.Generic;
@@ -40,6 +41,8 @@ public class UILogin : MonoBehaviour {
         GuildService.Instance.Init();
 
         ChatService.Instance.Init();
+
+        SoundManager.Instance.PlayMusic(SoundDefine.Music_Login);
         #endregion
 
         UserService.Instance.OnLogin += OnLogin;
@@ -70,12 +73,13 @@ public class UILogin : MonoBehaviour {
         {
             MessageBox.Show("请输入密码");
             return;
-        }
+        }        
         else if (buttonYuedu.gameObject.activeInHierarchy != true)
         {
             MessageBox.Show("请勾选用户协议");
             return;
         }
+        SoundManager.Instance.PlayUI(SoundDefine.Click);
         UserService.Instance.SendLogin(username.text, password.text);
     }
     // 登录结果回调
@@ -97,6 +101,7 @@ public class UILogin : MonoBehaviour {
             PlayerPrefs.Save();
 
             // 登录成功，跳转到选择角色场景
+            SoundManager.Instance.PlayMusic(SoundDefine.Music_Select);
             UnityEngine.SceneManagement.SceneManager.LoadScene("CharacterChoose");
         }
         else

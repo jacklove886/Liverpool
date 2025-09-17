@@ -63,7 +63,8 @@ namespace Services
                 MapDefine map =DataManager.Instance.Maps[mapId];
                 User.Instance.CurrentMapData = map;
                 SceneManager.Instance.LoadScene(map.Resource);
-             }
+                SoundManager.Instance.PlayMusic(map.Music);
+            }
              else
              {
                 Debug.LogErrorFormat("地图ID:{0}不存在",mapId);

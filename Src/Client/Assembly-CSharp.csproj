@@ -61,8 +61,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Assets\Config.cs" />
     <Compile Include="Assets\Scripts\Assets\Resloader.cs" />
-    <Compile Include="Assets\Scripts\Audio\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\Assets\SoundDefine.cs" />
     <Compile Include="Assets\Scripts\Entities\Character.cs" />
     <Compile Include="Assets\Scripts\Entities\Entity.cs" />
     <Compile Include="Assets\Scripts\GameObject\EntityController.cs" />
@@ -78,7 +79,6 @@
     <Compile Include="Assets\Scripts\GameObject\TeleporterObject.cs" />
     <Compile Include="Assets\Scripts\LoadingManager.cs" />
     <Compile Include="Assets\Scripts\Log\UnityLogger.cs" />
-    <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Managers\BagManager.cs" />
     <Compile Include="Assets\Scripts\Managers\CharacterManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ChatManager.cs" />
@@ -111,6 +111,7 @@
     <Compile Include="Assets\Scripts\Services\StatusService.cs" />
     <Compile Include="Assets\Scripts\Services\TeamService.cs" />
     <Compile Include="Assets\Scripts\Services\UserService.cs" />
+    <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
     <Compile Include="Assets\Scripts\UI\InputBox.cs" />
     <Compile Include="Assets\Scripts\UI\UIDialog.cs" />
     <Compile Include="Assets\Scripts\UI\UIInputBox.cs" />
@@ -156,6 +157,7 @@
     <Compile Include="Assets\Scripts\UI\装备系统\UICharEquip.cs" />
     <Compile Include="Assets\Scripts\UI\装备系统\UIEquipItem.cs" />
     <Compile Include="Assets\Scripts\UI\设置\UISetting.cs" />
+    <Compile Include="Assets\Scripts\UI\设置\UISystemConfig.cs" />
     <Compile Include="Assets\Scripts\UI\选择角色场景\MessageBox.cs" />
     <Compile Include="Assets\Scripts\UI\选择角色场景\UICharacterMessage.cs" />
     <Compile Include="Assets\Scripts\UI\选择角色场景\UICharacterSelect.cs" />

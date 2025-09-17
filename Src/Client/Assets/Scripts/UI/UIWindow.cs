@@ -21,6 +21,7 @@ public abstract class UIWindow : MonoBehaviour {//abstarct意义是防止直接�
 	
     public void Close(WindowResult result = WindowResult.None)//不传参数默认是None 可以传参Yes 或者No
     {
+        SoundManager.Instance.PlayUI(SoundDefine.Show);
         UIManager.Instance.Close(Type);//关闭预制体
         if (OnClose != null)
         {

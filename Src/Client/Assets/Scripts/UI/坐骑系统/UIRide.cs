@@ -40,6 +40,7 @@ public class UIRide : UIWindow {
             //类型如果是坐骑才显示在坐骑页面
             if (kv.Value.Define.Type == ItemType.Ride && (kv.Value.Define.LimitClass ==CharacterClass.None|| kv.Value.Define.LimitClass == User.Instance.CurrentCharacter.Class))
             {
+                if (EquipManager.Instance.Contains(kv.Key)) continue;
                 GameObject go = Instantiate(itemPrefab, listMain.transform);
                 UIRideItem ui = go.GetComponent<UIRideItem>();
                 ui.SetRideItem(kv.Value);

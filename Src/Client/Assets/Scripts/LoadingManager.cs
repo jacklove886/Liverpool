@@ -8,6 +8,7 @@ using SkillBridge.Message;
 using ProtoBuf;
 using Services;
 using Managers;
+using Common.Data;
 
 public class LoadingManager : MonoBehaviour {
 
@@ -48,6 +49,7 @@ public class LoadingManager : MonoBehaviour {
 
         //初始化管理器
         ShopManager.Instance.Init();
+        SoundManager.Instance.PlayMusic(SoundDefine.Music_Login);
 
 
         for (float i = 50; i < 100;)//从50-100开始模拟加载

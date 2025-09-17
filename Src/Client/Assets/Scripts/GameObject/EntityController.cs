@@ -95,18 +95,15 @@ public class EntityController : MonoBehaviour, IEntityNotify
         switch (entityEvent)
         {
             case EntityEvent.EventIdle:
-                StopMovementAudio();  
                 SetIdleAnimation();  
                 break;
 
             case EntityEvent.EventMove:
                 SetMovementAnimation();  
-                PlayMovementAudio();  
                 break;
 
             case EntityEvent.EventRun:
                 SetRunAnimation(); 
-                PlayRunAudio();  
                 break;
 
             case EntityEvent.EventJump:
@@ -152,14 +149,6 @@ public class EntityController : MonoBehaviour, IEntityNotify
         this.anim.transform.position = position + (this.anim.transform.position - this.rideBone.position);
     }
 
-    private void StopMovementAudio()
-    {
-        if (SoundManager.Instance.characterAudioSource.isPlaying)  
-        {
-            SoundManager.Instance.characterAudioSource.Stop();  
-        }
-    }
-
     
     private void SetIdleAnimation()
     {
@@ -174,12 +163,6 @@ public class EntityController : MonoBehaviour, IEntityNotify
         anim.SetBool("Run", false);  
     }
 
-    
-    private void PlayMovementAudio()
-    {
-        SoundManager.Instance.characterAudioSource.clip = SoundManager.Instance.walkAudioClip[currentCharacterClass];
-        SoundManager.Instance.characterAudioSource.Play();  
-    }
 
     
     private void SetRunAnimation()
@@ -189,22 +172,12 @@ public class EntityController : MonoBehaviour, IEntityNotify
     }
 
     
-    private void PlayRunAudio()
-    {
-        SoundManager.Instance.characterAudioSource.clip = SoundManager.Instance.runAudioClip[currentCharacterClass];
-        SoundManager.Instance.characterAudioSource.Play();  
-    }
-
     //跳跃事件
     private void Jump()
     {
         anim.SetTrigger("Jump");  
 
-        
-        StopMovementAudio();
-
-
-        SoundManager.Instance.jumpaudioClipPlay.PlayOneShot(SoundManager.Instance.jumpAudioClip[currentCharacterClass]);
+               
 
         // 等待跳跃动画播放后 才播放走路跑步音效
         StartCoroutine(JumpWaitTime());
@@ -219,8 +192,6 @@ public class EntityController : MonoBehaviour, IEntityNotify
     private void HandleRideEvent()
     {
         anim.SetTrigger("Ride");
-
-        StopMovementAudio();
 
     }
 

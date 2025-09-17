@@ -13,11 +13,7 @@ public class UIMain : MonoSingleton<UIMain> {
 
     protected override void OnStart ()
     {
-        SoundManager.Instance.bgmaudioClipPlay.clip = SoundManager.Instance.bgmInMainCityClip;
-        SoundManager.Instance.bgmaudioClipPlay.Play();
         UpdateAvatar();
-
-        SoundManager.Instance.uiClipPlay.clip = null;
     }
 	
 
@@ -28,41 +24,49 @@ public class UIMain : MonoSingleton<UIMain> {
       
     public void OnClickBag()
     {
+        SoundManager.Instance.PlayUI(SoundDefine.Click);
         UIManager.Instance.Show<UIBag>();//背包
     }
 
     public void OnClickCharEquip()
     {
+        SoundManager.Instance.PlayUI(SoundDefine.Click);
         UIManager.Instance.Show<UICharEquip>();//商店
     }
 
     public void OnClickQuest()
     {
+        SoundManager.Instance.PlayUI(SoundDefine.Click);
         UIManager.Instance.Show<UIQuestSystem>();//任务
     }
 
     public void OnClickFriend()
     {
+        SoundManager.Instance.PlayUI(SoundDefine.Click);
         UIManager.Instance.Show<UIFriend>();//好友
     }
 
     public void ShowTeamUI(bool show)
     {
+        SoundManager.Instance.PlayUI(SoundDefine.Click);
         UITeam.ShowTeam(show);//组队
     }
 
     public void OnClickGuild(bool show)//公会
     {
+        SoundManager.Instance.PlayUI(SoundDefine.Click);
         GuildManager.Instance.ShowGuild();
     }
 
     public void OnClickRide()//坐骑
     {
+        SoundManager.Instance.PlayUI(SoundDefine.Click);
         UIManager.Instance.Show<UIRide>();
     }
 
     public void OnClickSetting()//设置
     {
+        SoundManager.Instance.PlayUI(SoundDefine.Click);
         UIManager.Instance.Show<UISetting>();
     }
 
