@@ -170,7 +170,6 @@ public class UICharacterSelect : MonoBehaviour
     //点击选择已经创建好的角色的按钮
     public void OnClickSelectCharacter(int index)
     {
-        Debug.LogFormat("index值为{0}", index);
         originalPanel.SetActive(false);
         var character = User.Instance.Info.Player.Characters[index];
         User.Instance.CurrentCharacter = character;

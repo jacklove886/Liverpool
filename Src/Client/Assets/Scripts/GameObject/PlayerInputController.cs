@@ -19,7 +19,8 @@ public class PlayerInputController : MonoBehaviour {
     public EntityController entityController;//实体控制器
 
     [Header("移动参数")]
-    public int currentspeed;//目前速度
+    public int currentSpeed;//目前速度
+    public int NavSpeed;//导航速度
     public bool isGround=true; //是否在地面
     public bool isRunning = false; //是否在跑步
     public float vertical;
@@ -37,31 +38,15 @@ public class PlayerInputController : MonoBehaviour {
 
     void Start () {
         state =CharacterState.Idle;
-		if(this.character==null)
+		if(entityController!=null)
 		{
-			//DataManager.Instance.Load(); 如果从游戏加载开始不需要这句话
-			NCharacterInfo characterinfo=new NCharacterInfo();
-			characterinfo.Id=1;
-			characterinfo.Name="玩家1";
-			characterinfo.ConfigId=1;
-			characterinfo.Entity=new NEntity();
-			characterinfo.Entity.Position=new NVector3();
-			characterinfo.Entity.Direction=new NVector3();
-			characterinfo.Entity.Direction.X=0;
-			characterinfo.Entity.Direction.Y=100;
-			characterinfo.Entity.Direction.Z=0;
-			this.character=new Character(characterinfo);
-
-			if(entityController!=null)
-			{
-				entityController.entity=this.character;
-			}
-            if (agent == null)
-            {
-                agent = this.gameObject.AddComponent<NavMeshAgent>();//添加代理组件
-                agent.stoppingDistance = 1f;//离目标点1距离停止
-            }
+			entityController.entity=this.character;
 		}
+        if (agent == null)
+        {
+            agent = this.gameObject.AddComponent<NavMeshAgent>();//添加代理组件
+            agent.stoppingDistance = 3f;//离目标点3距离停止
+        }
     }
 
     public void StartNav(Vector3 target)//开始寻路
@@ -77,9 +62,9 @@ public class PlayerInputController : MonoBehaviour {
         if (state != CharacterState.Move)
         {
             state = CharacterState.Run;
-            character.Run();
+            NavSpeed = character.Run();
             SendEntityEvent(EntityEvent.EventRun);
-            agent.speed = character.speed / 100f;
+            agent.speed = NavSpeed / 100f;
         }
     }
 
@@ -114,7 +99,7 @@ public class PlayerInputController : MonoBehaviour {
         }
         NavPathRender.Instance.SetPath(agent.path, agent.destination);//更新实时路径
 
-        if (agent.isStopped || agent.remainingDistance < 1f)//寻路停止或者离目标距离小于1
+        if (agent.isStopped || agent.remainingDistance < 3f)//寻路停止或者离目标距离小于3
         {
             StopNav();
             return;
@@ -158,7 +143,7 @@ public class PlayerInputController : MonoBehaviour {
                 if (state != CharacterState.Move)
                 {
                     state = CharacterState.Move;
-                    currentspeed = this.character.Move();
+                    currentSpeed = this.character.Move();
                     this.SendEntityEvent(EntityEvent.EventMove);
                 }
             }
@@ -170,14 +155,14 @@ public class PlayerInputController : MonoBehaviour {
                 if (state != CharacterState.Run)
                 {
                     state = CharacterState.Run;
-                    currentspeed = this.character.Run();
+                    currentSpeed = this.character.Run();
                     this.SendEntityEvent(EntityEvent.EventRun);
                 }
             }
 
             // 角色移动
             Vector3 moveDirection = (transform.forward * vertical + transform.right * horizontal).normalized;
-            float speedzoom = currentspeed / 100f;
+            float speedzoom = currentSpeed / 100f;
             rb.velocity = new Vector3(moveDirection.x * speedzoom, rb.velocity.y, moveDirection.z * speedzoom);
         }
 
@@ -188,7 +173,7 @@ public class PlayerInputController : MonoBehaviour {
             {
                 state = CharacterState.Idle;
                 this.rb.velocity = Vector3.zero;
-                currentspeed=this.character.Stop();
+                currentSpeed=this.character.Stop();
                 this.SendEntityEvent(EntityEvent.EventIdle);
             }
         }

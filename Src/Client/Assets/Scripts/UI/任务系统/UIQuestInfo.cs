@@ -65,6 +65,7 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
         {
             this.npc = quest.Define.SubmitNPC;
         }
+        if(NavButton!=null)
         this.NavButton.gameObject.SetActive(npc>0);
 
         //自动设置为LayoutVertical
@@ -128,7 +129,5 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
         User.Instance.CurrentCharacterPlayerInput.StartNav(pos);//开启导航
         UIManager.Instance.Close<UIQuestSystem>();
     }
-
-
 
 }

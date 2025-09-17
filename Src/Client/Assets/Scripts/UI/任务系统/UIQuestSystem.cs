@@ -72,7 +72,7 @@ public class UIQuestSystem : UIWindow {
                 {
                     continue;
                 }
-                if (kv.Value.Info.Status == SkillBridge.Message.QuestStatus.Complated|| kv.Value.Info.Status == SkillBridge.Message.QuestStatus.Finished)
+                if (kv.Value.Info.Status == SkillBridge.Message.QuestStatus.Finished)
                 {
                     continue;
                 }

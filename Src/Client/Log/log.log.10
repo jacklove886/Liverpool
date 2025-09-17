@@ -1,36 +1,35 @@
-2025-09-17 17:44:21,672 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-17 17:44:42,791 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-17 17:44:42,793 [ 1] INFO  Unity: 连接成功
-2025-09-17 17:44:42,794 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-17 17:44:42,797 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-17 17:44:42,896 [ 1] INFO  Unity: 收到登录响应
-2025-09-17 17:44:42,897 [ 1] INFO  Unity: 登录成功
-2025-09-17 17:44:43,303 [ 1] INFO  Unity: 当前角色数量为3
-2025-09-17 17:44:43,972 [ 1] INFO  Unity: index值为0
-2025-09-17 17:44:44,764 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-17 17:44:44,793 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-17 17:44:44,795 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-17 17:44:44,796 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-17 17:44:44,797 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-17 17:44:44,797 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:1]
-2025-09-17 17:44:44,798 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
-2025-09-17 17:44:44,799 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:20]
-2025-09-17 17:44:44,799 [ 1] INFO  Unity: ItemManager初始化道具:[ID:11,Count:1]
-2025-09-17 17:44:44,800 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
-2025-09-17 17:44:44,801 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1002,Count:1]
-2025-09-17 17:44:44,801 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:1]
-2025-09-17 17:44:44,809 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
-2025-09-17 17:44:44,810 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-17 17:44:44,811 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-17 17:44:44,812 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-17 17:44:44,814 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-17 17:44:44,815 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-17 17:44:45,163 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-17 17:44:46,137 [ 1] INFO  Unity: Set Channel:Local
-2025-09-17 17:45:15,960 [ 1] INFO  Unity: 网络断开
-2025-09-17 17:45:15,961 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-17 22:38:04,208 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-17 22:38:06,115 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-17 22:38:06,117 [ 1] INFO  Unity: 连接成功
+2025-09-17 22:38:06,118 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-17 22:38:06,121 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-17 22:38:06,235 [ 1] INFO  Unity: 收到登录响应
+2025-09-17 22:38:06,236 [ 1] INFO  Unity: 登录成功
+2025-09-17 22:38:06,648 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-17 22:38:08,260 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-17 22:38:08,290 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-17 22:38:08,292 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-17 22:38:08,293 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-17 22:38:08,294 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-17 22:38:08,294 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:2]
+2025-09-17 22:38:08,295 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
+2025-09-17 22:38:08,296 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:20]
+2025-09-17 22:38:08,296 [ 1] INFO  Unity: ItemManager初始化道具:[ID:11,Count:1]
+2025-09-17 22:38:08,297 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
+2025-09-17 22:38:08,298 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1002,Count:1]
+2025-09-17 22:38:08,298 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:1]
+2025-09-17 22:38:08,306 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-17 22:38:08,307 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 22:38:08,308 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-17 22:38:08,310 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-17 22:38:08,312 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-17 22:38:08,313 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-17 22:38:08,661 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 22:38:09,602 [ 1] INFO  Unity: Set Channel:Local
+2025-09-17 22:38:33,459 [ 1] INFO  Unity: 网络断开
+2025-09-17 22:38:33,460 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)
 
-2025-09-17 17:45:15,966 [ 1] INFO  Unity: 消失的玩家：13,位置(5098, 4682, 804)
+2025-09-17 22:38:33,465 [ 1] INFO  Unity: 消失的玩家：17,位置(4188, 3099, 804)

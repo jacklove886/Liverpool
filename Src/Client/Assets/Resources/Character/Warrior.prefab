@@ -6394,7 +6394,6 @@ MonoBehaviour:
   rb: {fileID: 54951745923302836}
   entityController: {fileID: 0}
   currentspeed: 0
-  realspeed: 0
   isGround: 1
   isRunning: 0
   vertical: 0
@@ -6421,6 +6420,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   isPlayer: 0
   rideController: {fileID: 0}
+  currentRide: 0
   rideBone: {fileID: 4361034942682308}
 --- !u!136 &136259602359844226
 CapsuleCollider:

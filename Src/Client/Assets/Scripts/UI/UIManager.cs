@@ -87,7 +87,7 @@ public class UIManager : Singleton<UIManager> {
 
     public void Close(Type type)
     {
-        SoundManager.Instance.PlayUI("ui_close");
+        SoundManager.Instance.PlayUI(SoundDefine.Close);
         if (UIResources.ContainsKey(type))
         {
             UIElement info = UIResources[type];
