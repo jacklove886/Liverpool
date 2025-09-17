@@ -29,7 +29,7 @@ public class NpcController : MonoBehaviour {
         TalkAudio = gameObject.GetComponent<AudioSource>();
         meshrenderer = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
 
-        NpcDistanceManager.Instance.RegisterNpc(this);
+        NpcManager.Instance.UpdateNpcPosition(this.npcId, this.transform.position);
 
         originColor = meshrenderer.sharedMaterial.color;//原始颜色是初始化时候的颜色
         StartCoroutine(Actions());
@@ -95,10 +95,10 @@ public class NpcController : MonoBehaviour {
     IEnumerator DoInteractive()
     {
         yield return FaceToPlayer();//面向玩家
+        TalkAudio.PlayOneShot(TalkAudio.clip);
         if (NpcManager.Instance.Interactive(npc))//调用NpcManagaer的方法
         {
-            anim.SetTrigger("Talk");
-            TalkAudio.PlayOneShot(TalkAudio.clip);
+            anim.SetTrigger("Talk");            
         }
         yield return new WaitForSeconds(3f);//防止三秒内重复点击
         inInteractive = false;
@@ -118,13 +118,16 @@ public class NpcController : MonoBehaviour {
     //按下鼠标  距离近就交互
     private void OnMouseDown()
     {
-        if (canInteractive)
+        float distance = Vector3.Distance(this.transform.position,User.Instance.CurrentCharacterPlayerInput.transform.position);
+        //离NPC超过2米开始自动寻路
+        if (distance > 2f)
         {
-            Interactive();
+            User.Instance.CurrentCharacterPlayerInput.StartNav(this.transform.position);
+            return;
         }
         else
         {
-            MessageBox.Show("距离太远啦！");
+            Interactive();
         }     
     }
 

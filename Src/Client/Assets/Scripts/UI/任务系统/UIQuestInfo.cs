@@ -21,6 +21,9 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
     public GameObject button1;
     public GameObject button2;
 
+    public Button NavButton;
+    private int npc = 0;
+
     void Start () {
 		
 	}
@@ -53,6 +56,16 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
         button1.gameObject.SetActive(true);
         button2.gameObject.SetActive(true);
         guimie.gameObject.SetActive(false);
+
+        if (quest.Info == null)//没接任务
+        {
+            this.npc = quest.Define.AcceptNPC;
+        }
+        else if (quest.Info.Status == SkillBridge.Message.QuestStatus.Complated)//任务已完成
+        {
+            this.npc = quest.Define.SubmitNPC;
+        }
+        this.NavButton.gameObject.SetActive(npc>0);
 
         //自动设置为LayoutVertical
         foreach (var fitter in this.GetComponentsInChildren<ContentSizeFitter>())
@@ -103,4 +116,19 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
             }
         }
     }
+
+    public void OnClickAbandon()
+    {
+        MessageBox.Show("暂未实现");
+    }
+
+    public void OnClickNav()
+    {
+        Vector3 pos = NpcManager.Instance.GetNpcPosition(this.npc);//获取NPC位置
+        User.Instance.CurrentCharacterPlayerInput.StartNav(pos);//开启导航
+        UIManager.Instance.Close<UIQuestSystem>();
+    }
+
+
+
 }

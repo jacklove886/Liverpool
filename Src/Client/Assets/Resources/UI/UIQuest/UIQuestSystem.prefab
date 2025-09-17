@@ -1271,7 +1271,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u63D0\u4EA4\u4EFB\u52A1"
+  m_Text: "\u524D\u53BB\u63D0\u4EA4"
 --- !u!114 &114142818474517564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1283,6 +1283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c7515d350cfb541b595142dbfe42d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Root: {fileID: 0}
   title: {fileID: 114267747788801262}
   UIQuestItem: {fileID: 1168252932196912, guid: e6dcaab0f16ced64bbf2c98d1326b86c,
     type: 2}
@@ -1412,6 +1413,7 @@ MonoBehaviour:
   guimie: {fileID: 1225137141098296}
   button1: {fileID: 1207381361129406}
   button2: {fileID: 1128110564831892}
+  NavButton: {fileID: 0}
 --- !u!114 &114184316995833246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1732,7 +1734,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114119018968949336}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114168787894415464}
+        m_MethodName: OnClickAbandon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114297815512162824
@@ -1880,7 +1893,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114933774180004176}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114168787894415464}
+        m_MethodName: OnClickNav
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114377985204859096

@@ -40,17 +40,8 @@ public class RideController: MonoBehaviour
 
             case EntityEvent.EventMove:
                 anim.SetBool("Move", true);
-                anim.SetBool("Run", false);
                 break;
-
-            case EntityEvent.EventRun:
-                anim.SetBool("Run", true);
-                anim.SetBool("Move", false);
-                break;
-
-            case EntityEvent.EventJump:
-                anim.SetTrigger("Jump");
-                break;
+            default: break;
         }
     }
 }

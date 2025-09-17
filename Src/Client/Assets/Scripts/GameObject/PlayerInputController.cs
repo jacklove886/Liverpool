@@ -6,6 +6,7 @@ using SkillBridge.Message;
 using Models;
 using Managers;
 using Services;
+using UnityEngine.AI;
 
 public class PlayerInputController : MonoBehaviour {
 
@@ -19,7 +20,6 @@ public class PlayerInputController : MonoBehaviour {
 
     [Header("移动参数")]
     public int currentspeed;//目前速度
-    public int realspeed;//真实速度
     public bool isGround=true; //是否在地面
     public bool isRunning = false; //是否在跑步
     public float vertical;
@@ -31,6 +31,9 @@ public class PlayerInputController : MonoBehaviour {
     [Header("旋转同步")]
     private float lastSyncRotation = 0f;  // 上次同步的旋转角度
 
+    private NavMeshAgent agent;//导航代理
+
+    private bool autoNav = false;//当前是否寻路
 
     void Start () {
         state =CharacterState.Idle;
@@ -53,7 +56,69 @@ public class PlayerInputController : MonoBehaviour {
 			{
 				entityController.entity=this.character;
 			}
+            if (agent == null)
+            {
+                agent = this.gameObject.AddComponent<NavMeshAgent>();//添加代理组件
+                agent.stoppingDistance = 1f;//离目标点1距离停止
+            }
 		}
+    }
+
+    public void StartNav(Vector3 target)//开始寻路
+    {
+        StartCoroutine(BeginNav(target));
+    }
+
+    IEnumerator BeginNav(Vector3 target)
+    {
+        agent.SetDestination(target);//设置目标点
+        yield return null;
+        autoNav = true;
+        if (state != CharacterState.Move)
+        {
+            state = CharacterState.Run;
+            character.Run();
+            SendEntityEvent(EntityEvent.EventRun);
+            agent.speed = character.speed / 100f;
+        }
+    }
+
+    public void StopNav()//结束寻路
+    {
+        autoNav = false;
+        agent.ResetPath();//清空路径
+        if (state != CharacterState.Idle)
+        {
+            state = CharacterState.Idle;
+            rb.velocity = Vector3.zero;
+            character.Stop();
+            SendEntityEvent(EntityEvent.EventIdle);
+        }
+        NavPathRender.Instance.SetPath(null, Vector3.zero);
+    }
+
+    public void NavMove()
+    {
+        if (agent.pathPending|| agent.pathStatus != NavMeshPathStatus.PathComplete) return;//寻路没完成
+
+        if (agent.pathStatus == NavMeshPathStatus.PathInvalid)//寻路失败
+        {
+            StopNav();
+            return;
+        }
+
+        if (Mathf.Abs(Input.GetAxis("Vertical")) > 0.1f || Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f)
+        {
+            StopNav();
+            return;
+        }
+        NavPathRender.Instance.SetPath(agent.path, agent.destination);//更新实时路径
+
+        if (agent.isStopped || agent.remainingDistance < 1f)//寻路停止或者离目标距离小于1
+        {
+            StopNav();
+            return;
+        }
     }
 
     private void Update()
@@ -71,6 +136,12 @@ public class PlayerInputController : MonoBehaviour {
     void FixedUpdate()
     {
         if (character == null) return;
+
+        if (autoNav)
+        {
+            NavMove();
+            return;
+        }
 
         if (InputManager.Instance!=null&&InputManager.Instance.IsInputMode) return;//如果正在输入模式
         vertical = Input.GetAxis("Vertical");   
@@ -135,18 +206,17 @@ public class PlayerInputController : MonoBehaviour {
         if (character == null) return;
 
         Vector3 offset = this.rb.transform.position - lastPos;
-        this.realspeed = (int)(offset.magnitude * 100f / Time.deltaTime);
         this.lastPos = this.rb.transform.position;
 
         Vector3Int goLogicPos = GameObjectTool.WorldToLogic(this.rb.transform.position);
-        float logicOffset = (goLogicPos - this.character.position).magnitude;
+        float positionOffset = (goLogicPos - this.character.position).magnitude;
 
         float currentRotation = this.transform.eulerAngles.y;
 
         // 计算旋转差值
         float rotationOffset = Mathf.Abs(Mathf.DeltaAngle(lastSyncRotation, currentRotation));
 
-        if (logicOffset > 2f|| rotationOffset>5f)
+        if (positionOffset > 1f|| rotationOffset>2f)
         {
             this.character.SetPosition(GameObjectTool.WorldToLogic(this.rb.transform.position));//同步位置
 

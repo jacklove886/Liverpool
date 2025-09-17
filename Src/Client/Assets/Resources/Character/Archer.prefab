@@ -609,7 +609,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4561987769598700}
-  - component: {fileID: 95894878238362550}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -1668,24 +1667,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!95 &95894878238362550
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1617227045272586}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4925f78b11f1e8c46b682f630cae1b6e, type: 3}
-  m_Controller: {fileID: 9100000, guid: ce7deb715aaf44f418a1a7a51dceea31, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114035224038698066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1772,6 +1753,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   isPlayer: 0
   rideController: {fileID: 0}
+  currentRide: 0
   rideBone: {fileID: 4310447560692410}
 --- !u!114 &114195032503727026
 MonoBehaviour:

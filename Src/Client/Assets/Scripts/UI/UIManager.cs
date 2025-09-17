@@ -87,7 +87,7 @@ public class UIManager : Singleton<UIManager> {
 
     public void Close(Type type)
     {
-        //SoundManager.Instance.PlaySound("ui_close");
+        SoundManager.Instance.PlayUI("ui_close");
         if (UIResources.ContainsKey(type))
         {
             UIElement info = UIResources[type];
@@ -101,5 +101,10 @@ public class UIManager : Singleton<UIManager> {
                 info.gameObject = null;
             }
         }
+    }
+
+    public void Close<T>()
+    {
+        Close(typeof(T));
     }
 }

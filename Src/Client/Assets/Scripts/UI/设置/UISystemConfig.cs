@@ -32,15 +32,15 @@ public class UISystemConfig : UIWindow {
         //从配置里读取音量
         ToggleMusic.isOn = Config.MusicOn;
         SliderMusic.value = Config.MusicVolume;
-        MusicText.text = Config.MusicVolume.ToString();
+        MusicText.text = (Config.MusicVolume+"%").ToString();
 
         ToggleUI.isOn = Config.UIOn;
         SliderUI.value = Config.UIVolume;
-        UIText.text = Config.UIVolume.ToString();
+        UIText.text = (Config.UIVolume+"%").ToString();
 
-        ToggleCharacter.isOn = Config.MusicOn;
-        SliderCharacter.value = Config.MusicVolume;
-        CharacterText.text = Config.MusicVolume.ToString();
+        ToggleCharacter.isOn = Config.CharacterOn;
+        SliderCharacter.value = Config.CharacterVolume;
+        CharacterText.text = (Config.CharacterVolume + "%").ToString();
     }
 
     public override void OnYesClick()
@@ -71,24 +71,24 @@ public class UISystemConfig : UIWindow {
         SoundManager.Instance.PlayUI(SoundDefine.Click);
     }
 
-    public void MusicVolume(int volume)//绑定Slider组件控制
+    public void MusicVolume(float volume)//绑定Slider组件控制
     {
         Config.MusicVolume = (int)volume;
-        MusicText.text = volume.ToString();
+        MusicText.text = (volume+"%").ToString();
         PlaySound();
     }
 
-    public void UIVolume(int volume)
+    public void UIVolume(float volume)
     {
         Config.UIVolume = (int)volume;
-        UIText.text = volume.ToString();
+        UIText.text = (volume+"%").ToString();
         PlaySound();
     }
 
-    public void CharacterVolume(int volume)
+    public void CharacterVolume(float volume)
     {
         Config.CharacterVolume = (int)volume;
-        CharacterText.text = volume.ToString();
+        CharacterText.text = (volume+"%").ToString();
         PlaySound();
     }
 

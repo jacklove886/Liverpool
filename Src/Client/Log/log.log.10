@@ -1,49 +1,36 @@
-2025-09-17 16:41:11,756 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-17 16:41:19,617 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-17 16:41:19,624 [ 1] INFO  Unity: 连接成功
-2025-09-17 16:41:19,625 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-17 16:41:19,632 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-17 16:41:19,868 [ 1] INFO  Unity: 收到登录响应
-2025-09-17 16:41:19,871 [ 1] INFO  Unity: 登录成功
-2025-09-17 16:41:20,333 [ 1] INFO  Unity: 当前角色数量为2
-2025-09-17 16:42:30,606 [ 1] WARN  Unity: Animator is not playing an AnimatorController
-UnityEngine.Animator:SetTrigger(String)
-UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:163)
-UICharacterSelect:OnClickCreateCharater() (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:137)
-UnityEngine.EventSystems.EventSystem:Update()
-
-2025-09-17 16:42:30,607 [ 1] WARN  Unity: Animator is not playing an AnimatorController
-UnityEngine.Animator:SetTrigger(String)
-UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:163)
-UICharacterSelect:OnClickCreateCharater() (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:137)
-UnityEngine.EventSystems.EventSystem:Update()
-
-2025-09-17 16:42:31,269 [ 1] WARN  Unity: Animator is not playing an AnimatorController
-UnityEngine.Animator:SetTrigger(String)
-UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:163)
-UnityEngine.EventSystems.EventSystem:Update()
-
-2025-09-17 16:42:31,270 [ 1] WARN  Unity: Animator is not playing an AnimatorController
-UnityEngine.Animator:SetTrigger(String)
-UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:163)
-UnityEngine.EventSystems.EventSystem:Update()
-
-2025-09-17 16:42:31,733 [ 1] WARN  Unity: Animator is not playing an AnimatorController
-UnityEngine.Animator:SetTrigger(String)
-UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:163)
-UnityEngine.EventSystems.EventSystem:Update()
-
-2025-09-17 16:42:31,735 [ 1] WARN  Unity: Animator is not playing an AnimatorController
-UnityEngine.Animator:SetTrigger(String)
-UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:163)
-UnityEngine.EventSystems.EventSystem:Update()
-
-2025-09-17 16:42:33,631 [ 1] INFO  Unity: 创建角色 :Yc
-2025-09-17 16:42:37,743 [ 1] INFO  Unity: 创建角色 :Cyy
-2025-09-17 16:42:38,069 [ 1] INFO  Unity: 当前角色数量为3
-2025-09-17 16:43:20,220 [ 1] INFO  Unity: 网络断开
-2025-09-17 16:43:20,221 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-17 17:44:21,672 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-17 17:44:42,791 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-17 17:44:42,793 [ 1] INFO  Unity: 连接成功
+2025-09-17 17:44:42,794 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-17 17:44:42,797 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-17 17:44:42,896 [ 1] INFO  Unity: 收到登录响应
+2025-09-17 17:44:42,897 [ 1] INFO  Unity: 登录成功
+2025-09-17 17:44:43,303 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-17 17:44:43,972 [ 1] INFO  Unity: index值为0
+2025-09-17 17:44:44,764 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-17 17:44:44,793 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-17 17:44:44,795 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-17 17:44:44,796 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-17 17:44:44,797 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-17 17:44:44,797 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:1]
+2025-09-17 17:44:44,798 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
+2025-09-17 17:44:44,799 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:20]
+2025-09-17 17:44:44,799 [ 1] INFO  Unity: ItemManager初始化道具:[ID:11,Count:1]
+2025-09-17 17:44:44,800 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
+2025-09-17 17:44:44,801 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1002,Count:1]
+2025-09-17 17:44:44,801 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:1]
+2025-09-17 17:44:44,809 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-17 17:44:44,810 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 17:44:44,811 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-17 17:44:44,812 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-17 17:44:44,814 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-17 17:44:44,815 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-17 17:44:45,163 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 17:44:46,137 [ 1] INFO  Unity: Set Channel:Local
+2025-09-17 17:45:15,960 [ 1] INFO  Unity: 网络断开
+2025-09-17 17:45:15,961 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)
 
+2025-09-17 17:45:15,966 [ 1] INFO  Unity: 消失的玩家：13,位置(5098, 4682, 804)

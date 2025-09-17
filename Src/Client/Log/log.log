@@ -1,35 +1,112 @@
-2025-09-17 17:16:26,762 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-17 17:16:29,525 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-17 17:16:29,527 [ 1] INFO  Unity: 连接成功
-2025-09-17 17:16:29,528 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-17 17:16:29,531 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-17 17:16:29,632 [ 1] INFO  Unity: 收到登录响应
-2025-09-17 17:16:29,633 [ 1] INFO  Unity: 登录成功
-2025-09-17 17:16:30,032 [ 1] INFO  Unity: 当前角色数量为3
-2025-09-17 17:16:30,437 [ 1] INFO  Unity: index值为0
-2025-09-17 17:16:30,815 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-17 17:16:30,843 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-17 17:16:30,845 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-17 17:16:30,846 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-17 17:16:30,846 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-17 17:16:30,847 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:1]
-2025-09-17 17:16:30,848 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
-2025-09-17 17:16:30,848 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:20]
-2025-09-17 17:16:30,849 [ 1] INFO  Unity: ItemManager初始化道具:[ID:11,Count:1]
-2025-09-17 17:16:30,850 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
-2025-09-17 17:16:30,850 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1002,Count:1]
-2025-09-17 17:16:30,851 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:1]
-2025-09-17 17:16:30,859 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
-2025-09-17 17:16:30,860 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-17 17:16:30,861 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-17 17:16:30,862 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-17 17:16:30,864 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-17 17:16:30,865 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-17 17:16:31,215 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-17 17:16:32,159 [ 1] INFO  Unity: Set Channel:Local
-2025-09-17 17:17:04,147 [ 1] INFO  Unity: 消失的玩家：14,位置(4150, 3000, 804)
-2025-09-17 17:17:04,149 [ 1] INFO  Unity: 网络断开
-2025-09-17 17:17:04,150 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-17 19:38:40,670 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-17 19:38:45,358 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-17 19:38:45,365 [ 1] INFO  Unity: 连接成功
+2025-09-17 19:38:45,366 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-17 19:38:45,373 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-17 19:38:46,267 [ 1] INFO  Unity: 收到登录响应
+2025-09-17 19:38:46,270 [ 1] INFO  Unity: 登录成功
+2025-09-17 19:38:46,781 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-17 19:38:47,469 [ 1] INFO  Unity: index值为0
+2025-09-17 19:38:48,414 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-17 19:38:48,624 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-17 19:38:48,632 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-17 19:38:48,633 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-17 19:38:48,633 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-17 19:38:48,634 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:2]
+2025-09-17 19:38:48,635 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
+2025-09-17 19:38:48,635 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:20]
+2025-09-17 19:38:48,636 [ 1] INFO  Unity: ItemManager初始化道具:[ID:11,Count:1]
+2025-09-17 19:38:48,637 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
+2025-09-17 19:38:48,637 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1002,Count:1]
+2025-09-17 19:38:48,638 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:1]
+2025-09-17 19:38:48,675 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-17 19:38:48,676 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 19:38:48,693 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-17 19:38:48,698 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-17 19:38:48,704 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-17 19:38:48,706 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-17 19:38:49,056 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 19:38:52,158 [ 1] INFO  Unity: Set Channel:Local
+2025-09-17 19:38:58,771 [ 1] INFO  Unity: 角色:Alice进入传送门[4:苍龙山脉->利物浦出口
+2025-09-17 19:39:00,138 [ 1] INFO  Unity: 角色:Alice进入传送门[3:利物浦->苍龙山脉传送门
+2025-09-17 19:39:00,138 [ 1] INFO  Unity: 发送SendMapTeleport请求:teleporterID3
+2025-09-17 19:39:00,430 [ 1] INFO  Unity: 1离开了地图
+2025-09-17 19:39:00,433 [ 1] INFO  Unity: 移除角色ID：1
+2025-09-17 19:39:00,435 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-17 19:39:00,436 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 19:39:00,436 [ 1] INFO  Unity: 进入了地图:3,当前角色数量:1
+2025-09-17 19:39:00,437 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:3
+2025-09-17 19:39:03,148 [ 1] INFO  Unity: 场景不匹配：当前场景1, 目标场景3, 开始切换
+2025-09-17 19:39:03,149 [ 1] INFO  Unity: 进入的地图是: Map02
+2025-09-17 19:39:03,371 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 19:39:03,374 [ 1] INFO  Unity: 消失的玩家：1,位置(7419, 2545, 804)
+2025-09-17 19:39:03,937 [ 1] INFO  Unity: 角色:Alice进入传送门[10:利物浦->苍龙山脉出口
+2025-09-17 19:39:13,519 [ 1] INFO  Unity: 进入了地图:3,当前角色数量:1
+2025-09-17 19:39:13,520 [ 1] INFO  Unity: 加入角色姓名:落日恶鬼,地图:3
+2025-09-17 19:39:18,517 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 19:39:18,518 [ 1] INFO  Unity: 进入了地图:3,当前角色数量:1
+2025-09-17 19:39:18,519 [ 1] INFO  Unity: 加入角色姓名:古神祭司,地图:3
+2025-09-17 19:39:35,638 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 19:39:35,683 [ 1] INFO  Unity: 进入了地图:3,当前角色数量:1
+2025-09-17 19:39:35,684 [ 1] INFO  Unity: 加入角色姓名:小恶魔,地图:3
+2025-09-17 19:39:37,199 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 19:39:37,200 [ 1] INFO  Unity: 进入了地图:3,当前角色数量:1
+2025-09-17 19:39:37,200 [ 1] INFO  Unity: 加入角色姓名:失落死神,地图:3
+2025-09-17 19:39:51,341 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 19:40:04,056 [ 1] INFO  Unity: 角色:Alice进入传送门[10:利物浦->苍龙山脉出口
+2025-09-17 19:40:05,756 [ 1] INFO  Unity: 角色:Alice进入传送门[9:苍龙山脉->利物浦传送门
+2025-09-17 19:40:05,757 [ 1] INFO  Unity: 发送SendMapTeleport请求:teleporterID9
+2025-09-17 19:40:05,779 [ 1] INFO  Unity: 1离开了地图
+2025-09-17 19:40:05,780 [ 1] INFO  Unity: 移除角色ID：1
+2025-09-17 19:40:05,781 [ 1] INFO  Unity: 移除角色ID：6
+2025-09-17 19:40:05,781 [ 1] INFO  Unity: 移除角色ID：7
+2025-09-17 19:40:05,782 [ 1] INFO  Unity: 移除角色ID：8
+2025-09-17 19:40:05,783 [ 1] INFO  Unity: 移除角色ID：9
+2025-09-17 19:40:05,784 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-17 19:40:05,784 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 19:40:05,785 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-17 19:40:05,786 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-17 19:40:08,703 [ 1] INFO  Unity: 场景不匹配：当前场景3, 目标场景1, 开始切换
+2025-09-17 19:40:08,704 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-17 19:40:09,055 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 19:40:09,056 [ 1] INFO  Unity: 消失的玩家：1,位置(2210, 4045, 4)
+2025-09-17 19:40:10,144 [ 1] INFO  Unity: 角色:Alice进入传送门[4:苍龙山脉->利物浦出口
+2025-09-17 19:40:22,116 [ 1] INFO  Unity: 角色:Alice进入传送门[2:落日森林->利物浦出口
+2025-09-17 19:40:24,053 [ 1] INFO  Unity: 角色:Alice进入传送门[1:利物浦->落日森林传送门
+2025-09-17 19:40:24,054 [ 1] INFO  Unity: 发送SendMapTeleport请求:teleporterID1
+2025-09-17 19:40:24,093 [ 1] INFO  Unity: 1离开了地图
+2025-09-17 19:40:24,094 [ 1] INFO  Unity: 移除角色ID：1
+2025-09-17 19:40:24,095 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-17 19:40:24,095 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 19:40:24,096 [ 1] INFO  Unity: 进入了地图:2,当前角色数量:2
+2025-09-17 19:40:24,097 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:2
+2025-09-17 19:40:26,200 [ 1] INFO  Unity: 加入角色姓名:失落死神,地图:2
+2025-09-17 19:40:28,857 [ 1] INFO  Unity: 场景不匹配：当前场景1, 目标场景2, 开始切换
+2025-09-17 19:40:28,858 [ 1] INFO  Unity: 进入的地图是: Map01
+2025-09-17 19:40:28,989 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 19:40:29,273 [ 1] INFO  Unity: 消失的玩家：1,位置(716, 2636, 804)
+2025-09-17 19:40:29,302 [ 1] ERROR Unity: Failed to update dynamic font (像素体) texture; all the needed characters do not fit onto a single texture (max size 4096). Try using less text or a smaller font size.
+UnityEngine.Canvas:SendWillRenderCanvases()
+
+2025-09-17 19:40:29,303 [ 1] ERROR Unity: Failed to update dynamic font (像素体) texture; all the needed characters do not fit onto a single texture (max size 4096). Try using less text or a smaller font size.
+UnityEngine.Canvas:SendWillRenderCanvases()
+
+2025-09-17 19:40:29,304 [ 1] ERROR Unity: Failed to update dynamic font (像素体) texture; all the needed characters do not fit onto a single texture (max size 4096). Try using less text or a smaller font size.
+UnityEngine.Canvas:SendWillRenderCanvases()
+
+2025-09-17 19:40:29,305 [ 1] ERROR Unity: Failed to update dynamic font (像素体) texture; all the needed characters do not fit onto a single texture (max size 4096). Try using less text or a smaller font size.
+UnityEngine.Canvas:SendWillRenderCanvases()
+
+2025-09-17 19:40:29,306 [ 1] ERROR Unity: Failed to update dynamic font (像素体) texture; all the needed characters do not fit onto a single texture (max size 4096). Try using less text or a smaller font size.
+UnityEngine.Canvas:SendWillRenderCanvases()
+
+2025-09-17 19:40:29,307 [ 1] ERROR Unity: Failed to update dynamic font (像素体) texture; all the needed characters do not fit onto a single texture (max size 4096). Try using less text or a smaller font size.
+UnityEngine.Canvas:SendWillRenderCanvases()
+
+2025-09-17 19:40:29,589 [ 1] INFO  Unity: 角色:Alice进入传送门[8:利物浦->落日森林出口
+2025-09-17 19:41:27,449 [ 1] INFO  Unity: 消失的玩家：1,位置(5728, 2936, 4)
+2025-09-17 19:41:27,450 [ 1] INFO  Unity: 网络断开
+2025-09-17 19:41:27,451 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)

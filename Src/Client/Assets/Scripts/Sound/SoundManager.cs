@@ -25,7 +25,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     [Header("角色短暂音效")]
     public AudioSource characterOneShotAudioSource;
 
-    const string MusicPath = "Music/";
+    const string MusicPath = "Sound/Music/";
     const string UIPath = "Sound/UI/";
     const string CharacterPath = "Sound/Character/";
     const string CharacterOneShotPath = "Sound/CharacterOneShot/";
