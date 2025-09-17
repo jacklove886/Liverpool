@@ -6,17 +6,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Config
+public class Config//音乐存储
 {
     public static bool MusicOn
     {
         get
         {
-            return PlayerPrefs.GetInt("Music", 1) == 1;
+            return PlayerPrefs.GetInt("Music", 1) == 1;//读取配置 找不到默认为1
         }
         set
         {
-            PlayerPrefs.SetInt("Music", value ? 1 : 0);
+            PlayerPrefs.SetInt("Music", value ? 1 : 0);//设置开关
             SoundManager.Instance.MusicOn = value;
         }
     }
@@ -31,6 +31,19 @@ public class Config
         {
             PlayerPrefs.SetInt("UI", value ? 1 : 0);
             SoundManager.Instance.UIOn = value;
+        }
+    }
+
+    public static bool CharacterOn
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("Character", 1) == 1;
+        }
+        set
+        {
+            PlayerPrefs.SetInt("Character", value ? 1 : 0);
+            SoundManager.Instance.CharacterOn = value;
         }
     }
 
@@ -51,6 +64,16 @@ public class Config
         {
             PlayerPrefs.SetInt("UIVolume", value);
             SoundManager.Instance.UIVolume = value;
+        }
+    }
+
+    public static int CharacterVolume
+    {
+        get { return PlayerPrefs.GetInt("CharacterVolume", 100); }
+        set
+        {
+            PlayerPrefs.SetInt("CharacterVolume", value);
+            SoundManager.Instance.CharacterVolume = value;
         }
     }
 

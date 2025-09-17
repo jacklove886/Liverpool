@@ -136,6 +136,7 @@ public class UICharacterSelect : MonoBehaviour
         panelCreate.SetActive(true);
         OnClickSelectClass(1);//默认选了第一个职业
         originalPanel.SetActive(false);
+        SoundManager.Instance.PlayUI(SoundDefine.Click);
     }
 
 
@@ -156,9 +157,11 @@ public class UICharacterSelect : MonoBehaviour
             //角色3D模型控制
             characterClassPrefab[i].SetActive(i == charClass - 1);
             //选择角色播放音效
-            SoundManager.Instance.PlayUI(SoundDefine.CharacterBuild[classIndex]);
+            SoundManager.Instance.PlayCharacterClipOnAudioSource(SoundDefine.CharacterBuild[charClass-1]);
             //播放动画
-
+            Animator animator = characterClassPrefab[i].GetComponent<Animator>();
+            if(animator!=null)
+            animator.SetTrigger("SelectClass");
         }
         descs.text = DataManager.Instance.Characters[charClass].Description;
     }
@@ -167,6 +170,7 @@ public class UICharacterSelect : MonoBehaviour
     //点击选择已经创建好的角色的按钮
     public void OnClickSelectCharacter(int index)
     {
+        Debug.LogFormat("index值为{0}", index);
         originalPanel.SetActive(false);
         var character = User.Instance.Info.Player.Characters[index];
         User.Instance.CurrentCharacter = character;
@@ -186,9 +190,14 @@ public class UICharacterSelect : MonoBehaviour
         for (int i = 0; i < classCount; i++)
         {
             characterClassPrefab[i].SetActive(i == classIndex);
-
-            imageBackGround[i].gameObject.SetActive(i == classIndex);
-            SoundManager.Instance.PlayUI(SoundDefine.CharacterSelect[classIndex]);
+            imageBackGround[i].gameObject.SetActive(i == classIndex);           
+            if(i == classIndex)
+            {
+                Animator animator = characterClassPrefab[i].GetComponent<Animator>();
+                if (animator != null)
+                    animator.SetTrigger("Click");
+                SoundManager.Instance.PlayCharacterClipOnAudioSource(SoundDefine.CharacterSelect[classIndex]);
+            }                            
         }
         currentIndex = index;
     }

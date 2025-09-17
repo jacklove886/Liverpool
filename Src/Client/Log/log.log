@@ -1,226 +1,36 @@
-2025-09-16 21:13:46,558 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-16 21:13:46,875 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{SocketException: 以一种访问权限不允许的方式做了一个访问套接字的尝试。
-, System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end)
-SyntaxTree.VisualStudio.Unity.Messaging.UdpSocket.Bind (System.Net.IPAddress address, Int32 port)
-SyntaxTree.VisualStudio.Unity.Messaging.Messager..ctor (Int32 port)
-SyntaxTree.VisualStudio.Unity.Messaging.Messager.BindTo (Int32 port)
-SyntaxTree.VisualStudio.Unity.Bridge.VisualStudioIntegration+<>c__DisplayClass9_0.<.cctor>b__0 ()
-SyntaxTree.VisualStudio.Unity.Bridge.Project+<>c__DisplayClass40_0.<RunOnceOnUpdate>b__0 ()
-UnityEditor.EditorApplication.Internal_CallUpdateFunctions () (at D:/unity/Editor/Mono/EditorApplication.cs:191)
-}</args></log4net.Error>
-2025-09-16 21:13:50,023 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-16 21:13:50,024 [ 1] INFO  Unity: 连接成功
-2025-09-16 21:13:50,026 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-16 21:13:50,031 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-16 21:13:50,765 [ 1] INFO  Unity: 收到登录响应
-2025-09-16 21:13:50,766 [ 1] INFO  Unity: 登录成功
-2025-09-16 21:13:50,967 [ 1] INFO  Unity: 当前角色数量为2
-2025-09-16 21:13:52,091 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-16 21:13:52,293 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-16 21:13:52,294 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-16 21:13:52,295 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-16 21:13:52,296 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-16 21:13:52,296 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:1]
-2025-09-16 21:13:52,297 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
-2025-09-16 21:13:52,297 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:20]
-2025-09-16 21:13:52,298 [ 1] INFO  Unity: ItemManager初始化道具:[ID:11,Count:1]
-2025-09-16 21:13:52,299 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
-2025-09-16 21:13:52,299 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1002,Count:1]
-2025-09-16 21:13:52,300 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:1]
-2025-09-16 21:13:52,308 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
-2025-09-16 21:13:52,309 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 21:13:52,318 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-16 21:13:52,319 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-16 21:13:52,321 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-16 21:13:52,322 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-16 21:13:52,323 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 21:13:53,468 [ 1] INFO  Unity: Set Channel:Local
-2025-09-16 21:13:57,932 [ 1] INFO  Unity: 角色:Alice进入传送门[2:落日森林->利物浦出口
-2025-09-16 21:14:01,960 [ 1] INFO  Unity: 角色:Alice进入传送门[1:利物浦->落日森林传送门
-2025-09-16 21:14:01,961 [ 1] INFO  Unity: 发送SendMapTeleport请求:teleporterID1
-2025-09-16 21:14:02,383 [ 1] INFO  Unity: 1离开了地图
-2025-09-16 21:14:02,385 [ 1] INFO  Unity: 移除角色ID：1
-2025-09-16 21:14:02,388 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
-2025-09-16 21:14:02,388 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 21:14:02,389 [ 1] INFO  Unity: 进入了地图:2,当前角色数量:1
-2025-09-16 21:14:02,389 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:2
-2025-09-16 21:14:02,412 [ 1] INFO  Unity: 场景不匹配：当前场景1, 目标场景2, 开始切换
-2025-09-16 21:14:02,413 [ 1] INFO  Unity: 进入的地图是: Map01
-2025-09-16 21:14:02,413 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 21:14:02,414 [ 1] INFO  Unity: 消失的玩家：1,位置(694, 2562, 804)
-2025-09-16 21:14:02,972 [ 1] INFO  Unity: 角色:Alice进入传送门[8:利物浦->落日森林出口
-2025-09-16 21:14:19,495 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
-
-2025-09-16 21:14:42,404 [ 1] INFO  Unity: 进入了地图:2,当前角色数量:1
-2025-09-16 21:14:42,405 [ 1] INFO  Unity: 加入角色姓名:落日恶鬼,地图:2
-2025-09-16 21:14:42,412 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 21:14:42,413 [ 1] INFO  Unity: 进入了地图:2,当前角色数量:1
-2025-09-16 21:14:42,413 [ 1] INFO  Unity: 加入角色姓名:古神祭司,地图:2
-2025-09-16 21:14:42,422 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 21:14:42,423 [ 1] INFO  Unity: 进入了地图:2,当前角色数量:1
-2025-09-16 21:14:42,424 [ 1] INFO  Unity: 加入角色姓名:小恶魔,地图:2
-2025-09-16 21:14:42,438 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 21:14:42,451 [ 1] INFO  Unity: 进入了地图:2,当前角色数量:1
-2025-09-16 21:14:42,452 [ 1] INFO  Unity: 加入角色姓名:失落死神,地图:2
-2025-09-16 21:14:42,482 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 21:14:43,320 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
-
-2025-09-16 21:14:44,594 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
-
-2025-09-16 21:14:44,722 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:47)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:103)
-
-2025-09-16 21:14:45,577 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
-
-2025-09-16 21:14:47,196 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:47)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:103)
-
-2025-09-16 21:14:50,116 [ 1] INFO  Unity: 角色:Alice进入传送门[8:利物浦->落日森林出口
-2025-09-16 21:14:50,637 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
-
-2025-09-16 21:14:52,268 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
-
-2025-09-16 21:14:53,153 [ 1] INFO  Unity: 角色:Alice进入传送门[7:落日森林->利物浦传送门
-2025-09-16 21:14:53,154 [ 1] INFO  Unity: 发送SendMapTeleport请求:teleporterID7
-2025-09-16 21:14:53,176 [ 1] INFO  Unity: 1离开了地图
-2025-09-16 21:14:53,177 [ 1] INFO  Unity: 移除角色ID：1
-2025-09-16 21:14:53,178 [ 1] INFO  Unity: 移除角色ID：2
-2025-09-16 21:14:53,179 [ 1] INFO  Unity: 移除角色ID：3
-2025-09-16 21:14:53,179 [ 1] INFO  Unity: 移除角色ID：4
-2025-09-16 21:14:53,180 [ 1] INFO  Unity: 移除角色ID：5
-2025-09-16 21:14:53,181 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
-2025-09-16 21:14:53,181 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 21:14:53,182 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-16 21:14:53,182 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-16 21:14:53,205 [ 1] INFO  Unity: 场景不匹配：当前场景2, 目标场景1, 开始切换
-2025-09-16 21:14:53,206 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-16 21:14:53,206 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 21:14:53,207 [ 1] INFO  Unity: 消失的玩家：1,位置(2221, 4003, 4)
-2025-09-16 21:14:53,217 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
-
-2025-09-16 21:14:54,188 [ 1] INFO  Unity: 角色:Alice进入传送门[2:落日森林->利物浦出口
-2025-09-16 21:14:55,340 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
-
-2025-09-16 21:14:55,944 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:47)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:103)
-
-2025-09-16 21:14:56,443 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
-
-2025-09-16 21:14:59,901 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
-
-2025-09-16 21:15:13,660 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][900]
-2025-09-16 21:15:13,661 [ 1] INFO  Unity: 收到任务提交响应:Success
-2025-09-16 21:15:13,666 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
-2025-09-16 21:15:13,667 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-16 21:15:14,501 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
-
-2025-09-16 21:15:14,668 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:47)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:103)
-
-2025-09-16 21:15:15,365 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
-
-2025-09-16 21:15:16,855 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
-
-2025-09-16 21:15:16,952 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:47)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:103)
-
-2025-09-16 21:15:17,220 [ 1] WARN  Unity: Parameter 'Run' does not exist.
-UnityEngine.Animator:SetBool(String, Boolean)
-RideController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/RideController.cs:43)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:121)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:169)
-PlayerInputController:FixedUpdate() (at Assets/Scripts/GameObject/PlayerInputController.cs:91)
-
-2025-09-16 21:15:18,004 [ 1] INFO  Unity: 网络断开
-2025-09-16 21:15:18,005 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-17 17:16:26,762 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-17 17:16:29,525 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-17 17:16:29,527 [ 1] INFO  Unity: 连接成功
+2025-09-17 17:16:29,528 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-17 17:16:29,531 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-17 17:16:29,632 [ 1] INFO  Unity: 收到登录响应
+2025-09-17 17:16:29,633 [ 1] INFO  Unity: 登录成功
+2025-09-17 17:16:30,032 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-17 17:16:30,437 [ 1] INFO  Unity: index值为0
+2025-09-17 17:16:30,815 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-17 17:16:30,843 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-17 17:16:30,845 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-17 17:16:30,846 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-17 17:16:30,846 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-17 17:16:30,847 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:1]
+2025-09-17 17:16:30,848 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
+2025-09-17 17:16:30,848 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:20]
+2025-09-17 17:16:30,849 [ 1] INFO  Unity: ItemManager初始化道具:[ID:11,Count:1]
+2025-09-17 17:16:30,850 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
+2025-09-17 17:16:30,850 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1002,Count:1]
+2025-09-17 17:16:30,851 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:1]
+2025-09-17 17:16:30,859 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-17 17:16:30,860 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 17:16:30,861 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-17 17:16:30,862 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-17 17:16:30,864 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-17 17:16:30,865 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-17 17:16:31,215 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-17 17:16:32,159 [ 1] INFO  Unity: Set Channel:Local
+2025-09-17 17:17:04,147 [ 1] INFO  Unity: 消失的玩家：14,位置(4150, 3000, 804)
+2025-09-17 17:17:04,149 [ 1] INFO  Unity: 网络断开
+2025-09-17 17:17:04,150 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)
 
-2025-09-16 21:15:18,010 [ 1] INFO  Unity: 消失的玩家：1,位置(4201, 5110, 804)

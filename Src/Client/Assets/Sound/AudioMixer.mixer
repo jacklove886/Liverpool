@@ -16,13 +16,13 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: 0c4c26c8cbf8b4247bb4c3073978ef6a
-    name: Character
+    name: CharacterVolume
   - guid: f573b04c98e841f478895c0b3800a401
-    name: CharacterJump
+    name: CharacterOneShot
   - guid: fcef575948e60fe4aac712648d8ba02d
     name: MusicVolume
   - guid: 7446c312f0bcd814ebb4bb3fb4ae65c0
-    name: SoundVolume
+    name: UIVolume
   m_AudioMixerGroupViews:
   - guids:
     - 9c02ae741aa5237488837cdd937e49c3
@@ -83,7 +83,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: CharacterJump
+  m_Name: CharacterOneShot
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 65fda8055a4c0af4bad40574bcf36889
   m_Children: []
@@ -117,7 +117,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Sound
+  m_Name: UI
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: e60ae029fed3f9549acd9dab9107b16f
   m_Children: []

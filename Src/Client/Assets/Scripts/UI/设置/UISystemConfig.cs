@@ -9,21 +9,38 @@ using Common.Data;
 
 public class UISystemConfig : UIWindow {
 
+    [Header("Music")]
     public Image BackGroundMusic;
-    public Image BackGroundSound;
-
     public Slider SliderMusic;
-    public Slider SliderSound;
-
     public Toggle ToggleMusic;
-    public Toggle ToggleSound;
+    public Text MusicText;
+
+    [Header("UI")]
+    public Image BackGroundUI;
+    public Slider SliderUI;
+    public Toggle ToggleUI;
+    public Text UIText;
+
+    [Header("Character")]
+    public Image BackGroundCharacter;
+    public Slider SliderCharacter;
+    public Toggle ToggleCharacter;
+    public Text CharacterText;
 
     private void Start()
     {
+        //从配置里读取音量
         ToggleMusic.isOn = Config.MusicOn;
-        ToggleSound.isOn = Config.MusicOn;
         SliderMusic.value = Config.MusicVolume;
-        SliderSound.value = Config.UIVolume;
+        MusicText.text = Config.MusicVolume.ToString();
+
+        ToggleUI.isOn = Config.UIOn;
+        SliderUI.value = Config.UIVolume;
+        UIText.text = Config.UIVolume.ToString();
+
+        ToggleCharacter.isOn = Config.MusicOn;
+        SliderCharacter.value = Config.MusicVolume;
+        CharacterText.text = Config.MusicVolume.ToString();
     }
 
     public override void OnYesClick()
@@ -33,29 +50,45 @@ public class UISystemConfig : UIWindow {
         base.OnYesClick();
     }
 
-    public void MusicToogle(bool on)
+    public void MusicToogle(bool on)//绑定Toogle组件控制
     {
         BackGroundMusic.enabled = !on;
         Config.MusicOn = on;
         SoundManager.Instance.PlayUI(SoundDefine.Click);
     }
 
-    public void SoundToogle(bool on)
+    public void UIToogle(bool on)
     {
-        BackGroundSound.enabled = !on;
+        BackGroundUI.enabled = !on;
         Config.UIOn = on;
         SoundManager.Instance.PlayUI(SoundDefine.Click);
     }
 
-    public void MusicVolume(float volume)
+    public void CharacterToogle(bool on)//绑定Toogle组件控制
+    {
+        BackGroundCharacter.enabled = !on;
+        Config.CharacterOn = on;
+        SoundManager.Instance.PlayUI(SoundDefine.Click);
+    }
+
+    public void MusicVolume(int volume)//绑定Slider组件控制
     {
         Config.MusicVolume = (int)volume;
+        MusicText.text = volume.ToString();
         PlaySound();
     }
 
-    public void SoundVolume(float volume)
+    public void UIVolume(int volume)
     {
         Config.UIVolume = (int)volume;
+        UIText.text = volume.ToString();
+        PlaySound();
+    }
+
+    public void CharacterVolume(int volume)
+    {
+        Config.CharacterVolume = (int)volume;
+        CharacterText.text = volume.ToString();
         PlaySound();
     }
 

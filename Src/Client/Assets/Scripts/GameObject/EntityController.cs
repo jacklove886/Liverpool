@@ -153,14 +153,16 @@ public class EntityController : MonoBehaviour, IEntityNotify
     private void SetIdleAnimation()
     {
         anim.SetBool("Move", false);  
-        anim.SetBool("Run", false);  
+        anim.SetBool("Run", false);
+        SoundManager.Instance.StopCharacter();
     }
 
     
     private void SetMovementAnimation()
     {
         anim.SetBool("Move", true);  
-        anim.SetBool("Run", false);  
+        anim.SetBool("Run", false);
+        SoundManager.Instance.PlayCharacter(SoundDefine.CharacterWalk[currentCharacterClass]);
     }
 
 
@@ -168,16 +170,17 @@ public class EntityController : MonoBehaviour, IEntityNotify
     private void SetRunAnimation()
     {
         anim.SetBool("Run", true);  
-        anim.SetBool("Move", false);  
+        anim.SetBool("Move", false);
+        SoundManager.Instance.PlayCharacter(SoundDefine.CharacterRun[currentCharacterClass]);
     }
 
     
     //跳跃事件
     private void Jump()
     {
-        anim.SetTrigger("Jump");  
+        anim.SetTrigger("Jump");
+        SoundManager.Instance.PlayCharacterClipOnAudioSource(SoundDefine.CharacterJump[currentCharacterClass]);
 
-               
 
         // 等待跳跃动画播放后 才播放走路跑步音效
         StartCoroutine(JumpWaitTime());
