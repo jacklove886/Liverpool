@@ -1,7 +1,39 @@
-2025-09-18 17:31:57,670 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-18 17:31:59,175 [ 1] INFO  Unity: 网络断开
-2025-09-18 17:31:59,176 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-19 00:04:12,151 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-19 00:04:14,801 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-19 00:04:14,803 [ 1] INFO  Unity: 连接成功
+2025-09-19 00:04:14,805 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-19 00:04:14,808 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-19 00:04:15,531 [ 1] INFO  Unity: 收到登录响应
+2025-09-19 00:04:15,531 [ 1] INFO  Unity: 登录成功
+2025-09-19 00:04:15,533 [ 1] WARN  Unity: 音乐:selectCharacter不存在
+UnityEngine.Debug:LogWarningFormat(String, Object[])
+SoundManager:PlayMusic(String) (at Assets/Scripts/Sound/SoundManager.cs:145)
+UILogin:OnLogin(Result, String) (at Assets/Scripts/UI/登录注册场景/UILogin.cs:104)
+Services.UserService:OnUserLogin(Object, UserLoginResponse) (at Assets/Scripts/Services/UserService.cs:197)
+Network.MessageDistributer`1:RaiseEvent(Object, UserLoginResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
+Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDispatch.cs:11)
+Network.MessageDistributer`1:Distribute() (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:150)
+Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:416)
+Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:433)
+
+2025-09-19 00:04:15,755 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-19 00:04:16,751 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-19 00:04:16,915 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-19 00:04:16,917 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-19 00:04:16,918 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-19 00:04:16,926 [ 1] INFO  Unity: OnGuild,[Success][1][利物浦]
+2025-09-19 00:04:16,927 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 00:04:16,928 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-19 00:04:16,929 [ 1] INFO  Unity: 加入角色姓名:Aa,地图:1
+2025-09-19 00:04:16,931 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-19 00:04:16,932 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-19 00:04:17,415 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 00:04:18,437 [ 1] INFO  Unity: Set Channel:Local
+2025-09-19 00:04:20,157 [ 1] INFO  Unity: 发送离开公会的请求
+2025-09-19 00:04:26,544 [ 1] INFO  Unity: 网络断开
+2025-09-19 00:04:26,544 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)
 
+2025-09-19 00:04:26,551 [ 1] INFO  Unity: 消失的玩家：1,位置(4150, 3000, 803)

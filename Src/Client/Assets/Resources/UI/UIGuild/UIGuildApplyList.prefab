@@ -723,6 +723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2b2186e3ec5014689760284f720861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Root: {fileID: 0}
   itemPrefab: {fileID: 1000736347348350, guid: a02b9ac21d66fa040b90d30cf78db2a5, type: 2}
   listMain: {fileID: 114494505462675892}
   itemRoot: {fileID: 224451325354402428}
@@ -1057,7 +1058,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &224021234967397110
 RectTransform:

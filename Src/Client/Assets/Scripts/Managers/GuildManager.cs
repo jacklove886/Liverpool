@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using Models;
 using SkillBridge.Message;
+using UnityEngine;
 
 namespace Managers
 {
     class GuildManager : Singleton<GuildManager>
     {
-        public NGuildInfo guildInfo;//公会信息
+        public NGuildInfo guildInfo;
 
         public NGuildMemberInfo myMemberInfo=null;
 

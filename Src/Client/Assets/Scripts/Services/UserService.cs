@@ -308,6 +308,8 @@ namespace Services
                     QuestManager.Instance.Init(response.Character.Quests);
                     FriendManager.Instance.Init(response.Character.Friends);
                     GuildManager.Instance.Init(response.Character.Guild);
+                    if(UIMain.Instance!=null)
+                    UIMain.Instance.UpdateAvatar();
                 }
             }
         }

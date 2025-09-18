@@ -28,7 +28,7 @@ public class UIGuildInfo : MonoBehaviour
     {
         if (this.info == null)
         {
-            this.guildName.text = "无";
+            this.guildName.text = "暂时没有公会";
             this.guildID.text = "ID:0";
             this.leader.text = "会长:无";
             this.notice.text = "";

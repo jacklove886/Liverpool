@@ -12,16 +12,16 @@ public class UIMain : MonoSingleton<UIMain> {
     public UITeam UITeam;
     public Image characterImage;
 
-    protected override void OnStart ()
+
+    protected override void OnStart()
     {
         UpdateAvatar();
-        characterImage.overrideSprite = SpriteManager.Instance.characterIcons[(int)User.Instance.CurrentCharacter.Class-1];
     }
-	
 
-    void UpdateAvatar()
+    public void UpdateAvatar()
     {
         myNameandLevel.text = User.Instance.CurrentCharacter.Name +"  "+ User.Instance.CurrentCharacter.Level.ToString()+"级";
+        characterImage.overrideSprite = SpriteManager.Instance.characterIcons[(int)User.Instance.CurrentCharacter.Class - 1];
     }
       
     public void OnClickBag()

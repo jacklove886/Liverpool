@@ -607,8 +607,8 @@ message TeamLeaveResponse
 enum GUILD_TITLE
 {
 	NONE=0;//普通成员
-	PRESIDENT=1;//会长
-	VICE_PRESIDENT=2;//副会长
+	VICE_PRESIDENT=1;//副会长
+	PRESIDENT=2;//会长
 }
 
 enum APPLY_RESULT
@@ -712,7 +712,8 @@ message GuildResponse
 //离开公会
 message GuildLeaveRequest
 {
-
+	int32 guild_id=1;
+	int32 characterId=2;
 }
 
 message GuildLeaveResponse

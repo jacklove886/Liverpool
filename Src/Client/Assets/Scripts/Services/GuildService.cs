@@ -17,6 +17,8 @@ namespace Services
 
         public System.Action<List<NGuildInfo>> OnGuildListResult;//公会列表更新事件
 
+        public System.Action OnGuildClose;//关闭公会页面
+
         public void Init()
         {
 
@@ -144,12 +146,14 @@ namespace Services
         }
 
         //发送离开公会的请求
-        public void SendGuildLeaveRequest()
+        public void SendGuildLeaveRequest(int guildId,int characterId)
         {
             Debug.LogFormat("发送离开公会的请求");
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.guildLeave = new GuildLeaveRequest();
+            message.Request.guildLeave.GuildId = guildId;
+            message.Request.guildLeave.characterId = characterId;
             NetClient.Instance.SendMessage(message);
         }
 
@@ -158,11 +162,16 @@ namespace Services
             if (response.Result == Result.Success)
             {
                 GuildManager.Instance.Init(null);
-                MessageBox.Show("离开公会成功", "公会");
+                if(response.Msg!=null)
+                MessageBox.Show(response.Msg, "公会");
+                if (OnGuildClose != null)
+                {
+                    OnGuildClose();
+                }
             }
             else if (response.Result == Result.Failed)
             {
-                MessageBox.Show("离开公会失败", "公会",MessageBoxType.Error);
+                MessageBox.Show(response.Msg, "公会",MessageBoxType.Error);
             }
         }
 

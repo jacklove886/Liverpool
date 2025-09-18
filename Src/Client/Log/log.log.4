@@ -1,72 +1,91 @@
-2025-09-18 17:38:50,336 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-18 17:38:53,185 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-18 17:38:53,187 [ 1] INFO  Unity: 连接成功
-2025-09-18 17:38:53,188 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-18 17:38:53,191 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-18 17:38:53,287 [ 1] INFO  Unity: 收到登录响应
-2025-09-18 17:38:53,288 [ 1] INFO  Unity: 登录成功
-2025-09-18 17:38:53,711 [ 1] INFO  Unity: 当前角色数量为3
-2025-09-18 17:38:57,744 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-18 17:38:57,932 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-18 17:38:57,934 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:22]
-2025-09-18 17:38:57,935 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-18 17:38:57,935 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-18 17:38:57,936 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:2]
-2025-09-18 17:38:57,937 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
-2025-09-18 17:38:57,937 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:21]
-2025-09-18 17:38:57,938 [ 1] INFO  Unity: ItemManager初始化道具:[ID:11,Count:2]
-2025-09-18 17:38:57,939 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
-2025-09-18 17:38:57,939 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1002,Count:1]
-2025-09-18 17:38:57,940 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:2]
-2025-09-18 17:38:57,948 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
-2025-09-18 17:38:57,949 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-18 17:38:57,950 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-18 17:38:57,951 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-18 17:38:57,954 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-18 17:38:57,955 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-18 17:38:58,304 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-18 17:38:59,309 [ 1] INFO  Unity: Set Channel:Local
-2025-09-18 17:39:09,180 [ 1] INFO  Unity: 角色:Alice进入传送门[4:苍龙山脉->利物浦出口
-2025-09-18 17:39:10,634 [ 1] INFO  Unity: 角色:Alice进入传送门[3:利物浦->苍龙山脉传送门
-2025-09-18 17:39:10,635 [ 1] INFO  Unity: 发送SendMapTeleport请求:teleporterID3
-2025-09-18 17:39:11,276 [ 1] INFO  Unity: 9离开了地图
-2025-09-18 17:39:11,278 [ 1] INFO  Unity: 移除角色ID：9
-2025-09-18 17:39:11,280 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
-2025-09-18 17:39:11,281 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-18 17:39:11,281 [ 1] INFO  Unity: 进入了地图:3,当前角色数量:2
-2025-09-18 17:39:11,282 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:3
-2025-09-18 17:39:11,304 [ 1] INFO  Unity: 加入角色姓名:失落死神,地图:3
-2025-09-18 17:39:11,338 [ 1] INFO  Unity: 场景不匹配：当前场景1, 目标场景3, 开始切换
-2025-09-18 17:39:11,339 [ 1] INFO  Unity: 进入的地图是: Map02
-2025-09-18 17:39:11,563 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-18 17:39:11,564 [ 1] WARN  Unity: Failed to create agent because it is not close enough to the NavMesh
+2025-09-19 00:37:00,010 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-19 00:37:10,923 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-19 00:37:10,925 [ 1] INFO  Unity: 连接成功
+2025-09-19 00:37:10,926 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-19 00:37:10,929 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-19 00:37:11,673 [ 1] INFO  Unity: 收到登录响应
+2025-09-19 00:37:11,674 [ 1] INFO  Unity: 登录成功
+2025-09-19 00:37:11,676 [ 1] WARN  Unity: 音乐:selectCharacter不存在
+UnityEngine.Debug:LogWarningFormat(String, Object[])
+SoundManager:PlayMusic(String) (at Assets/Scripts/Sound/SoundManager.cs:145)
+UILogin:OnLogin(Result, String) (at Assets/Scripts/UI/登录注册场景/UILogin.cs:104)
+Services.UserService:OnUserLogin(Object, UserLoginResponse) (at Assets/Scripts/Services/UserService.cs:197)
+Network.MessageDistributer`1:RaiseEvent(Object, UserLoginResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
+Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDispatch.cs:11)
+Network.MessageDistributer`1:Distribute() (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:150)
+Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:416)
+Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:433)
+
+2025-09-19 00:37:11,908 [ 1] INFO  Unity: 当前角色数量为4
+2025-09-19 00:37:12,822 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-19 00:37:12,991 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-19 00:37:12,993 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-19 00:37:12,993 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-19 00:37:13,001 [ 1] INFO  Unity: OnGuild,[Success][2][aaa]
+2025-09-19 00:37:13,002 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 00:37:13,003 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-19 00:37:13,004 [ 1] INFO  Unity: 加入角色姓名:Aa,地图:1
+2025-09-19 00:37:13,006 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-19 00:37:13,008 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-19 00:37:13,505 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 00:37:14,454 [ 1] INFO  Unity: Set Channel:Local
+2025-09-19 00:37:15,995 [ 1] INFO  Unity: 发送离开公会的请求
+2025-09-19 00:37:16,257 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 00:37:20,892 [ 1] INFO  Unity: 发送公会列表的请求
+2025-09-19 00:37:21,074 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 00:37:39,545 [ 1] INFO  Unity: 发送创建公会请求
+2025-09-19 00:37:39,645 [ 1] INFO  Unity: 收到创建公会响应:Success
+2025-09-19 00:37:39,646 [ 1] INFO  Unity: OnGuild,[Success][3][aaa]
+2025-09-19 00:37:39,647 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 00:37:41,775 [ 1] INFO  Unity: 发送离开公会的请求
+2025-09-19 00:37:41,813 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 00:38:17,503 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
+2025-09-19 00:38:17,504 [ 1] WARN  Unity: 音乐:selectCharacter不存在
+UnityEngine.Debug:LogWarningFormat(String, Object[])
+SoundManager:PlayMusic(String) (at Assets/Scripts/Sound/SoundManager.cs:145)
+UISetting:OnClickBackToChooseCharacter() (at Assets/Scripts/UI/设置/UISetting.cs:12)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-19 00:38:17,505 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-19 00:38:17,525 [ 1] INFO  Unity: 1离开了地图
+2025-09-19 00:38:17,527 [ 1] INFO  Unity: 移除角色ID：1
+2025-09-19 00:38:17,529 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 00:38:17,530 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-19 00:38:17,530 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 00:38:17,531 [ 1] INFO  Unity: 消失的玩家：1,位置(5197, 3919, 800)
+2025-09-19 00:38:17,720 [ 1] INFO  Unity: 当前角色数量为4
+2025-09-19 00:38:18,593 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-19 00:38:18,606 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-19 00:38:18,607 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-19 00:38:18,608 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-19 00:38:18,608 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 00:38:18,609 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-19 00:38:18,610 [ 1] INFO  Unity: 加入角色姓名:B,地图:1
+2025-09-19 00:38:18,612 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-19 00:38:18,612 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-19 00:38:18,613 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 00:38:18,710 [ 1] WARN  Unity: Failed to create agent because there is no valid NavMesh
 UnityEngine.GameObject:AddComponent()
 PlayerInputController:Start() (at Assets/Scripts/GameObject/PlayerInputController.cs:47)
 
-2025-09-18 17:39:11,565 [ 1] INFO  Unity: 消失的玩家：9,位置(7418, 2609, 800)
-2025-09-18 17:39:12,063 [ 1] INFO  Unity: 角色:Alice进入传送门[10:利物浦->苍龙山脉出口
-2025-09-18 17:39:19,590 [ 1] INFO  Unity: 角色:Alice进入传送门[10:利物浦->苍龙山脉出口
-2025-09-18 17:39:20,122 [ 1] INFO  Unity: 角色:Alice进入传送门[9:苍龙山脉->利物浦传送门
-2025-09-18 17:39:20,123 [ 1] INFO  Unity: 发送SendMapTeleport请求:teleporterID9
-2025-09-18 17:39:20,144 [ 1] INFO  Unity: 9离开了地图
-2025-09-18 17:39:20,145 [ 1] INFO  Unity: 移除角色ID：9
-2025-09-18 17:39:20,146 [ 1] INFO  Unity: 移除角色ID：8
-2025-09-18 17:39:20,146 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
-2025-09-18 17:39:20,147 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-18 17:39:20,148 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-18 17:39:20,148 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-18 17:39:20,171 [ 1] INFO  Unity: 场景不匹配：当前场景3, 目标场景1, 开始切换
-2025-09-18 17:39:20,172 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-18 17:39:20,521 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-18 17:39:20,522 [ 1] WARN  Unity: Failed to create agent because there is no valid NavMesh
-UnityEngine.GameObject:AddComponent()
-PlayerInputController:Start() (at Assets/Scripts/GameObject/PlayerInputController.cs:47)
-
-2025-09-18 17:39:20,523 [ 1] INFO  Unity: 消失的玩家：9,位置(2221, 3931, 4)
-2025-09-18 17:39:21,384 [ 1] INFO  Unity: 角色:Alice进入传送门[4:苍龙山脉->利物浦出口
-2025-09-18 17:39:26,818 [ 1] INFO  Unity: 消失的玩家：9,位置(3906, 2904, 802)
-2025-09-18 17:39:26,824 [ 1] INFO  Unity: 网络断开
-2025-09-18 17:39:26,825 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-19 00:38:24,913 [ 1] INFO  Unity: 发送创建公会请求
+2025-09-19 00:38:24,931 [ 1] INFO  Unity: 收到创建公会响应:Success
+2025-09-19 00:38:24,933 [ 1] INFO  Unity: OnGuild,[Success][4][123]
+2025-09-19 00:38:24,934 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 00:38:31,225 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UIGuild.<OnClickLeave>m__5 () (at Assets/Scripts/UI/公会系统/UIGuild.cs:180)
+UIMessageBox.OnClickYes () (at Assets/Scripts/UI/选择角色场景/UIMessageBox.cs:53)
+UnityEngine.Events.InvokableCall.Invoke () (at D:/unity/Runtime/Export/UnityEvent.cs:166)
+UnityEngine.Events.UnityEvent.Invoke () (at D:/unity/Runtime/Export/UnityEvent_0.cs:58)
+UnityEngine.UI.Button.Press () (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:36)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at D:/unity/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update()
+}</args></log4net.Error>
+2025-09-19 00:38:59,016 [ 1] INFO  Unity: 消失的玩家：10,位置(5171, 4021, 800)
+2025-09-19 00:38:59,019 [ 1] INFO  Unity: 网络断开
+2025-09-19 00:38:59,020 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)

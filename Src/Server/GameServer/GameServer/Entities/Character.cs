@@ -43,7 +43,7 @@ namespace GameServer.Entities
             Info.Id = cha.ID;
             Info.EntityId = this.entityId;//继承自Entity
             Info.Name = cha.Name;
-            Info.Level = 10; //cha.Level
+            Info.Level = 1; //cha.Level
             Info.ConfigId = cha.TID;
             Info.Class = (CharacterClass)cha.Class;
             Info.mapId = cha.MapID;
@@ -116,6 +116,12 @@ namespace GameServer.Entities
                 Class = Info.Class,
                 Level = Info.Level
             };
+        }
+
+        public void LeaveGuild()
+        {
+            this.TCharacter.GuildId = 0;
+            this.Guild = null;
         }
 
         public void PostProcess(NetMessageResponse message)

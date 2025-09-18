@@ -33,7 +33,11 @@ namespace GameServer.Services
             var result = ShopManager.Instance.BuyItem(sender, request.shopID, request.shopItemID);//返回方法的结果
             sender.Session.Response.itemBuy = new ItemBuyResponse();
             sender.Session.Response.itemBuy.Result = result;
-            sender.Session.Response.itemBuy.Msg = request.shopItemID.ToString();
+            if (result == Result.Success)
+            {
+                sender.Session.Response.itemBuy.Msg = request.shopItemID.ToString();
+            }
+            else { sender.Session.Response.itemBuy.Msg = "购买失败,金币不够"; }
             sender.SendResponse();
         }
 

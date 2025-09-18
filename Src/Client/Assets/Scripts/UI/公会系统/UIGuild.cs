@@ -23,7 +23,8 @@ public class UIGuild : UIWindow
     private void Start()
     {
         GuildService.Instance.OnGuildUpdate += UpdateUI;
-        this.listMain.onItemSelected += this.OnGuildMemberSelected;
+        GuildService.Instance.OnGuildClose += CloseUIGuild;
+        this.listMain.onItemSelected += this.OnGuildMemberSelected;  
         this.UpdateUI();
     }
 
@@ -39,9 +40,12 @@ public class UIGuild : UIWindow
         ClearList();
         InitItems();
 
-        this.panelNormal.SetActive(GuildManager.Instance.myMemberInfo.Position == GuildTitle.None);
-        this.panelAdmin.SetActive(GuildManager.Instance.myMemberInfo.Position == GuildTitle.VicePresident);
-        this.panelLeader.SetActive(GuildManager.Instance.myMemberInfo.Position == GuildTitle.President);
+        if (GuildManager.Instance!=null&&GuildManager.Instance.myMemberInfo != null)
+        {
+            this.panelNormal.SetActive(GuildManager.Instance.myMemberInfo.Position == GuildTitle.None);
+            this.panelAdmin.SetActive(GuildManager.Instance.myMemberInfo.Position == GuildTitle.VicePresident);
+            this.panelLeader.SetActive(GuildManager.Instance.myMemberInfo.Position == GuildTitle.President);
+        }        
     }
 
     private void OnGuildMemberSelected(ListView.ListViewItem item)
@@ -69,25 +73,6 @@ public class UIGuild : UIWindow
     public void OnClickApplyList()
     {
         UIManager.Instance.Show<UIGuildApplyList>();
-    }
-
-    public void OnClickKickout()
-    {
-        if (selectedItem == null)
-        {
-            MessageBox.Show("请选择要踢出的成员");
-            return;
-        }
-        if (selectedItem.Info.Info.Id == User.Instance.CurrentCharacter.Id)
-        {
-            MessageBox.Show("不能踢自己哦");
-            return;
-        }
-        MessageBox.Show(string.Format("要踢出[{0}]吗", selectedItem.Info.Info.Name), "踢出成员", MessageBoxType.Confirm, "强势踢出", "容我三思").OnYes = () =>
-        {
-            GuildService.Instance.SendGuildAdmin(GuildAdminCommand.Kickout, this.selectedItem.Info.Info.Id);
-       
-        };
     }
 
     public void OnClickPromote()
@@ -157,18 +142,61 @@ public class UIGuild : UIWindow
             GuildService.Instance.SendGuildAdmin(GuildAdminCommand.Transfer, this.selectedItem.Info.Info.Id);
         };
     }
-    public void OnClickSetNotice()
+    public void OnClickKickOut()
     {
-        MessageBox.Show("扩展作业");
+        if (selectedItem == null)
+        {
+            MessageBox.Show("请选择踢出的成员");
+            return;
+        }
+        if (selectedItem.Info.Info.Id == User.Instance.CurrentCharacter.Id)
+        {
+            MessageBox.Show("不能踢自己哦");
+            return;
+        }
+        if ((int)GuildManager.Instance.myMemberInfo.Position<= (int)selectedItem.Info.Position)
+        {
+            MessageBox.Show("只能踢出职位比你低的成员！");
+            return;
+        }
+        MessageBox.Show(string.Format("确定要踢出[{0}]吗", selectedItem.Info.Info.Name), "踢出成员", MessageBoxType.Confirm, "强势踢出", "容我三思").OnYes = () =>
+        {
+            GuildService.Instance.SendGuildAdmin(GuildAdminCommand.Kickout, selectedItem.Info.Info.Id);
+        };
     }
 
     public void OnClickLeave()
     {
-        MessageBox.Show("扩展作业");
+        if (GuildManager.Instance.guildInfo.memberCount > 1)
+        {
+            if (GuildManager.Instance.myMemberInfo.Position == GuildTitle.President)
+            {
+                MessageBox.Show("离开公会前请转让会长职位", "提示");
+                return;
+            }
+        }      
+        MessageBox.Show(string.Format("确定要离开[{0}]吗", UIGuildInfo.Info.GuildName), "离开公会", MessageBoxType.Confirm, "离开", "容我三思").OnYes = () =>
+        {
+            GuildService.Instance.SendGuildLeaveRequest(User.Instance.CurrentCharacter.Guild.Id, User.Instance.CurrentCharacter.Id);
+        };
+    }
+
+    void CloseUIGuild()
+    {
+        Close();
     }
 
     public void OnClickChat()
     {
-        MessageBox.Show("暂未开放");
+        if (selectedItem == null)
+        {
+            MessageBox.Show("请选择要私聊的好友", "私聊");
+        }
+        if (selectedItem != null)
+        {
+            ChatManager.Instance.StartPrivateChat(selectedItem.Info.Info.Id, selectedItem.Info.Info.Name);
+            Close();
+        }        
+
     }
 }

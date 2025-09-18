@@ -24,6 +24,8 @@ namespace Managers
             uIDialog.ButtonText.text = "购买商品";
             if(npc.ID==4)
             uIDialog.ButtonText.text = "升级装备";
+            if (npc.ID == 5)
+            uIDialog.ButtonText.text = "购买坐骑";
             uIDialog.shopParam = npc.Param;
             return true;
         }

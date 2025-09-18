@@ -15,7 +15,7 @@ namespace GameServer.Managers
     class GuildManager : Singleton<GuildManager>
     {
         public Dictionary<int, Guild> Guilds = new Dictionary<int, Guild>();
-        private HashSet<string> GuildNames = new HashSet<string>();
+        public HashSet<string> GuildNames = new HashSet<string>();
 
 
         public void Init()

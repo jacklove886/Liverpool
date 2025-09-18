@@ -15,10 +15,11 @@ public class UIFriend : UIWindow {
     public Transform itemRoot;//Content
     public UIFriendItem selectedItem;
     public InputField inputField;
+    public string input;
 
-    void Start ()
+    void Start()
     {
-        if (listMain == null || this == null) 
+        if (listMain == null || this == null)
             return;
         FriendService.Instance.OnFriendUpdate = RefreshUI;//打开就接收通知 会自动刷新
         listMain.onItemSelected += OnFriendSelected;
@@ -26,9 +27,50 @@ public class UIFriend : UIWindow {
 
     }
 
-    private void OnInputFinished(string nameOrId)
+    public void OnInputFinished(string nameOrId)
     {
         inputField.text = nameOrId;
+        input = nameOrId;
+    }
+
+    private void ShowInputFriend(string input)
+    {
+        ClearFriendList();
+        bool found = false;
+        if (listMain == null || itemPrefab == null)
+        {
+            return;
+        }
+        if (FriendManager.Instance.allfriends.Count == 0)
+        {
+            MessageBox.Show("您目前没有好友,快去添加一个吧！");
+            return;
+        }
+        foreach (var item in FriendManager.Instance.allfriends)
+        {
+            if (item.friendInfo.Name.Contains(input) || item.friendInfo.Id.ToString().Contains(input))
+            {
+                found = true;
+                GameObject go = Instantiate(itemPrefab, this.listMain.transform);
+                if (item.Status == 1)
+                {
+                    go.transform.SetAsFirstSibling();
+                }
+                UIFriendItem ui = go.GetComponent<UIFriendItem>();
+                ui.SetFriendInfo(item);
+                listMain.AddItem(ui);
+            }
+        }
+        if(!found){ MessageBox.Show("没有搜索到匹配的好友"); }
+        if (listMain != null && listMain.items.Count > 0)
+        {
+            listMain.SelectedItem = listMain.items[0];//默认选中第一个
+        }
+    }
+
+    public void OnClickSearch()
+    {
+        ShowInputFriend(input);
     }
 
 
@@ -73,6 +115,7 @@ public class UIFriend : UIWindow {
         {
             MessageBox.Show("请选择要私聊的好友", "私聊");
         }
+        if(selectedItem!=null)
         ChatManager.Instance.StartPrivateChat(selectedItem.Info.friendInfo.Id, selectedItem.Info.friendInfo.Name);
     }
 

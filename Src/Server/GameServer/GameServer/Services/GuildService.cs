@@ -169,10 +169,18 @@ namespace GameServer.Services
             Character character = sender.Session.Character;
             Log.InfoFormat("离开公会请求:角色:[{0},{1}]", character.Id, character.Info.Name);
             sender.Session.Response.guildLeave = new GuildLeaveResponse ();
+            if (character.Guild == null)
+            {
+                sender.Session.Response.guildLeave.Result = Result.Failed;
+                sender.Session.Response.guildLeave.Msg = "你没有公会";
+                sender.SendResponse();
+                return;
+            }
+            sender.Session.Response.guildLeave.Result = Result.Success;
+            sender.Session.Response.guildLeave.Msg = "离开公会成功";
             character.Guild.Leave(character);
-            sender.Session.Response.guildJoinResponse.Result = Result.Success;
-            DBService.Instance.Save();
             sender.SendResponse();
+            DBService.Instance.Save();
         }
 
         private void OnGuildAdmin(NetConnection<NetSession> sender, GuildAdminRequest request)
@@ -201,10 +209,17 @@ namespace GameServer.Services
                 target.Session.Response.guildAdmin.Result = Result.Success;
                 switch (request.Command)
                 {
-                    case GuildAdminCommand.Kickout: target.Session.Response.guildAdmin.Msg = string.Format("你被{0}踢出公会", character.Info.Name); break;
-                    case GuildAdminCommand.Depose: target.Session.Response.guildAdmin.Msg = string.Format("你被{0}罢免为魂师", character.Info.Name); break;
-                    case GuildAdminCommand.Promote: target.Session.Response.guildAdmin.Msg = string.Format("你被{0}晋升为魂斗罗",character.Info.Name); break;
-                    case GuildAdminCommand.Transfer: target.Session.Response.guildAdmin.Msg = "你现在是封号斗罗啦"; break;
+                    case GuildAdminCommand.Kickout:
+                        {
+                            target.Session.Response.guildAdmin.Msg = string.Format("你被{0}踢出公会", character.Info.Name);
+                            target.Session.Response.guildLeave = new GuildLeaveResponse();
+                            target.Session.Response.guildLeave.Result = Result.Success;
+                            target.SendResponse();
+                            break;
+                        }
+                    case GuildAdminCommand.Depose: target.Session.Response.guildAdmin.Msg = string.Format("你被{0}罢免为普通成员", character.Info.Name); break;
+                    case GuildAdminCommand.Promote: target.Session.Response.guildAdmin.Msg = string.Format("你被{0}晋升为副会长",character.Info.Name); break;
+                    case GuildAdminCommand.Transfer: target.Session.Response.guildAdmin.Msg = "你现在是会长啦"; break;
                 }
 
                 target.Session.Response.guildAdmin.commandRequest = request;

@@ -1599,6 +1599,8 @@ MonoBehaviour:
   leader: {fileID: 114751761487198054}
   notice: {fileID: 114806648179143774}
   memberNumber: {fileID: 114607657452953132}
+  huizhangapplyCount: {fileID: 0}
+  fuhuizhangapplyCount: {fileID: 0}
 --- !u!114 &114932070732027444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1637,6 +1639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6dfa08341134ac45a63e6e0d795be03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Root: {fileID: 0}
   itemPrefab: {fileID: 1502487504565596, guid: 725e0b600752ed442966f12ed7357737, type: 2}
   listMain: {fileID: 114737037885789344}
   itemRoot: {fileID: 224052489443682068}
@@ -1849,7 +1852,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &224026672524468728
 RectTransform:

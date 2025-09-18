@@ -1422,6 +1422,12 @@ namespace SkillBridge.Message
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
+        [global::ProtoBuf.ProtoMember(1, Name = @"guild_id")]
+        public int GuildId { get; set; }
+
+        [global::ProtoBuf.ProtoMember(2)]
+        public int characterId { get; set; }
+
     }
 
     [global::ProtoBuf.ProtoContract()]
@@ -1717,10 +1723,10 @@ namespace SkillBridge.Message
     {
         [global::ProtoBuf.ProtoEnum(Name = @"NONE")]
         None = 0,
-        [global::ProtoBuf.ProtoEnum(Name = @"PRESIDENT")]
-        President = 1,
         [global::ProtoBuf.ProtoEnum(Name = @"VICE_PRESIDENT")]
-        VicePresident = 2,
+        VicePresident = 1,
+        [global::ProtoBuf.ProtoEnum(Name = @"PRESIDENT")]
+        President = 2,
     }
 
     [global::ProtoBuf.ProtoContract(Name = @"APPLY_RESULT")]

@@ -44,9 +44,9 @@ public class UIGuildMemberItem : ListView.ListViewItem
             case 0:
                 this.position.text= "普通成员"; break;
             case 1: 
-                this.position.text = "会长"; break;
-            case 2: 
                 this.position.text = "副会长"; break;
+            case 2: 
+                this.position.text = "会长"; break;
         }
         this.joinTime.text = TimeUtil.GetTime(this.Info.joinTime).ToShortDateString();
         this.status.text = this.Info.Status == 1 ? "在线" : TimeUtil.GetTime(this.Info.lastTime).ToString();

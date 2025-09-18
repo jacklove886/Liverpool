@@ -1,4 +1,5 @@
-﻿using Services;
+﻿using Models;
+using Services;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -46,8 +47,14 @@ public class UIGuildPopCreate : UIWindow
             MessageBox.Show("公会宣言为4-50个字符", "错误", MessageBoxType.Error);
             return;
         }
+        if (User.Instance.CurrentCharacter.Gold < 5000)
+        {
+            MessageBox.Show("你还没有5000金币,无法创建公会", "金币不足", MessageBoxType.Error);
+            return;
+        }
 
         GuildService.Instance.SendGuildCreate(inputName.text, inputNotice.text);
+        User.Instance.AddGold(-5000);
     }
 
     private void OnGuildCreated(bool result)//等待服务器返回成功结果后才关闭

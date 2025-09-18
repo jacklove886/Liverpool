@@ -106,10 +106,41 @@ namespace GameServer.Models
             changeTime = TimeUtil.timestamp;
         }
 
-        //离开公会 作业
+        //离开公会
         public void Leave(Character member)
         {
+            var dbMember = GetDBMember(member.Id);
+            if (dbMember != null)
+            {
+                DBService.Instance.Entities.TGuildMembers.Remove(dbMember);
+                this.TGuild.Members.Remove(dbMember);
+            }
+            member.TCharacter.GuildId = 0;
+            member.Guild = null;
 
+            if (TGuild.Members.Count == 0)//公会没人了
+            {
+                DisbandGuild();
+            }
+            DBService.Instance.Save();
+            changeTime = TimeUtil.timestamp;  
+        }
+
+        private void DisbandGuild()
+        {
+            while (TGuild.Applies.Any())
+            {
+                var a = TGuild.Applies.First();
+                TGuild.Applies.Remove(a); //
+                DBService.Instance.Entities.TGuildApplies.Remove(a); 
+            }
+            var Guild = DBService.Instance.Entities.Guilds.FirstOrDefault(v => v.Id == this.Id);
+            if (Guild != null)
+            {
+                GuildManager.Instance.Guilds.Remove(this.Id);
+                GuildManager.Instance.GuildNames.Remove(this.Name);
+                DBService.Instance.Entities.Guilds.Remove(Guild);
+            }
         }
 
 
@@ -232,17 +263,40 @@ namespace GameServer.Models
                     this.TGuild.LeaderName = target.Name;
                     break;
                 case GuildAdminCommand.Kickout:
-                    /*作业 离开逻辑*/
+                    this.TGuild.Members.Remove(target);
+                    Character targetCharacter = CharacterManager.Instance.GetCharatcer(targetId);
+                    if (targetCharacter != null)//在线
+                    {
+                        targetCharacter.LeaveGuild();
+                    }
+                    else
+                    {
+                        RemoveGuildMember(targetId);
+                    }
                     break;
             }
             DBService.Instance.Save();
             changeTime = TimeUtil.timestamp;
         }
 
+        public void RemoveGuildMember(int characterId)
+        {
+            var removeGuildMember = DBService.Instance.Entities.TGuildMembers.FirstOrDefault(v => v.CharacterId == characterId);
+            if (removeGuildMember != null)
+            {
+                DBService.Instance.Entities.TGuildMembers.Remove(removeGuildMember);
+            }
+            var removeCharacter = DBService.Instance.Entities.Characters.FirstOrDefault(v => v.ID == characterId);
+            if (removeCharacter != null)
+            {
+                
+            }
+        }
+
 
         public void PostProcess(Character character, NetMessageResponse message)
         {
-            if (message.Guild == null)
+            if (message.Guild == null&&character.Guild==this)
             {
                 message.Guild = new GuildResponse();
                 message.Guild.Result = Result.Success;
