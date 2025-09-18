@@ -131,7 +131,7 @@ namespace GameServer.Services
                 MapPosX = 4150,//出生点的三维坐标
                 MapPosY = 3000,
                 MapPosZ = 800,
-                Gold = 1000000,
+                Gold = 5000,
                 Equips = new byte[28],
             };
 
@@ -241,6 +241,7 @@ namespace GameServer.Services
 
         private void OnGameEnter(NetConnection<NetSession> sender, UserGameEnterRequest request)
         {
+            //进入游戏 只选择一个角色
             TCharacter databaseCharacter = sender.Session.User.Player.Characters.ElementAt(request.characterIdx);
             Log.InfoFormat("UserGameEnterRequest: characterID:{0}:{1} Map:{2}", databaseCharacter.ID, databaseCharacter.Name, databaseCharacter.MapID);
             Character character = CharacterManager.Instance.CharacterAdd(databaseCharacter);

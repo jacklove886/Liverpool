@@ -12,7 +12,6 @@ using Common.Data;
 
 public class LoadingManager : MonoBehaviour {
 
-    public GameObject UITips;
     public GameObject UILoading;
     public GameObject UILogin;
 
@@ -27,14 +26,8 @@ public class LoadingManager : MonoBehaviour {
         Common.Log.Init("Unity");
         Common.Log.Info("LoadingManager start");
 
-        UITips.SetActive(true);
-        UILoading.SetActive(false);
-        UILogin.SetActive(false);
-        yield return new WaitForSeconds(2f);
-        print("加载完毕1");
         UILoading.SetActive(true);
         yield return new WaitForSeconds(2.5f);
-        UITips.SetActive(false);
         print("加载完毕2");
         yield return DataManager.Instance.LoadData();//携程加载数据库
 

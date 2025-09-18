@@ -107,7 +107,7 @@ public class UIGuild : UIWindow
             MessageBox.Show("对方身份也很高贵！");
             return;
         }
-        MessageBox.Show(string.Format("要晋升[{0}]为魂斗罗吗", selectedItem.Info.Info.Name), "晋升成员", MessageBoxType.Confirm, "光荣升职", "容我三思").OnYes = () =>
+        MessageBox.Show(string.Format("要晋升[{0}]为副会长吗", selectedItem.Info.Info.Name), "晋升成员", MessageBoxType.Confirm, "光荣升职", "容我三思").OnYes = () =>
         {
             GuildService.Instance.SendGuildAdmin(GuildAdminCommand.Promote, this.selectedItem.Info.Info.Id);
         };
@@ -126,15 +126,15 @@ public class UIGuild : UIWindow
         }
         if (selectedItem.Info.Position == GuildTitle.None)
         {
-            MessageBox.Show("对方已经是魂师了！");
+            MessageBox.Show("对方已经是普通成员了！");
             return;
         }
         if (selectedItem.Info.Position == GuildTitle.President)
         {
-            MessageBox.Show("胆敢挑衅封号斗罗！","大胆");
+            MessageBox.Show("胆敢挑衅会长！","大胆");
             return;
         }
-        MessageBox.Show(string.Format("罢免[{0}]为魂师吗", selectedItem.Info.Info.Name), "罢免成员", MessageBoxType.Confirm, "降职", "容我三思").OnYes = () =>
+        MessageBox.Show(string.Format("罢免[{0}]为普通成员吗", selectedItem.Info.Info.Name), "罢免成员", MessageBoxType.Confirm, "降职", "容我三思").OnYes = () =>
         {
             GuildService.Instance.SendGuildAdmin(GuildAdminCommand.Depose, this.selectedItem.Info.Info.Id);
         };
@@ -152,7 +152,7 @@ public class UIGuild : UIWindow
             MessageBox.Show("不能转让给自己哦");
             return;
         }
-        MessageBox.Show(string.Format("要将封号斗罗转让给[{0}]吗", selectedItem.Info.Info.Name), "旺铺转让", MessageBoxType.Confirm, "转让", "容我三思").OnYes = () =>
+        MessageBox.Show(string.Format("要将会长转让给[{0}]吗", selectedItem.Info.Info.Name), "旺铺转让", MessageBoxType.Confirm, "转让", "容我三思").OnYes = () =>
         {
             GuildService.Instance.SendGuildAdmin(GuildAdminCommand.Transfer, this.selectedItem.Info.Info.Id);
         };

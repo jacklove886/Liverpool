@@ -33,6 +33,7 @@ namespace GameServer.Services
             var result = ShopManager.Instance.BuyItem(sender, request.shopID, request.shopItemID);//返回方法的结果
             sender.Session.Response.itemBuy = new ItemBuyResponse();
             sender.Session.Response.itemBuy.Result = result;
+            sender.Session.Response.itemBuy.Msg = request.shopItemID.ToString();
             sender.SendResponse();
         }
 

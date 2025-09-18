@@ -227,7 +227,7 @@ namespace GameServer.Models
                     break;
                 case GuildAdminCommand.Transfer:
                     target.Position = (int)GuildTitle.President;
-                    source.Position = (int)GuildTitle.None;
+                    source.Position = (int)GuildTitle.VicePresident;
                     this.TGuild.LeaderID = targetId;
                     this.TGuild.LeaderName = target.Name;
                     break;

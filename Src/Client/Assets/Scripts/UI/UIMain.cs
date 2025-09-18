@@ -10,10 +10,12 @@ public class UIMain : MonoSingleton<UIMain> {
 
     public Text myNameandLevel;
     public UITeam UITeam;
+    public Image characterImage;
 
     protected override void OnStart ()
     {
         UpdateAvatar();
+        characterImage.overrideSprite = SpriteManager.Instance.characterIcons[(int)User.Instance.CurrentCharacter.Class-1];
     }
 	
 

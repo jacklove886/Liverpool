@@ -157,7 +157,7 @@ public class UICharacterSelect : MonoBehaviour
             //角色3D模型控制
             characterClassPrefab[i].SetActive(i == charClass - 1);
             //选择角色播放音效
-            SoundManager.Instance.PlayCharacterClipOnAudioSource(SoundDefine.CharacterBuild[charClass-1]);
+            SoundManager.Instance.PlayCharacter(SoundDefine.CharacterBuild[charClass-1]);
             //播放动画
             Animator animator = characterClassPrefab[i].GetComponent<Animator>();
             if(animator!=null)
@@ -182,7 +182,6 @@ public class UICharacterSelect : MonoBehaviour
             UICharacterMessage uICharacterMessage = uiChars[i].GetComponent<UICharacterMessage>();
             uICharacterMessage.selected = (index == i);
             uICharacterMessage.deleteButton.gameObject.SetActive(index == i);
-            uICharacterMessage.imageEmpty.gameObject.SetActive(index == i);
         }
 
         //控制角色3D模型显示和删除按钮的显示
@@ -195,7 +194,7 @@ public class UICharacterSelect : MonoBehaviour
                 Animator animator = characterClassPrefab[i].GetComponent<Animator>();
                 if (animator != null)
                     animator.SetTrigger("Click");
-                SoundManager.Instance.PlayCharacterClipOnAudioSource(SoundDefine.CharacterSelect[classIndex]);
+                SoundManager.Instance.PlayCharacter(SoundDefine.CharacterSelect[classIndex]);
             }                            
         }
         currentIndex = index;

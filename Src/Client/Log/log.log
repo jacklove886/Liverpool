@@ -1,35 +1,131 @@
-2025-09-17 22:57:39,007 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-17 22:57:41,124 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-17 22:57:41,126 [ 1] INFO  Unity: 连接成功
-2025-09-17 22:57:41,128 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-17 22:57:41,131 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-17 22:57:41,227 [ 1] INFO  Unity: 收到登录响应
-2025-09-17 22:57:41,228 [ 1] INFO  Unity: 登录成功
-2025-09-17 22:57:41,650 [ 1] INFO  Unity: 当前角色数量为3
-2025-09-17 22:57:42,709 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-17 22:57:42,736 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-17 22:57:42,738 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-17 22:57:42,739 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-17 22:57:42,739 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-17 22:57:42,740 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:2]
-2025-09-17 22:57:42,741 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
-2025-09-17 22:57:42,741 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:20]
-2025-09-17 22:57:42,742 [ 1] INFO  Unity: ItemManager初始化道具:[ID:11,Count:1]
-2025-09-17 22:57:42,743 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
-2025-09-17 22:57:42,743 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1002,Count:1]
-2025-09-17 22:57:42,744 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:1]
-2025-09-17 22:57:42,752 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
-2025-09-17 22:57:42,753 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-17 22:57:42,754 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-17 22:57:42,755 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-17 22:57:42,757 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-17 22:57:42,758 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-17 22:57:43,111 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-17 22:57:44,052 [ 1] INFO  Unity: Set Channel:Local
-2025-09-17 22:58:01,857 [ 1] INFO  Unity: 网络断开
-2025-09-17 22:58:01,858 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-18 19:19:00,410 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-18 19:19:10,276 [ 1] INFO  Unity: UserRegisterRequest::user :123 psw:123
+2025-09-18 19:19:10,278 [ 1] INFO  Unity: 连接成功
+2025-09-18 19:19:10,279 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-18 19:19:10,282 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-18 19:19:10,364 [ 1] INFO  Unity: OnUserRegister:Failed [用户已存在.]
+2025-09-18 19:19:14,261 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-18 19:19:14,307 [ 1] INFO  Unity: 收到登录响应
+2025-09-18 19:19:14,308 [ 1] INFO  Unity: 登录成功
+2025-09-18 19:19:14,309 [ 1] WARN  Unity: 音乐:selectCharacter不存在
+UnityEngine.Debug:LogWarningFormat(String, Object[])
+SoundManager:PlayMusic(String) (at Assets/Scripts/Sound/SoundManager.cs:145)
+UILogin:OnLogin(Result, String) (at Assets/Scripts/UI/登录注册场景/UILogin.cs:104)
+Services.UserService:OnUserLogin(Object, UserLoginResponse) (at Assets/Scripts/Services/UserService.cs:197)
+Network.MessageDistributer`1:RaiseEvent(Object, UserLoginResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
+Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDispatch.cs:11)
+Network.MessageDistributer`1:Distribute() (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:150)
+Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:416)
+Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:433)
+
+2025-09-18 19:19:14,530 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-18 19:19:22,122 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-18 19:19:22,199 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-18 19:19:22,200 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:22]
+2025-09-18 19:19:22,201 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-18 19:19:22,202 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-18 19:19:22,202 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:2]
+2025-09-18 19:19:22,203 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
+2025-09-18 19:19:22,204 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:21]
+2025-09-18 19:19:22,204 [ 1] INFO  Unity: ItemManager初始化道具:[ID:11,Count:2]
+2025-09-18 19:19:22,205 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
+2025-09-18 19:19:22,206 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1002,Count:1]
+2025-09-18 19:19:22,207 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:2]
+2025-09-18 19:19:22,216 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-18 19:19:22,217 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-18 19:19:22,218 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-18 19:19:22,219 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-18 19:19:22,222 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-18 19:19:22,223 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-18 19:19:22,705 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-18 19:19:23,735 [ 1] INFO  Unity: Set Channel:Local
+2025-09-18 19:19:34,885 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
+2025-09-18 19:19:34,886 [ 1] WARN  Unity: 音乐:selectCharacter不存在
+UnityEngine.Debug:LogWarningFormat(String, Object[])
+SoundManager:PlayMusic(String) (at Assets/Scripts/Sound/SoundManager.cs:145)
+UISetting:OnClickBackToChooseCharacter() (at Assets/Scripts/UI/设置/UISetting.cs:12)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-18 19:19:34,886 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-18 19:19:35,027 [ 1] INFO  Unity: 10离开了地图
+2025-09-18 19:19:35,029 [ 1] INFO  Unity: 移除角色ID：10
+2025-09-18 19:19:35,031 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-18 19:19:35,032 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-18 19:19:35,032 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-18 19:19:35,033 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-18 19:19:35,034 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-18 19:19:35,034 [ 1] INFO  Unity: 消失的玩家：10,位置(4150, 3000, 803)
+2025-09-18 19:19:35,119 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-18 19:19:44,307 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UICharacterSelect:OnClickCreateCharater() (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:137)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-18 19:19:44,308 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UICharacterSelect:OnClickCreateCharater() (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:137)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-18 19:19:46,343 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-18 19:19:46,344 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-18 19:19:48,538 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-18 19:19:48,539 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-18 19:19:51,545 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-18 19:19:51,546 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-18 19:20:09,377 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-18 19:20:11,140 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-18 19:20:11,154 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-18 19:20:11,154 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:22]
+2025-09-18 19:20:11,155 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-18 19:20:11,156 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-18 19:20:11,157 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:2]
+2025-09-18 19:20:11,157 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
+2025-09-18 19:20:11,158 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:21]
+2025-09-18 19:20:11,159 [ 1] INFO  Unity: ItemManager初始化道具:[ID:11,Count:2]
+2025-09-18 19:20:11,159 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
+2025-09-18 19:20:11,160 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1002,Count:1]
+2025-09-18 19:20:11,161 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:2]
+2025-09-18 19:20:11,162 [ 1] INFO  Unity: OnGuild,[Success][1][Alice]
+2025-09-18 19:20:11,163 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-18 19:20:11,163 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-18 19:20:11,164 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-18 19:20:11,166 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-18 19:20:11,167 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-18 19:20:11,168 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-18 19:20:11,791 [ 1] WARN  Unity: Failed to create agent because there is no valid NavMesh
+UnityEngine.GameObject:AddComponent()
+PlayerInputController:Start() (at Assets/Scripts/GameObject/PlayerInputController.cs:47)
+
+2025-09-18 19:20:34,658 [ 1] INFO  Unity: 消失的玩家：11,位置(4151, 2999, 803)
+2025-09-18 19:20:34,659 [ 1] INFO  Unity: 网络断开
+2025-09-18 19:20:34,659 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)
 
-2025-09-17 22:58:01,860 [ 1] INFO  Unity: 消失的玩家：13,位置(4591, 2876, 802)

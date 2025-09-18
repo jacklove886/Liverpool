@@ -1,4 +1,5 @@
 ﻿using Common.Data;
+using Managers;
 using SkillBridge.Message;
 using System;
 using System.Collections.Generic;
@@ -50,5 +51,6 @@ namespace Models
                 CurrentCharacterPlayerInput.SendEntityEvent(EntityEvent.EventRide, 0);
             }
         }
+        
     }
 }

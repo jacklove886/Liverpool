@@ -39,8 +39,13 @@ namespace Services
 
         private void OnItemBuy(object sender,ItemBuyResponse response)
         {
-            if(response.Result==Result.Success)
-            MessageBox.Show("购买成功！" ,"购买完成");
+            if (response.Result == Result.Success)
+            {
+                MessageBox.Show("购买成功！", "购买完成");
+                ChatManager.Instance.AddSystemMessage(string.Format("恭喜购买【{0}】成功",response.Msg), "系统");
+                SoundManager.Instance.PlayUI(SoundDefine.Gold);
+            }
+           
             else
             {
                 MessageBox.Show("购买失败！" + response.Msg, "购买失败");

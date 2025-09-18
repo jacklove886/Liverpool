@@ -1,4 +1,5 @@
-﻿using Managers;
+﻿
+using Managers;
 using Models;
 using SkillBridge.Message;
 using System;
@@ -14,6 +15,7 @@ public class UIRide : UIWindow {
     public Text Description;
     public Image Puppy;
     public UIRideItem selectedItem;
+    public Image RideImage;
     private void Start()
     {
         RefreshUI();
@@ -44,8 +46,14 @@ public class UIRide : UIWindow {
                 GameObject go = Instantiate(itemPrefab, listMain.transform);
                 UIRideItem ui = go.GetComponent<UIRideItem>();
                 ui.SetRideItem(kv.Value);
-                this.listMain.AddItem(ui);
+                this.listMain.AddItem(ui);              
             }
+            
+        }
+        if (listMain != null && listMain.items.Count > 0)
+        {
+            listMain.SelectedItem = listMain.items[0];
+            OnItemSelected(listMain.SelectedItem);
         }
     }
 

@@ -13,12 +13,12 @@ namespace GameServer.Models
     {
         internal class MapCharacter
         {
-            public NetConnection<NetSession> connection;
+            public NetConnection<NetSession> sender;
             public Character character;
 
             public MapCharacter(NetConnection<NetSession> conn, Character cha)
             {
-                this.connection = conn;
+                this.sender = conn;
                 this.character = cha;
             }
         }
@@ -52,29 +52,29 @@ namespace GameServer.Models
         /// 角色进入地图
         /// </summary>
         /// <param name="character"></param>
-        internal void CharacterEnter(NetConnection<NetSession> connection, Character character)
+        internal void CharacterEnter(NetConnection<NetSession> sender, Character character)
         {
             Log.InfoFormat("CharacterEnter: Map:{0} characterId:{1}", this.Define.ID, character.Id);
 
             character.Info.mapId = this.ID;
-            this.MapCharacters[character.Id] = new MapCharacter(connection, character);
+            this.MapCharacters[character.Id] = new MapCharacter(sender, character);
 
-            connection.Session.Response.mapCharacterEnter = new MapCharacterEnterResponse();
-            connection.Session.Response.mapCharacterEnter.mapId = this.Define.ID;
+            sender.Session.Response.mapCharacterEnter = new MapCharacterEnterResponse();
+            sender.Session.Response.mapCharacterEnter.mapId = this.Define.ID;
 
             foreach (var kv in this.MapCharacters)
             {
-                connection.Session.Response.mapCharacterEnter.Characters.Add(kv.Value.character.Info);
+                sender.Session.Response.mapCharacterEnter.Characters.Add(kv.Value.character.Info);
                 if (kv.Value.character != character)
                 {
-                    this.AddCharacterEnterMap(kv.Value.connection, character.Info);
+                    this.AddCharacterEnterMap(kv.Value.sender, character.Info);
                 }
             }
             foreach(var kv in this.MonsterManager.Monsters)
             {
-                connection.Session.Response.mapCharacterEnter.Characters.Add(kv.Value.Info);
+                sender.Session.Response.mapCharacterEnter.Characters.Add(kv.Value.Info);
             }
-            connection.SendResponse();
+            sender.SendResponse();
         }
 
         internal void CharacterLeave(Character cha)
@@ -82,7 +82,7 @@ namespace GameServer.Models
             Log.InfoFormat("CharacterLeave: Map:{0} characterId:{1}", this.Define.ID, cha.Id);
             foreach(var kv in MapCharacters)
             {
-                SendCharacterLeaveMap(kv.Value.connection, cha);
+                SendCharacterLeaveMap(kv.Value.sender, cha);
             }
             MapCharacters.Remove(cha.Id);
         }
@@ -123,7 +123,7 @@ namespace GameServer.Models
                 }
                 else//通知其他人需要移动同步
                 {
-                    MapService.Instance.SendEntityUpdate(kv.Value.connection, entity);
+                    MapService.Instance.SendEntityUpdate(kv.Value.sender, entity);
                 }
             }
         }
@@ -135,7 +135,7 @@ namespace GameServer.Models
             foreach(var kv in this.MapCharacters)
             {
                 //向玩家发送进入地图的消息
-                this.AddCharacterEnterMap(kv.Value.connection, monster.Info);
+                this.AddCharacterEnterMap(kv.Value.sender, monster.Info);
             }
         }
 

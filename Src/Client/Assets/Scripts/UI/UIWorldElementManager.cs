@@ -34,7 +34,7 @@ public class UIWorldElementManager : MonoSingleton<UIWorldElementManager> {
         UIWorldElement worldElement = goNameBar.GetComponent<UIWorldElement>();
         worldElement.owner = owner;
         worldElement.Camera = Camera.main.transform;
-        worldElement.SetHeight(character);
+        worldElement.SetHeight(character);//对不同怪物设置不同高度
 
         goNameBar.GetComponent<UINameBar>().character = character;
         goNameBar.SetActive(true);

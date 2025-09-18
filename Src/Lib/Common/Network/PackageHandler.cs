@@ -120,10 +120,11 @@ namespace Network
         /// <returns></returns>
         bool ParsePackage()
         {
-            if (readOffset + 4 < stream.Position)
+            if (readOffset + 4 < stream.Position)//readOffset当前读取位置  包头固定4个字节
             {
+                //获取包体实际大小
                 int packageSize = BitConverter.ToInt32(stream.GetBuffer(), readOffset);
-                if (packageSize + readOffset + 4 <= stream.Position)
+                if (packageSize + readOffset + 4 <= stream.Position)// 检查完整包是否已接收
                 {//包有效
 
                     SkillBridge.Message.NetMessage message = UnpackMessage(stream.GetBuffer(), this.readOffset + 4, packageSize);
@@ -133,7 +134,7 @@ namespace Network
                     }
                     MessageDistributer<T>.Instance.ReceiveMessage(this.sender, message);
                     this.readOffset += (packageSize + 4);
-                    return ParsePackage();
+                    return ParsePackage();// 递归处理剩余数据
                 }
             }
 

@@ -23,7 +23,6 @@ public class UIFriend : UIWindow {
         FriendService.Instance.OnFriendUpdate = RefreshUI;//打开就接收通知 会自动刷新
         listMain.onItemSelected += OnFriendSelected;
         RefreshUI();
-        inputField.onEndEdit.AddListener(OnInputFinished);//监听搜索内容
 
     }
 
@@ -70,7 +69,11 @@ public class UIFriend : UIWindow {
 
     public void OnClickFriendChat()
     {
-        MessageBox.Show("暂未开放", "敬请期待");
+        if (selectedItem == null)
+        {
+            MessageBox.Show("请选择要私聊的好友", "私聊");
+        }
+        ChatManager.Instance.StartPrivateChat(selectedItem.Info.friendInfo.Id, selectedItem.Info.friendInfo.Name);
     }
 
     public void OnClickFriendRemove()

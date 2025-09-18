@@ -99,7 +99,7 @@ public class PlayerInputController : MonoBehaviour {
         }
         NavPathRender.Instance.SetPath(agent.path, agent.destination);//更新实时路径
 
-        if (agent.isStopped || agent.remainingDistance < 3f)//寻路停止或者离目标距离小于3
+        if (agent.isStopped || agent.remainingDistance < 8f)//寻路停止或者离目标距离小于8
         {
             StopNav();
             return;
@@ -114,7 +114,14 @@ public class PlayerInputController : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            User.Instance.Ride(entityController.currentRide);
+            if (entityController.currentRide == 0)
+            {
+                User.Instance.Ride(ItemManager.Instance.GetRideId());
+            }
+            else
+            {
+                User.Instance.Ride(entityController.currentRide);
+            }          
         }
     }
 

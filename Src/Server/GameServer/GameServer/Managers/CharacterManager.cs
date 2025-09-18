@@ -20,7 +20,7 @@ namespace GameServer.Managers
         {
             Character character = new Character(CharacterType.Player, cha);
             EntityManager.Instance.AddEntity(cha.MapID, character);
-            character.Info.EntityId = character.entityId;
+            character.Info.EntityId = character.entityId;//数据库entityId同步到网络
             Characters[character.Id] = character;  
             return character; 
         }

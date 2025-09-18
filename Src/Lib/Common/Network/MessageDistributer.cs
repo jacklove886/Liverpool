@@ -82,6 +82,7 @@ namespace Network
             }
             messageHandlers[type] = (MessageHandler<Tm>)messageHandlers[type] + messageHandler;
         }
+
         public void Unsubscribe<Tm>(MessageHandler<Tm> messageHandler)
         {
             string type = typeof(Tm).Name;
@@ -120,8 +121,9 @@ namespace Network
 
         public void ReceiveMessage(T sender ,SkillBridge.Message.NetMessage message)
         {
+            //队列保证消息的顺序性  sender知道消息来自哪个客户端
             this.messageQueue.Enqueue(new MessageArgs() { sender = sender, message = message });
-            threadEvent.Set();
+            threadEvent.Set();//唤醒工作线程
         }
 
         public void Clear()

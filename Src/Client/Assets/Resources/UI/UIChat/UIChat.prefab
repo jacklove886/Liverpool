@@ -1438,6 +1438,7 @@ MonoBehaviour:
   chatTargetPerson: {fileID: 114637584103261794}
   chatTargetPersonImage: {fileID: 1683945008253682}
   channelDropdown: {fileID: 114570585871477202}
+  UIMain: {fileID: 0}
 --- !u!114 &114422744570117924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2849,7 +2850,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &224000110013941090
 RectTransform:

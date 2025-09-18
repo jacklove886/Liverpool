@@ -42,11 +42,11 @@ public class UIGuildMemberItem : ListView.ListViewItem
         switch ((int)this.Info.Position)
         {
             case 0:
-                this.position.text= "魂师"; break;
+                this.position.text= "普通成员"; break;
             case 1: 
-                this.position.text = "封号斗罗"; break;
+                this.position.text = "会长"; break;
             case 2: 
-                this.position.text = "魂斗罗"; break;
+                this.position.text = "副会长"; break;
         }
         this.joinTime.text = TimeUtil.GetTime(this.Info.joinTime).ToShortDateString();
         this.status.text = this.Info.Status == 1 ? "在线" : TimeUtil.GetTime(this.Info.lastTime).ToString();

@@ -16,7 +16,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
 
     protected override void OnStart()
     {
-        StartCoroutine(InitGameObjects());
+        StartCoroutine(InitGameObjects());//初始化物体
         CharacterManager.Instance.OnCharacterEnter += OnCharacterEnter;
         CharacterManager.Instance.OnCharacterLeave += OnCharacterLeave;
     }
@@ -28,7 +28,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
     }
 
 
-    //这句话永远不会执行
+    
     void OnCharacterEnter(Character character)
     {
         CreateCharacterObject(character);
@@ -45,7 +45,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
         }
     }
 
-    IEnumerator InitGameObjects()
+    IEnumerator InitGameObjects()//遍历所有物体 创建物体
     {
         foreach (var cha in CharacterManager.Instance.Characters.Values)
         {
@@ -66,7 +66,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
             }
             GameObject go = (GameObject)Instantiate(obj, this.transform);
             go.name = "角色" + character.Id +"_"+ character.Name;
-            Characters[character.entityId] = go;
+            Characters[character.entityId] = go;//存进字典中
 
             EntityController entityController = go.GetComponent<EntityController>();
 

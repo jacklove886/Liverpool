@@ -11,6 +11,8 @@ public class UIRegister : MonoBehaviour {
     public InputField confirmpassword;
     public Button buttonYuedu;
     public Button buttonRegister;
+    public GameObject loginPanel;
+    public GameObject registerPanel;
 
     // Use this for initialization
     private void Start () {
@@ -29,7 +31,11 @@ public class UIRegister : MonoBehaviour {
         }
         else
         {
-            MessageBox.Show("注册成功!");
+            MessageBox.Show("注册成功!,要返回到登录界面吗", "注册成功", MessageBoxType.Confirm, "确认", "取消").OnYes=()=>
+            {
+                loginPanel.SetActive(true);
+                registerPanel.SetActive(false);
+            };               
         }
     }
 	

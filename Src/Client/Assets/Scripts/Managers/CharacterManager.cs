@@ -42,7 +42,6 @@ namespace Managers
             this.Characters[cha.EntityId]=character;
             EntityManager.Instance.AddEntity(character);
 
-            //这句话永远不会执行
             if (OnCharacterEnter!= null)
             {
                 OnCharacterEnter(character);

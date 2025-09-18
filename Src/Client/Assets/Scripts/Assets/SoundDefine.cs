@@ -25,6 +25,7 @@ public class SoundDefine//配置文件
     public const string LevelUp = "levelUp";
     public const string Click = "click";
     public const string Close = "close";
+    public const string Gold = "gold";
 
     [Header("角色持续音效")]
     public static string[] CharacterWalk = { "战士走路", "法师走路", "游侠走路" };

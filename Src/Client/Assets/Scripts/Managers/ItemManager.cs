@@ -87,5 +87,17 @@ namespace Managers
         {
             return false;
         }
+
+        public int GetRideId()
+        {
+            foreach (var item in ItemManager.Instance.Items)
+            {
+                if (item.Value.Define.Type == ItemType.Ride&& item.Value.Define.LimitClass==User.Instance.CurrentCharacter.Class)
+                {
+                    return item.Value.Id;
+                }
+            }
+            return 0;
+        }
     }
 }
