@@ -15,7 +15,7 @@ namespace GameServer.Managers
     {
         public Character Owner;//Character类实例  角色对象
 
-        public Dictionary<int, Item> Items = new Dictionary<int, Item>();//Key是ID，Value是道具对象
+        public static Dictionary<int, Item> Items = new Dictionary<int, Item>();//Key是ID，Value是道具对象
 
         public ItemManager(Character owner)//构造函数
         {
@@ -23,7 +23,7 @@ namespace GameServer.Managers
 
             foreach (var item in owner.TCharacter.Items)//遍历角色身上的所有道具
             {
-                this.Items.Add(item.ItemID, new Item(item));//添加道具 item是Tcharacter类型
+                Items.Add(item.ItemID, new Item(item));//添加道具 item是Tcharacter类型
             }
         }
 
@@ -49,7 +49,7 @@ namespace GameServer.Managers
         public bool HasItem(int itemID)//检查道具是否存在 比如交任务前是否有任务道具
         {
             Item item = null;
-            if(this.Items.TryGetValue(itemID,out item))
+            if(Items.TryGetValue(itemID,out item))
             {
                 return item.Count > 0;//数量大于0就return true
             }
@@ -59,7 +59,7 @@ namespace GameServer.Managers
         public Item SearchItem(int itemID)//获取指定道具
         {
             Item item = null;
-            this.Items.TryGetValue(itemID, out item);//访问ID来尝试获取道具
+            Items.TryGetValue(itemID, out item);//访问ID来尝试获取道具
             Log.InfoFormat("[角色:{0}]查询了:[{1}]", Owner.TCharacter.ID, item);
             return item;//如果获取到了返回item  否则TryGetValue返回null
         }
@@ -81,7 +81,7 @@ namespace GameServer.Managers
                 dbItem.ItemCount = count;
                 Owner.TCharacter.Items.Add(dbItem);//添加到角色数据中
                 item = new Item(dbItem);
-                this.Items.Add(itemID, item);//添加到字典中
+                Items.Add(itemID, item);//添加到字典中
             }
             this.Owner.StatusManager.AddItemChange(itemID, count, StatusAction.Add);
             Log.InfoFormat("[角色:{0}]添加了:[{1}]数量为:{2}", Owner.TCharacter.ID, item,count);
@@ -91,11 +91,11 @@ namespace GameServer.Managers
 
         public bool RemoveItem(int itemID,int count)
         {
-            if (!this.Items.ContainsKey(itemID))
+            if (!Items.ContainsKey(itemID))
             {
                 return false;
             }
-            Item item = this.Items[itemID];
+            Item item = Items[itemID];
             if (item.Count < count)
             {
                 return false;
@@ -109,7 +109,7 @@ namespace GameServer.Managers
 
         public void GetItemInfos(List<NItemInfo> list)//获取所有道具  方便内存数据转换为网络数据
         {
-            foreach(var item in this.Items)
+            foreach(var item in Items)
             {
                 //item 是<int, Item> 类型
                 list.Add(new NItemInfo() { Id = item.Value.ItemID, Count = item.Value.Count });//数据添加到NItemInfo列表中

@@ -1,5 +1,6 @@
 ﻿using Common.Data;
 using Managers;
+using Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,13 +55,29 @@ public class UIShopItem : MonoBehaviour,ISelectHandler
         this.nameText.text = this.item.Name;
         this.countText.text = "x"+shopItem.Count.ToString();
         this.priceText.text = shopItem.Price.ToString();
-        switch (this.item.LimitClass.ToString())
+        if (this.limitClass != null)
         {
-            case "Warrior":  this.limitClass.text = "战士"; break;
-            case "Wizard" :  this.limitClass.text = "法师"; break;
-            case "Archer" :  this.limitClass.text = "游侠"; break; 
-        }
+            switch (this.item.LimitClass.ToString())
+            {
+                case "Warrior": this.limitClass.text = "战士"; break;
+                case "Wizard": this.limitClass.text = "法师"; break;
+                case "Archer": this.limitClass.text = "游侠"; break;
+            }
+        }       
         this.iconImage.overrideSprite = Resloader.Load<Sprite>(item.Icon);
+    }
+
+    [Header("数据结构")]
+    public Item sellItem;
+    public int sellItemID { get; set; }
+
+    public void SetSellItem(int id,Item item) 
+    {
+        this.sellItemID = id;
+        this.sellItem = item;
+        this.nameText.text = sellItem.Define.Name;
+        this.priceText.text = "单价"+sellItem.Define.SellPrice.ToString();
+        this.iconImage.overrideSprite = Resloader.Load<Sprite>(item.Define.Icon);
     }
 
     //Unity内置接口

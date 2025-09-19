@@ -208,6 +208,7 @@ message NetMessageRequest{
 	MapEntitySyncRequest mapEntitySync = 9;
 	MapTeleportRequest mapTeleport = 10;
 	ItemBuyRequest itemBuy=11;
+	ItemSellRequest itemSell=50;
 	ItemEquipRequest itemEquip=12;
 
 	QuestListRequest questList=13;//任务列表
@@ -252,6 +253,7 @@ message NetMessageResponse{
 
 	MapEntitySyncResponse mapEntitySync = 9;
 	ItemBuyResponse itemBuy=11;
+	ItemSellResponse itemSell=50;
 	ItemEquipResponse itemEquip=12;
 
 	QuestListResponse questList=13;
@@ -399,6 +401,20 @@ message ItemBuyRequest
 
 //道具购买响应
 message ItemBuyResponse
+{
+	RESULT result=1;
+	string msg=2;
+}
+
+//道具购买请求
+message ItemSellRequest
+{
+	int32 shopItemID=1;
+	int32 sellCount=2;
+}
+
+//道具购买响应
+message ItemSellResponse
 {
 	RESULT result=1;
 	string msg=2;

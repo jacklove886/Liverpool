@@ -52,6 +52,33 @@ namespace Services
             }
         }
 
+        public void SendSellItem(int shopItemID, int count)
+        {
+            Debug.Log("发送购买商品请求");
+
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.itemSell = new ItemSellRequest();
+            message.Request.itemSell.shopItemID = shopItemID;//传入商店ID
+            message.Request.itemSell.sellCount= count;//传入商品ID
+            NetClient.Instance.SendMessage(message);//发送消息
+        }
+
+        private void OnItemSell(object sender, ItemSellResponse response)
+        {
+            if (response.Result == Result.Success)
+            {
+                MessageBox.Show("出售成功", "完成");
+                ChatManager.Instance.AddSystemMessage(response.Msg, "系统");
+                SoundManager.Instance.PlayUI(SoundDefine.Gold);
+            }
+
+            else
+            {
+                MessageBox.Show(response.Msg, "出售失败", MessageBoxType.Error);
+            }
+        }
+
         //pendingEquip里有装备信息  发送请求的时候记录下来
         Item pendingEquip = null;
         bool isEquip = false;//是否为装备操作 false为脱装备

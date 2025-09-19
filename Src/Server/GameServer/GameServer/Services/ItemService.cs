@@ -41,8 +41,24 @@ namespace GameServer.Services
             sender.SendResponse();
         }
 
+        //出售装备请求
+        void OnItemSell(NetConnection<NetSession> sender, ItemSellRequest request)
+        {
+            Character character = sender.Session.Character;
+            Log.InfoFormat("出售请求:角色:{0}:物品:{1}:数量:{2}", character.Id, request.shopItemID, request.sellCount);
+            var result = ShopManager.Instance.SellItem(sender, request.shopItemID, request.sellCount);//返回方法的结果
+            sender.Session.Response.itemSell = new ItemSellResponse();
+            sender.Session.Response.itemSell.Result = result;
+            if (result == Result.Success)
+            {
+                sender.Session.Response.itemBuy.Msg = string.Format("出售道具:{0},数量:{1}成功！", request.shopItemID, request.sellCount);
+            }
+            else { sender.Session.Response.itemBuy.Msg = "出售失败 道具数量不足"; }
+            sender.SendResponse();
+        }
+
         //穿装备请求
-         void OnItemEquip(NetConnection<NetSession> sender, ItemEquipRequest request)
+        void OnItemEquip(NetConnection<NetSession> sender, ItemEquipRequest request)
         {
             Character character = sender.Session.Character;
             Log.InfoFormat("装备请求:角色:{0} 装备栏:{1} 物品:{2}", character.Id, request.Slot, request.itemId);

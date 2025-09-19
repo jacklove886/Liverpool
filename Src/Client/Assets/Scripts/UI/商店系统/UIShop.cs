@@ -19,9 +19,11 @@ public class UIShop : UIWindow {
     public Transform[] itemRoot;//绑定的Content
     public GameObject shopItem;
 
+    public Button sellbutton;
+    public Text sellbuttonText;
+
     private void Start()
     {
-
         StatusService.Instance.RegisterStatusNofity(StatusType.Money, OnMoneyChanged);
     }
 
@@ -59,14 +61,49 @@ public class UIShop : UIWindow {
         yield return null;
     }
 
+    IEnumerator InitSellItems()
+    {
+        int count = 0;
+        int page = 0;
+        foreach(var kv in ItemManager.Instance.Items)
+        {
+            if (count >= 16)
+            {
+                count = 0;
+                page++;
+                if (page >= itemRoot.Length)
+                {
+                    MessageBox.Show("商品数量过多!", "错误提示");
+                    break;
+                }
+            }
+            GameObject go = Instantiate(shopItem, itemRoot[page]);
+            UIShopItem ui = go.GetComponent<UIShopItem>();
+            ui.SetSellItem(kv.Key,kv.Value);
+            count++;
+        }
+        yield return null;
+    }
+
     public void SetShop(ShopDefine shop)
     {
+        this.sellbutton.onClick.AddListener(OnClickBuy);
+        this.sellbuttonText.text = "购买";
         this.shop = shop;
         this.title.text = shop.Name;
         this.money.text = User.Instance.CurrentCharacter.Gold.ToString();
         StartCoroutine(InitItems());
     }
 
+    public void SetSellShop(Item item)
+    {
+        this.sellbutton.onClick.AddListener(OnClickSell);
+        this.sellbuttonText.text = "出售";
+        this.title.text = "出售商品";
+        this.money.text = item.Define.SellPrice.ToString();
+        StartCoroutine(InitSellItems());
+    }
+    
     private UIShopItem selectedItem;
     public void SelectShopItem(UIShopItem item)
     {
@@ -83,10 +120,42 @@ public class UIShop : UIWindow {
         //没有选中的商品
         if (this.selectedItem == null)
         {
-            MessageBox.Show("请选择要购买的道具", "购买提示");
+            MessageBox.Show("请选择要购买的道具", "提示");
             return;
         }
         ShopManager.Instance.BuyItem(this.shop.ID, this.selectedItem.shopItemID);
+    }
+
+    //绑定在购买按钮上
+    public void OnClickSell()
+    {
+        //没有选中的商品
+        if (this.selectedItem == null)
+        {
+            MessageBox.Show("请选择要出售的道具", "提示");
+            return;
+        }
+        UIInputBox ui = UIManager.Instance.Show<UIInputBox>();
+        ui.title.text = "出售商品";
+        ui.emptyTips = "数量不能为空";
+        ui.message.text = "请输入要出售的数量";
+        ui.OnSubmit += (string text, out string tips) =>
+          {
+              int num;
+              if (!int.TryParse(text, out num) || num <= 0)
+              {
+                  tips = "请输入大于0的数字";
+                  return false;
+              }
+              if(num > selectedItem.sellItem.Count)
+              {
+                  tips = "出售数量超过拥有的数量";
+                  return false;
+              }
+              ShopManager.Instance.SellItem(this.selectedItem.shopItemID, num);
+              tips = "";
+              return true;
+          };       
     }
 
     private bool OnMoneyChanged(Nstatus status)

@@ -27,9 +27,30 @@ namespace Managers
             }
         }
 
+        public void ShowSellShop()
+        {
+            if (ItemManager.Instance != null&&ItemManager.Instance.Items!=null)
+            {
+                foreach(var item in ItemManager.Instance.Items)
+                {
+                    UIShop uISellShop = UIManager.Instance.Show<UIShop>();
+                    if (uISellShop != null)
+                    {
+                        uISellShop.SetSellShop(item.Value);
+                    }
+                }
+            }
+        }
+
         public bool BuyItem(int shopID,int shopItemID)
         {
             ItemService.Instance.SendBuyItem(shopID, shopItemID);
+            return true;//表示请求发送成功 不代表购买成功
+        }
+
+        public bool SellItem(int shopItemID, int count)
+        {
+            ItemService.Instance.SendBuyItem(shopItemID, count);
             return true;//表示请求发送成功 不代表购买成功
         }
     }

@@ -21,11 +21,12 @@ namespace Managers
             uIDialog.title.text = npc.Name;
             uIDialog.Introduce.text = npc.Introduction;
             if(npc.ID==2)
-            uIDialog.ButtonText.text = "购买商品";
+            uIDialog.YesButtonText.text = "购买商品";
             if(npc.ID==4)
-            uIDialog.ButtonText.text = "升级装备";
+            uIDialog.YesButtonText.text = "升级装备";
             if (npc.ID == 5)
-            uIDialog.ButtonText.text = "购买坐骑";
+            uIDialog.YesButtonText.text = "购买坐骑";
+            uIDialog.NoButtonText.text = "出售道具";
             uIDialog.shopParam = npc.Param;
             return true;
         }

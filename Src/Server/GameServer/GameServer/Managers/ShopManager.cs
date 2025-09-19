@@ -1,5 +1,6 @@
 ﻿using Common;
 using Common.Data;
+using GameServer.Models;
 using GameServer.Services;
 using Network;
 using SkillBridge.Message;
@@ -39,6 +40,22 @@ namespace GameServer.Managers
                 
             }
             return Result.Failed;
+        }
+
+        public Result SellItem(NetConnection<NetSession> sender, int shopItemID, int count)
+        {
+            DataManager.Instance.Items.TryGetValue(shopItemID,out ItemDefine itemDefine);
+            if (ItemManager.Items.TryGetValue(shopItemID,out Item item))
+            {
+                if (item.Count < count)
+                {
+                    return Result.Failed;
+                }
+            }
+            sender.Session.Character.ItemManager.AddItem(shopItemID, -count);
+            sender.Session.Character.Gold += itemDefine.SellPrice * count;
+            DBService.Instance.Save();
+            return Result.Success;
         }
 
     }

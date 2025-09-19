@@ -246,7 +246,7 @@ namespace Managers
                 UIDialog uidialog = UIManager.Instance.Show<UIDialog>();
                 uidialog.Introduce.text = dialog.quest.Define.DialogDeny;
                 uidialog.title.text = "那很坏了";
-                uidialog.ButtonText.text = "确认";
+                uidialog.YesButtonText.text = "确认";
             }
         }
 
