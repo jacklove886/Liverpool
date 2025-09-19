@@ -283,6 +283,11 @@ namespace GameServer.Models
                         
                        RemoveGuildMember(targetId);
                     }
+                    var removeApply = DBService.Instance.Entities.TGuildApplies.FirstOrDefault(v => v.CharacterId == targetId);
+                    if (removeApply != null)
+                    {
+                        DBService.Instance.Entities.TGuildApplies.Remove(removeApply);
+                    }
                     break;
             }
             DBService.Instance.Save();

@@ -126,9 +126,9 @@ namespace Services
             if (response.Result == Result.Success&&response.Apply.Result==ApplyResult.Accept)
             {
                 MessageBox.Show(response.Msg, "申请通过");
-                if (OnGuildClose != null)
+                if (OnGuildListClose != null)
                 {
-                    OnGuildClose();
+                    OnGuildListClose();
                 }
             }
             else if (response.Result == Result.Failed && response.Apply.Result == ApplyResult.Reject)

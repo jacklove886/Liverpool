@@ -19,7 +19,7 @@ public class UIGuildList : UIWindow {
         this.listMain.onItemSelected += this.OnGuildMemberSelected;
         this.uiInfo.Info = null;
         GuildService.Instance.OnGuildListResult += UpdateGuildList;//监听列表刷新
-        GuildService.Instance.OnGuildListClose += Close;
+        GuildService.Instance.OnGuildListClose += CloseUIGuildList;
         GuildService.Instance.SendGuildListRequest();//发送刷新请求
     }
 
@@ -32,6 +32,7 @@ public class UIGuildList : UIWindow {
     private void OnDestroy()
     {
         GuildService.Instance.OnGuildListResult -= UpdateGuildList;
+        GuildService.Instance.OnGuildListClose -= CloseUIGuildList;
     }
 
     private void UpdateGuildList(List<NGuildInfo> guilds)
@@ -73,9 +74,8 @@ public class UIGuildList : UIWindow {
         };
     }
 
-    void Close()
+    void CloseUIGuildList()
     {
         Close();
-        GuildManager.Instance.ShowGuild();
     }
 }
