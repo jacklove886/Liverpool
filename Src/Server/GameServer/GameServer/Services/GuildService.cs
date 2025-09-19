@@ -122,13 +122,13 @@ namespace GameServer.Services
             Log.InfoFormat("加入公会响应:公会:{0}角色:[{1},{2}]", response.Apply.GuildId, character.Id, character.Info.Name);
             var guild = GuildManager.Instance.GetGuild(response.Apply.GuildId);
             var requester = SessionManager.Instance.GetSession(response.Apply.characterId);
-            if (response.Apply.Result==ApplyResult.Accept)
+            if (response.Result == Result.Success)//收到网络请求
             {
-                if (response.Result == Result.Success)//收到网络请求
-                {
-                    guild.JoinAppove(response.Apply);
-                }
-                if(requester != null)//如果在线
+                guild.JoinAppove(response.Apply);
+            }
+            if (response.Apply.Result==ApplyResult.Accept)
+            {               
+                if(requester != null)//如果申请者在线
                 {
                     requester.Session.Character.Guild = guild;
                     requester.Session.Response.guildJoinResponse = new GuildJoinResponse();

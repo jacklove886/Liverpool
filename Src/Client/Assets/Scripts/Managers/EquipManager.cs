@@ -5,6 +5,7 @@ using System.Text;
 using Models;
 using Services;
 using SkillBridge.Message;
+using UnityEngine;
 
 namespace Managers
 {
@@ -32,6 +33,7 @@ namespace Managers
                     int itemID = *(int*)(pt + i * sizeof(int));
                     if (itemID > 0)//说明该槽位有装备
                     {
+                        Debug.Log("装备槽位" + i + " itemID=" + itemID);
                         Equips[i] = ItemManager.Instance.Items[itemID];
                     }
                     else//没装备

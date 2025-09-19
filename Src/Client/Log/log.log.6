@@ -1,40 +1,85 @@
-2025-09-19 14:45:38,319 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-19 14:45:40,757 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-19 14:45:40,759 [ 1] INFO  Unity: 连接成功
-2025-09-19 14:45:40,760 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-19 14:45:40,763 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-19 14:45:41,522 [ 1] INFO  Unity: 收到登录响应
-2025-09-19 14:45:41,523 [ 1] INFO  Unity: 登录成功
-2025-09-19 14:45:41,524 [ 1] WARN  Unity: 音乐:selectCharacter不存在
-UnityEngine.Debug:LogWarningFormat(String, Object[])
-SoundManager:PlayMusic(String) (at Assets/Scripts/Sound/SoundManager.cs:145)
-UILogin:OnLogin(Result, String) (at Assets/Scripts/UI/登录注册场景/UILogin.cs:104)
-Services.UserService:OnUserLogin(Object, UserLoginResponse) (at Assets/Scripts/Services/UserService.cs:197)
-Network.MessageDistributer`1:RaiseEvent(Object, UserLoginResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
-Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDispatch.cs:11)
-Network.MessageDistributer`1:Distribute() (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:150)
-Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:416)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:433)
+2025-09-19 16:05:04,271 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-19 16:05:07,185 [ 1] INFO  Unity: 用户名 :12 密码:12
+2025-09-19 16:05:07,186 [ 1] INFO  Unity: 连接成功
+2025-09-19 16:05:07,188 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-19 16:05:07,191 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-19 16:05:07,288 [ 1] INFO  Unity: 收到登录响应
+2025-09-19 16:05:07,289 [ 1] INFO  Unity: 登录成功
+2025-09-19 16:05:07,663 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-19 16:05:08,702 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-19 16:05:08,730 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-19 16:05:08,732 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-19 16:05:08,732 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-19 16:05:08,733 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2001,Count:1]
+2025-09-19 16:05:08,735 [ 1] INFO  Unity: 装备槽位0 itemID=2001
+2025-09-19 16:05:08,736 [ 1] INFO  Unity: 装备槽位2 itemID=2003
+2025-09-19 16:05:08,737 [ 1] ERROR UserService: Message handler exception:, The given key was not present in the dictionary., mscorlib,   at System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) [0x0000b] in /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/List.cs:43 
+  at Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) [0x0008a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:37 
+  at Managers.EquipManager.Init (System.Byte[] data) [0x0000a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:24 
+  at Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) [0x00081] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\UserService.cs:271 
+  at Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:106 
+2025-09-19 16:05:08,738 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{KeyNotFoundException: The given key was not present in the dictionary., System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/List.cs:43)
+Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:37)
+Managers.EquipManager.Init (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:24)
+Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) (at Assets/Scripts/Services/UserService.cs:271)
+Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
+}</args></log4net.Error>
+2025-09-19 16:05:08,745 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-19 16:05:08,747 [ 1] INFO  Unity: 加入角色姓名:丽丽,地图:1
+2025-09-19 16:05:08,749 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-19 16:05:08,750 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-19 16:05:09,880 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:05:10,151 [ 1] INFO  Unity: Set Channel:Local
+2025-09-19 16:07:48,047 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
+2025-09-19 16:07:48,187 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-19 16:07:48,385 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-19 16:07:48,395 [ 1] INFO  Unity: 7离开了地图
+2025-09-19 16:07:48,399 [ 1] INFO  Unity: 移除角色ID：7
+2025-09-19 16:07:48,401 [ 1] INFO  Unity: OnGuild,[Success][1][利物浦]
+2025-09-19 16:07:48,403 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:07:48,404 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-19 16:07:48,405 [ 1] INFO  Unity: OnGuild,[Success][1][利物浦]
+2025-09-19 16:07:48,406 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:07:48,408 [ 1] INFO  Unity: 消失的玩家：7,位置(4161, 2989, 803)
+2025-09-19 16:07:49,275 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-19 16:07:49,289 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-19 16:07:49,290 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-19 16:07:49,291 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-19 16:07:49,292 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2001,Count:1]
+2025-09-19 16:07:49,292 [ 1] INFO  Unity: 装备槽位0 itemID=2001
+2025-09-19 16:07:58,205 [ 1] INFO  Unity: 装备槽位2 itemID=2003
+2025-09-19 16:08:02,331 [ 1] ERROR UserService: Message handler exception:, The given key was not present in the dictionary., mscorlib,   at System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) [0x0000b] in /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/List.cs:43 
+  at Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) [0x0008a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:37 
+  at Managers.EquipManager.Init (System.Byte[] data) [0x0000a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:24 
+  at Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) [0x00081] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\UserService.cs:271 
+  at Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:106 
+2025-09-19 16:08:02,333 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{KeyNotFoundException: The given key was not present in the dictionary., System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/List.cs:43)
+Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:37)
+Managers.EquipManager.Init (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:24)
+Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) (at Assets/Scripts/Services/UserService.cs:271)
+Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
+}</args></log4net.Error>
+2025-09-19 16:08:02,403 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-19 16:08:02,404 [ 1] INFO  Unity: 加入角色姓名:丽丽,地图:1
+2025-09-19 16:08:02,406 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-19 16:08:02,407 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-19 16:08:03,428 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:08:03,432 [ 1] WARN  Unity: Failed to create agent because there is no valid NavMesh
+UnityEngine.GameObject:AddComponent()
+PlayerInputController:Start() (at Assets/Scripts/GameObject/PlayerInputController.cs:48)
 
-2025-09-19 14:45:41,747 [ 1] INFO  Unity: 当前角色数量为3
-2025-09-19 14:45:43,120 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-19 14:45:43,250 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-19 14:45:43,251 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:18]
-2025-09-19 14:45:43,260 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 14:45:43,261 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-19 14:45:43,262 [ 1] INFO  Unity: 加入角色姓名:Jhg,地图:1
-2025-09-19 14:45:43,264 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-19 14:45:43,265 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-19 14:45:43,773 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 14:45:44,817 [ 1] INFO  Unity: Set Channel:Local
-2025-09-19 14:45:51,352 [ 1] INFO  Unity: 发送出售商品请求
-2025-09-19 14:45:51,588 [ 1] INFO  Unity: StatusNotify:[Item[Delete][1][5]
-2025-09-19 14:45:51,590 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][500]
-2025-09-19 14:45:51,590 [ 1] INFO  Unity: 收到出售商品响应
-2025-09-19 14:45:51,599 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 14:45:56,091 [ 1] INFO  Unity: 消失的玩家：1,位置(5645, 3540, 800)
-2025-09-19 14:45:56,098 [ 1] INFO  Unity: 网络断开
-2025-09-19 14:45:56,099 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-19 16:09:50,847 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-19 16:10:02,233 [ 1] INFO  Unity: 发送出售商品请求
+2025-09-19 16:10:02,523 [ 1] INFO  Unity: StatusNotify:[Item[Delete][2001][1]
+2025-09-19 16:10:02,525 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][5]
+2025-09-19 16:10:02,526 [ 1] INFO  Unity: 收到出售商品响应
+2025-09-19 16:10:02,542 [ 1] INFO  Unity: OnGuild,[Success][1][利物浦]
+2025-09-19 16:10:02,543 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:10:06,830 [ 1] INFO  Unity: 消失的玩家：8,位置(4880, 5618, 800)
+2025-09-19 16:10:06,833 [ 1] INFO  Unity: 网络断开
+2025-09-19 16:10:06,833 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)

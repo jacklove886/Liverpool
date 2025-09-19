@@ -1,104 +1,92 @@
-2025-09-19 15:25:48,743 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-19 15:25:55,080 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-19 15:25:55,082 [ 1] INFO  Unity: 连接成功
-2025-09-19 15:25:55,084 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-19 15:25:55,087 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-19 15:25:55,196 [ 1] INFO  Unity: 收到登录响应
-2025-09-19 15:25:55,197 [ 1] INFO  Unity: 登录成功
-2025-09-19 15:25:55,198 [ 1] WARN  Unity: 音乐:selectCharacter不存在
-UnityEngine.Debug:LogWarningFormat(String, Object[])
-SoundManager:PlayMusic(String) (at Assets/Scripts/Sound/SoundManager.cs:145)
-UILogin:OnLogin(Result, String) (at Assets/Scripts/UI/登录注册场景/UILogin.cs:104)
-Services.UserService:OnUserLogin(Object, UserLoginResponse) (at Assets/Scripts/Services/UserService.cs:195)
-Network.MessageDistributer`1:RaiseEvent(Object, UserLoginResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
-Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDispatch.cs:11)
-Network.MessageDistributer`1:Distribute() (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:150)
-Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:416)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:433)
-
-2025-09-19 15:25:55,425 [ 1] INFO  Unity: 当前角色数量为4
-2025-09-19 15:26:00,243 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-19 15:26:00,265 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-19 15:26:00,266 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-19 15:26:00,268 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-19 15:26:00,269 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-19 15:26:00,269 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
-2025-09-19 15:26:00,270 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
-2025-09-19 15:26:00,278 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 15:26:00,279 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-19 15:26:00,281 [ 1] INFO  Unity: 加入角色姓名:Boy,地图:1
-2025-09-19 15:26:00,283 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-19 15:26:00,284 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-19 15:26:00,770 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 15:26:01,695 [ 1] INFO  Unity: Set Channel:Local
-2025-09-19 15:26:02,232 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:142)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:238)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:47)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:120)
-
-2025-09-19 15:26:20,336 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:137)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:238)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:54)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:124)
-
-2025-09-19 15:26:22,046 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:142)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:238)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:47)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:120)
-
-2025-09-19 15:26:23,705 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:137)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:238)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:54)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:124)
-
-2025-09-19 15:26:24,341 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:142)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:238)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:47)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:120)
-
-2025-09-19 15:26:39,810 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:137)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:238)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:54)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:124)
-
-2025-09-19 15:26:44,598 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:142)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:238)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:47)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:120)
-
-2025-09-19 15:26:50,667 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:137)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:238)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:54)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:124)
-
-2025-09-19 15:26:54,019 [ 1] INFO  Unity: 消失的玩家：10,位置(3430, 3974, 805)
-2025-09-19 15:26:54,022 [ 1] INFO  Unity: 网络断开
-2025-09-19 15:26:54,023 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-19 16:29:38,807 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-19 16:29:41,126 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-19 16:29:41,128 [ 1] INFO  Unity: 连接成功
+2025-09-19 16:29:41,129 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-19 16:29:41,132 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-19 16:29:41,227 [ 1] INFO  Unity: 收到登录响应
+2025-09-19 16:29:41,227 [ 1] INFO  Unity: 登录成功
+2025-09-19 16:29:41,581 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-19 16:29:42,614 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-19 16:29:42,638 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-19 16:29:42,639 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-19 16:29:42,641 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1002,Count:1]
+2025-09-19 16:29:42,643 [ 1] INFO  Unity: 装备槽位0 itemID=1001
+2025-09-19 16:29:42,644 [ 1] ERROR UserService: Message handler exception:, The given key was not present in the dictionary., mscorlib,   at System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) [0x00064] in /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:489 
+  at Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) [0x0008a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:37 
+  at Managers.EquipManager.Init (System.Byte[] data) [0x0000a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:24 
+  at Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) [0x00081] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\UserService.cs:271 
+  at Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:106 
+2025-09-19 16:29:42,645 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{KeyNotFoundException: The given key was not present in the dictionary., System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:489)
+Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:37)
+Managers.EquipManager.Init (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:24)
+Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) (at Assets/Scripts/Services/UserService.cs:271)
+Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
+}</args></log4net.Error>
+2025-09-19 16:29:42,653 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-19 16:29:42,655 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-19 16:29:42,657 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-19 16:29:42,658 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-19 16:29:43,140 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:29:44,137 [ 1] INFO  Unity: Set Channel:Local
+2025-09-19 16:30:01,181 [ 1] INFO  Unity: 发送购买商品请求
+2025-09-19 16:30:01,282 [ 1] INFO  Unity: StatusNotify:[Item[Add][1][1]
+2025-09-19 16:30:01,283 [ 1] INFO  Unity: StatusNotify:[Money[Delete][0][10]
+2025-09-19 16:30:01,291 [ 1] INFO  Unity: OnGuild,[Success][1][利物浦]
+2025-09-19 16:30:01,292 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:30:02,405 [ 1] INFO  Unity: 发送购买商品请求
+2025-09-19 16:30:02,426 [ 1] INFO  Unity: StatusNotify:[Item[Add][4][10]
+2025-09-19 16:30:02,427 [ 1] INFO  Unity: StatusNotify:[Money[Delete][0][200]
+2025-09-19 16:30:02,429 [ 1] INFO  Unity: OnGuild,[Success][1][利物浦]
+2025-09-19 16:30:02,429 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:30:09,889 [ 1] INFO  Unity: 发送出售商品请求
+2025-09-19 16:30:09,916 [ 1] INFO  Unity: StatusNotify:[Item[Delete][1002][1]
+2025-09-19 16:30:09,918 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][5]
+2025-09-19 16:30:09,919 [ 1] INFO  Unity: 收到出售商品响应
+2025-09-19 16:30:09,922 [ 1] INFO  Unity: OnGuild,[Success][1][利物浦]
+2025-09-19 16:30:09,923 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:30:22,895 [ 1] INFO  Unity: 发送购买商品请求
+2025-09-19 16:30:22,908 [ 1] INFO  Unity: StatusNotify:[Item[Add][1002][1]
+2025-09-19 16:30:22,909 [ 1] INFO  Unity: StatusNotify:[Money[Delete][0][200]
+2025-09-19 16:30:22,910 [ 1] INFO  Unity: OnGuild,[Success][1][利物浦]
+2025-09-19 16:30:22,911 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:30:24,422 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-19 16:30:26,378 [ 1] INFO  Unity: 发送装备穿戴请求
+2025-09-19 16:30:26,406 [ 1] INFO  Unity: 收到脱下装备响应
+2025-09-19 16:30:26,407 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-19 16:30:26,408 [ 1] INFO  Unity: OnGuild,[Success][1][利物浦]
+2025-09-19 16:30:26,409 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:30:30,972 [ 1] INFO  Unity: 发送购买商品请求
+2025-09-19 16:30:30,999 [ 1] INFO  Unity: StatusNotify:[Item[Add][1004][1]
+2025-09-19 16:30:31,000 [ 1] INFO  Unity: StatusNotify:[Money[Delete][0][500]
+2025-09-19 16:30:31,002 [ 1] INFO  Unity: OnGuild,[Success][1][利物浦]
+2025-09-19 16:30:31,003 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:30:33,467 [ 1] INFO  Unity: 发送购买商品请求
+2025-09-19 16:30:33,495 [ 1] INFO  Unity: StatusNotify:[Item[Add][1007][1]
+2025-09-19 16:30:33,496 [ 1] INFO  Unity: StatusNotify:[Money[Delete][0][800]
+2025-09-19 16:30:33,497 [ 1] INFO  Unity: OnGuild,[Success][1][利物浦]
+2025-09-19 16:30:33,498 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:30:38,002 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-19 16:30:38,003 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-19 16:30:38,004 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-19 16:30:39,229 [ 1] INFO  Unity: 发送装备穿戴请求
+2025-09-19 16:30:39,256 [ 1] INFO  Unity: 收到脱下装备响应
+2025-09-19 16:30:39,258 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-19 16:30:39,259 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-19 16:30:39,260 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-19 16:30:39,261 [ 1] INFO  Unity: OnGuild,[Success][1][利物浦]
+2025-09-19 16:30:39,261 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:30:40,590 [ 1] INFO  Unity: 发送装备穿戴请求
+2025-09-19 16:30:40,610 [ 1] INFO  Unity: 收到脱下装备响应
+2025-09-19 16:30:40,611 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-19 16:30:40,612 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-19 16:30:40,613 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-19 16:30:40,614 [ 1] INFO  Unity: OnGuild,[Success][1][利物浦]
+2025-09-19 16:30:40,614 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:31:07,429 [ 1] INFO  Unity: 网络断开
+2025-09-19 16:31:07,430 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)
 
+2025-09-19 16:31:07,435 [ 1] INFO  Unity: 消失的玩家：6,位置(5012, 4401, 802)

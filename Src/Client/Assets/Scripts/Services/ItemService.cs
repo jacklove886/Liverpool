@@ -111,6 +111,7 @@ namespace Services
         //利用pendingEquip  返回的时候就知道穿戴的装备信息
         private void OnItemEquip(object sender, ItemEquipResponse response)
         {
+            Debug.Log("收到脱下装备响应");
             if (response.Result == Result.Success)
             {
                 if (pendingEquip != null)

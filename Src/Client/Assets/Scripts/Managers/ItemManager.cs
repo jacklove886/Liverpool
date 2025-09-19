@@ -70,6 +70,10 @@ namespace Managers
                 return;
             }
             Item item = this.Items[itemId];
+            if (item.Define.Type == ItemType.Equip && EquipManager.Instance.Contains(itemId))//如果是装备 先脱下
+            {
+                EquipManager.Instance.OnUnEquipItem(item.EquipInfo.Slot);
+            }
             if (item.Count < count)//已有数量小于要删除的 返回
             {
                 return;

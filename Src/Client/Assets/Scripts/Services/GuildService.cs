@@ -19,6 +19,8 @@ namespace Services
 
         public System.Action OnGuildClose;//关闭公会页面
 
+        public System.Action OnGuildListClose;//关闭公会页面
+
         public void Init()
         {
 
@@ -124,6 +126,10 @@ namespace Services
             if (response.Result == Result.Success&&response.Apply.Result==ApplyResult.Accept)
             {
                 MessageBox.Show(response.Msg, "申请通过");
+                if (OnGuildClose != null)
+                {
+                    OnGuildClose();
+                }
             }
             else if (response.Result == Result.Failed && response.Apply.Result == ApplyResult.Reject)
             {
@@ -228,6 +234,10 @@ namespace Services
                     if (response.Result == Result.Success)
                     {
                         MessageBox.Show(response.Msg, "踢出成功");
+                        if (OnGuildClose != null && GuildManager.Instance.myMemberInfo == null)
+                        {
+                            OnGuildClose();
+                        }
                     }
                     else
                     {

@@ -1,187 +1,54 @@
-2025-09-19 15:32:14,762 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-19 15:32:17,658 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-19 15:32:17,660 [ 1] INFO  Unity: 连接成功
-2025-09-19 15:32:17,661 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-19 15:32:17,664 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-19 15:32:17,761 [ 1] INFO  Unity: 收到登录响应
-2025-09-19 15:32:17,762 [ 1] INFO  Unity: 登录成功
-2025-09-19 15:32:17,764 [ 1] WARN  Unity: 音乐:selectCharacter不存在
-UnityEngine.Debug:LogWarningFormat(String, Object[])
-SoundManager:PlayMusic(String) (at Assets/Scripts/Sound/SoundManager.cs:145)
-UILogin:OnLogin(Result, String) (at Assets/Scripts/UI/登录注册场景/UILogin.cs:104)
-Services.UserService:OnUserLogin(Object, UserLoginResponse) (at Assets/Scripts/Services/UserService.cs:195)
-Network.MessageDistributer`1:RaiseEvent(Object, UserLoginResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
-Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDispatch.cs:11)
-Network.MessageDistributer`1:Distribute() (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:150)
-Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:416)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:433)
-
-2025-09-19 15:32:17,992 [ 1] INFO  Unity: 当前角色数量为4
-2025-09-19 15:32:19,323 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-19 15:32:19,346 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-19 15:32:19,348 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-19 15:32:19,348 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-19 15:32:19,349 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-19 15:32:19,350 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
-2025-09-19 15:32:19,350 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
-2025-09-19 15:32:19,359 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 15:32:19,360 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-19 15:32:19,361 [ 1] INFO  Unity: 加入角色姓名:Boy,地图:1
-2025-09-19 15:32:19,363 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-19 15:32:19,364 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-19 15:32:19,865 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 15:32:20,719 [ 1] INFO  Unity: Set Channel:Local
-2025-09-19 15:32:21,255 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:142)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:246)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:48)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:120)
-
-2025-09-19 15:32:23,362 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:137)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:246)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:56)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:124)
-
-2025-09-19 15:32:29,102 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:142)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:246)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:48)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:120)
-
-2025-09-19 15:32:32,840 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:137)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:246)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:56)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:124)
-
-2025-09-19 15:32:33,464 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:142)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:246)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:48)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:120)
-
-2025-09-19 15:32:44,049 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:137)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:246)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:56)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:124)
-
-2025-09-19 15:32:44,748 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:142)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:246)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:48)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:120)
-
-2025-09-19 15:33:00,364 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:137)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:246)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:56)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:124)
-
-2025-09-19 15:33:00,996 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:142)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:246)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:48)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:120)
-
-2025-09-19 15:33:01,864 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:137)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:246)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:56)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:124)
-
-2025-09-19 15:33:02,405 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:142)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:246)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:48)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:120)
-
-2025-09-19 15:33:04,004 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:137)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:246)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:56)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:124)
-
-2025-09-19 15:33:04,614 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:142)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:246)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:48)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:120)
-
-2025-09-19 15:33:08,247 [ 1] WARN  Unity: Invalid Layer Index '1'
-UnityEngine.Animator:SetLayerWeight(Int32, Single)
-EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:137)
-EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
-PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:246)
-Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:56)
-PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:124)
-
-2025-09-19 15:33:09,182 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
-2025-09-19 15:33:09,183 [ 1] WARN  Unity: 音乐:selectCharacter不存在
-UnityEngine.Debug:LogWarningFormat(String, Object[])
-SoundManager:PlayMusic(String) (at Assets/Scripts/Sound/SoundManager.cs:145)
-UISetting:OnClickBackToChooseCharacter() (at Assets/Scripts/UI/设置/UISetting.cs:12)
+2025-09-19 16:33:34,710 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-19 16:33:37,507 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-19 16:33:37,508 [ 1] INFO  Unity: 连接成功
+2025-09-19 16:33:37,510 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-19 16:33:37,513 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-19 16:33:38,215 [ 1] INFO  Unity: 收到登录响应
+2025-09-19 16:33:38,216 [ 1] INFO  Unity: 登录成功
+2025-09-19 16:33:38,579 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-19 16:33:39,307 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UICharacterSelect:OnClickCreateCharater() (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:137)
 UnityEngine.EventSystems.EventSystem:Update()
 
-2025-09-19 15:33:09,184 [ 1] INFO  Unity: 发出退出游戏的响应
-2025-09-19 15:33:09,382 [ 1] INFO  Unity: 当前角色数量为4
-2025-09-19 15:33:09,387 [ 1] INFO  Unity: 11离开了地图
-2025-09-19 15:33:09,389 [ 1] INFO  Unity: 移除角色ID：11
-2025-09-19 15:33:09,391 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 15:33:09,392 [ 1] INFO  Unity: 角色离开游戏:Success
-2025-09-19 15:33:09,393 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 15:33:09,393 [ 1] INFO  Unity: 消失的玩家：11,位置(4539, 4832, 803)
-2025-09-19 15:33:10,344 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-19 15:33:10,356 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-19 15:33:10,357 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-19 15:33:10,357 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-19 15:33:10,358 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-19 15:33:10,359 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
-2025-09-19 15:33:10,359 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
-2025-09-19 15:33:10,362 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 15:33:10,362 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-19 15:33:10,363 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-19 15:33:10,365 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-19 15:33:10,366 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-19 15:33:10,367 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 15:33:10,464 [ 1] WARN  Unity: Failed to create agent because there is no valid NavMesh
-UnityEngine.GameObject:AddComponent()
-PlayerInputController:Start() (at Assets/Scripts/GameObject/PlayerInputController.cs:48)
+2025-09-19 16:33:39,309 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UICharacterSelect:OnClickCreateCharater() (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:137)
+UnityEngine.EventSystems.EventSystem:Update()
 
-2025-09-19 15:33:17,391 [ 1] INFO  Unity: 发送购买商品请求
-2025-09-19 15:33:17,675 [ 1] INFO  Unity: StatusNotify:[Item[Add][8001][1]
-2025-09-19 15:33:17,676 [ 1] INFO  Unity: StatusNotify:[Money[Delete][0][5000]
-2025-09-19 15:33:17,684 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 15:33:58,510 [ 1] INFO  Unity: 消失的玩家：12,位置(4524, 3350, 805)
-2025-09-19 15:33:58,511 [ 1] INFO  Unity: 网络断开
-2025-09-19 15:33:58,512 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-19 16:33:39,663 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-19 16:33:39,665 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-19 16:33:40,985 [ 1] INFO  Unity: 创建角色 :B
+2025-09-19 16:33:41,301 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-19 16:33:42,441 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-19 16:33:42,476 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-19 16:33:42,478 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-19 16:33:42,479 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-19 16:33:42,487 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:33:42,488 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-19 16:33:42,489 [ 1] INFO  Unity: 加入角色姓名:B,地图:1
+2025-09-19 16:33:42,491 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-19 16:33:42,492 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-19 16:33:42,981 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:33:43,982 [ 1] INFO  Unity: Set Channel:Local
+2025-09-19 16:33:45,938 [ 1] INFO  Unity: 发送公会列表的请求
+2025-09-19 16:33:45,992 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:33:47,112 [ 1] INFO  Unity: 发送加入公会请求
+2025-09-19 16:33:56,297 [ 1] INFO  Unity: 收到审批的结果,Success
+2025-09-19 16:33:56,299 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 16:34:01,241 [ 1] INFO  Unity: 消失的玩家：1,位置(4151, 2999, 803)
+2025-09-19 16:34:01,245 [ 1] INFO  Unity: 网络断开
+2025-09-19 16:34:01,246 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)

@@ -1,4 +1,5 @@
-﻿using Services;
+﻿using Managers;
+using Services;
 using SkillBridge.Message;
 using System;
 using System.Collections;
@@ -18,7 +19,7 @@ public class UIGuildList : UIWindow {
         this.listMain.onItemSelected += this.OnGuildMemberSelected;
         this.uiInfo.Info = null;
         GuildService.Instance.OnGuildListResult += UpdateGuildList;//监听列表刷新
-
+        GuildService.Instance.OnGuildListClose += Close;
         GuildService.Instance.SendGuildListRequest();//发送刷新请求
     }
 
@@ -70,5 +71,11 @@ public class UIGuildList : UIWindow {
         {
             GuildService.Instance.SendGuildJoinRequest(this.selectedItem.Info.Id);//发加入公会的请求
         };
+    }
+
+    void Close()
+    {
+        Close();
+        GuildManager.Instance.ShowGuild();
     }
 }

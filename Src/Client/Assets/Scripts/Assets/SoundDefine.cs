@@ -8,7 +8,7 @@ public class SoundDefine//配置文件
 {
     [Header("背景音乐")]
     public const string Music_Login = "login";
-    public const string Music_Select = "selectCharacter";
+    public const string Music_Select = "select";
     public const string Music_Town = "town";
     public const string Music_Map01 = "map01";
     public const string Music_Map02 = "map02";

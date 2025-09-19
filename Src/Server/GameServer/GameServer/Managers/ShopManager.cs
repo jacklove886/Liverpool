@@ -55,6 +55,7 @@ namespace GameServer.Managers
                 if (item.Count == count)
                 {
                     sender.Session.Character.ItemManager.DeleteItem(shopItemID, count);
+                    ItemManager.Items.Remove(shopItemID);
                 }
                 else
                 {

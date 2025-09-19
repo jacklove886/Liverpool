@@ -70,6 +70,15 @@ namespace GameServer.Models
             {
                 this.AddMember(apply.characterId, apply.Name, apply.Class, apply.Level, GuildTitle.None);
             }
+            if(apply.Result == ApplyResult.Reject)
+            {
+                var applyRecord = DBService.Instance.Entities.TGuildApplies.FirstOrDefault(v => v.Guild.Id == this.Id && v.CharacterId == apply.characterId);
+                if (applyRecord != null)
+                {
+                    DBService.Instance.Entities.TGuildApplies.Remove(applyRecord);
+                    this.TGuild.Applies.Remove(oldApply);//还需要在网络中删除
+                }
+            }
 
             DBService.Instance.Save();
             this.changeTime = TimeUtil.timestamp;
@@ -263,15 +272,16 @@ namespace GameServer.Models
                     this.TGuild.LeaderName = target.Name;
                     break;
                 case GuildAdminCommand.Kickout:
-                    this.TGuild.Members.Remove(target);
                     Character targetCharacter = CharacterManager.Instance.GetCharatcer(targetId);
+                    this.TGuild.Members.Remove(target);
                     if (targetCharacter != null)//在线
                     {
                         targetCharacter.LeaveGuild();
                     }
                     else
                     {
-                        RemoveGuildMember(targetId);
+                        
+                       RemoveGuildMember(targetId);
                     }
                     break;
             }
@@ -289,7 +299,7 @@ namespace GameServer.Models
             var removeCharacter = DBService.Instance.Entities.Characters.FirstOrDefault(v => v.ID == characterId);
             if (removeCharacter != null)
             {
-                
+                removeCharacter.GuildId = 0;
             }
         }
 
