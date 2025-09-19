@@ -235,13 +235,13 @@ namespace Services
             }
         }
 
-        public void SendCharacterDelete(string characterName)
+        public void SendCharacterDelete(int characterId)
         {
-            Debug.LogFormat("删除角色: {0}", characterName);
+            Debug.LogFormat("删除角色: {0}", characterId);
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.deleteChar = new UserDeleteCharacterRequest();
-            message.Request.deleteChar.Name = characterName;
+            message.Request.deleteChar.characterId = characterId;
 
             if (this.connected && NetClient.Instance.Connected)
             {

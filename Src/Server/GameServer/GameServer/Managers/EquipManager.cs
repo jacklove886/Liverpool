@@ -17,7 +17,7 @@ namespace GameServer.Managers
         public Result EquipItem(NetConnection<NetSession>sender,int slot,int itemID,bool isEquip)
         {
             Character character = sender.Session.Character;
-            if (!character.ItemManager.Items.ContainsKey(itemID))//ItemID不存在
+            if (!ItemManager.Items.ContainsKey(itemID))//ItemID不存在
             {
                 return Result.Failed;
             }

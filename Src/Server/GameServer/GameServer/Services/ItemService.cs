@@ -18,6 +18,7 @@ namespace GameServer.Services
             //订阅请求信息 发送响应
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<ItemBuyRequest>(this.OnItemBuy);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<ItemEquipRequest>(this.OnItemEquip);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<ItemSellRequest>(this.OnItemSell);
         }
 
         public void Init()
@@ -51,7 +52,7 @@ namespace GameServer.Services
             sender.Session.Response.itemSell.Result = result;
             if (result == Result.Success)
             {
-                sender.Session.Response.itemBuy.Msg = string.Format("出售道具:{0},数量:{1}成功！", request.shopItemID, request.sellCount);
+                sender.Session.Response.itemSell.Msg = string.Format("出售道具:{0},数量:{1}成功！", request.shopItemID, request.sellCount);
             }
             else { sender.Session.Response.itemBuy.Msg = "出售失败 道具数量不足"; }
             sender.SendResponse();

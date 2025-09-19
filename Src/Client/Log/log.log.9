@@ -1,11 +1,11 @@
-2025-09-19 00:14:46,697 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-19 00:14:55,124 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-19 00:14:55,126 [ 1] INFO  Unity: 连接成功
-2025-09-19 00:14:55,127 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-19 00:14:55,130 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-19 00:14:55,830 [ 1] INFO  Unity: 收到登录响应
-2025-09-19 00:14:55,830 [ 1] INFO  Unity: 登录成功
-2025-09-19 00:14:55,832 [ 1] WARN  Unity: 音乐:selectCharacter不存在
+2025-09-19 14:16:08,366 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-19 14:16:15,153 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-19 14:16:15,166 [ 1] INFO  Unity: 连接成功
+2025-09-19 14:16:15,168 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-19 14:16:15,171 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-19 14:16:15,266 [ 1] INFO  Unity: 收到登录响应
+2025-09-19 14:16:15,267 [ 1] INFO  Unity: 登录成功
+2025-09-19 14:16:15,268 [ 1] WARN  Unity: 音乐:selectCharacter不存在
 UnityEngine.Debug:LogWarningFormat(String, Object[])
 SoundManager:PlayMusic(String) (at Assets/Scripts/Sound/SoundManager.cs:145)
 UILogin:OnLogin(Result, String) (at Assets/Scripts/UI/登录注册场景/UILogin.cs:104)
@@ -16,24 +16,127 @@ Network.MessageDistributer`1:Distribute() (at E:/Unity_code/mmorpg/mmorpg/Src/Li
 Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:416)
 Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:433)
 
-2025-09-19 00:14:56,055 [ 1] INFO  Unity: 当前角色数量为3
-2025-09-19 00:14:57,389 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-19 00:14:57,556 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-19 00:14:57,557 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-19 00:14:57,558 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-19 00:14:57,566 [ 1] INFO  Unity: OnGuild,[Success][1][利物浦]
-2025-09-19 00:14:57,567 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 00:14:57,568 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-19 00:14:57,570 [ 1] INFO  Unity: 加入角色姓名:Aa,地图:1
-2025-09-19 00:14:57,572 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-19 00:14:57,573 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-19 00:14:58,059 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 00:14:59,066 [ 1] INFO  Unity: Set Channel:Local
-2025-09-19 00:15:02,699 [ 1] INFO  Unity: 发送离开公会的请求
-2025-09-19 00:15:13,813 [ 1] INFO  Unity: 消失的玩家：1,位置(4744, 3031, 803)
-2025-09-19 00:15:13,814 [ 1] INFO  Unity: 网络断开
-2025-09-19 00:15:13,815 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-19 14:16:15,494 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-19 14:16:16,501 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-19 14:16:16,524 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-19 14:16:16,525 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:0]
+2025-09-19 14:16:16,527 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-19 14:16:16,528 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:0]
+2025-09-19 14:16:16,538 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 14:16:16,539 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-19 14:16:16,540 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-19 14:16:16,542 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-19 14:16:16,543 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-19 14:16:17,625 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 14:16:17,880 [ 1] INFO  Unity: Set Channel:Local
+2025-09-19 14:16:25,230 [ 1] INFO  Unity: 发送出售商品请求
+2025-09-19 14:16:25,260 [ 1] INFO  Unity: StatusNotify:[Item[Delete][2][5]
+2025-09-19 14:16:25,262 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][500]
+2025-09-19 14:16:25,263 [ 1] INFO  Unity: 收到出售商品响应
+2025-09-19 14:16:25,271 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 14:16:32,939 [ 1] INFO  Unity: 发送出售商品请求
+2025-09-19 14:16:32,952 [ 1] INFO  Unity: StatusNotify:[Item[Delete][2][15]
+2025-09-19 14:16:32,953 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][1500]
+2025-09-19 14:16:32,954 [ 1] INFO  Unity: 收到出售商品响应
+2025-09-19 14:16:32,955 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 14:16:34,721 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{KeyNotFoundException: The given key was not present in the dictionary., System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150)
+UIBag+<InitBags>c__Iterator0.MoveNext () (at Assets/Scripts/UI/背包系统/UIBag.cs:46)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at D:/unity/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+UIBag:Start() (at Assets/Scripts/UI/背包系统/UIBag.cs:31)
+}</args></log4net.Error>
+2025-09-19 14:17:08,364 [ 1] INFO  Unity: 发送购买商品请求
+2025-09-19 14:17:08,397 [ 1] INFO  Unity: StatusNotify:[Item[Add][1][1]
+2025-09-19 14:17:08,398 [ 1] INFO  Unity: StatusNotify:[Money[Delete][0][10]
+2025-09-19 14:17:08,400 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 14:17:10,491 [ 1] INFO  Unity: 发送购买商品请求
+2025-09-19 14:17:10,524 [ 1] INFO  Unity: StatusNotify:[Item[Add][1][10]
+2025-09-19 14:17:10,525 [ 1] INFO  Unity: StatusNotify:[Money[Delete][0][100]
+2025-09-19 14:17:10,526 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 14:17:18,324 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{KeyNotFoundException: The given key was not present in the dictionary., System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150)
+UIBag+<InitBags>c__Iterator0.MoveNext () (at Assets/Scripts/UI/背包系统/UIBag.cs:46)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at D:/unity/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+UIBag:Start() (at Assets/Scripts/UI/背包系统/UIBag.cs:31)
+}</args></log4net.Error>
+2025-09-19 14:17:35,179 [ 1] INFO  Unity: 进入的地图是: CharacterChoose
+2025-09-19 14:17:35,180 [ 1] WARN  Unity: 音乐:selectCharacter不存在
+UnityEngine.Debug:LogWarningFormat(String, Object[])
+SoundManager:PlayMusic(String) (at Assets/Scripts/Sound/SoundManager.cs:145)
+UISetting:OnClickBackToChooseCharacter() (at Assets/Scripts/UI/设置/UISetting.cs:12)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-19 14:17:35,181 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-19 14:17:35,318 [ 1] INFO  Unity: 10离开了地图
+2025-09-19 14:17:35,321 [ 1] INFO  Unity: 移除角色ID：10
+2025-09-19 14:17:35,323 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 14:17:35,324 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-19 14:17:35,325 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 14:17:35,327 [ 1] INFO  Unity: 消失的玩家：10,位置(4861, 5896, 800)
+2025-09-19 14:17:35,403 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-19 14:17:36,085 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UICharacterSelect:OnClickCreateCharater() (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:137)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-19 14:17:36,086 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UICharacterSelect:OnClickCreateCharater() (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:137)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-19 14:17:36,452 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-19 14:17:36,453 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-19 14:17:38,885 [ 1] INFO  Unity: 创建角色 :By
+2025-09-19 14:17:38,994 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-19 14:17:38,996 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 14:17:40,297 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-19 14:17:40,311 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-19 14:17:40,311 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-19 14:17:40,312 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-19 14:17:40,313 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:0]
+2025-09-19 14:17:40,316 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 14:17:40,317 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-19 14:17:40,317 [ 1] INFO  Unity: 加入角色姓名:By,地图:1
+2025-09-19 14:17:40,319 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-19 14:17:40,320 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-19 14:17:40,321 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 14:17:40,416 [ 1] WARN  Unity: Failed to create agent because there is no valid NavMesh
+UnityEngine.GameObject:AddComponent()
+PlayerInputController:Start() (at Assets/Scripts/GameObject/PlayerInputController.cs:47)
+
+2025-09-19 14:17:53,186 [ 1] INFO  Unity: 发送出售商品请求
+2025-09-19 14:17:53,212 [ 1] INFO  Unity: StatusNotify:[Item[Delete][1][5]
+2025-09-19 14:17:53,213 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][500]
+2025-09-19 14:17:53,213 [ 1] INFO  Unity: 收到出售商品响应
+2025-09-19 14:17:53,216 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 14:18:04,036 [ 1] INFO  Unity: 发送出售商品请求
+2025-09-19 14:18:04,053 [ 1] INFO  Unity: StatusNotify:[Item[Delete][1][15]
+2025-09-19 14:18:04,054 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][1500]
+2025-09-19 14:18:04,055 [ 1] INFO  Unity: 收到出售商品响应
+2025-09-19 14:18:04,056 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 14:18:17,392 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{KeyNotFoundException: The given key was not present in the dictionary., System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150)
+UIBag+<InitBags>c__Iterator0.MoveNext () (at Assets/Scripts/UI/背包系统/UIBag.cs:46)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at D:/unity/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+UIBag:Start() (at Assets/Scripts/UI/背包系统/UIBag.cs:31)
+}</args></log4net.Error>
+2025-09-19 14:18:19,714 [ 1] INFO  Unity: 网络断开
+2025-09-19 14:18:19,714 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)
 
+2025-09-19 14:18:19,718 [ 1] INFO  Unity: 消失的玩家：11,位置(5613, 3477, 800)

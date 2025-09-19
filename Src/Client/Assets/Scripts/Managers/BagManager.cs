@@ -35,6 +35,11 @@ namespace Managers
 
         public void Reset()//整理道具
         {
+            for (int j = 0; j < this.Items.Length; j++)//必须要清空原有数据
+            {
+                this.Items[j].ItemID = 0;
+                this.Items[j].Count = 0;
+            }
             int i = 0;//当前背包槽位的位置  最终i的值表示实际使用的槽位数量
             foreach(var kv in ItemManager.Instance.Items)//遍历道具 Items是Dictionary<int, Item>类型
             {
@@ -127,7 +132,30 @@ namespace Managers
 
         public void RemoveItem(int itemId, int count)
         {
-
+            ushort deleteCount = (ushort)count;
+            for (int i = 0; i < Items.Length; i++)
+            {
+                if (this.Items[i].ItemID == itemId)
+                {
+                    if(Items[i].Count>= deleteCount)//槽位数量大于要减去的数量
+                    {
+                        Items[i].Count -= deleteCount;
+                        deleteCount = 0;
+                        if (Items[i].Count == 0)
+                        {
+                            Items[i].ItemID = 0;
+                        }
+                        break;
+                    }
+                    else//当前槽位数量不足
+                    {
+                        deleteCount -= Items[i].Count;
+                        Items[i].Count = 0;
+                        Items[i].ItemID = 0;
+                    }
+                }
+            }
         }
+
     }
 }

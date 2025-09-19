@@ -23,7 +23,7 @@ namespace GameServer.Managers
 
             foreach (var item in owner.TCharacter.Items)//遍历角色身上的所有道具
             {
-                Items.Add(item.ItemID, new Item(item));//添加道具 item是Tcharacter类型
+                Items[item.ItemID] = new Item(item);
             }
         }
 
@@ -105,6 +105,16 @@ namespace GameServer.Managers
             Log.InfoFormat("[角色:{0}]移除了:[{1}]数量为:{2}", Owner.TCharacter.ID, item, count);
             //DBService.Instance.Save();
             return true;
+        }
+
+        public  void DeleteItem(int itemId,int count)
+        {
+            RemoveItem(itemId,count);
+            var Item = DBService.Instance.Entities.CharacterItems.FirstOrDefault(v => v.ItemID == itemId);
+            if (Item != null)
+            {
+                DBService.Instance.Entities.CharacterItems.Remove(Item);
+            }
         }
 
         public void GetItemInfos(List<NItemInfo> list)//获取所有道具  方便内存数据转换为网络数据

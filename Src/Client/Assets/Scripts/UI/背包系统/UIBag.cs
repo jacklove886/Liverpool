@@ -35,16 +35,19 @@ public class UIBag : UIWindow
     {
         for(int i = 0; i < BagManager.Instance.Items.Length; i++)
         {
-            var item = BagManager.Instance.Items[i];
-            if (item.ItemID > 0)
+            if (BagManager.Instance.Items[i].ItemID != 0)
             {
-                GameObject go = Instantiate(bagItem, slots[i].transform);//展示正确的道具图片 生成在对应的栏位下
-                go.name = "第"+(i+1)+"个道具";
-                var ui = go.GetComponent<UIBagItemIcon>();
-                var def = ItemManager.Instance.Items[item.ItemID].Define;
-                ui.SetMainIcon(def.Icon, item.Count.ToString());
-            }
-            SetMoney();
+                var item = BagManager.Instance.Items[i];
+                if (item.ItemID > 0)
+                {
+                    GameObject go = Instantiate(bagItem, slots[i].transform);//展示正确的道具图片 生成在对应的栏位下
+                    go.name = "第" + (i + 1) + "个道具";
+                    var ui = go.GetComponent<UIBagItemIcon>();
+                    var def = ItemManager.Instance.Items[item.ItemID].Define;
+                    ui.SetMainIcon(def.Icon, item.Count.ToString());
+                }
+                SetMoney();
+            }           
         }
         yield return null;
     }

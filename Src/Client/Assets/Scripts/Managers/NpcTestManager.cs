@@ -17,17 +17,17 @@ namespace Managers
         //方法匹配委托定义public delegate bool NpcActionHandler(NpcDefine npc)
         private bool OnNpcInvokeShop(NpcDefine npc)
         {
-            UIDialog uIDialog = UIManager.Instance.Show<UIDialog>();
-            uIDialog.title.text = npc.Name;
-            uIDialog.Introduce.text = npc.Introduction;
+            UIShopDialog uiShopDialog = UIManager.Instance.Show<UIShopDialog>();
+            uiShopDialog.title.text = npc.Name;
+            uiShopDialog.Introduce.text = npc.Introduction;
             if(npc.ID==2)
-            uIDialog.YesButtonText.text = "购买商品";
+            uiShopDialog.YesButtonText.text = "购买商品";
             if(npc.ID==4)
-            uIDialog.YesButtonText.text = "升级装备";
+            uiShopDialog.YesButtonText.text = "升级装备";
             if (npc.ID == 5)
-            uIDialog.YesButtonText.text = "购买坐骑";
-            uIDialog.NoButtonText.text = "出售道具";
-            uIDialog.shopParam = npc.Param;
+            uiShopDialog.YesButtonText.text = "购买坐骑";
+            uiShopDialog.NoButtonText.text = "出售道具";
+            uiShopDialog.shopParam = npc.Param;
             return true;
         }
     }

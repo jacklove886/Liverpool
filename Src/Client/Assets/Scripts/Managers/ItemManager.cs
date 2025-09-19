@@ -74,8 +74,16 @@ namespace Managers
             {
                 return;
             }
-            item.Count -= count;
-            BagManager.Instance.RemoveItem(itemId, count);
+            if (item.Count == count)
+            {
+                BagManager.Instance.RemoveItem(itemId, count);
+                Items.Remove(itemId);
+            }
+            else
+            {
+                item.Count -= count;
+                BagManager.Instance.RemoveItem(itemId, count);
+            }           
         }
         //方法重载  通过ID使用道具 下面是通过道具定义使用道具
         public bool UseItem(int itemID)

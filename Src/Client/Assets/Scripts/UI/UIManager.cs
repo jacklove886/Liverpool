@@ -23,7 +23,8 @@ public class UIManager : Singleton<UIManager> {
         UIElement element = new UIElement();
         element.Resources = "UI/UIDialog";
         element.Cache = true;*/
-        UIResources.Add(typeof(UIDialog), new UIElement() { Resources = "UI/UIDialog", Cache = true });
+        UIResources.Add(typeof(UIDialog), new UIElement() { Resources = "UI/UIDialog", Cache = false });
+        UIResources.Add(typeof(UIShopDialog), new UIElement() { Resources = "UI/UIShopDialog", Cache = false });
 
         UIResources.Add(typeof(UISetting), new UIElement() { Resources = "UI/UISetting/UISetting", Cache = true });
 

@@ -34,7 +34,7 @@ public class UIShopItem : MonoBehaviour,ISelectHandler
     }
 
     [Header("数据结构")]
-    public UIShop shop;
+    public UIShop UIshop;
     public int shopItemID { get; set; }
     public ItemDefine item;
     public ShopItemDefine shopItem;
@@ -47,7 +47,7 @@ public class UIShopItem : MonoBehaviour,ISelectHandler
 	
 	public void SetShopItem(int id,ShopItemDefine shopItem,UIShop owner)
     {
-        this.shop = owner;
+        this.UIshop = owner;
         this.shopItemID = id;
         this.shopItem = shopItem;//存储配置信息 里面有具体价格 数量 状态
         this.item = DataManager.Instance.Items[this.shopItem.ItemID];
@@ -71,12 +71,16 @@ public class UIShopItem : MonoBehaviour,ISelectHandler
     public Item sellItem;
     public int sellItemID { get; set; }
 
-    public void SetSellItem(int id,Item item) 
+    public void SetSellItem(int id,Item item, UIShop owner) 
     {
+        this.UIshop = owner;
         this.sellItemID = id;
+        this.shopItemID = item.Define.ID;
         this.sellItem = item;
         this.nameText.text = sellItem.Define.Name;
-        this.priceText.text = "单价"+sellItem.Define.SellPrice.ToString();
+        this.countText.text = ("数量:" + item.Count).ToString();
+        this.limitClass.text = "";
+        this.priceText.text = ("单价"+sellItem.Define.SellPrice).ToString();
         this.iconImage.overrideSprite = Resloader.Load<Sprite>(item.Define.Icon);
     }
 
@@ -84,6 +88,6 @@ public class UIShopItem : MonoBehaviour,ISelectHandler
     public void OnSelect(BaseEventData eventData)//方法
     {
         this.Selected = true;
-        this.shop.SelectShopItem(this);
+        this.UIshop.SelectShopItem(this);
     }
 }

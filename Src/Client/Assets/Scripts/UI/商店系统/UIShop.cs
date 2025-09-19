@@ -24,12 +24,20 @@ public class UIShop : UIWindow {
 
     private void Start()
     {
+        ItemService.Instance.OnRreshShop += RefreshUI;
         StatusService.Instance.RegisterStatusNofity(StatusType.Money, OnMoneyChanged);
     }
 
     private void OnDestroy()
     {
+        ItemService.Instance.OnRreshShop -= RefreshUI;
         StatusService.Instance.UnregisterStatusNotify(StatusType.Money, OnMoneyChanged);
+    }
+
+    void RefreshUI()
+    {
+        ClearSellItems();
+        StartCoroutine(InitSellItems());
     }
 
 
@@ -79,10 +87,22 @@ public class UIShop : UIWindow {
             }
             GameObject go = Instantiate(shopItem, itemRoot[page]);
             UIShopItem ui = go.GetComponent<UIShopItem>();
-            ui.SetSellItem(kv.Key,kv.Value);
+            ui.SetSellItem(kv.Key,kv.Value,this);
             count++;
         }
         yield return null;
+    }
+
+    void ClearSellItems()
+    {
+        for (int i = 0; i < itemRoot.Length; i++)
+        {
+            Transform content = itemRoot[i];
+            foreach (Transform child in content)
+            {
+                Destroy(child.gameObject);
+            }
+        }
     }
 
     public void SetShop(ShopDefine shop)
@@ -97,10 +117,11 @@ public class UIShop : UIWindow {
 
     public void SetSellShop(Item item)
     {
+        selectedItem = null;
         this.sellbutton.onClick.AddListener(OnClickSell);
         this.sellbuttonText.text = "出售";
         this.title.text = "出售商品";
-        this.money.text = item.Define.SellPrice.ToString();
+        this.money.text = User.Instance.CurrentCharacter.Gold.ToString();
         StartCoroutine(InitSellItems());
     }
     
@@ -135,11 +156,7 @@ public class UIShop : UIWindow {
             MessageBox.Show("请选择要出售的道具", "提示");
             return;
         }
-        UIInputBox ui = UIManager.Instance.Show<UIInputBox>();
-        ui.title.text = "出售商品";
-        ui.emptyTips = "数量不能为空";
-        ui.message.text = "请输入要出售的数量";
-        ui.OnSubmit += (string text, out string tips) =>
+        InputBox.Show("请输入要出售的数量","出售商品", MessageBoxType.Confirm,"出售","取消").OnSubmit+= (string text, out string tips) =>
           {
               int num;
               if (!int.TryParse(text, out num) || num <= 0)

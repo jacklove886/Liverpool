@@ -12,17 +12,20 @@ namespace Services
 {
     class ItemService:Singleton<ItemService>
     {
+        public System.Action OnRreshShop;
         public ItemService()//构造函数
         {
             //发送请求 订阅响应消息并调用方法  
             MessageDistributer.Instance.Subscribe<ItemBuyResponse>(this.OnItemBuy);
             MessageDistributer.Instance.Subscribe<ItemEquipResponse>(this.OnItemEquip);
+            MessageDistributer.Instance.Subscribe<ItemSellResponse>(this.OnItemSell);
         }
 
         public void Dispose()
         {
             MessageDistributer.Instance.Unsubscribe<ItemBuyResponse>(this.OnItemBuy);
             MessageDistributer.Instance.Unsubscribe<ItemEquipResponse>(this.OnItemEquip);
+            MessageDistributer.Instance.Unsubscribe<ItemSellResponse>(this.OnItemSell);
         }
 
         public void SendBuyItem(int shopID,int shopItemID)
@@ -54,7 +57,7 @@ namespace Services
 
         public void SendSellItem(int shopItemID, int count)
         {
-            Debug.Log("发送购买商品请求");
+            Debug.Log("发送出售商品请求");
 
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
@@ -66,9 +69,11 @@ namespace Services
 
         private void OnItemSell(object sender, ItemSellResponse response)
         {
+            Debug.Log("收到出售商品响应");
             if (response.Result == Result.Success)
             {
                 MessageBox.Show("出售成功", "完成");
+                if (OnRreshShop != null) OnRreshShop();
                 ChatManager.Instance.AddSystemMessage(response.Msg, "系统");
                 SoundManager.Instance.PlayUI(SoundDefine.Gold);
             }

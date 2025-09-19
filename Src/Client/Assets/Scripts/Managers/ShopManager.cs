@@ -50,7 +50,7 @@ namespace Managers
 
         public bool SellItem(int shopItemID, int count)
         {
-            ItemService.Instance.SendBuyItem(shopItemID, count);
+            ItemService.Instance.SendSellItem(shopItemID, count);
             return true;//表示请求发送成功 不代表购买成功
         }
     }

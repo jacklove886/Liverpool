@@ -239,7 +239,7 @@ public class UICharacterSelect : MonoBehaviour
             {
                 // 发送删除请求，传入当前选中角色的名字
                 SoundManager.Instance.PlayUI(SoundDefine.Click);
-                UserService.Instance.SendCharacterDelete(User.Instance.CurrentCharacter.Name);
+                UserService.Instance.SendCharacterDelete(User.Instance.CurrentCharacter.Id);
             };
             msgBox.OnNo = () =>
             {

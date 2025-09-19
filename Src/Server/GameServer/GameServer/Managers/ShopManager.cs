@@ -47,15 +47,24 @@ namespace GameServer.Managers
             DataManager.Instance.Items.TryGetValue(shopItemID,out ItemDefine itemDefine);
             if (ItemManager.Items.TryGetValue(shopItemID,out Item item))
             {
+                if (item == null) return Result.Failed;
                 if (item.Count < count)
                 {
                     return Result.Failed;
                 }
+                if (item.Count == count)
+                {
+                    sender.Session.Character.ItemManager.DeleteItem(shopItemID, count);
+                }
+                else
+                {
+                    sender.Session.Character.ItemManager.RemoveItem(shopItemID, count);
+                }               
+                sender.Session.Character.Gold += itemDefine.SellPrice * count;
+                DBService.Instance.Save();
+                return Result.Success;
             }
-            sender.Session.Character.ItemManager.AddItem(shopItemID, -count);
-            sender.Session.Character.Gold += itemDefine.SellPrice * count;
-            DBService.Instance.Save();
-            return Result.Success;
+            return Result.Failed;
         }
 
     }

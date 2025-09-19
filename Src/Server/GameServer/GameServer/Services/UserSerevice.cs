@@ -190,13 +190,13 @@ namespace GameServer.Services
             {
                 return;
             }
-            Log.InfoFormat("删除角色的姓名:{0}", request.Name);
+            Log.InfoFormat("删除角色的姓名:{0}", request.characterId);
 
             sender.Session.Response.deleteChar = new UserDeleteCharacterResponse();
 
             try
             {
-                var deleteCharacter = sender.Session.User.Player.Characters.FirstOrDefault(c => c.Name == request.Name);
+                var deleteCharacter = sender.Session.User.Player.Characters.FirstOrDefault(c => c.ID == request.characterId);
 
                 //角色名字不存在 不执行删除操作
                 if (deleteCharacter == null)

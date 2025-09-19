@@ -327,7 +327,7 @@ message UserCreateCharacterResponse {
 }
 message UserDeleteCharacterRequest
 {
-    string name = 1;
+    int32 characterId = 1;
 }
 
 message UserDeleteCharacterResponse {
