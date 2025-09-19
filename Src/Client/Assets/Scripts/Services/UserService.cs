@@ -32,7 +32,6 @@ namespace Services
             MessageDistributer.Instance.Subscribe<UserRegisterResponse>(this.OnUserRegister);
             MessageDistributer.Instance.Subscribe<UserLoginResponse>(this.OnUserLogin);
             MessageDistributer.Instance.Subscribe<UserCreateCharacterResponse>(this.OnUserCharacterCreate);
-            MessageDistributer.Instance.Subscribe<UserDeleteCharacterResponse>(this.OnUserCharacterDelete);
             MessageDistributer.Instance.Subscribe<UserGameEnterResponse>(this.OnUserGameEnter);
             MessageDistributer.Instance.Subscribe<UserGameLeaveResponse>(this.OnUserGameLeave);
         }
@@ -43,7 +42,6 @@ namespace Services
             MessageDistributer.Instance.Unsubscribe<UserRegisterResponse>(this.OnUserRegister);
             MessageDistributer.Instance.Unsubscribe<UserLoginResponse>(this.OnUserLogin);
             MessageDistributer.Instance.Unsubscribe<UserCreateCharacterResponse>(this.OnUserCharacterCreate);
-            MessageDistributer.Instance.Unsubscribe<UserDeleteCharacterResponse>(this.OnUserCharacterDelete);
             MessageDistributer.Instance.Unsubscribe<UserGameEnterResponse>(this.OnUserGameEnter);
             MessageDistributer.Instance.Unsubscribe<UserGameLeaveResponse>(this.OnUserGameLeave);
             NetClient.Instance.OnConnect -= OnGameServerConnect;
@@ -232,40 +230,6 @@ namespace Services
             if (this.OnCharacterCreate != null)
             {
                 this.OnCharacterCreate(response.Result, response.Msg);
-            }
-        }
-
-        public void SendCharacterDelete(int characterId)
-        {
-            Debug.LogFormat("删除角色: {0}", characterId);
-            NetMessage message = new NetMessage();
-            message.Request = new NetMessageRequest();
-            message.Request.deleteChar = new UserDeleteCharacterRequest();
-            message.Request.deleteChar.characterId = characterId;
-
-            if (this.connected && NetClient.Instance.Connected)
-            {
-                this.pendingMessage = null;
-                NetClient.Instance.SendMessage(message);
-            }
-            else
-            {
-                this.pendingMessage = message;
-                this.ConnectToServer();
-            }
-        }
-
-        void OnUserCharacterDelete(object sender, UserDeleteCharacterResponse response)
-        {
-            if (response.Result == Result.Success)
-            {
-                // 用服务器返回的完整列表
-                User.Instance.Info.Player.Characters.Clear();
-                User.Instance.Info.Player.Characters.AddRange(response.Characters);
-            }
-            if (this.OnCharacterDelete != null)
-            {
-                this.OnCharacterDelete(response.Result, response.Msg);
             }
         }
 

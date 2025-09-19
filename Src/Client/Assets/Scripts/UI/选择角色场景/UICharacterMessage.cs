@@ -11,8 +11,6 @@ public class UICharacterMessage : MonoBehaviour
     public Text charClass;//角色职业
     public Text charName;//角色姓名
     public Image imageEmpty; // 角色空图像（用来存储自拍照）
-    [Header("删除按钮")]
-    public Button deleteButton; // 删除按钮
     [Header("选中效果")]
     public Image highlight;//图片高亮
     public bool selected

@@ -63,6 +63,11 @@ namespace Entities
             return this.Define.Speed*2;
         }
 
+        public int Ride()
+        {
+            return this.Define.Speed * 3;
+        }
+
 
         public int Stop()
         {

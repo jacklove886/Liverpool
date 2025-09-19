@@ -1,55 +1,94 @@
-2025-09-19 14:44:13,435 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-19 14:44:20,162 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-19 14:44:20,163 [ 1] INFO  Unity: 连接成功
-2025-09-19 14:44:20,165 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-19 14:44:20,168 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-19 14:44:20,264 [ 1] INFO  Unity: 收到登录响应
-2025-09-19 14:44:20,265 [ 1] INFO  Unity: 登录成功
-2025-09-19 14:44:20,266 [ 1] WARN  Unity: 音乐:selectCharacter不存在
+2025-09-19 15:11:19,040 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-19 15:11:29,475 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-19 15:11:29,477 [ 1] INFO  Unity: 连接成功
+2025-09-19 15:11:29,478 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-19 15:11:29,481 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-19 15:11:30,221 [ 1] INFO  Unity: 收到登录响应
+2025-09-19 15:11:30,222 [ 1] INFO  Unity: 登录成功
+2025-09-19 15:11:30,223 [ 1] WARN  Unity: 音乐:selectCharacter不存在
 UnityEngine.Debug:LogWarningFormat(String, Object[])
 SoundManager:PlayMusic(String) (at Assets/Scripts/Sound/SoundManager.cs:145)
 UILogin:OnLogin(Result, String) (at Assets/Scripts/UI/登录注册场景/UILogin.cs:104)
-Services.UserService:OnUserLogin(Object, UserLoginResponse) (at Assets/Scripts/Services/UserService.cs:197)
+Services.UserService:OnUserLogin(Object, UserLoginResponse) (at Assets/Scripts/Services/UserService.cs:195)
 Network.MessageDistributer`1:RaiseEvent(Object, UserLoginResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
 Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDispatch.cs:11)
 Network.MessageDistributer`1:Distribute() (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:150)
 Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:416)
 Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:433)
 
-2025-09-19 14:44:20,489 [ 1] INFO  Unity: 当前角色数量为3
-2025-09-19 14:44:25,607 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-19 14:44:25,626 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-19 14:44:25,628 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-19 14:44:25,629 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:0]
-2025-09-19 14:44:25,629 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:0]
-2025-09-19 14:44:25,630 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:0]
-2025-09-19 14:44:25,638 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 14:44:25,639 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-19 14:44:25,641 [ 1] INFO  Unity: 加入角色姓名:Jhg,地图:1
-2025-09-19 14:44:25,643 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-19 14:44:25,644 [ 1] INFO  Unity: 进入的地图是: MainCity
-2025-09-19 14:44:26,130 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 14:44:27,051 [ 1] INFO  Unity: Set Channel:Local
-2025-09-19 14:44:36,865 [ 1] INFO  Unity: 发送出售商品请求
-2025-09-19 14:44:36,895 [ 1] INFO  Unity: StatusNotify:[Item[Delete][1][2]
-2025-09-19 14:44:36,896 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][200]
-2025-09-19 14:44:36,897 [ 1] INFO  Unity: 收到出售商品响应
-2025-09-19 14:44:36,905 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UIShop+<InitItems>c__Iterator0.MoveNext () (at Assets/Scripts/UI/商店系统/UIShop.cs:48)
-UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at D:/unity/Runtime/Export/Coroutines.cs:17)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-UIShop:RefreshUI() (at Assets/Scripts/UI/商店系统/UIShop.cs:39)
-Services.ItemService:OnItemSell(Object, ItemSellResponse) (at Assets/Scripts/Services/ItemService.cs:76)
-Network.MessageDistributer`1:RaiseEvent(Object, ItemSellResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
-Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDispatch.cs:26)
-Network.MessageDistributer`1:Distribute() (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:150)
-Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:416)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:433)
-}</args></log4net.Error>
-2025-09-19 14:44:36,910 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-19 14:44:56,928 [ 1] INFO  Unity: 消失的玩家：14,位置(5632, 3488, 800)
-2025-09-19 14:44:56,930 [ 1] INFO  Unity: 网络断开
-2025-09-19 14:44:56,931 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-19 15:11:30,440 [ 1] INFO  Unity: 当前角色数量为3
+2025-09-19 15:11:31,831 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UICharacterSelect:OnClickCreateCharater() (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:137)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-19 15:11:31,832 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UICharacterSelect:OnClickCreateCharater() (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:137)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-19 15:11:32,450 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-19 15:11:32,451 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-19 15:11:34,565 [ 1] INFO  Unity: 创建角色 :Boy
+2025-09-19 15:11:34,860 [ 1] INFO  Unity: 当前角色数量为4
+2025-09-19 15:11:36,027 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-19 15:11:36,061 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-19 15:11:36,063 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-19 15:11:36,064 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-19 15:11:36,072 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 15:11:36,073 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-19 15:11:36,074 [ 1] INFO  Unity: 加入角色姓名:Boy,地图:1
+2025-09-19 15:11:36,076 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-19 15:11:36,077 [ 1] INFO  Unity: 进入的地图是: MainCity
+2025-09-19 15:11:36,563 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 15:11:37,418 [ 1] INFO  Unity: Set Channel:Local
+2025-09-19 15:11:44,748 [ 1] INFO  Unity: 收到任务接受响应:Success
+2025-09-19 15:11:44,754 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 15:11:52,019 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][300]
+2025-09-19 15:11:52,020 [ 1] INFO  Unity: StatusNotify:[Item[Add][3][5]
+2025-09-19 15:11:52,021 [ 1] INFO  Unity: 收到任务提交响应:Success
+2025-09-19 15:11:52,023 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 15:11:56,990 [ 1] INFO  Unity: 收到任务接受响应:Success
+2025-09-19 15:11:56,991 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 15:12:05,662 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][500]
+2025-09-19 15:12:05,663 [ 1] INFO  Unity: StatusNotify:[Item[Add][4][10]
+2025-09-19 15:12:05,663 [ 1] INFO  Unity: 收到任务提交响应:Success
+2025-09-19 15:12:05,665 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 15:12:20,208 [ 1] INFO  Unity: 发送购买商品请求
+2025-09-19 15:12:20,272 [ 1] INFO  Unity: StatusNotify:[Item[Add][8002][1]
+2025-09-19 15:12:20,273 [ 1] INFO  Unity: StatusNotify:[Money[Delete][0][5000]
+2025-09-19 15:12:20,275 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 15:12:21,755 [ 1] INFO  Unity: 发送购买商品请求
+2025-09-19 15:12:21,769 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-19 15:12:27,299 [ 1] WARN  Unity: Invalid Layer Index '1'
+UnityEngine.Animator:SetLayerWeight(Int32, Single)
+EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:142)
+EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
+PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:231)
+Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:45)
+PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:119)
+
+2025-09-19 15:12:35,525 [ 1] WARN  Unity: Invalid Layer Index '1'
+UnityEngine.Animator:SetLayerWeight(Int32, Single)
+EntityController:Ride(Int32) (at Assets/Scripts/GameObject/EntityController.cs:137)
+EntityController:OnEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/EntityController.cs:113)
+PlayerInputController:SendEntityEvent(EntityEvent, Int32) (at Assets/Scripts/GameObject/PlayerInputController.cs:231)
+Models.User:Ride(Int32) (at Assets/Scripts/Models/User.cs:51)
+PlayerInputController:Update() (at Assets/Scripts/GameObject/PlayerInputController.cs:123)
+
+2025-09-19 15:12:36,867 [ 1] INFO  Unity: 消失的玩家：1,位置(4141, 5032, 800)
+2025-09-19 15:12:36,870 [ 1] INFO  Unity: 网络断开
+2025-09-19 15:12:36,871 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)

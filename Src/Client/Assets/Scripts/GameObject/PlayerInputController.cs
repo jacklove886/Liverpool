@@ -25,6 +25,7 @@ public class PlayerInputController : MonoBehaviour {
     public bool isRunning = false; //是否在跑步
     public float vertical;
     public float horizontal;
+    public bool isRide;
 
     [Header("位置同步")]
     private Vector3 lastPos;// 上次同步的位置
@@ -99,7 +100,7 @@ public class PlayerInputController : MonoBehaviour {
         }
         NavPathRender.Instance.SetPath(agent.path, agent.destination);//更新实时路径
 
-        if (agent.isStopped || agent.remainingDistance < 3f)//寻路停止或者离目标距离小于8
+        if (agent.isStopped || agent.remainingDistance < 3f)//寻路停止或者离目标距离小于3
         {
             StopNav();
             return;
@@ -150,7 +151,14 @@ public class PlayerInputController : MonoBehaviour {
                 if (state != CharacterState.Move)
                 {
                     state = CharacterState.Move;
-                    currentSpeed = this.character.Move();
+                    if (isRide)
+                    {
+                        currentSpeed = this.character.Ride();
+                    }
+                    if (!isRide)
+                    {
+                        currentSpeed = this.character.Move();
+                    }                   
                     this.SendEntityEvent(EntityEvent.EventMove);
                 }
             }
@@ -162,7 +170,14 @@ public class PlayerInputController : MonoBehaviour {
                 if (state != CharacterState.Run)
                 {
                     state = CharacterState.Run;
-                    currentSpeed = this.character.Run();
+                    if (isRide)
+                    {
+                        currentSpeed = this.character.Ride();
+                    }
+                    if (!isRide)
+                    {
+                        currentSpeed = this.character.Run();
+                    }
                     this.SendEntityEvent(EntityEvent.EventRun);
                 }
             }

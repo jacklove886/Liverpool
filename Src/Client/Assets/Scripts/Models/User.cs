@@ -12,7 +12,7 @@ namespace Models
     class User : Singleton<User>
     {
         SkillBridge.Message.NUserInfo userInfo;
-
+        public int originSpeed;
 
         public SkillBridge.Message.NUserInfo Info
         {
@@ -42,12 +42,17 @@ namespace Models
             if (CurrentRide != id)
             {
                 CurrentRide = id;
+                CurrentCharacterPlayerInput.isRide = true;
+                originSpeed = CurrentCharacterPlayerInput.currentSpeed;
+                CurrentCharacterPlayerInput.currentSpeed = CurrentCharacterPlayerInput.character.Ride();
                 CurrentCharacterPlayerInput.SendEntityEvent(EntityEvent.EventRide, CurrentRide);
             }
 
             else
             {
                 CurrentRide = 0;
+                CurrentCharacterPlayerInput.isRide = false;
+                CurrentCharacterPlayerInput.currentSpeed = originSpeed;
                 CurrentCharacterPlayerInput.SendEntityEvent(EntityEvent.EventRide, 0);
             }
         }

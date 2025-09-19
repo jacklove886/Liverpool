@@ -181,7 +181,6 @@ public class UICharacterSelect : MonoBehaviour
         {
             UICharacterMessage uICharacterMessage = uiChars[i].GetComponent<UICharacterMessage>();
             uICharacterMessage.selected = (index == i);
-            uICharacterMessage.deleteButton.gameObject.SetActive(index == i);
         }
 
         //控制角色3D模型显示和删除按钮的显示
@@ -222,30 +221,6 @@ public class UICharacterSelect : MonoBehaviour
         }
         SoundManager.Instance.PlayUI(SoundDefine.Click);
         UserService.Instance.SendCharacterCreate(this.nameInputField.text, this.charClass);
-    }
-
-    //点击删除按钮 删除角色
-    public void OnClickDeleteCharacter()
-    {
-        if (User.Instance.CurrentCharacter == null)
-        {
-            MessageBox.Show("请选择要删除的角色");
-            return;
-        }
-        else
-        {
-            UIMessageBox msgBox= MessageBox.Show("确认要删除角色吗？", "删除角色", MessageBoxType.Confirm, "确认", "取消");
-            msgBox.OnYes = () =>
-            {
-                // 发送删除请求，传入当前选中角色的名字
-                SoundManager.Instance.PlayUI(SoundDefine.Click);
-                UserService.Instance.SendCharacterDelete(User.Instance.CurrentCharacter.Id);
-            };
-            msgBox.OnNo = () =>
-            {
-                //什么都不做;
-            };
-        }
     }
 
     //直接点击开始游戏的按钮

@@ -15,7 +15,6 @@ namespace GameServer.Services
 {
     class UserService : Singleton<UserService>
     {
-        public System.Action OnTeamLeave;
 
 
         public UserService()
@@ -23,7 +22,6 @@ namespace GameServer.Services
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserRegisterRequest>(this.OnRegister);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserLoginRequest>(this.OnLogin);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserCreateCharacterRequest>(this.OnCharacterCreate);
-            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserDeleteCharacterRequest>(this.OnCharacterDelete);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserGameEnterRequest>(this.OnGameEnter);
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserGameLeaveRequest>(this.OnGameLeave);
         }
@@ -180,62 +178,6 @@ namespace GameServer.Services
 
             sender.Session.Response.createChar.Characters.Add(newCharacterInfo);
 
-            sender.SendResponse();
-        }
-
-        //删除角色的请求
-        void OnCharacterDelete(NetConnection<NetSession> sender, UserDeleteCharacterRequest request)
-        {
-            if (sender.Session.User == null)
-            {
-                return;
-            }
-            Log.InfoFormat("删除角色的姓名:{0}", request.characterId);
-
-            sender.Session.Response.deleteChar = new UserDeleteCharacterResponse();
-
-            try
-            {
-                var deleteCharacter = sender.Session.User.Player.Characters.FirstOrDefault(c => c.ID == request.characterId);
-
-                //角色名字不存在 不执行删除操作
-                if (deleteCharacter == null)
-                {
-                    sender.Session.Response.deleteChar.Result = Result.Failed;
-                    sender.Session.Response.deleteChar.Msg = "角色不存在";
-                }
-                else
-                {
-                    // 从数据库删除角色
-                    DBService.Instance.Entities.Characters.Remove(deleteCharacter);
-                    sender.Session.User.Player.Characters.Remove(deleteCharacter);
-                    DBService.Instance.Entities.SaveChanges();
-
-                    sender.Session.Response.deleteChar.Result = Result.Success;
-                    sender.Session.Response.deleteChar.Msg = "None";
-                }
-                // 返回删除后的完整角色列表
-                foreach (var character in sender.Session.User.Player.Characters)
-                {
-                    NCharacterInfo characterInfo = new NCharacterInfo();
-                    characterInfo.Id = character.ID;
-                    characterInfo.Name = character.Name;
-                    characterInfo.Class = (CharacterClass)character.Class;
-                    characterInfo.Level = character.Level;
-                    characterInfo.ConfigId = character.TID;
-                    characterInfo.mapId = character.MapID;
-                    characterInfo.ConfigId = character.TID;
-                    sender.Session.Response.deleteChar.Characters.Add(characterInfo);
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.ErrorFormat("删除角色异常：{0}", ex.Message);
-                sender.Session.Response.deleteChar.Result = Result.Failed;
-                sender.Session.Response.deleteChar.Msg = "删除失败";
-            }
-
-            //消息打包成数据流发给客户端
             sender.SendResponse();
         }
 
