@@ -214,7 +214,7 @@ namespace GameServer.Services
                             target.Session.Response.guildAdmin.Msg = string.Format("你被{0}踢出公会", character.Info.Name);
                             target.Session.Response.guildLeave = new GuildLeaveResponse();
                             target.Session.Response.guildLeave.Result = Result.Success;
-                            target.SendResponse();
+                            target.Session.Response.guildLeave.Msg = null;
                             break;
                         }
                     case GuildAdminCommand.Depose: target.Session.Response.guildAdmin.Msg = string.Format("你被{0}罢免为普通成员", character.Info.Name); break;

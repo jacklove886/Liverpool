@@ -168,8 +168,10 @@ namespace Services
             if (response.Result == Result.Success)
             {
                 GuildManager.Instance.Init(null);
-                if(response.Msg!=null)
-                MessageBox.Show(response.Msg, "公会");
+                if (!string.IsNullOrEmpty(response.Msg))
+                {
+                    MessageBox.Show(response.Msg, "公会");
+                }              
                 if (OnGuildClose != null)
                 {
                     OnGuildClose();

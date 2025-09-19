@@ -76,7 +76,7 @@ namespace GameServer.Models
                 if (applyRecord != null)
                 {
                     DBService.Instance.Entities.TGuildApplies.Remove(applyRecord);
-                    this.TGuild.Applies.Remove(oldApply);//还需要在网络中删除
+                    this.TGuild.Applies.Remove(oldApply);//在网络中删除
                 }
             }
 
@@ -273,17 +273,21 @@ namespace GameServer.Models
                     break;
                 case GuildAdminCommand.Kickout:
                     Character targetCharacter = CharacterManager.Instance.GetCharatcer(targetId);
-                    this.TGuild.Members.Remove(target);
                     if (targetCharacter != null)//在线
                     {
                         targetCharacter.LeaveGuild();
+                        var memberToRemove = this.TGuild.Members.FirstOrDefault(m => m.CharacterId == targetId);
+                        if (memberToRemove != null)
+                        {
+                            DBService.Instance.Entities.TGuildMembers.Remove(memberToRemove); 
+                            this.TGuild.Members.Remove(memberToRemove); 
+                        }
                     }
                     else
-                    {
-                        
+                    {                       
                        RemoveGuildMember(targetId);
                     }
-                    var removeApply = DBService.Instance.Entities.TGuildApplies.FirstOrDefault(v => v.CharacterId == targetId);
+                    var removeApply = DBService.Instance.Entities.TGuildApplies.FirstOrDefault(v => v.CharacterId == targetId);//删除申请记录
                     if (removeApply != null)
                     {
                         DBService.Instance.Entities.TGuildApplies.Remove(removeApply);
@@ -294,7 +298,7 @@ namespace GameServer.Models
             changeTime = TimeUtil.timestamp;
         }
 
-        public void RemoveGuildMember(int characterId)
+        public void RemoveGuildMember(int characterId)//离线操作专用
         {
             var removeGuildMember = DBService.Instance.Entities.TGuildMembers.FirstOrDefault(v => v.CharacterId == characterId);
             if (removeGuildMember != null)

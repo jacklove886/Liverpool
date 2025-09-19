@@ -12,7 +12,6 @@ namespace Services
 {
     class TeamService:Singleton<TeamService>
     {
-        public System.Action OnLeaveTeam;//作业
         public TeamService()//构造函数
         {
             MessageDistributer.Instance.Subscribe<TeamInviteRequest>(this.OnTeamInviteRequest);

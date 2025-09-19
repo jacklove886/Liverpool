@@ -11,7 +11,6 @@ public class NpcController : MonoBehaviour {
     private Animator anim;
     private AudioSource TalkAudio;//交互的语音播放
     public bool inInteractive;//正在交互中
-    private bool canInteractive=false;//能否交互
     public float interactiveDistance = 4f;//可交互的距离
 
     private Color originColor;
@@ -77,10 +76,6 @@ public class NpcController : MonoBehaviour {
         anim.SetTrigger("Relax");
     }
 
-    public void SetCanInteractive(bool value)//能否交互
-    {
-        canInteractive = value;
-    }
 
     private void Interactive()
     {
