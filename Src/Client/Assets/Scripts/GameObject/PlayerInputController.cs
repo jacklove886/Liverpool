@@ -72,6 +72,7 @@ public class PlayerInputController : MonoBehaviour {
     public void StopNav()//结束寻路
     {
         autoNav = false;
+        MainPlayerCamera.Instance.SetMouseControl(true);
         agent.ResetPath();//清空路径
         if (state != CharacterState.Idle)
         {
@@ -85,7 +86,9 @@ public class PlayerInputController : MonoBehaviour {
 
     public void NavMove()
     {
-        if (agent.pathPending|| agent.pathStatus != NavMeshPathStatus.PathComplete) return;//寻路没完成
+        MainPlayerCamera.Instance.SetMouseControl(false);
+        if (agent.pathPending || agent.pathStatus != NavMeshPathStatus.PathComplete)
+        { return; }//寻路没完成
 
         if (agent.pathStatus == NavMeshPathStatus.PathInvalid)//寻路失败
         {

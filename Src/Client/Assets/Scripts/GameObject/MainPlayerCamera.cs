@@ -49,11 +49,6 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
         {
             player = User.Instance.CurrentCharacterPlayerInput.gameObject;
         }
-
-        if (!enableMouseControl)
-        {
-            return;
-        }
             
         // 鼠标控制相机旋转
         x += Input.GetAxis("Mouse X") * xSpeed * Time.deltaTime;
@@ -73,6 +68,7 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
     {
         if (player == null)
             return;
+       
 
         // 计算相机旋转
         Quaternion rotation = Quaternion.Euler(y, x, 0);
@@ -86,6 +82,10 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
         transform.rotation = rotation;
 
         // 同步玩家Y轴旋转
+        if (!enableMouseControl)
+        {
+            return;
+        }
         player.transform.rotation = Quaternion.Euler(0, x, 0);
     }
 

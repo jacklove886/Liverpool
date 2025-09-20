@@ -115,7 +115,11 @@ public class UIFriend : UIWindow {
         {
             MessageBox.Show("请选择要私聊的好友", "私聊");
         }
-        if(selectedItem!=null)
+        if (selectedItem.Info.Id == User.Instance.CurrentCharacter.Id)
+        {
+            MessageBox.Show("不能私聊自己哦", "私聊");
+        }
+        if (selectedItem!=null)
         ChatManager.Instance.StartPrivateChat(selectedItem.Info.friendInfo.Id, selectedItem.Info.friendInfo.Name);
     }
 

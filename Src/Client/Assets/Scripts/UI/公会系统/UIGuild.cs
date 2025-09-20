@@ -177,7 +177,7 @@ public class UIGuild : UIWindow
         }      
         MessageBox.Show(string.Format("确定要离开[{0}]吗", UIGuildInfo.Info.GuildName), "离开公会", MessageBoxType.Confirm, "离开", "容我三思").OnYes = () =>
         {
-            GuildService.Instance.SendGuildLeaveRequest(User.Instance.CurrentCharacter.Guild.Id, User.Instance.CurrentCharacter.Id);
+            GuildService.Instance.SendGuildLeaveRequest(GuildManager.Instance.myMemberInfo.Info.Guild.Id, User.Instance.CurrentCharacter.Id);
         };
     }
 
@@ -191,6 +191,10 @@ public class UIGuild : UIWindow
         if (selectedItem == null)
         {
             MessageBox.Show("请选择要私聊的好友", "私聊");
+        }
+        if (selectedItem.Info.Id == User.Instance.CurrentCharacter.Id)
+        {
+            MessageBox.Show("不能私聊自己哦", "私聊");
         }
         if (selectedItem != null)
         {

@@ -35,12 +35,12 @@ public class UIPopCharMenu : UIWindow
         Close(WindowResult.No);
     }
 
-    public void OnClickAddFriend()//作业
+    public void OnClickAddFriend()
     {
         FriendService.Instance.SendFriendAddRequest(targetId, targetName);
     }
 
-    public void OnClickInviteTeam()//作业
+    public void OnClickInviteTeam()
     {
         TeamService.Instance.SendTeamInviteRequest(targetId, targetName);
     }

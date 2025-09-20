@@ -32,6 +32,7 @@ namespace Managers
                 if (member.characterId == User.Instance.CurrentCharacter.Id)//如果是自己
                 {
                     myMemberInfo = member;//把成员信息赋值给自己
+                    myMemberInfo.Info.Guild = guild;
                     break;
                 }
             }
