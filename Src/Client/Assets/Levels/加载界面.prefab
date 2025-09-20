@@ -175,13 +175,14 @@ GameObject:
   - component: {fileID: 223373403254672940}
   - component: {fileID: 114413787736257428}
   - component: {fileID: 114440526214705510}
+  - component: {fileID: 114761844064421990}
   m_Layer: 5
   m_Name: "\u52A0\u8F7D\u754C\u9762"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1751752955837258
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +633,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114761844064421990
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688165077897642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09743d2a886c6b4f9146874485c8567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  global: 1
+  UILoading: {fileID: 1688165077897642}
+  progressBar: {fileID: 114166203071205848}
+  Bg: {fileID: 114740874665963968}
+  isLoading: 0
 --- !u!114 &114836389259406896
 MonoBehaviour:
   m_ObjectHideFlags: 1

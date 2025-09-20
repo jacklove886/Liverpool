@@ -6,38 +6,30 @@ using UnityEngine.Events;
 
 public class SceneManager : MonoSingleton<SceneManager>
 {
-    UnityAction<float> onProgress = null;
 
-    protected override void OnStart()
+
+    public void LoadTargetScene(string name)//加载场景
     {
-        DontDestroyOnLoad(gameObject);
-    }
-
-
-    public void LoadScene(string name)
-    {
-        Debug.LogFormat("进入的地图是: {0}", name);
-        StartCoroutine(LoadLevel(name));
+        Debug.Log("进入的场景是"+name);
+        if (!LoadingManager.Instance.isLoading)
+        {
+            StartCoroutine(LoadLevel(name));
+        }      
     }
 
     IEnumerator LoadLevel(string name)
     {
+        LoadingManager.Instance.ShowLoading();
         AsyncOperation async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(name);
-        async.allowSceneActivation = true;
-        async.completed += LevelLoadCompleted;
-        while (!async.isDone)
+        async.allowSceneActivation = false;
+        while (async.progress < 0.9f)
         {
-            if (onProgress != null)
-                onProgress(async.progress);
+            float progress = async.progress / 0.9f;//算出真实进度
+            LoadingManager.Instance.UpdateProgress(progress * 100);//更新进度条
             yield return null;
         }
-    }
-
-    private void LevelLoadCompleted(AsyncOperation obj)
-    {
-
-        if (onProgress != null)  
-            onProgress(1f);
-
+        yield return new WaitForSeconds(0.5f);//加载到90%  等待0.5f
+        LoadingManager.Instance.HideLoading();
+        async.allowSceneActivation = true;
     }
 }

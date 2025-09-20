@@ -8,7 +8,7 @@ public class UISetting : UIWindow {
     //返回选择角色的页面
     public void OnClickBackToChooseCharacter()
     {
-        SceneManager.Instance.LoadScene("CharacterChoose");
+        SceneManager.Instance.LoadTargetScene("CharacterChoose");
         SoundManager.Instance.PlayMusic(SoundDefine.Music_Select);
         Services.UserService.Instance.SendGameLeave();
         Close();
