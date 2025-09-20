@@ -1,29 +1,37 @@
-2025-09-20 16:29:39,195 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-20 16:29:49,251 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-20 16:29:49,258 [ 1] INFO  Unity: 连接成功
-2025-09-20 16:29:49,259 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-20 16:29:49,266 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-20 16:29:49,493 [ 1] INFO  Unity: 收到登录响应
-2025-09-20 16:29:49,495 [ 1] INFO  Unity: 登录成功
-2025-09-20 16:29:49,897 [ 1] INFO  Unity: 当前角色数量为4
-2025-09-20 16:29:51,206 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-20 16:29:51,265 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-20 16:29:51,273 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-20 16:29:51,274 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-20 16:29:51,275 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8002,Count:1]
-2025-09-20 16:29:51,314 [ 1] INFO  Unity: OnGuild,[Success][3][利物浦]
-2025-09-20 16:29:51,315 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-20 16:29:51,316 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:2
-2025-09-20 16:29:51,322 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-20 16:29:51,337 [ 1] INFO  Unity: 加入角色姓名:Boy,地图:1
-2025-09-20 16:29:51,337 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-20 16:29:51,339 [ 1] INFO  Unity: 进入的场景是MainCity
-2025-09-20 16:29:55,238 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, LoadingManager.ShowLoading () (at Assets/Scripts/LoadingManager.cs:26)
-SceneManager+<LoadLevel>c__Iterator0.MoveNext () (at Assets/Scripts/Scene/SceneManager.cs:26)
+2025-09-21 00:16:12,874 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-21 00:16:13,556 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{SocketException: 以一种访问权限不允许的方式做了一个访问套接字的尝试。
+, System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end)
+SyntaxTree.VisualStudio.Unity.Messaging.UdpSocket.Bind (System.Net.IPAddress address, Int32 port)
+SyntaxTree.VisualStudio.Unity.Messaging.Messager..ctor (Int32 port)
+SyntaxTree.VisualStudio.Unity.Messaging.Messager.BindTo (Int32 port)
+SyntaxTree.VisualStudio.Unity.Bridge.VisualStudioIntegration+<>c__DisplayClass9_0.<.cctor>b__0 ()
+SyntaxTree.VisualStudio.Unity.Bridge.Project+<>c__DisplayClass40_0.<RunOnceOnUpdate>b__0 ()
+UnityEditor.EditorApplication.Internal_CallUpdateFunctions () (at D:/unity/Editor/Mono/EditorApplication.cs:191)
+}</args></log4net.Error>
+2025-09-21 00:17:19,346 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-21 00:17:19,348 [ 1] INFO  Unity: 连接成功
+2025-09-21 00:17:19,349 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-21 00:17:19,353 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-21 00:17:19,446 [ 1] INFO  Unity: 收到登录响应
+2025-09-21 00:17:19,447 [ 1] INFO  Unity: 登录成功
+2025-09-21 00:17:19,788 [ 1] INFO  Unity: 当前角色数量为4
+2025-09-21 00:17:20,731 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-21 00:17:20,753 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-21 00:17:20,755 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-21 00:17:20,755 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-21 00:17:20,756 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-21 00:17:20,756 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:1]
+2025-09-21 00:17:20,764 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 00:17:20,765 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-21 00:17:20,766 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-21 00:17:20,768 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-21 00:17:20,769 [ 1] INFO  Unity: 进入的场景是MainCity
+2025-09-21 00:17:20,771 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, SceneManager+<LoadLevel>c__Iterator0.MoveNext () (at Assets/Scripts/Scene/SceneManager.cs:30)
 UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at D:/unity/Runtime/Export/Coroutines.cs:17)
 UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-SceneManager:LoadTargetScene(String) (at Assets/Scripts/Scene/SceneManager.cs:20)
+SceneManager:LoadTargetScene(String) (at Assets/Scripts/Scene/SceneManager.cs:24)
 Services.MapService:EnterMap(Int32) (at Assets/Scripts/Services/MapService.cs:65)
 Services.MapService:OnMapCharacterEnter(Object, MapCharacterEnterResponse) (at Assets/Scripts/Services/MapService.cs:53)
 Network.MessageDistributer`1:RaiseEvent(Object, MapCharacterEnterResponse) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
@@ -32,9 +40,13 @@ Network.MessageDistributer`1:Distribute() (at E:/Unity_code/mmorpg/mmorpg/Src/Li
 Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:416)
 Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:433)
 }</args></log4net.Error>
-2025-09-20 16:29:55,651 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-20 16:29:57,088 [ 1] INFO  Unity: 网络断开
-2025-09-20 16:29:57,089 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-21 00:17:21,162 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 00:17:24,854 [ 1] WARN  Unity: No script asset for GameObjectSelectionItem. Check that the definition is in a file of the same name.
+
+2025-09-21 00:17:24,855 [ 1] WARN  Unity: No script asset for GameObjectSelectionItem. Check that the definition is in a file of the same name.
+
+2025-09-21 00:17:25,972 [ 1] INFO  Unity: 网络断开
+2025-09-21 00:17:25,972 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)

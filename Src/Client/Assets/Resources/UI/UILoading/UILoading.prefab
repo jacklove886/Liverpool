@@ -175,14 +175,14 @@ GameObject:
   - component: {fileID: 223373403254672940}
   - component: {fileID: 114413787736257428}
   - component: {fileID: 114440526214705510}
-  - component: {fileID: 114761844064421990}
+  - component: {fileID: 114755291744337686}
   m_Layer: 5
-  m_Name: "\u52A0\u8F7D\u754C\u9762"
+  m_Name: UILoading
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1751752955837258
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,7 +633,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114761844064421990
+--- !u!114 &114755291744337686
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -641,14 +641,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1688165077897642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b09743d2a886c6b4f9146874485c8567, type: 3}
+  m_Script: {fileID: 11500000, guid: 3acad9c6ef1ed334ba6d972f733d36cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  global: 1
-  UILoading: {fileID: 1688165077897642}
+  Root: {fileID: 0}
+  LoadingScene: {fileID: 1688165077897642}
   progressBar: {fileID: 114166203071205848}
   Bg: {fileID: 114740874665963968}
-  isLoading: 0
 --- !u!114 &114836389259406896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -750,14 +749,14 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!224 &224031743653490262
 RectTransform:

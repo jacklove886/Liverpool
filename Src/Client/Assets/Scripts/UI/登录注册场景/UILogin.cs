@@ -56,11 +56,7 @@ public class UILogin : MonoBehaviour {
     private void OnDestroy()
     {
         UserService.Instance.OnLogin -= OnLogin;
-    }
-	
-	void Update () {
-		
-	}
+    }	
 
     public void OnClickLogin()
     {
@@ -109,21 +105,5 @@ public class UILogin : MonoBehaviour {
             // 登录失败，显示错误信息
             MessageBox.Show(msg);
         }
-    }
-
-    public void OnClickDialog()
-    {
-        UIDialog uIDialog = UIManager.Instance.Show<UIDialog>();//利用返回值获得组件
-        uIDialog.title.text="Siu";//调用方法
-        uIDialog.OnClose += UIDialog_OnClose;//订阅UIWindow的事件
-    }
-
-    //点击确认或者关闭后 调用UIDialog_OnClose方法
-    private void UIDialog_OnClose(UIWindow sender, UIWindow.WindowResult result)
-    {
-        //as作用是将UIWindow类型的sender安全转换为UIDialog类型 如果失败就返回null 不会抛异常
-        string DialogName = (sender as UIDialog).name;//获取的是GameObject的name
-        //第一个是消息框,第二个是标题,第三个是指定MessageBoxType的类型是信息框(只显示一个确定按钮)
-        MessageBox.Show("我们阿森纳是不可战胜的"+result, DialogName, MessageBoxType.Information);
     }
 }

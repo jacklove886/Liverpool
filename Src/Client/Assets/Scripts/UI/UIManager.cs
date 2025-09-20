@@ -1,4 +1,5 @@
-﻿using Common.Data;
+﻿
+using Common.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -49,6 +50,8 @@ public class UIManager : Singleton<UIManager> {
         UIResources.Add(typeof(UIRide), new UIElement() { Resources = "UI/UIRide/UIRide", Cache = false });
 
         UIResources.Add(typeof(UISystemConfig), new UIElement() { Resources = "UI/UISetting/UISystemConfig", Cache = false });
+
+        UIResources.Add(typeof(UILoading), new UIElement() { Resources = "UI/UILoading/UILoading", Cache = true });
 
     }
 

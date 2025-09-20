@@ -12,39 +12,32 @@ using Common.Data;
 
 public class LoadingManager : MonoSingleton<LoadingManager>
 {
-
-    public GameObject UILoadingPrefab;
-    private GameObject UILoading;
-    private Slider progressBar;
-    private Image Bg;
-
+    private UILoading ui;
     public  bool isLoading = false;
 
     protected override void OnStart()
     {
-        UILoading= Instantiate(UILoadingPrefab, this.transform);
-        Bg= UILoading.GetComponentInChildren<Image>();
-        progressBar = Bg.gameObject.GetComponentInChildren<Slider>();
-        UILoading.SetActive(false);
+        ui = UIManager.Instance.Show<UILoading>();
+        ui.gameObject.transform.SetParent(this.transform);
+        ui.gameObject.SetActive(false);
     }
 
     public void ShowLoading()
-    {        
-        int x = Random.Range(0, SpriteManager.Instance.loadingBg.Length);
-        Bg.overrideSprite = SpriteManager.Instance.loadingBg[x];
-        UILoading.SetActive(true);
+    {
+        ui.gameObject.SetActive(true);
+        ui.SetBackground();
         isLoading = true;
     }
 
     public void HideLoading()
     {
-        UILoading.SetActive(false);
         isLoading = false;
+        ui.gameObject.SetActive(false);
     }
 
     public void UpdateProgress(float progress)
     {
-        progressBar.value = progress;
+        ui.SetProgress(progress);
     }
 
 }
