@@ -1,56 +1,119 @@
-2025-09-21 00:22:02,541 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-21 00:22:03,200 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{SocketException: 以一种访问权限不允许的方式做了一个访问套接字的尝试。
-, System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end)
-SyntaxTree.VisualStudio.Unity.Messaging.UdpSocket.Bind (System.Net.IPAddress address, Int32 port)
-SyntaxTree.VisualStudio.Unity.Messaging.Messager..ctor (Int32 port)
-SyntaxTree.VisualStudio.Unity.Messaging.Messager.BindTo (Int32 port)
-SyntaxTree.VisualStudio.Unity.Bridge.VisualStudioIntegration+<>c__DisplayClass9_0.<.cctor>b__0 ()
-SyntaxTree.VisualStudio.Unity.Bridge.Project+<>c__DisplayClass40_0.<RunOnceOnUpdate>b__0 ()
-UnityEditor.EditorApplication.Internal_CallUpdateFunctions () (at D:/unity/Editor/Mono/EditorApplication.cs:191)
+2025-09-21 17:03:58,580 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-21 17:04:04,073 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-21 17:04:04,074 [ 1] INFO  Unity: 连接成功
+2025-09-21 17:04:04,076 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-21 17:04:04,079 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-21 17:04:04,821 [ 1] INFO  Unity: 收到登录响应
+2025-09-21 17:04:04,822 [ 1] INFO  Unity: 登录成功
+2025-09-21 17:04:05,180 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-21 17:04:13,055 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-21 17:04:13,253 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-21 17:04:13,261 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-21 17:04:13,262 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-21 17:04:13,262 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
+2025-09-21 17:04:13,263 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
+2025-09-21 17:04:13,265 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2001,Count:1]
+2025-09-21 17:04:13,265 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:1]
+2025-09-21 17:04:13,273 [ 1] INFO  Unity: 装备槽位0 itemID=1001
+2025-09-21 17:04:13,274 [ 1] INFO  Unity: 装备槽位1 itemID=1002
+2025-09-21 17:04:13,322 [ 1] ERROR UserService: Message handler exception:, The given key was not present in the dictionary., mscorlib,   at System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) [0x000a2] in /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150 
+  at Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) [0x0008a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:37 
+  at Managers.EquipManager.Init (System.Byte[] data) [0x0000a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:24 
+  at Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) [0x00081] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\UserService.cs:271 
+  at Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:106 
+2025-09-21 17:04:13,325 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{KeyNotFoundException: The given key was not present in the dictionary., System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150)
+Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:37)
+Managers.EquipManager.Init (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:24)
+Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) (at Assets/Scripts/Services/UserService.cs:271)
+Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
 }</args></log4net.Error>
-2025-09-21 00:22:05,547 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-21 00:22:05,549 [ 1] INFO  Unity: 连接成功
-2025-09-21 00:22:05,550 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-21 00:22:05,555 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-21 00:22:06,270 [ 1] INFO  Unity: 收到登录响应
-2025-09-21 00:22:06,271 [ 1] INFO  Unity: 登录成功
-2025-09-21 00:22:06,619 [ 1] INFO  Unity: 当前角色数量为4
-2025-09-21 00:22:07,754 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-21 00:22:07,885 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-21 00:22:07,887 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-21 00:22:07,887 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-21 00:22:07,888 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-21 00:22:07,889 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:1]
-2025-09-21 00:22:07,897 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:22:07,904 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-21 00:22:07,906 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-21 00:22:07,908 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-21 00:22:07,909 [ 1] INFO  Unity: 进入的场景是MainCity
-2025-09-21 00:22:08,321 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:22:11,465 [ 1] INFO  Unity: Set Channel:Local
-2025-09-21 00:23:29,231 [ 1] INFO  Unity: 角色:Alice进入传送门[2:落日森林->利物浦出口
-2025-09-21 00:23:30,448 [ 1] INFO  Unity: 角色:Alice进入传送门[1:利物浦->落日森林传送门
-2025-09-21 00:23:30,449 [ 1] INFO  Unity: 发送SendMapTeleport请求:teleporterID1
-2025-09-21 00:23:30,473 [ 1] INFO  Unity: 1离开了地图
-2025-09-21 00:23:30,476 [ 1] INFO  Unity: 移除角色ID：1
-2025-09-21 00:23:30,478 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:23:30,478 [ 1] INFO  Unity: 进入了地图:2,当前角色数量:2
-2025-09-21 00:23:30,479 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:2
-2025-09-21 00:23:33,538 [ 1] INFO  Unity: 加入角色姓名:失落死神,地图:2
-2025-09-21 00:23:34,800 [ 1] INFO  Unity: 场景不匹配：当前场景1, 目标场景2, 开始切换
-2025-09-21 00:23:34,801 [ 1] INFO  Unity: 进入的场景是Map01
-2025-09-21 00:23:34,995 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:23:34,997 [ 1] INFO  Unity: 消失的玩家：1,位置(712, 2572, 800)
-2025-09-21 00:23:37,759 [ 1] WARN  Unity: Failed to create agent because there is no valid NavMesh
-UnityEngine.GameObject:AddComponent()
-PlayerInputController:Start() (at Assets/Scripts/GameObject/PlayerInputController.cs:48)
-
-2025-09-21 00:23:37,772 [ 1] INFO  Unity: 角色:Alice进入传送门[8:利物浦->落日森林出口
-2025-09-21 00:23:52,880 [ 1] INFO  Unity: 网络断开
-2025-09-21 00:23:52,881 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-21 17:04:13,410 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-21 17:04:13,415 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-21 17:04:13,430 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-21 17:04:13,431 [ 1] INFO  Unity: 进入的场景是MainCity
+2025-09-21 17:04:13,839 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:04:20,689 [ 1] INFO  Unity: Set Channel:Local
+2025-09-21 17:04:23,996 [ 1] INFO  Unity: 进入的场景是CharacterChoose
+2025-09-21 17:04:24,137 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-21 17:04:24,305 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-21 17:04:24,313 [ 1] INFO  Unity: 1离开了地图
+2025-09-21 17:04:24,320 [ 1] INFO  Unity: 移除角色ID：1
+2025-09-21 17:04:24,322 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:04:24,324 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:04:24,325 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-21 17:04:24,326 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:04:24,327 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:04:24,329 [ 1] INFO  Unity: 消失的玩家：1,位置(4150, 3000, 803)
+2025-09-21 17:04:36,750 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-21 17:04:36,765 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-21 17:04:36,765 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-21 17:04:36,766 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-21 17:04:36,767 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
+2025-09-21 17:04:36,768 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
+2025-09-21 17:04:36,768 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2001,Count:1]
+2025-09-21 17:04:36,769 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:1]
+2025-09-21 17:04:38,604 [ 1] INFO  Unity: 装备槽位0 itemID=1001
+2025-09-21 17:04:38,605 [ 1] INFO  Unity: 装备槽位1 itemID=1002
+2025-09-21 17:04:38,608 [ 1] ERROR UserService: Message handler exception:, The given key was not present in the dictionary., mscorlib,   at System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) [0x000a2] in /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150 
+  at Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) [0x0008a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:37 
+  at Managers.EquipManager.Init (System.Byte[] data) [0x0000a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:24 
+  at Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) [0x00081] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\UserService.cs:271 
+  at Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:106 
+2025-09-21 17:04:38,610 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{KeyNotFoundException: The given key was not present in the dictionary., System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150)
+Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:37)
+Managers.EquipManager.Init (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:24)
+Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) (at Assets/Scripts/Services/UserService.cs:271)
+Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
+}</args></log4net.Error>
+2025-09-21 17:04:38,633 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-21 17:04:38,634 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-21 17:04:38,636 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-21 17:04:38,637 [ 1] INFO  Unity: 进入的场景是MainCity
+2025-09-21 17:04:39,031 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:04:52,864 [ 1] INFO  Unity: 进入的场景是CharacterChoose
+2025-09-21 17:04:53,012 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-21 17:04:53,199 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-21 17:04:53,201 [ 1] INFO  Unity: 2离开了地图
+2025-09-21 17:04:53,202 [ 1] INFO  Unity: 移除角色ID：2
+2025-09-21 17:04:53,203 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:04:53,204 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:04:53,205 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-21 17:04:53,206 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:04:53,206 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:04:53,207 [ 1] INFO  Unity: 消失的玩家：2,位置(4150, 3000, 803)
+2025-09-21 17:04:59,091 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-21 17:04:59,106 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-21 17:04:59,106 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-21 17:04:59,107 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-21 17:04:59,108 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
+2025-09-21 17:04:59,109 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
+2025-09-21 17:04:59,109 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2001,Count:1]
+2025-09-21 17:04:59,110 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:1]
+2025-09-21 17:05:20,944 [ 1] INFO  Unity: 装备槽位0 itemID=1001
+2025-09-21 17:05:24,678 [ 1] INFO  Unity: 装备槽位1 itemID=1002
+2025-09-21 17:05:25,086 [ 1] ERROR UserService: Message handler exception:, The given key was not present in the dictionary., mscorlib,   at System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) [0x000a2] in /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150 
+  at Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) [0x0008a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:37 
+  at Managers.EquipManager.Init (System.Byte[] data) [0x0000a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:24 
+  at Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) [0x00081] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\UserService.cs:271 
+  at Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:106 
+2025-09-21 17:05:25,088 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{KeyNotFoundException: The given key was not present in the dictionary., System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150)
+Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:37)
+Managers.EquipManager.Init (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:24)
+Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) (at Assets/Scripts/Services/UserService.cs:271)
+Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
+}</args></log4net.Error>
+2025-09-21 17:05:25,133 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-21 17:05:25,134 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-21 17:05:25,136 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-21 17:05:25,137 [ 1] INFO  Unity: 进入的场景是MainCity
+2025-09-21 17:05:25,536 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:06:36,878 [ 1] INFO  Unity: 网络断开
+2025-09-21 17:06:36,879 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)
 
-2025-09-21 00:23:52,884 [ 1] INFO  Unity: 消失的玩家：1,位置(2942, 4003, 4)
+2025-09-21 17:06:36,887 [ 1] INFO  Unity: 消失的玩家：7,位置(4152, 2998, 803)

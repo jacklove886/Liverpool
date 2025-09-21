@@ -27,9 +27,6 @@ public class PlayerInputController : MonoBehaviour {
     public float horizontal;
     public bool isRide;
 
-    [Header("位置同步")]
-    private Vector3 lastPos;// 上次同步的位置
-
     [Header("旋转同步")]
     private float lastSyncRotation = 0f;  // 上次同步的旋转角度
 
@@ -214,9 +211,6 @@ public class PlayerInputController : MonoBehaviour {
     private void LateUpdate()
 	{
         if (character == null) return;
-
-        Vector3 offset = this.rb.transform.position - lastPos;
-        this.lastPos = this.rb.transform.position;
 
         Vector3Int goLogicPos = GameObjectTool.WorldToLogic(this.rb.transform.position);
         float positionOffset = (goLogicPos - this.character.position).magnitude;

@@ -33,8 +33,11 @@ namespace Managers
                     int itemID = *(int*)(pt + i * sizeof(int));
                     if (itemID > 0)//说明该槽位有装备
                     {
-                        Debug.Log("装备槽位" + i + " itemID=" + itemID);
-                        Equips[i] = ItemManager.Instance.Items[itemID];
+                        Item item;
+                        if (ItemManager.Instance.Items.TryGetValue(itemID, out item))
+                        {
+                            Equips[i] = item;
+                        }
                     }
                     else//没装备
                     {

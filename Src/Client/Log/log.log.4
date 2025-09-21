@@ -1,98 +1,180 @@
-2025-09-21 00:17:55,027 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-21 00:17:55,659 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{SocketException: 以一种访问权限不允许的方式做了一个访问套接字的尝试。
-, System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end)
-SyntaxTree.VisualStudio.Unity.Messaging.UdpSocket.Bind (System.Net.IPAddress address, Int32 port)
-SyntaxTree.VisualStudio.Unity.Messaging.Messager..ctor (Int32 port)
-SyntaxTree.VisualStudio.Unity.Messaging.Messager.BindTo (Int32 port)
-SyntaxTree.VisualStudio.Unity.Bridge.VisualStudioIntegration+<>c__DisplayClass9_0.<.cctor>b__0 ()
-SyntaxTree.VisualStudio.Unity.Bridge.Project+<>c__DisplayClass40_0.<RunOnceOnUpdate>b__0 ()
-UnityEditor.EditorApplication.Internal_CallUpdateFunctions () (at D:/unity/Editor/Mono/EditorApplication.cs:191)
+2025-09-21 17:00:09,217 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-21 17:00:14,765 [ 1] INFO  Unity: 用户名 :123 密码:123
+2025-09-21 17:00:14,768 [ 1] INFO  Unity: 连接成功
+2025-09-21 17:00:14,769 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-21 17:00:14,774 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-21 17:00:15,523 [ 1] INFO  Unity: 收到登录响应
+2025-09-21 17:00:15,524 [ 1] INFO  Unity: 登录成功
+2025-09-21 17:00:15,899 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-21 17:00:17,521 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-21 17:00:17,727 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-21 17:00:17,729 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-21 17:00:17,730 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-21 17:00:17,731 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
+2025-09-21 17:00:17,732 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
+2025-09-21 17:00:17,732 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1002,Count:1]
+2025-09-21 17:00:17,733 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2001,Count:1]
+2025-09-21 17:00:17,734 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3001,Count:1]
+2025-09-21 17:00:17,734 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:1]
+2025-09-21 17:00:17,737 [ 1] INFO  Unity: 装备槽位0 itemID=1001
+2025-09-21 17:00:17,738 [ 1] INFO  Unity: 装备槽位1 itemID=1002
+2025-09-21 17:00:17,739 [ 1] INFO  Unity: 装备槽位3 itemID=1004
+2025-09-21 17:00:17,740 [ 1] ERROR UserService: Message handler exception:, The given key was not present in the dictionary., mscorlib,   at System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) [0x000a2] in /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150 
+  at Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) [0x0008a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:37 
+  at Managers.EquipManager.Init (System.Byte[] data) [0x0000a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:24 
+  at Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) [0x00081] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\UserService.cs:271 
+  at Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:106 
+2025-09-21 17:00:17,741 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{KeyNotFoundException: The given key was not present in the dictionary., System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150)
+Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:37)
+Managers.EquipManager.Init (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:24)
+Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) (at Assets/Scripts/Services/UserService.cs:271)
+Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
 }</args></log4net.Error>
-2025-09-21 00:18:20,388 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-21 00:18:20,390 [ 1] INFO  Unity: 连接成功
-2025-09-21 00:18:20,391 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-21 00:18:20,395 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-21 00:18:20,486 [ 1] INFO  Unity: 收到登录响应
-2025-09-21 00:18:20,487 [ 1] INFO  Unity: 登录成功
-2025-09-21 00:18:20,828 [ 1] INFO  Unity: 当前角色数量为4
-2025-09-21 00:18:22,431 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-21 00:18:22,454 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-21 00:18:22,456 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-21 00:18:22,456 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-21 00:18:22,457 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-21 00:18:22,457 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:1]
-2025-09-21 00:18:22,465 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:18:22,466 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-21 00:18:22,467 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-21 00:18:22,470 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-21 00:18:22,471 [ 1] INFO  Unity: 进入的场景是MainCity
-2025-09-21 00:18:22,861 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:18:25,684 [ 1] INFO  Unity: Set Channel:Local
-2025-09-21 00:18:46,120 [ 1] INFO  Unity: 角色:Alice进入传送门[2:落日森林->利物浦出口
-2025-09-21 00:18:48,357 [ 1] INFO  Unity: 角色:Alice进入传送门[1:利物浦->落日森林传送门
-2025-09-21 00:18:48,358 [ 1] INFO  Unity: 发送SendMapTeleport请求:teleporterID1
-2025-09-21 00:18:48,380 [ 1] INFO  Unity: 7离开了地图
-2025-09-21 00:18:48,382 [ 1] INFO  Unity: 移除角色ID：7
-2025-09-21 00:18:48,384 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:18:48,384 [ 1] INFO  Unity: 进入了地图:2,当前角色数量:2
-2025-09-21 00:18:48,385 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:2
-2025-09-21 00:18:48,407 [ 1] INFO  Unity: 加入角色姓名:失落死神,地图:2
-2025-09-21 00:18:48,428 [ 1] INFO  Unity: 场景不匹配：当前场景1, 目标场景2, 开始切换
-2025-09-21 00:18:48,429 [ 1] INFO  Unity: 进入的场景是Map01
-2025-09-21 00:18:48,627 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:18:48,628 [ 1] INFO  Unity: 消失的玩家：7,位置(729, 2610, 800)
-2025-09-21 00:18:51,282 [ 1] WARN  Unity: Failed to create agent because there is no valid NavMesh
-UnityEngine.GameObject:AddComponent()
-PlayerInputController:Start() (at Assets/Scripts/GameObject/PlayerInputController.cs:48)
-
-2025-09-21 00:18:51,295 [ 1] INFO  Unity: 角色:Alice进入传送门[8:利物浦->落日森林出口
-2025-09-21 00:18:55,684 [ 1] INFO  Unity: 角色:Alice进入传送门[7:落日森林->利物浦传送门
-2025-09-21 00:18:55,684 [ 1] INFO  Unity: 发送SendMapTeleport请求:teleporterID7
-2025-09-21 00:18:55,698 [ 1] INFO  Unity: 7离开了地图
-2025-09-21 00:18:55,699 [ 1] INFO  Unity: 移除角色ID：7
-2025-09-21 00:18:55,699 [ 1] INFO  Unity: 移除角色ID：4
-2025-09-21 00:18:55,700 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:18:55,701 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-21 00:18:55,701 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-21 00:18:55,723 [ 1] INFO  Unity: 场景不匹配：当前场景2, 目标场景1, 开始切换
-2025-09-21 00:18:55,724 [ 1] INFO  Unity: 进入的场景是MainCity
-2025-09-21 00:18:56,117 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:18:56,117 [ 1] INFO  Unity: 消失的玩家：7,位置(2229, 3898, 4)
-2025-09-21 00:18:59,231 [ 1] INFO  Unity: 角色:Alice进入传送门[2:落日森林->利物浦出口
-2025-09-21 00:19:02,648 [ 1] INFO  Unity: 角色:Alice进入传送门[1:利物浦->落日森林传送门
-2025-09-21 00:19:02,649 [ 1] INFO  Unity: 发送SendMapTeleport请求:teleporterID1
-2025-09-21 00:19:02,669 [ 1] INFO  Unity: 7离开了地图
-2025-09-21 00:19:02,670 [ 1] INFO  Unity: 移除角色ID：7
-2025-09-21 00:19:02,670 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:19:02,671 [ 1] INFO  Unity: 进入了地图:2,当前角色数量:2
-2025-09-21 00:19:02,672 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:2
-2025-09-21 00:19:02,694 [ 1] INFO  Unity: 加入角色姓名:失落死神,地图:2
-2025-09-21 00:19:02,716 [ 1] INFO  Unity: 场景不匹配：当前场景1, 目标场景2, 开始切换
-2025-09-21 00:19:02,717 [ 1] INFO  Unity: 进入的场景是Map01
-2025-09-21 00:19:02,910 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:19:02,910 [ 1] INFO  Unity: 消失的玩家：7,位置(728, 2609, 800)
-2025-09-21 00:19:05,814 [ 1] WARN  Unity: Failed to create agent because there is no valid NavMesh
-UnityEngine.GameObject:AddComponent()
-PlayerInputController:Start() (at Assets/Scripts/GameObject/PlayerInputController.cs:48)
-
-2025-09-21 00:19:05,827 [ 1] INFO  Unity: 角色:Alice进入传送门[8:利物浦->落日森林出口
-2025-09-21 00:19:08,577 [ 1] INFO  Unity: 角色:Alice进入传送门[7:落日森林->利物浦传送门
-2025-09-21 00:19:08,578 [ 1] INFO  Unity: 发送SendMapTeleport请求:teleporterID7
-2025-09-21 00:19:08,624 [ 1] INFO  Unity: 7离开了地图
-2025-09-21 00:19:08,625 [ 1] INFO  Unity: 移除角色ID：7
-2025-09-21 00:19:08,626 [ 1] INFO  Unity: 移除角色ID：4
-2025-09-21 00:19:08,626 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:19:08,627 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-21 00:19:08,628 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-21 00:19:08,649 [ 1] INFO  Unity: 场景不匹配：当前场景2, 目标场景1, 开始切换
-2025-09-21 00:19:08,650 [ 1] INFO  Unity: 进入的场景是MainCity
-2025-09-21 00:19:09,041 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:19:09,042 [ 1] INFO  Unity: 消失的玩家：7,位置(2214, 3874, 4)
-2025-09-21 00:19:12,103 [ 1] INFO  Unity: 角色:Alice进入传送门[2:落日森林->利物浦出口
-2025-09-21 00:19:14,785 [ 1] INFO  Unity: 消失的玩家：7,位置(1562, 2601, 800)
-2025-09-21 00:19:14,790 [ 1] INFO  Unity: 网络断开
-2025-09-21 00:19:14,791 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-21 17:00:17,752 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-21 17:00:17,753 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-21 17:00:17,756 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-21 17:00:17,757 [ 1] INFO  Unity: 进入的场景是MainCity
+2025-09-21 17:00:18,219 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:00:21,554 [ 1] INFO  Unity: Set Channel:Local
+2025-09-21 17:00:23,272 [ 1] INFO  Unity: 发送公会列表的请求
+2025-09-21 17:00:23,306 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:00:23,306 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:00:27,220 [ 1] INFO  Unity: 发送加入公会请求
+2025-09-21 17:00:27,263 [ 1] INFO  Unity: 收到审批的结果,Failed
+2025-09-21 17:00:27,265 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:00:27,265 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:00:57,231 [ 1] INFO  Unity: 进入的场景是CharacterChoose
+2025-09-21 17:00:57,514 [ 1] INFO  Unity: 发出退出游戏的响应
+2025-09-21 17:00:57,590 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-21 17:00:57,593 [ 1] INFO  Unity: 1离开了地图
+2025-09-21 17:00:57,594 [ 1] INFO  Unity: 移除角色ID：1
+2025-09-21 17:00:57,596 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:00:57,597 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:00:57,597 [ 1] INFO  Unity: 角色离开游戏:Success
+2025-09-21 17:00:57,598 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:00:57,599 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:00:57,599 [ 1] INFO  Unity: 消失的玩家：1,位置(4930, 3552, 804)
+2025-09-21 17:00:58,635 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-21 17:00:58,649 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-21 17:00:58,649 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-21 17:00:58,650 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
+2025-09-21 17:00:58,651 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
+2025-09-21 17:00:58,651 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
+2025-09-21 17:00:58,652 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1002,Count:1]
+2025-09-21 17:00:58,653 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2001,Count:1]
+2025-09-21 17:00:58,653 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3001,Count:1]
+2025-09-21 17:00:58,654 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:1]
+2025-09-21 17:00:58,655 [ 1] INFO  Unity: 装备槽位0 itemID=1001
+2025-09-21 17:00:58,656 [ 1] INFO  Unity: 装备槽位1 itemID=1002
+2025-09-21 17:00:58,657 [ 1] INFO  Unity: 装备槽位3 itemID=1004
+2025-09-21 17:00:58,657 [ 1] ERROR UserService: Message handler exception:, The given key was not present in the dictionary., mscorlib,   at System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) [0x000a2] in /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150 
+  at Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) [0x0008a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:37 
+  at Managers.EquipManager.Init (System.Byte[] data) [0x0000a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:24 
+  at Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) [0x00081] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\UserService.cs:271 
+  at Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:106 
+2025-09-21 17:00:58,657 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{KeyNotFoundException: The given key was not present in the dictionary., System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150)
+Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:37)
+Managers.EquipManager.Init (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:24)
+Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) (at Assets/Scripts/Services/UserService.cs:271)
+Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
+}</args></log4net.Error>
+2025-09-21 17:00:58,664 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-21 17:00:58,665 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
+2025-09-21 17:00:58,667 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-21 17:00:58,668 [ 1] INFO  Unity: 进入的场景是MainCity
+2025-09-21 17:00:59,116 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:01:11,452 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:11,453 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-21 17:01:11,454 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-21 17:01:12,753 [ 1] INFO  Unity: 发送装备穿戴请求
+2025-09-21 17:01:12,998 [ 1] INFO  Unity: 收到脱下装备响应
+2025-09-21 17:01:12,999 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:13,000 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:13,001 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-21 17:01:13,002 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:01:13,003 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:01:15,457 [ 1] INFO  Unity: 发送装备穿戴请求
+2025-09-21 17:01:15,482 [ 1] INFO  Unity: 收到脱下装备响应
+2025-09-21 17:01:15,483 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:15,484 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:15,486 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:15,486 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:01:15,487 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:01:17,556 [ 1] INFO  Unity: 发送装备穿戴请求
+2025-09-21 17:01:17,592 [ 1] INFO  Unity: 收到脱下装备响应
+2025-09-21 17:01:17,593 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:01:17,593 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:01:19,429 [ 1] INFO  Unity: 发送装备穿戴请求
+2025-09-21 17:01:19,447 [ 1] INFO  Unity: 收到脱下装备响应
+2025-09-21 17:01:19,448 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:19,449 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:19,450 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-21 17:01:19,451 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:01:19,452 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:01:22,695 [ 1] INFO  Unity: 发送装备穿戴请求
+2025-09-21 17:01:22,712 [ 1] INFO  Unity: 收到脱下装备响应
+2025-09-21 17:01:22,713 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:22,714 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:22,715 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:22,716 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:01:22,717 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:01:24,174 [ 1] INFO  Unity: 发送装备穿戴请求
+2025-09-21 17:01:24,201 [ 1] INFO  Unity: 收到脱下装备响应
+2025-09-21 17:01:24,203 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:24,204 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:24,205 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-21 17:01:24,205 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:01:24,206 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:01:25,410 [ 1] INFO  Unity: 发送装备穿戴请求
+2025-09-21 17:01:25,429 [ 1] INFO  Unity: 收到脱下装备响应
+2025-09-21 17:01:25,430 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:25,431 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:25,432 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:25,433 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:01:25,434 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:01:26,828 [ 1] INFO  Unity: 发送装备穿戴请求
+2025-09-21 17:01:26,856 [ 1] INFO  Unity: 收到脱下装备响应
+2025-09-21 17:01:26,858 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:26,859 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:26,860 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-21 17:01:26,860 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:01:26,861 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:01:28,422 [ 1] INFO  Unity: 发送装备穿戴请求
+2025-09-21 17:01:28,446 [ 1] INFO  Unity: 收到脱下装备响应
+2025-09-21 17:01:28,448 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:28,448 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-21 17:01:28,449 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-21 17:01:28,450 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:01:28,451 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:01:29,611 [ 1] INFO  Unity: 发送装备穿戴请求
+2025-09-21 17:01:29,628 [ 1] INFO  Unity: 收到脱下装备响应
+2025-09-21 17:01:29,630 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:29,631 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:29,632 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-21 17:01:29,633 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:01:29,633 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:01:37,318 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:37,319 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:37,320 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-21 17:01:43,273 [ 1] INFO  Unity: 发送出售商品请求
+2025-09-21 17:01:43,340 [ 1] INFO  Unity: StatusNotify:[Item[Delete][1002][1]
+2025-09-21 17:01:43,341 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][5]
+2025-09-21 17:01:43,342 [ 1] INFO  Unity: 收到出售商品响应
+2025-09-21 17:01:43,348 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:01:43,348 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:01:48,556 [ 1] INFO  Unity: 发送出售商品请求
+2025-09-21 17:01:48,574 [ 1] INFO  Unity: StatusNotify:[Item[Delete][3001][1]
+2025-09-21 17:01:48,575 [ 1] INFO  Unity: StatusNotify:[Money[Add][0][5]
+2025-09-21 17:01:48,576 [ 1] INFO  Unity: 收到出售商品响应
+2025-09-21 17:01:48,580 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
+2025-09-21 17:01:48,581 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-21 17:01:51,899 [ 1] INFO  Unity: SetEquipItem called: equiped = False
+2025-09-21 17:01:51,900 [ 1] INFO  Unity: SetEquipItem called: equiped = True
+2025-09-21 17:01:58,422 [ 1] INFO  Unity: 消失的玩家：2,位置(4908, 4106, 804)
+2025-09-21 17:01:58,424 [ 1] INFO  Unity: 网络断开
+2025-09-21 17:01:58,424 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)
