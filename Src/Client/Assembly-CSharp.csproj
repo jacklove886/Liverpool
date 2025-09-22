@@ -28,6 +28,7 @@
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,6 +38,7 @@
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -168,6 +170,7 @@
     <Compile Include="Assets\Scripts\Utilities\MonoSingleton.cs" />
     <Compile Include="Assets\Scripts\Utilities\Singleton.cs" />
     <Compile Include="Assets\Scripts\导航\NavPathRender.cs" />
+    <Compile Include="Assets\test.cs" />
     <Compile Include="Assets\ThirdParty\Candlelight\Library\GUI\FontUpdateTracker.cs" />
     <Compile Include="Assets\ThirdParty\Candlelight\Library\GUI\GUIHelpers.cs" />
     <Compile Include="Assets\ThirdParty\Candlelight\Library\GUI\HyperText.cs" />
@@ -204,6 +207,8 @@
     <Compile Include="Assets\ThirdPartys\Cloth\SpringBone.cs" />
     <Compile Include="Assets\ThirdPartys\Cloth\SpringCollider.cs" />
     <Compile Include="Assets\ThirdPartys\Cloth\SpringManager.cs" />
+    <Compile Include="Assets\XLua热更框架\Scripts\Framework\AppConst.cs" />
+    <Compile Include="Assets\XLua热更框架\Scripts\Framework\ResourceManager.cs" />
     <Compile Include="Assets\XLua热更框架\Scripts\Framework\Util\PathUtil.cs" />
     <Compile Include="Assets\XLua热更框架\XLua\Src\CodeEmit.cs" />
     <Compile Include="Assets\XLua热更框架\XLua\Src\CopyByValue.cs" />
@@ -534,6 +539,7 @@
     <None Include="Assets\我的角色\艾薇拉\Rin\Rin\Anim\Origin\knock_up.props.txt" />
     <None Include="Assets\我的角色\塞拉菲娜\Karin\Anim\Origin\N_Idle.props.txt" />
     <None Include="Assets\我的角色\伊莎贝拉\Yeonhee\mat\m_H_Yeonhee_Eye01.props.txt" />
+    <None Include="Assets\StreamingAssets\filelist.txt" />
     <None Include="Assets\我的角色\加雷斯\Evan\mat\m_H_Evan_Skin_01.props.txt" />
     <None Include="Assets\我的角色\塞拉菲娜\Karin\Anim\Origin\skill_1300.props.txt" />
     <None Include="Assets\我的角色\伊莎贝拉\Yeonhee\Anim\Origin\airborne_end.props.txt" />

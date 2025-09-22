@@ -1,16 +1,11 @@
 ManifestFileVersion: 0
-CRC: 789920451
+CRC: 230475003
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: ui/res/chongzhishenhe_atlas0.png.ab
-      Dependencies: {}
+      Name: ui/prefab/test.prefab.ab
+      Dependencies:
+        Dependency_0: ui/res/chouka07_tex.png.ab
     Info_1:
-      Name: ui/res/chongzhishenhe_atlas0_1.png.ab
-      Dependencies: {}
-    Info_2:
-      Name: ui/res/chongzhishenhe_atlas0_2.png.ab
-      Dependencies: {}
-    Info_3:
-      Name: ui/res/chouka01_tex.png.ab
+      Name: ui/res/chouka07_tex.png.ab
       Dependencies: {}
