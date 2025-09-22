@@ -127,7 +127,7 @@ public class UIQuestSystem : UIWindow {
         {
             if (this.listBranch.selectedItem != null)
             {
-                this.listBranch.selectedItem.Selected = false;//用属性
+                this.listBranch.selectedItem.Selected = false;
                 this.listBranch.selectedItem = null;  // 清除引用  不清除的话listBranch.selectedItem仍然是上次点击的那个物体
             }
         }
