@@ -31,7 +31,7 @@ public class ResourceManager : MonoBehaviour
             BundleInfo bundleInfo = new BundleInfo();
             string[] info = data[i].Split('|');//通过竖线分割
             bundleInfo.AssetsName = info[0];
-            bundleInfo.BundleName = info[0];
+            bundleInfo.BundleName = info[1];
             //list特性:本质是数组 但是可以动态扩容
             bundleInfo.Dependences = new List<string>(info.Length - 2);
             for(int j = 2; j < info.Length; j++)//依赖资源列表
@@ -47,7 +47,7 @@ public class ResourceManager : MonoBehaviour
     IEnumerator LoadBundleAsync(string assetName,Action<UObject>action=null)
     {
         string bundleName = m_BundleInfos[assetName].BundleName;
-        string bundlePath = Path.Combine(PathUtil.BundleResourcesPath, bundleName);
+        string bundlePath = Path.Combine(PathUtil.BundleResourcePath, bundleName);
         List<string> dependences = m_BundleInfos[assetName].Dependences;
         if (dependences != null && dependences.Count > 0)
         {
@@ -62,7 +62,10 @@ public class ResourceManager : MonoBehaviour
         AssetBundleRequest bundleRequest = request.assetBundle.LoadAssetAsync(assetName);
         yield return bundleRequest;
 
-        //action?.Invoke(bundleRequest?.asset);
+        if (action != null && bundleRequest != null)
+        {
+            action.Invoke(bundleRequest.asset);
+        }
     }
 
     public void LoadAsset(string assetName, Action<UObject> action)
@@ -72,6 +75,7 @@ public class ResourceManager : MonoBehaviour
 
     void Start()
     {
+        ParseVersionFile();
         LoadAsset("Assets/XLua热更框架/BuildResources/UI/Prefab/Test.prefab", OnComplete);     
     }
 

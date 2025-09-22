@@ -1,11 +1,15 @@
 ManifestFileVersion: 0
-CRC: 230475003
+CRC: 2044727355
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: ui/prefab/test.prefab.ab
       Dependencies:
         Dependency_0: ui/res/chouka07_tex.png.ab
+        Dependency_1: "ui/res/\u4E3B\u754C\u97622.jpg.ab"
     Info_1:
       Name: ui/res/chouka07_tex.png.ab
+      Dependencies: {}
+    Info_2:
+      Name: "ui/res/\u4E3B\u754C\u97622.jpg.ab"
       Dependencies: {}

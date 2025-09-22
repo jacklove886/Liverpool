@@ -8,7 +8,7 @@ public class PathUtil
     public static readonly string AssetsPath = Application.dataPath;
 
     //需要打Bundle的目录
-    public static readonly string BundleResourcesPath = AssetsPath + "/XLua热更框架/BuildResources/";
+    public static readonly string BuildResourcesPath = AssetsPath + "/XLua热更框架/BuildResources/";
 
     //Bundle输出目录
     public static readonly string BundleOutPath = Application.streamingAssetsPath;

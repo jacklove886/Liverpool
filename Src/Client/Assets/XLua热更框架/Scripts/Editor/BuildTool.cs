@@ -35,7 +35,7 @@ public class BuildTool : Editor
         List<string> bundleInfos = new List<string>();
 
         //参数:路径 匹配字符串 文件
-        string[] files = Directory.GetFiles(PathUtil.BundleResourcesPath, "*", SearchOption.AllDirectories);
+        string[] files = Directory.GetFiles(PathUtil.BuildResourcesPath, "*", SearchOption.AllDirectories);
         //排除meta文件
         for(int i = 0; i < files.Length; i++)
         {
@@ -49,14 +49,14 @@ public class BuildTool : Editor
 
             string assetName = PathUtil.GetUnityPath(fileName);
             assetBundle.assetNames = new string[] {assetName};//Unity相对目录
-            string bundleName = fileName.Replace(PathUtil.BundleResourcesPath, "").ToLower();
+            string bundleName = fileName.Replace(PathUtil.BuildResourcesPath, "").ToLower();
             assetBundle.assetBundleName = bundleName + ".ab";
 
             assetBundleBuilds.Add(assetBundle);//加进列表
 
             //添加文件和依赖信息
             List<string> dependenceInfo = GetDependence(assetName);
-            string bundleInfo = assetName + "|" + bundleName;
+            string bundleInfo = assetName + "|" + bundleName + ".ab";
 
             if (dependenceInfo.Count > 0)
             {
