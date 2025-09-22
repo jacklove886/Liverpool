@@ -8,7 +8,7 @@ using UnityEngine;
 public class TeleporterObject : MonoBehaviour {
 
     public int ID;
-    Mesh mesh = null;
+    private Mesh mesh = null;
 
 	void Start ()
     {

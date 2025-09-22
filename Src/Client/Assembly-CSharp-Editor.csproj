@@ -98,6 +98,25 @@
     <Compile Include="Assets\ThirdParty\Candlelight\Editor\Candlelight\Library\Utilities\EditorUtilityX.cs" />
     <Compile Include="Assets\ThirdParty\Candlelight\Editor\Candlelight\Library\Utilities\ReflectionX.cs" />
     <Compile Include="Assets\ThirdParty\Candlelight\Editor\Candlelight\Library\Utilities\SerializedPropertyX.cs" />
+    <Compile Include="Assets\XLua热更框架\Scripts\Editor\BuildTool.cs" />
+    <Compile Include="Assets\XLua热更框架\XLua\Editor\ExampleConfig.cs" />
+    <Compile Include="Assets\XLua热更框架\XLua\Src\Editor\Generator.cs" />
+    <Compile Include="Assets\XLua热更框架\XLua\Src\Editor\Hotfix.cs" />
+    <Compile Include="Assets\XLua热更框架\XLua\Src\Editor\LinkXmlGen\LinkXmlGen.cs" />
+    <Compile Include="Assets\XLua热更框架\XLua\Src\Editor\TemplateRef.cs" />
+    <None Include="Assets\XLua热更框架\XLua\Src\Editor\LinkXmlGen\LinkXmlGen.tpl.txt" />
+    <None Include="Assets\XLua热更框架\XLua\Src\Editor\Template\LuaClassWrapGCM.tpl.txt" />
+    <None Include="Assets\XLua热更框架\XLua\Src\Editor\Template\LuaWrapPusher.tpl.txt" />
+    <None Include="Assets\XLua热更框架\XLua\Src\Editor\Template\LuaDelegateBridge.tpl.txt" />
+    <None Include="Assets\XLua热更框架\XLua\Src\Editor\Template\TemplateCommon.lua.txt" />
+    <None Include="Assets\XLua热更框架\XLua\Src\Editor\Template\LuaEnumWrap.tpl.txt" />
+    <None Include="Assets\XLua热更框架\XLua\Src\Editor\Template\LuaDelegateWrap.tpl.txt" />
+    <None Include="Assets\XLua热更框架\XLua\Src\Editor\Template\LuaRegisterGCM.tpl.txt" />
+    <None Include="Assets\XLua热更框架\XLua\Src\Editor\Template\LuaRegister.tpl.txt" />
+    <None Include="Assets\XLua热更框架\XLua\Src\Editor\Template\LuaInterfaceBridge.tpl.txt" />
+    <None Include="Assets\XLua热更框架\XLua\Src\Editor\Template\LuaClassWrap.tpl.txt" />
+    <None Include="Assets\XLua热更框架\XLua\Src\Editor\Template\LuaEnumWrapGCM.tpl.txt" />
+    <None Include="Assets\XLua热更框架\XLua\Src\Editor\Template\PackUnpack.tpl.txt" />
     <Reference Include="Assembly-UnityScript">
       <HintPath>E:/Unity_code/mmorpg/mmorpg/Src/Client/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
     </Reference>
