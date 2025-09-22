@@ -9,9 +9,9 @@ public class ResourceManager : MonoBehaviour
 {
     internal class BundleInfo
     {
-        public string AssetsName;
-        public string BundleName;
-        public List<string> Dependences;
+        public string AssetsName;// Unity中的资源路径：Assets/XLua热更框架/BuildResources/UI/Prefab/Test.prefab
+        public string BundleName;// Bundle文件名：ui/prefab/test.prefab.ab
+        public List<string> Dependences;//依赖资源列表
     }
 
     //存放Bundle信息的集合
@@ -23,7 +23,7 @@ public class ResourceManager : MonoBehaviour
     {
         //版本文件的路径
         string url = Path.Combine(PathUtil.BundleResourcePath, AppConst.FileListName);
-        string[] data = File.ReadAllLines(url);
+        string[] data = File.ReadAllLines(url);//读取所有行到数组中
 
         //解析文件信息
         for(int i = 0; i < data.Length; i++)
@@ -34,7 +34,8 @@ public class ResourceManager : MonoBehaviour
             bundleInfo.BundleName = info[1];
             //list特性:本质是数组 但是可以动态扩容
             bundleInfo.Dependences = new List<string>(info.Length - 2);
-            for(int j = 2; j < info.Length; j++)//依赖资源列表
+            //第三部分开始是依赖资源
+            for(int j = 2; j < info.Length; j++)
             {
                 bundleInfo.Dependences.Add(info[j]);
             }
@@ -47,36 +48,87 @@ public class ResourceManager : MonoBehaviour
     IEnumerator LoadBundleAsync(string assetName,Action<UObject>action=null)
     {
         string bundleName = m_BundleInfos[assetName].BundleName;
-        string bundlePath = Path.Combine(PathUtil.BundleResourcePath, bundleName);
+        string bundlePath = Path.Combine(PathUtil.BundleResourcePath, bundleName);//路径拼接
         List<string> dependences = m_BundleInfos[assetName].Dependences;
         if (dependences != null && dependences.Count > 0)
         {
             for(int i = 0; i < dependences.Count; i++)
             {
-                yield return LoadBundleAsync(dependences[i]);
+                yield return LoadBundleAsync(dependences[i]);//递归
             }
         }
+        // 异步加载Bundle文件
         AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(bundlePath);
         yield return request;
 
+        // 从Bundle中异步加载具体资源
         AssetBundleRequest bundleRequest = request.assetBundle.LoadAssetAsync(assetName);
         yield return bundleRequest;
+        Debug.Log("This is LoadBundleAsync模式");
 
+        //执行回调函数
         if (action != null && bundleRequest != null)
         {
             action.Invoke(bundleRequest.asset);
         }
     }
 
-    public void LoadAsset(string assetName, Action<UObject> action)
+
+    //编辑器环境下使用
+    void EditorLoadAsset(string assetName,Action<UObject>action=null)
     {
+        Debug.Log("This is EditorLoadAsset模式");
+        UObject obj = UnityEditor.AssetDatabase.LoadAssetAtPath(assetName, typeof(UObject));
+        if (obj == null)
+        {
+            Debug.LogError("assets name is not exist" + assetName);
+        }
+        if (action != null)
+        {
+            action.Invoke(obj);
+        }
+    }
+
+    private void LoadAsset(string assetName, Action<UObject> action)
+    {
+        if (AppConst.GameMode == GameMode.EditorMode)
+            EditorLoadAsset(assetName, action);
+        else
         StartCoroutine(LoadBundleAsync(assetName, action));
     }
+
+    //资源接口
+    public void LoadUI(string assetName, Action<UObject> action)
+    {
+        LoadAsset(PathUtil.GetUIPath(assetName), action);
+    }
+
+    public void LoadMusic(string assetName, Action<UObject> action)
+    {
+        LoadAsset(PathUtil.GetMusicPath(assetName), action);
+    }
+
+    public void LoadSound(string assetName, Action<UObject> action)
+    {
+        LoadAsset(PathUtil.GetSoundPath(assetName), action);
+    }
+
+    public void LoadEffect(string assetName, Action<UObject> action)
+    {
+        LoadAsset(PathUtil.GetEffectPath(assetName), action);
+    }
+
+    public void LoadScene(string assetName, Action<UObject> action)
+    {
+        LoadAsset(PathUtil.GetScenePath(assetName), action);
+    }
+
+    //Tag卸载暂时不做
 
     void Start()
     {
         ParseVersionFile();
-        LoadAsset("Assets/XLua热更框架/BuildResources/UI/Prefab/Test.prefab", OnComplete);     
+        LoadUI("Test", OnComplete);
     }
 
     private void OnComplete(UObject obj)

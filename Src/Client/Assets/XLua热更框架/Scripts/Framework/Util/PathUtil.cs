@@ -40,4 +40,40 @@ public class PathUtil
         }
         return path.Trim().Replace("\\", "/");//将反斜杠替换为正斜杠
     }
+
+    public static string GetLuaPath(string name)
+    {
+        return string.Format("Assets/XLua热更框架/BuildResources/LuaScripts/{0}.bytes", name);
+    }
+
+    public static string GetUIPath(string name)
+    {
+        return string.Format("Assets/XLua热更框架/BuildResources/UI/Prefab/{0}.prefab", name);
+    }
+
+    public static string GetMusicPath(string name)
+    {
+        return string.Format("Assets/XLua热更框架/BuildResources/Audio/Music/{0}", name);
+    }
+
+    public static string GetSoundPath(string name)
+    {
+        return string.Format("Assets/XLua热更框架/BuildResources/Audio/Sound/{0}", name);
+    }
+
+    public static string GetEffectPath(string name)
+    {
+        return string.Format("Assets/XLua热更框架/BuildResources/Effect/Prefab/{0}.prefab", name);
+    }
+
+    public static string GetSpritePath(string name)
+    {
+        return string.Format("Assets/XLua热更框架/BuildResources/Sprites/{0}", name);
+    }
+
+    public static string GetScenePath(string name)
+    {
+        return string.Format("Assets/XLua热更框架/BuildResources/Scenes/{0}.unity", name);
+    }
+
 }
