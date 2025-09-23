@@ -15,10 +15,25 @@ public class LuaManager : MonoBehaviour
 
     public LuaEnv LuaEnv;
 
-    private void Awake()
+    public Action InitOK;
+
+    public void Init(Action Init)//初始化
     {
+        InitOK += Init;
         LuaEnv = new LuaEnv();
         LuaEnv.AddLoader(Loader);
+        m_LuaScripts = new Dictionary<string, byte[]>();
+        if (AppConst.GameMode != GameMode.EditorMode)
+        {
+            LoadLuaScript();
+        }       
+        
+#if UNITY_EDITOR
+        else
+        {
+            EditorLoadLuaScript();
+        }
+#endif
     }
 
     public void StartLua(string name)
@@ -31,6 +46,7 @@ public class LuaManager : MonoBehaviour
         return GetLuaScript(name);
     }
 
+    //从缓存中获取lua脚本名
     private byte[] GetLuaScript(string name)
     {
         //require ui.login.register 替换为ui/login/register
@@ -45,15 +61,21 @@ public class LuaManager : MonoBehaviour
         return luaScript;
     }
 
+    //AssetBundle加载
     void LoadLuaScript()
     {
         foreach(string name in LuaNames)
         {
             Manager.Resource.LoadLua(name,(UnityEngine.Object obj)=>
             {
-                AddLuaScript(name, (obj as TextAsset).bytes);
+                AddLuaScript(name, (obj as TextAsset).bytes); //将obj转换为TextAsset类型
                 if (m_LuaScripts.Count >= LuaNames.Count)
                 {
+                    //所有lua文件加载完成的时候
+                    if (InitOK != null)
+                    {
+                        InitOK.Invoke();
+                    }                  
                     LuaNames.Clear();
                     LuaNames = null;
                 }
@@ -70,7 +92,7 @@ public class LuaManager : MonoBehaviour
 #if UNITY_EDITOR
     void EditorLoadLuaScript()
     {
-        //搜索路径下的所有文件夹
+        //搜索路径下的所有含有*.bytes的文件
         string[] luaFiles = Directory.GetFiles(PathUtil.LuaPath, "*.bytes", SearchOption.AllDirectories);
         for(int i = 0; i < luaFiles.Length; i++)
         {
@@ -88,7 +110,7 @@ public class LuaManager : MonoBehaviour
     {
         if (LuaEnv != null)
         {
-            LuaEnv.Tick();
+            LuaEnv.Tick();//处理垃圾回收
         }
     }
 

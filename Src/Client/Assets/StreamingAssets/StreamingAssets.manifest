@@ -1,23 +1,26 @@
 ManifestFileVersion: 0
-CRC: 3012471037
+CRC: 2687889856
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
+      Name: luascripts/main.bytes.ab
+      Dependencies: {}
+    Info_1:
       Name: ui/prefab/test.prefab.ab
       Dependencies:
         Dependency_0: ui/res/chouka07_tex.png.ab
         Dependency_1: "ui/res/\u4E3B\u754C\u97622.jpg.ab"
-    Info_1:
+    Info_2:
       Name: ui/prefab/login/loginui.prefab.ab
       Dependencies:
         Dependency_0: ui/res/chouka07_tex.png.ab
         Dependency_1: "ui/res/\u4E3B\u754C\u97622.jpg.ab"
-    Info_2:
+    Info_3:
       Name: ui/res/chouka07_tex.png.ab
       Dependencies: {}
-    Info_3:
+    Info_4:
       Name: ui/res/common_bg_01.png.ab
       Dependencies: {}
-    Info_4:
+    Info_5:
       Name: "ui/res/\u4E3B\u754C\u97622.jpg.ab"
       Dependencies: {}

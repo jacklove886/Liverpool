@@ -12,6 +12,15 @@ public class GameStart : MonoBehaviour
         DontDestroyOnLoad(this);
 
         Manager.Resource.ParseVersionFile();
-        Manager.Lua.StartLua("Main");
+        //初始化Lua虚拟机
+        Manager.Lua.Init(
+            ()=>
+            {
+                Manager.Lua.StartLua("Main");//执行require Main
+                XLua.LuaFunction func = Manager.Lua.LuaEnv.Global.Get<XLua.LuaFunction>("Main");
+                func.Call();//执行Main里的方法
+            }
+            );      
+        
     }
 }

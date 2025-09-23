@@ -42,7 +42,7 @@ public class ResourceManager : MonoBehaviour
 
             if (info[0].IndexOf("LuaScripts") > 0)//证明是lua文件
             {
-                Manager.Lua.LuaNames.Add(info[0]);
+                Manager.Lua.LuaNames.Add(info[0]);//加进列表
             }
         }
     }
@@ -96,14 +96,17 @@ public class ResourceManager : MonoBehaviour
     private void LoadAsset(string assetName, Action<UnityEngine.Object> action)
     {
         Debug.Log("当前模式" + AppConst.GameMode);
+        if (AppConst.GameMode != GameMode.EditorMode)
+        {
+            StartCoroutine(LoadBundleAsync(assetName, action));
+        }
+
 #if UNITY_EDITOR
-        if (AppConst.GameMode == GameMode.EditorMode)
+        else
         {
             EditorLoadAsset(assetName, action);
-            return;
-        }                  
+        }
 #endif
-        StartCoroutine(LoadBundleAsync(assetName, action));
     }
 
     //资源接口
