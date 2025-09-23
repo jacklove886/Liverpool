@@ -47,7 +47,7 @@ public class LuaManager : MonoBehaviour
     }
 
     //从缓存中获取lua脚本名
-    private byte[] GetLuaScript(string name)
+    public byte[] GetLuaScript(string name)
     {
         //require ui.login.register 替换为ui/login/register
         name = name.Replace(".", "/");
@@ -99,6 +99,10 @@ public class LuaManager : MonoBehaviour
             string fileName = PathUtil.GetStandardPath(luaFiles[i]);
             byte[] file = File.ReadAllBytes(fileName);
             AddLuaScript(fileName, file);
+        }
+        if (InitOK != null)
+        {
+            InitOK.Invoke();
         }
     }
 

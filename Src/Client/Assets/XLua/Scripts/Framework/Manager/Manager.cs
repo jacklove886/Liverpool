@@ -22,10 +22,20 @@ public class Manager : MonoBehaviour
         }
     }
 
+    private static LuaUIManager _ui;
+    public static LuaUIManager UI
+    {
+        get
+        {
+            return _ui;
+        }
+    }
+
     private void Awake()
     {
         _resource = this.gameObject.AddComponent<ResourceManager>();
         _lua = this.gameObject.AddComponent<LuaManager>();
+        _ui = this.gameObject.AddComponent<LuaUIManager>();
     }
 
 

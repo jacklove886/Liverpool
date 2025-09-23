@@ -206,8 +206,11 @@
     <Compile Include="Assets\ThirdPartys\Cloth\SpringCollider.cs" />
     <Compile Include="Assets\ThirdPartys\Cloth\SpringManager.cs" />
     <Compile Include="Assets\XLua\Scripts\Framework\AppConst.cs" />
+    <Compile Include="Assets\XLua\Scripts\Framework\Behaviour\LuaBehaviour.cs" />
+    <Compile Include="Assets\XLua\Scripts\Framework\Behaviour\UILogic.cs" />
     <Compile Include="Assets\XLua\Scripts\Framework\HotUpdate.cs" />
     <Compile Include="Assets\XLua\Scripts\Framework\Manager\LuaManager.cs" />
+    <Compile Include="Assets\XLua\Scripts\Framework\Manager\LuaUIManager.cs" />
     <Compile Include="Assets\XLua\Scripts\Framework\Manager\Manager.cs" />
     <Compile Include="Assets\XLua\Scripts\Framework\Manager\ResourceManager.cs" />
     <Compile Include="Assets\XLua\Scripts\Framework\Util\FileUtil.cs" />

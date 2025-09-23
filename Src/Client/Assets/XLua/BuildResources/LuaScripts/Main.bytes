@@ -1,5 +1,9 @@
+Manager=CS.Manager
+
 function Main()
 	print("hello main")
+	--第一个参数是预制体名字 第二个是脚本名字
+	Manager.UI:OpenUI("Test","ui.TestUI")
 end
 
 --Main()
