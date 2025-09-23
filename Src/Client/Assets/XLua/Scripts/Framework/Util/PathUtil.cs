@@ -8,7 +8,7 @@ public class PathUtil
     public static readonly string AssetsPath = Application.dataPath;
 
     //需要打Bundle的目录
-    public static readonly string BuildResourcesPath = AssetsPath + "/XLua热更框架/BuildResources/";
+    public static readonly string BuildResourcesPath = AssetsPath + "/XLua/BuildResources/";
 
     //Bundle输出目录
     public static readonly string BundleOutPath = Application.streamingAssetsPath;
@@ -19,14 +19,17 @@ public class PathUtil
     //可读写目录
     public static readonly string ReadWritePath = Application.persistentDataPath;
 
+    //Lua路径
+    public static string LuaPath = "Assets/XLua/BuildResources/LuaScripts";
+
     //bundle的资源路径
     public static string BundleResourcePath
     {        
         get
         {
             //更新模式
-            if (AppConst.GameMode == GameMode.UpdateMode) return Application.persistentDataPath;
-            return Application.streamingAssetsPath;
+            if (AppConst.GameMode == GameMode.UpdateMode) return ReadWritePath;
+            return ReadPath;
         }
     }
 
@@ -54,37 +57,37 @@ public class PathUtil
 
     public static string GetLuaPath(string name)
     {
-        return string.Format("Assets/XLua热更框架/BuildResources/LuaScripts/{0}.bytes", name);
+        return string.Format("Assets/XLua/BuildResources/LuaScripts/{0}.bytes", name);
     }
 
     public static string GetUIPath(string name)
     {
-        return string.Format("Assets/XLua热更框架/BuildResources/UI/Prefab/{0}.prefab", name);
+        return string.Format("Assets/XLua/BuildResources/UI/Prefab/{0}.prefab", name);
     }
 
     public static string GetMusicPath(string name)
     {
-        return string.Format("Assets/XLua热更框架/BuildResources/Audio/Music/{0}", name);
+        return string.Format("Assets/XLua/BuildResources/Audio/Music/{0}", name);
     }
 
     public static string GetSoundPath(string name)
     {
-        return string.Format("Assets/XLua热更框架/BuildResources/Audio/Sound/{0}", name);
+        return string.Format("Assets/XLua/BuildResources/Audio/Sound/{0}", name);
     }
 
     public static string GetEffectPath(string name)
     {
-        return string.Format("Assets/XLua热更框架/BuildResources/Effect/Prefab/{0}.prefab", name);
+        return string.Format("Assets/XLua/BuildResources/Effect/Prefab/{0}.prefab", name);
     }
 
     public static string GetSpritePath(string name)
     {
-        return string.Format("Assets/XLua热更框架/BuildResources/Sprites/{0}", name);
+        return string.Format("Assets/XLua/BuildResources/Sprites/{0}", name);
     }
 
     public static string GetScenePath(string name)
     {
-        return string.Format("Assets/XLua热更框架/BuildResources/Scenes/{0}.unity", name);
+        return string.Format("Assets/XLua/BuildResources/Scenes/{0}.unity", name);
     }
 
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
-using UObject = UnityEngine.Object;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -19,7 +18,7 @@ public class ResourceManager : MonoBehaviour
 
 
     //解析版本文件
-    private void ParseVersionFile()
+    public void ParseVersionFile()
     {
         //版本文件的路径
         string url = Path.Combine(PathUtil.BundleResourcePath, AppConst.FileListName);
@@ -40,12 +39,16 @@ public class ResourceManager : MonoBehaviour
                 bundleInfo.Dependences.Add(info[j]);
             }
             m_BundleInfos.Add(bundleInfo.AssetsName, bundleInfo);
+
+            if (info[0].IndexOf("LuaScripts") > 0)//证明是lua文件
+            {
+                Manager.Lua.LuaNames.Add(info[0]);
+            }
         }
     }
 
-
     //异步加载资源  递归加载依赖资源
-    IEnumerator LoadBundleAsync(string assetName,Action<UObject>action=null)
+    IEnumerator LoadBundleAsync(string assetName,Action<UnityEngine.Object> action=null)
     {
         string bundleName = m_BundleInfos[assetName].BundleName;
         string bundlePath = Path.Combine(PathUtil.BundleResourcePath, bundleName);//路径拼接
@@ -73,12 +76,12 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-
+#if UNITY_EDITOR
     //编辑器环境下使用
-    void EditorLoadAsset(string assetName,Action<UObject>action=null)
+    void EditorLoadAsset(string assetName,Action<UnityEngine.Object> action=null)
     {
         Debug.Log("This is EditorLoadAsset模式");
-        UObject obj = UnityEditor.AssetDatabase.LoadAssetAtPath(assetName, typeof(UObject));
+        UnityEngine.Object obj = UnityEditor.AssetDatabase.LoadAssetAtPath(assetName, typeof(UnityEngine.Object));
         if (obj == null)
         {
             Debug.LogError("assets name is not exist" + assetName);
@@ -88,54 +91,52 @@ public class ResourceManager : MonoBehaviour
             action.Invoke(obj);
         }
     }
+#endif
 
-    private void LoadAsset(string assetName, Action<UObject> action)
+    private void LoadAsset(string assetName, Action<UnityEngine.Object> action)
     {
+        Debug.Log("当前模式" + AppConst.GameMode);
+#if UNITY_EDITOR
         if (AppConst.GameMode == GameMode.EditorMode)
+        {
             EditorLoadAsset(assetName, action);
-        else
+            return;
+        }                  
+#endif
         StartCoroutine(LoadBundleAsync(assetName, action));
     }
 
     //资源接口
-    public void LoadUI(string assetName, Action<UObject> action)
+    public void LoadUI(string assetName, Action<UnityEngine.Object> action)
     {
         LoadAsset(PathUtil.GetUIPath(assetName), action);
     }
 
-    public void LoadMusic(string assetName, Action<UObject> action)
+    public void LoadMusic(string assetName, Action<UnityEngine.Object> action)
     {
         LoadAsset(PathUtil.GetMusicPath(assetName), action);
     }
 
-    public void LoadSound(string assetName, Action<UObject> action)
+    public void LoadSound(string assetName, Action<UnityEngine.Object> action)
     {
         LoadAsset(PathUtil.GetSoundPath(assetName), action);
     }
 
-    public void LoadEffect(string assetName, Action<UObject> action)
+    public void LoadEffect(string assetName, Action<UnityEngine.Object> action)
     {
         LoadAsset(PathUtil.GetEffectPath(assetName), action);
     }
 
-    public void LoadScene(string assetName, Action<UObject> action)
+    public void LoadScene(string assetName, Action<UnityEngine.Object> action)
     {
         LoadAsset(PathUtil.GetScenePath(assetName), action);
     }
 
+    public void LoadLua(string assetName, Action<UnityEngine.Object> action=null)
+    {
+        LoadAsset(assetName, action);
+    }
+
+
     //Tag卸载暂时不做
-
-    void Start()
-    {
-        ParseVersionFile();
-        LoadUI("Test", OnComplete);
-    }
-
-    private void OnComplete(UObject obj)
-    {
-        GameObject go = Instantiate(obj) as GameObject;
-        go.transform.SetParent(this.transform);
-        go.SetActive(true);
-        go.transform.localPosition = Vector3.zero;
-    }
 }

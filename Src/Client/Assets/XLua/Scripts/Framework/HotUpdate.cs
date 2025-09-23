@@ -71,7 +71,7 @@ public class HotUpdate : MonoBehaviour
 
     private void Start()
     {
-        if (IsFirstInstall())
+        if (IsFirstInstall())//首次安装  释放资源
         {
             ReleaseResources();
         }
@@ -89,12 +89,13 @@ public class HotUpdate : MonoBehaviour
         //判断可读写目录是否存在版本文件
         bool isExistReadWritePath = FileUtil.IsExists(Path.Combine(PathUtil.ReadWritePath, AppConst.FileListName));
 
-        return isExistReadPath && !isExistReadWritePath;
+        return isExistReadPath && !isExistReadWritePath;//只读目录有 可读写目录没有
     }
 
     //释放资源到可读写目录
     private void ReleaseResources()
     {
+        // 从只读目录加载filelist.txt
         string url = Path.Combine(PathUtil.ReadPath, AppConst.FileListName);
         DownFileInfo info = new DownFileInfo();
         info.url = url;
@@ -106,16 +107,19 @@ public class HotUpdate : MonoBehaviour
         m_ReadPathFileListData = file.fileData.data;
         //获取文件
         List<DownFileInfo> fileInfos = GetFileList(file.fileData.text, PathUtil.ReadPath);
-        StartCoroutine(DownLoadFile(fileInfos, OnReleaseFileComplete, OnReleaseAllFileComplete));
+        StartCoroutine(DownLoadFile(fileInfos, OnReleaseFileComplete, OnReleaseAllFileComplete));//从只读目录复制到可读写目录
     }
+
     private void OnReleaseFileComplete(DownFileInfo file)
     {
+        Debug.Log("OnReleaseFileComplete" + file.url);
         string writeFile = Path.Combine(PathUtil.ReadWritePath, file.fileName);
         FileUtil.WriteFile(writeFile, file.fileData.data);
     }
 
     private void OnReleaseAllFileComplete()
     {
+        //写入filelist.txt
         FileUtil.WriteFile(Path.Combine(PathUtil.ReadWritePath, AppConst.FileListName), m_ReadPathFileListData);
         CheckUpdate();
     }  
@@ -123,13 +127,13 @@ public class HotUpdate : MonoBehaviour
     //检测更新
     private void CheckUpdate()
     {
+        //从服务器下载最新的filelist.txt
         string url = Path.Combine(AppConst.ResoucresUrl, AppConst.FileListName);
         DownFileInfo info = new DownFileInfo();
         info.url = url;
         StartCoroutine(DownLoadFile(info, OnDownLoadServerListComplete));
     }
 
-    //下载服务器回调方法
     private void OnDownLoadServerListComplete(DownFileInfo file)
     {
         m_ServerFileListData = file.fileData.data;
@@ -147,7 +151,7 @@ public class HotUpdate : MonoBehaviour
         }
         if (downListFiles.Count > 0)
         {
-            StartCoroutine(DownLoadFile(fileInfos, OnUpdateFileComplete, OnUpdateAllFileComplete));
+            StartCoroutine(DownLoadFile(downListFiles, OnUpdateFileComplete, OnUpdateAllFileComplete));
         }
         else
         {
@@ -157,18 +161,29 @@ public class HotUpdate : MonoBehaviour
 
     private void OnUpdateFileComplete(DownFileInfo file)
     {
+        Debug.Log("OnUpdateFileComplete:"+file.url);
         string writeFile = Path.Combine(PathUtil.ReadWritePath, file.fileName);
         FileUtil.WriteFile(writeFile, file.fileData.data);
     }
 
     private void OnUpdateAllFileComplete()
-    {
+    {       
+        // 更新本地的filelist.txt为服务器版本
         FileUtil.WriteFile(Path.Combine(PathUtil.ReadWritePath, AppConst.FileListName), m_ServerFileListData);
         EnterGame();
     }
 
     private void EnterGame()
     {
-        
+        Manager.Resource.ParseVersionFile();
+        Manager.Resource.LoadUI("Login/LoginUI", OnComplete);
+    }
+
+    private void OnComplete(UnityEngine.Object obj)
+    {
+        GameObject go = Instantiate(obj) as GameObject;
+        go.transform.SetParent(this.transform);
+        go.SetActive(true);
+        go.transform.localPosition = Vector3.zero;
     }
 }
