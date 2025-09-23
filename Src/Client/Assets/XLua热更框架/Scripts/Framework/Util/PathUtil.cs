@@ -13,10 +13,21 @@ public class PathUtil
     //Bundle输出目录
     public static readonly string BundleOutPath = Application.streamingAssetsPath;
 
+    //只读目录
+    public static readonly string ReadPath = Application.streamingAssetsPath;
+
+    //可读写目录
+    public static readonly string ReadWritePath = Application.persistentDataPath;
+
     //bundle的资源路径
     public static string BundleResourcePath
-    {
-        get { return Application.streamingAssetsPath; }
+    {        
+        get
+        {
+            //更新模式
+            if (AppConst.GameMode == GameMode.UpdateMode) return Application.persistentDataPath;
+            return Application.streamingAssetsPath;
+        }
     }
 
 
