@@ -42,11 +42,29 @@ public class Manager : MonoBehaviour
     }
 
     private static LuaSceneManager _scene;
-    public static LuaSceneManager Scene//处理UI相关的Lua逻辑
+    public static LuaSceneManager Scene//处理场景相关的Lua逻辑
     {
         get
         {
             return _scene;
+        }
+    }
+
+    private static LuaAudioManager _sound;
+    public static LuaAudioManager Sound//处理声音相关的Lua逻辑
+    {
+        get
+        {
+            return _sound;
+        }
+    }
+
+    private static LuaEventManager _event;
+    public static LuaEventManager Event//处理声音相关的Lua逻辑
+    {
+        get
+        {
+            return _event;
         }
     }
 
@@ -57,6 +75,8 @@ public class Manager : MonoBehaviour
         _ui = this.gameObject.AddComponent<LuaUIManager>();
         _entity = this.gameObject.AddComponent<LuaEntityManager>();
         _scene = this.gameObject.AddComponent<LuaSceneManager>();
+        _sound = this.gameObject.AddComponent<LuaAudioManager>();
+        _event = this.gameObject.AddComponent<LuaEventManager>();
     }
 
 

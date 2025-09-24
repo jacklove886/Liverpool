@@ -4,6 +4,60 @@ end
 
 function OnOpen()
 	print("lua OnOpen")	
+
+	local playmusic=self.transform:Find("playmusic"):GetComponent("Button")
+	local playsound=self.transform:Find("playsound"):GetComponent("Button")
+	local pause=self.transform:Find("pause"):GetComponent("Button")
+	local unpause=self.transform:Find("unpause"):GetComponent("Button")
+	local stop=self.transform:Find("stop"):GetComponent("Button")
+
+	local musicslider=self.transform:Find("musicslider"):GetComponent("Slider")
+	local soundslider=self.transform:Find("soundslider"):GetComponent("Slider")
+
+	playmusic:OnClickSet(
+		function()
+			Manager.Sound:PlayMusic("dayu.mp3")			
+		end
+	)
+
+	playsound:OnClickSet(
+		function()
+			Manager.Sound:PlaySound("ui_touch.wav")			
+		end
+	)
+
+	pause:OnClickSet(
+		function()
+			Manager.Sound:PauseMusic()			
+		end
+	)
+
+	unpause:OnClickSet(
+		function()
+			Manager.Sound:OnUnPauseMusic()			
+		end
+	)
+
+	stop:OnClickSet(
+		function()
+			Manager.Sound:StopMusic()			
+		end
+	)
+
+	musicslider:OnValueChangedSet(
+		function(volume)
+			Manager.Sound:SetMusicVolume(volume)		
+		end
+	)
+
+	soundslider:OnValueChangedSet(
+		function(volume)
+			Manager.Sound:SetSoundVolume(volume)		
+		end
+	)
+
+	musicslider.value=1;
+	soundslider.value=1;
 end
 
 function OnClose()

@@ -16,6 +16,8 @@ public class ResourceManager : MonoBehaviour
     //存放Bundle信息的集合
     private Dictionary<string, BundleInfo> m_BundleInfos = new Dictionary<string, BundleInfo>();
 
+    //存放Bundle资源的集合
+    private Dictionary<string, AssetBundle> m_AssetBundles = new Dictionary<string, AssetBundle>();
 
     //解析版本文件
     public void ParseVersionFile()
@@ -53,29 +55,36 @@ public class ResourceManager : MonoBehaviour
         string bundleName = m_BundleInfos[assetName].BundleName;
         string bundlePath = Path.Combine(PathUtil.BundleResourcePath, bundleName);//路径拼接
         List<string> dependences = m_BundleInfos[assetName].Dependences;
-        if (dependences != null && dependences.Count > 0)
-        {
-            for(int i = 0; i < dependences.Count; i++)
+
+        AssetBundle bundle = GetBundle(bundleName);
+        if (bundle == null)
+        { 
+            if (dependences != null && dependences.Count > 0)
             {
-                yield return LoadBundleAsync(dependences[i]);//递归
+                for(int i = 0; i < dependences.Count; i++)
+                {
+                    yield return LoadBundleAsync(dependences[i]);//递归
+                }
             }
+            // 异步加载Bundle文件
+            AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(bundlePath);
+            yield return request;
+            bundle = request.assetBundle;
+            m_AssetBundles[bundleName] = bundle;
         }
-        // 异步加载Bundle文件
-        AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(bundlePath);
-        yield return request;
 
         //如果加载是场景 直接返回回调
         if (assetName.EndsWith(".unity"))
-        {
-            if (action != null)
             {
-                action.Invoke(null);
-                yield break;
+                if (action != null)
+                {
+                    action.Invoke(null);
+                    yield break;
+                }
             }
-        }
         // 从Bundle中异步加载具体资源
-        AssetBundleRequest bundleRequest = request.assetBundle.LoadAssetAsync(assetName);
-        yield return bundleRequest;
+        AssetBundleRequest bundleRequest = bundle.LoadAssetAsync(assetName);
+        yield return bundleRequest;                   
         Debug.Log("This is LoadBundleAsync模式");
 
         //执行回调函数
@@ -84,6 +93,17 @@ public class ResourceManager : MonoBehaviour
             action.Invoke(bundleRequest.asset);
         }
     }
+
+    private AssetBundle GetBundle(string name)
+    {
+        AssetBundle bundle = null;
+        if (m_AssetBundles.TryGetValue(name, out bundle))
+        {
+            return bundle;
+        }
+        return null;
+    }
+
 
 #if UNITY_EDITOR
     //编辑器环境下使用
@@ -156,4 +176,8 @@ public class ResourceManager : MonoBehaviour
 
 
     //Tag卸载暂时不做
+    public void UnloadBundle(string name)
+    {
+       
+    }
 }

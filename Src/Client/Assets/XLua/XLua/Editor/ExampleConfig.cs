@@ -15,6 +15,11 @@ using System.Linq;
 //配置的详细介绍请看Doc下《XLua的配置.doc》
 public static class ExampleConfig
 {
+    [CSharpCallLua]
+    public static List<Type> mymodule_cs_call_lua_list = new List<Type>()
+    {
+        typeof(UnityEngine.Events.UnityAction<float>),
+    };
     /***************如果你全lua编程，可以参考这份自动化配置***************/
     //--------------begin 纯lua编程配置参考----------------------------
     //static List<string> exclude = new List<string> {
@@ -257,6 +262,9 @@ public static class ExampleConfig
                 new List<string>(){"UnityEngine.CanvasRenderer", "onRequestRebuild"},
                 new List<string>(){"UnityEngine.Light", "areaSize"},
                 new List<string>(){"UnityEngine.Light", "lightmapBakeType"},
+                new List<string>(){"UnityEngine.Light", "shadowRadius"},
+                new List<string>(){"UnityEngine.Light", "SetLightDirty"},
+                new List<string>(){"UnityEngine.Light", "shadowAngle"},
                 new List<string>(){"UnityEngine.WWW", "MovieTexture"},
                 new List<string>(){"UnityEngine.WWW", "GetMovieTexture"},
                 new List<string>(){"UnityEngine.AnimatorOverrideController", "PerformOverrideClipListCleanup"},
