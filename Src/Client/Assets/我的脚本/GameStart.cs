@@ -14,7 +14,7 @@ public class GameStart : MonoBehaviour
         Manager.Resource.ParseVersionFile();
         //初始化Lua虚拟机
         Manager.Lua.Init(
-            ()=>
+            ()=>//回调函数采用匿名方法
             {
                 Manager.Lua.StartLua("Main");//执行require Main
                 XLua.LuaFunction func = Manager.Lua.LuaEnv.Global.Get<XLua.LuaFunction>("Main");

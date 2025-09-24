@@ -1,9 +1,18 @@
 Manager=CS.Manager
+local group=
+{
+	"Main",
+	"UI",
+	"Box",
+}
+
+Manager.UI:SetUIGroup(group);
 
 function Main()
 	print("hello main")
 	--第一个参数是预制体名字 第二个是脚本名字
-	Manager.UI:OpenUI("Test","ui.TestUI")
+	Manager.UI:OpenUI("Test","UI","ui.TestUI")
+	Manager.UI:OpenUI("Login/LoginUI","Main","ui.TestUI")
 end
 
 --Main()

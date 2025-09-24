@@ -10,6 +10,6 @@ function OnClose()
 	print("lua OnClose")
 end
 
-function OnUpdate()
+function Update()
 	print("lua Update")
 end

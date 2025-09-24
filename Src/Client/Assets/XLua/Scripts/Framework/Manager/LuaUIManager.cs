@@ -33,14 +33,14 @@ public class LuaUIManager : MonoBehaviour
     //获取分组
     Transform GetUIGroup(string group)
     {
-        if (m_UIGroups.ContainsKey(group))
+        if (!m_UIGroups.ContainsKey(group))
         {
-
+            Debug.LogError("group没找到" + group);
         }
-        return null;
+        return m_UIGroups[group];
     }
 
-    public void OpenUI(string uiName, string luaName)
+    public void OpenUI(string uiName, string group,string luaName)
     {
         GameObject ui = null;
         if(m_UI.TryGetValue(uiName,out ui))
@@ -54,6 +54,9 @@ public class LuaUIManager : MonoBehaviour
         {
             ui = Instantiate(obj) as GameObject;
             m_UI.Add(uiName,ui);
+
+            Transform parent = GetUIGroup(group);
+            ui.transform.SetParent(parent, false);
             UILogic uiLogic = ui.AddComponent<UILogic>();
             uiLogic.Init(luaName);//相当于awake
             uiLogic.OnOpen();//相当于start
