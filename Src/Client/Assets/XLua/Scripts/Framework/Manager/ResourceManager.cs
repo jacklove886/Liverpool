@@ -110,32 +110,37 @@ public class ResourceManager : MonoBehaviour
     }
 
     //资源接口
-    public void LoadUI(string assetName, Action<UnityEngine.Object> action)
+    public void LoadUI(string assetName, Action<UnityEngine.Object> action = null)
     {
         LoadAsset(PathUtil.GetUIPath(assetName), action);
     }
 
-    public void LoadMusic(string assetName, Action<UnityEngine.Object> action)
+    public void LoadMusic(string assetName, Action<UnityEngine.Object> action = null)
     {
         LoadAsset(PathUtil.GetMusicPath(assetName), action);
     }
 
-    public void LoadSound(string assetName, Action<UnityEngine.Object> action)
+    public void LoadSound(string assetName, Action<UnityEngine.Object> action = null)
     {
         LoadAsset(PathUtil.GetSoundPath(assetName), action);
     }
 
-    public void LoadEffect(string assetName, Action<UnityEngine.Object> action)
+    public void LoadEffect(string assetName, Action<UnityEngine.Object> action = null)
     {
         LoadAsset(PathUtil.GetEffectPath(assetName), action);
     }
 
-    public void LoadScene(string assetName, Action<UnityEngine.Object> action)
+    public void LoadScene(string assetName, Action<UnityEngine.Object> action = null)
     {
         LoadAsset(PathUtil.GetScenePath(assetName), action);
     }
 
     public void LoadLua(string assetName, Action<UnityEngine.Object> action=null)
+    {
+        LoadAsset(assetName, action);
+    }
+
+    public void LoadPrefab(string assetName, Action<UnityEngine.Object> action = null)
     {
         LoadAsset(assetName, action);
     }

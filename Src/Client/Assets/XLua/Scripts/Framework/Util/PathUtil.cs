@@ -75,6 +75,11 @@ public class PathUtil
         return string.Format("Assets/XLua/BuildResources/Audio/Sound/{0}", name);
     }
 
+    public static string GetModelPath(string name)
+    {
+        return string.Format("Assets/XLua/BuildResources/Model/Prefab/{0}.prefab", name);
+    }
+
     public static string GetEffectPath(string name)
     {
         return string.Format("Assets/XLua/BuildResources/Effect/Prefab/{0}.prefab", name);

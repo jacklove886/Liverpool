@@ -24,8 +24,8 @@ public class LuaUIManager : MonoBehaviour
     {
         for(int i = 0; i < group.Count; i++)
         {
-            GameObject go = new GameObject("Group-" + group[i]);
-            go.transform.SetParent(m_UIParent, false);
+            GameObject go = new GameObject("Group-" + group[i]);//设置名字
+            go.transform.SetParent(m_UIParent, false);//设置父亲为m_UIParent
             m_UIGroups.Add(group[i],go.transform);
         }
     }
@@ -53,10 +53,9 @@ public class LuaUIManager : MonoBehaviour
         Manager.Resource.LoadUI(uiName, (UnityEngine.Object obj) =>
         {
             ui = Instantiate(obj) as GameObject;
-            m_UI.Add(uiName,ui);
-
             Transform parent = GetUIGroup(group);
             ui.transform.SetParent(parent, false);
+            m_UI[uiName]=ui;
             UILogic uiLogic = ui.AddComponent<UILogic>();
             uiLogic.Init(luaName);//相当于awake
             uiLogic.OnOpen();//相当于start
