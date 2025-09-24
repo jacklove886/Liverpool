@@ -16,7 +16,7 @@ public class FileUtil
     }
 
 
-    //写入文件
+    //写入文件到可读写目录
     public static void WriteFile(string path,byte[] data)
     {
         //获取标准路径

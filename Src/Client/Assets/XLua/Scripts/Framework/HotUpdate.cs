@@ -17,6 +17,28 @@ public class HotUpdate : MonoBehaviour
         public DownloadHandler fileData;//文件数据
     }
 
+    private void Start()
+    {
+        if (IsFirstInstall())//首次安装  释放资源
+        {
+            ReleaseResources();
+        }
+        else
+        {
+            CheckUpdate();//检查更新
+        }
+    }
+
+    private bool IsFirstInstall()
+    {
+        //判断只读目录是否存在txt文件
+        bool isExistReadPath = FileUtil.IsExists(Path.Combine(PathUtil.ReadPath, AppConst.FileListName));
+
+        //判断可读写目录是否存在txt文件
+        bool isExistReadWritePath = FileUtil.IsExists(Path.Combine(PathUtil.ReadWritePath, AppConst.FileListName));
+
+        return isExistReadPath && !isExistReadWritePath;//只读目录有 可读写目录没有
+    }
 
     //下载单个文件
     IEnumerator DownLoadFile(DownFileInfo info,Action<DownFileInfo> Complete)
@@ -62,37 +84,14 @@ public class HotUpdate : MonoBehaviour
         {
             string[] info = files[i].Split('|');
             DownFileInfo fileInfo = new DownFileInfo();
-            fileInfo.fileName = info[1];
+            fileInfo.fileName = info[1];//Bundle文件名
             fileInfo.url = Path.Combine(path, info[1]);
             downFileInfos.Add(fileInfo);
         }
         return downFileInfos;
     }
 
-    private void Start()
-    {
-        if (IsFirstInstall())//首次安装  释放资源
-        {
-            ReleaseResources();
-        }
-        else
-        {
-            CheckUpdate();
-        }
-    }
-
-    private bool IsFirstInstall()
-    {
-        //判断只读目录是否存在版本文件
-        bool isExistReadPath = FileUtil.IsExists(Path.Combine(PathUtil.ReadPath, AppConst.FileListName));
-
-        //判断可读写目录是否存在版本文件
-        bool isExistReadWritePath = FileUtil.IsExists(Path.Combine(PathUtil.ReadWritePath, AppConst.FileListName));
-
-        return isExistReadPath && !isExistReadWritePath;//只读目录有 可读写目录没有
-    }
-
-    //释放资源到可读写目录
+    //释放txt文本到可读写目录
     private void ReleaseResources()
     {
         // 从只读目录加载filelist.txt
@@ -102,6 +101,7 @@ public class HotUpdate : MonoBehaviour
         StartCoroutine(DownLoadFile(info, OnDownLoadReadPathFileListComplete));
     }
 
+    //从txt文本中读取资源到可读写目录
     private void OnDownLoadReadPathFileListComplete(DownFileInfo file)
     {
         m_ReadPathFileListData = file.fileData.data;
@@ -136,6 +136,7 @@ public class HotUpdate : MonoBehaviour
 
     private void OnDownLoadServerListComplete(DownFileInfo file)
     {
+        //保存服务器filelist.txt的原始数据
         m_ServerFileListData = file.fileData.data;
         List<DownFileInfo> fileInfos = GetFileList(file.fileData.text, AppConst.ResoucresUrl);//资源服务器上的信息
         List<DownFileInfo> downListFiles = new List<DownFileInfo>();//需要下载的文件列表
@@ -151,9 +152,10 @@ public class HotUpdate : MonoBehaviour
         }
         if (downListFiles.Count > 0)
         {
+            //下载服务器资源
             StartCoroutine(DownLoadFile(downListFiles, OnUpdateFileComplete, OnUpdateAllFileComplete));
         }
-        else
+        else//没有需要更新的资源
         {
             EnterGame();
         }

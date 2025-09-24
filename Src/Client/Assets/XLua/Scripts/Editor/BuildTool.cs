@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
+//将资源打包成AB包
 public class BuildTool : Editor
 {
     [MenuItem("XLuaTools/Build Windows Bundle")]
@@ -28,10 +29,10 @@ public class BuildTool : Editor
 
     static void Build(BuildTarget target)
     {
-        //定义要打包的资源和Bundle名称
+        //存储AB包的信息   BuildPipeline使用  用来生成.ab文件
         List<AssetBundleBuild> assetBundleBuilds = new List<AssetBundleBuild>();
 
-        //文件信息列表 记录依赖关系
+        //存储文件信息和依赖关系  运行的ResourceManager使用 用来生成txt文本
         List<string> bundleInfos = new List<string>();
 
         //参数:路径 匹配字符串 文件
@@ -44,12 +45,12 @@ public class BuildTool : Editor
             
             AssetBundleBuild assetBundle = new AssetBundleBuild();
 
-            string fileName= PathUtil.GetStandardPath(files[i]);
+            string fileName= PathUtil.GetStandardPath(files[i]);//获取标准路径
             Debug.Log("file" + fileName);
 
-            string assetName = PathUtil.GetUnityPath(fileName);
-            assetBundle.assetNames = new string[] {assetName};//Unity相对目录
-            string bundleName = fileName.Replace(PathUtil.BuildResourcesPath, "").ToLower();
+            string assetName = PathUtil.GetUnityPath(fileName);//获取Unity路径
+            assetBundle.assetNames = new string[] {assetName};
+            string bundleName = fileName.Replace(PathUtil.BuildResourcesPath, "").ToLower();//获取bundle路径并小写
             assetBundle.assetBundleName = bundleName + ".ab";
 
             assetBundleBuilds.Add(assetBundle);//加进列表
@@ -60,6 +61,7 @@ public class BuildTool : Editor
 
             if (dependenceInfo.Count > 0)
             {
+                //dependenceInfo是列表 要用string.Join
                 bundleInfo = bundleInfo + "|" + string.Join("|", dependenceInfo.ToArray());
             }
             bundleInfos.Add(bundleInfo);

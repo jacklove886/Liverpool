@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PathUtil
 {
-    //根目录
+    //根目录  E:/Unity_code/mmorpg/mmorpg/Src/Client/Assets
     public static readonly string AssetsPath = Application.dataPath;
 
     //需要打Bundle的目录

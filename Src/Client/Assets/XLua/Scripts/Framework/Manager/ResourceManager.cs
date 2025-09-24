@@ -38,7 +38,7 @@ public class ResourceManager : MonoBehaviour
             {
                 bundleInfo.Dependences.Add(info[j]);
             }
-            m_BundleInfos.Add(bundleInfo.AssetsName, bundleInfo);
+            m_BundleInfos[bundleInfo.AssetsName] = bundleInfo;
 
             if (info[0].IndexOf("LuaScripts") > 0)//证明是lua文件
             {
