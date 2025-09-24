@@ -17,31 +17,7 @@ public class LuaManager : MonoBehaviour
 
     public Action InitOK;
 
-    public void Init(Action Init)//初始化
-    {
-        InitOK += Init;
-        LuaEnv = new LuaEnv();
-        LuaEnv.AddLoader(Loader);
-        m_LuaScripts = new Dictionary<string, byte[]>();
-        if (AppConst.GameMode != GameMode.EditorMode)
-        {
-            LoadLuaScript();
-        }       
-        
-#if UNITY_EDITOR
-        else
-        {
-            EditorLoadLuaScript();
-        }
-#endif
-    }
-
-    public void StartLua(string name)
-    {
-        LuaEnv.DoString(string.Format("require '{0}'",name));
-    }
-
-    byte[] Loader(ref string name)
+    private byte[] Loader(ref string name)
     {
         return GetLuaScript(name);
     }
@@ -54,11 +30,35 @@ public class LuaManager : MonoBehaviour
         string fileName = PathUtil.GetLuaPath(name);
 
         byte[] luaScript = null;
-        if(!m_LuaScripts.TryGetValue(fileName,out luaScript))
+        if (!m_LuaScripts.TryGetValue(fileName, out luaScript))
         {
             Debug.LogError("lua script is not exist:" + fileName);
         }
         return luaScript;
+    }
+
+    public void Init(Action InitEvent)//初始化
+    {
+        InitOK += InitEvent;
+        LuaEnv = new LuaEnv();
+        LuaEnv.AddLoader(Loader);
+        m_LuaScripts = new Dictionary<string, byte[]>();
+        if (AppConst.GameMode != GameMode.EditorMode)
+        {
+            LoadLuaScript();//从AssetBundle加载
+        }       
+        
+#if UNITY_EDITOR
+        else
+        {
+            EditorLoadLuaScript();//从本地文件加载
+        }
+#endif
+    }
+
+    public void StartLua(string name)//这里才会调用Loader方法
+    {
+        LuaEnv.DoString(string.Format("require '{0}'",name));
     }
 
     //AssetBundle加载

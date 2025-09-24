@@ -17,7 +17,7 @@ public class LuaUIManager : MonoBehaviour
 
     private void Awake()
     {
-        m_UIParent=this.transform.parent.Find("UI");
+        m_UIParent=this.transform.parent.Find("UI");//找到Root根节点下的UI
     }
 
     public void SetUIGroup(List<string>group)
@@ -43,7 +43,7 @@ public class LuaUIManager : MonoBehaviour
     public void OpenUI(string uiName, string group,string luaName)
     {
         GameObject ui = null;
-        if(m_UI.TryGetValue(uiName,out ui))
+        if(m_UI.TryGetValue(uiName,out ui))//已经缓存
         {
             UILogic uiLogic = ui.GetComponent<UILogic>();
             uiLogic.OnOpen();

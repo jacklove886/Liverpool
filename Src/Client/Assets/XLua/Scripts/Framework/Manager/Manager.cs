@@ -32,11 +32,21 @@ public class Manager : MonoBehaviour
         }
     }
 
+    private static LuaEntityManager _entity;
+    public static LuaEntityManager Entity//处理UI相关的Lua逻辑
+    {
+        get
+        {
+            return _entity;
+        }
+    }
+
     private void Awake()//统一生命周期
     {
         _resource = this.gameObject.AddComponent<ResourceManager>();
         _lua = this.gameObject.AddComponent<LuaManager>();
         _ui = this.gameObject.AddComponent<LuaUIManager>();
+        _entity = this.gameObject.AddComponent<LuaEntityManager>();
     }
 
 
