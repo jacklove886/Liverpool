@@ -64,6 +64,15 @@ public class ResourceManager : MonoBehaviour
         AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(bundlePath);
         yield return request;
 
+        //如果加载是场景 直接返回回调
+        if (assetName.EndsWith(".unity"))
+        {
+            if (action != null)
+            {
+                action.Invoke(null);
+                yield break;
+            }
+        }
         // 从Bundle中异步加载具体资源
         AssetBundleRequest bundleRequest = request.assetBundle.LoadAssetAsync(assetName);
         yield return bundleRequest;

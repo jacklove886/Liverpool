@@ -3,8 +3,7 @@ function OnInit()
 end
 
 function OnOpen()
-	print("lua OnOpen")
-	Manager.Scene:LoadScene("Test01","scene.Scene01")
+	print("lua OnOpen")	
 end
 
 function OnClose()
