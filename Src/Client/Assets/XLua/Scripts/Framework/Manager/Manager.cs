@@ -68,6 +68,15 @@ public class Manager : MonoBehaviour
         }
     }
 
+    private static PoolManager _pool;
+    public static PoolManager Pool//处理声音相关的Lua逻辑
+    {
+        get
+        {
+            return _pool;
+        }
+    }
+
     private void Awake()//统一生命周期
     {
         _resource = this.gameObject.AddComponent<ResourceManager>();
@@ -77,6 +86,7 @@ public class Manager : MonoBehaviour
         _scene = this.gameObject.AddComponent<LuaSceneManager>();
         _sound = this.gameObject.AddComponent<LuaAudioManager>();
         _event = this.gameObject.AddComponent<LuaEventManager>();
+        _pool = this.gameObject.AddComponent<PoolManager>();
     }
 
 

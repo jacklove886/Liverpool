@@ -7,9 +7,6 @@ using XLua;
 
 public class LuaUIManager : MonoBehaviour 
 {
-    //缓存UI
-    Dictionary<string, GameObject> m_UI = new Dictionary<string, GameObject>();
-
     //UI层级
     Dictionary<string, Transform> m_UIGroups = new Dictionary<string, Transform>();
 
@@ -43,8 +40,14 @@ public class LuaUIManager : MonoBehaviour
     public void OpenUI(string uiName, string group,string luaName)
     {
         GameObject ui = null;
-        if(m_UI.TryGetValue(uiName,out ui))//已经缓存
+        Transform parent = GetUIGroup(group);
+        string uiPath = PathUtil.GetUIPath(uiName);
+        UnityEngine.Object uiObj = Manager.Pool.Spawn("UI", uiPath);
+
+        if(uiObj!=null)//已经缓存
         {
+            ui = uiObj as GameObject;
+            ui.transform.SetParent(parent, false);
             UILogic uiLogic = ui.GetComponent<UILogic>();
             uiLogic.OnOpen();
             return;
@@ -53,11 +56,10 @@ public class LuaUIManager : MonoBehaviour
         Manager.Resource.LoadUI(uiName, (UnityEngine.Object obj) =>
         {
             ui = Instantiate(obj) as GameObject;
-            Transform parent = GetUIGroup(group);
             ui.transform.SetParent(parent, false);
-            m_UI[uiName]=ui;
             UILogic uiLogic = ui.AddComponent<UILogic>();
             uiLogic.Init(luaName);//相当于awake
+            uiLogic.AssetName = uiPath;
             uiLogic.OnOpen();//相当于start
         });
 

@@ -7,6 +7,8 @@ using XLua;
 
 public class UILogic : LuaBehaviour
 {
+    public string AssetName;
+
     private Action m_LuaOpen;
     private Action m_LuaClose;
 
@@ -31,6 +33,7 @@ public class UILogic : LuaBehaviour
         {
             m_LuaClose.Invoke();
         }
+        Manager.Pool.UnSpawn("UI", AssetName, this.gameObject);
     }
 
     protected override void Clear()
