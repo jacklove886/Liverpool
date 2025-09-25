@@ -13,11 +13,25 @@ public class ResourceManager : MonoBehaviour
         public List<string> Dependences;//依赖资源列表
     }
 
+    internal class BundleData
+    {
+        public AssetBundle Bundle;
+
+        //引用计数
+        public int Count;
+
+        public BundleData(AssetBundle ab)
+        {
+            Bundle = ab;
+            Count = 1;
+        }
+    }
+
     //存放Bundle信息的集合
     private Dictionary<string, BundleInfo> m_BundleInfos = new Dictionary<string, BundleInfo>();
 
     //存放Bundle资源的集合
-    private Dictionary<string, AssetBundle> m_AssetBundles = new Dictionary<string, AssetBundle>();
+    private Dictionary<string, BundleData> m_AssetBundles = new Dictionary<string, BundleData>();
 
     //解析版本文件
     public void ParseVersionFile()
@@ -27,7 +41,7 @@ public class ResourceManager : MonoBehaviour
         string[] data = File.ReadAllLines(url);//读取所有行到数组中
 
         //解析文件信息
-        for(int i = 0; i < data.Length; i++)
+        for (int i = 0; i < data.Length; i++)
         {
             BundleInfo bundleInfo = new BundleInfo();
             string[] info = data[i].Split('|');//通过竖线分割
@@ -36,7 +50,7 @@ public class ResourceManager : MonoBehaviour
             //list特性:本质是数组 但是可以动态扩容
             bundleInfo.Dependences = new List<string>(info.Length - 2);
             //第三部分开始是依赖资源
-            for(int j = 2; j < info.Length; j++)
+            for (int j = 2; j < info.Length; j++)
             {
                 bundleInfo.Dependences.Add(info[j]);
             }
@@ -50,41 +64,57 @@ public class ResourceManager : MonoBehaviour
     }
 
     //异步加载资源  递归加载依赖资源
-    IEnumerator LoadBundleAsync(string assetName,Action<UnityEngine.Object> action=null)
+    IEnumerator LoadBundleAsync(string assetName, Action<UnityEngine.Object> action = null)
     {
         string bundleName = m_BundleInfos[assetName].BundleName;
         string bundlePath = Path.Combine(PathUtil.BundleResourcePath, bundleName);//路径拼接
         List<string> dependences = m_BundleInfos[assetName].Dependences;
 
-        AssetBundle bundle = GetBundle(bundleName);
+        BundleData bundle = GetBundle(bundleName);
         if (bundle == null)
-        { 
-            if (dependences != null && dependences.Count > 0)
+        {
+            UnityEngine.Object obj = Manager.Pool.Spawn("AssetBundle", assetName);
+            if (obj != null)
             {
-                for(int i = 0; i < dependences.Count; i++)
-                {
-                    yield return LoadBundleAsync(dependences[i]);//递归
-                }
+                AssetBundle ab = obj as AssetBundle;
+                bundle = new BundleData(ab);//创建一次BundleData
             }
-            // 异步加载Bundle文件
-            AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(bundlePath);
-            yield return request;
-            bundle = request.assetBundle;
+
+            else
+            {
+                // 异步加载Bundle文件
+                AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(bundlePath);
+                yield return request;
+                bundle = new BundleData(request.assetBundle);
+            }
             m_AssetBundles[bundleName] = bundle;
+        }
+
+        if (dependences != null && dependences.Count > 0)
+        {
+            for (int i = 0; i < dependences.Count; i++)
+            {
+                yield return LoadBundleAsync(dependences[i]);//递归
+            }
         }
 
         //如果加载是场景 直接返回回调
         if (assetName.EndsWith(".unity"))
+        {
+            if (action != null)
             {
-                if (action != null)
-                {
-                    action.Invoke(null);
-                    yield break;
-                }
+                action.Invoke(null);
+                yield break;
             }
+        }
+
+        if (action == null)
+        {
+            yield break;
+        }
         // 从Bundle中异步加载具体资源
-        AssetBundleRequest bundleRequest = bundle.LoadAssetAsync(assetName);
-        yield return bundleRequest;                   
+        AssetBundleRequest bundleRequest = bundle.Bundle.LoadAssetAsync(assetName);
+        yield return bundleRequest;
         Debug.Log("This is LoadBundleAsync模式");
 
         //执行回调函数
@@ -94,11 +124,51 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-    private AssetBundle GetBundle(string name)
+    //减去bundle和依赖的引用计数
+    public void MinusBundleCount(string assetName)
     {
-        AssetBundle bundle = null;
+        string bundleName = m_BundleInfos[assetName].BundleName;
+
+        MinusOneBundleCount(bundleName);
+
+        //依赖资源
+        List<string> dependences = m_BundleInfos[assetName].Dependences;
+        if (dependences != null)
+        {
+            foreach (var dependece in dependences)
+            {
+                string name = m_BundleInfos[dependece].BundleName;
+                MinusOneBundleCount(name);
+            }
+        }
+    }
+
+    //减去一个bundle的引用计数
+    private void MinusOneBundleCount(string bundleName)
+    {
+        BundleData bundle;
+        if(m_AssetBundles.TryGetValue(bundleName,out bundle))
+        {
+            if (bundle.Count > 0)
+            {
+                bundle.Count--;
+                Debug.LogFormat("[{0}]引用计数:{1}", bundleName, bundle.Count);
+            }
+            if (bundle.Count <= 0)
+            {
+                Debug.LogFormat("[{0}]放入对象池", bundleName);
+                Manager.Pool.UnSpawn("AssetBundle", bundleName, bundle.Bundle);
+                m_AssetBundles.Remove(bundleName);
+            }
+        }
+    }
+
+    private BundleData GetBundle(string name)
+    {
+        BundleData bundle = null;
         if (m_AssetBundles.TryGetValue(name, out bundle))
         {
+            bundle.Count++;
             return bundle;
         }
         return null;
@@ -107,7 +177,7 @@ public class ResourceManager : MonoBehaviour
 
 #if UNITY_EDITOR
     //编辑器环境下使用
-    void EditorLoadAsset(string assetName,Action<UnityEngine.Object> action=null)
+    void EditorLoadAsset(string assetName, Action<UnityEngine.Object> action = null)
     {
         Debug.Log("This is EditorLoadAsset模式");
         UnityEngine.Object obj = UnityEditor.AssetDatabase.LoadAssetAtPath(assetName, typeof(UnityEngine.Object));
@@ -164,7 +234,7 @@ public class ResourceManager : MonoBehaviour
         LoadAsset(PathUtil.GetScenePath(assetName), action);
     }
 
-    public void LoadLua(string assetName, Action<UnityEngine.Object> action=null)
+    public void LoadLua(string assetName, Action<UnityEngine.Object> action = null)
     {
         LoadAsset(assetName, action);
     }
@@ -176,8 +246,9 @@ public class ResourceManager : MonoBehaviour
 
 
     //Tag卸载暂时不做
-    public void UnloadBundle(string name)
+    public void UnloadBundle(UnityEngine.Object obj)
     {
-       
+        AssetBundle ab = obj as AssetBundle;
+        ab.Unload(true);
     }
 }

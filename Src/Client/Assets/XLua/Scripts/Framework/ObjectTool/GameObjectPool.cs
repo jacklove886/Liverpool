@@ -33,6 +33,7 @@ public class GameObjectPool : PoolBase
             {
                 Debug.Log("GameObjectPool  Release Time"+ System.DateTime.Now);
                 Destroy(item.Object);
+                Manager.Resource.MinusBundleCount(item.Name);
                 m_Objects.Remove(item);
                 Release();//递归
                 return;
