@@ -1,72 +1,13 @@
-2025-09-21 00:19:37,593 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-21 00:19:38,258 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{SocketException: 以一种访问权限不允许的方式做了一个访问套接字的尝试。
-, System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end)
-SyntaxTree.VisualStudio.Unity.Messaging.UdpSocket.Bind (System.Net.IPAddress address, Int32 port)
-SyntaxTree.VisualStudio.Unity.Messaging.Messager..ctor (Int32 port)
-SyntaxTree.VisualStudio.Unity.Messaging.Messager.BindTo (Int32 port)
-SyntaxTree.VisualStudio.Unity.Bridge.VisualStudioIntegration+<>c__DisplayClass9_0.<.cctor>b__0 ()
-SyntaxTree.VisualStudio.Unity.Bridge.Project+<>c__DisplayClass40_0.<RunOnceOnUpdate>b__0 ()
-UnityEditor.EditorApplication.Internal_CallUpdateFunctions () (at D:/unity/Editor/Mono/EditorApplication.cs:191)
-}</args></log4net.Error>
-2025-09-21 00:19:40,559 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-21 00:19:40,560 [ 1] INFO  Unity: 连接成功
-2025-09-21 00:19:40,561 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-21 00:19:40,565 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-21 00:19:40,659 [ 1] INFO  Unity: 收到登录响应
-2025-09-21 00:19:40,660 [ 1] INFO  Unity: 登录成功
-2025-09-21 00:19:40,999 [ 1] INFO  Unity: 当前角色数量为4
-2025-09-21 00:19:41,823 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-21 00:19:41,845 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-21 00:19:41,847 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
-2025-09-21 00:19:41,848 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-21 00:19:41,848 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-21 00:19:41,849 [ 1] INFO  Unity: ItemManager初始化道具:[ID:8001,Count:1]
-2025-09-21 00:19:41,856 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:19:41,857 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-21 00:19:41,859 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-21 00:19:41,861 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-21 00:19:41,862 [ 1] INFO  Unity: 进入的场景是MainCity
-2025-09-21 00:19:42,249 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:19:45,144 [ 1] INFO  Unity: Set Channel:Local
-2025-09-21 00:20:09,881 [ 1] INFO  Unity: 角色:Alice进入传送门[2:落日森林->利物浦出口
-2025-09-21 00:20:11,085 [ 1] INFO  Unity: 角色:Alice进入传送门[1:利物浦->落日森林传送门
-2025-09-21 00:20:11,086 [ 1] INFO  Unity: 发送SendMapTeleport请求:teleporterID1
-2025-09-21 00:20:11,106 [ 1] INFO  Unity: 8离开了地图
-2025-09-21 00:20:11,108 [ 1] INFO  Unity: 移除角色ID：8
-2025-09-21 00:20:11,110 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:20:11,111 [ 1] INFO  Unity: 进入了地图:2,当前角色数量:2
-2025-09-21 00:20:11,111 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:2
-2025-09-21 00:20:11,134 [ 1] INFO  Unity: 加入角色姓名:失落死神,地图:2
-2025-09-21 00:20:11,155 [ 1] INFO  Unity: 场景不匹配：当前场景1, 目标场景2, 开始切换
-2025-09-21 00:20:11,156 [ 1] INFO  Unity: 进入的场景是Map01
-2025-09-21 00:20:11,344 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:20:11,345 [ 1] INFO  Unity: 消失的玩家：8,位置(699, 2611, 800)
-2025-09-21 00:20:14,002 [ 1] WARN  Unity: Failed to create agent because there is no valid NavMesh
-UnityEngine.GameObject:AddComponent()
-PlayerInputController:Start() (at Assets/Scripts/GameObject/PlayerInputController.cs:48)
-
-2025-09-21 00:20:14,015 [ 1] INFO  Unity: 角色:Alice进入传送门[8:利物浦->落日森林出口
-2025-09-21 00:20:18,355 [ 1] INFO  Unity: 角色:Alice进入传送门[7:落日森林->利物浦传送门
-2025-09-21 00:20:18,356 [ 1] INFO  Unity: 发送SendMapTeleport请求:teleporterID7
-2025-09-21 00:20:18,377 [ 1] INFO  Unity: 8离开了地图
-2025-09-21 00:20:18,377 [ 1] INFO  Unity: 移除角色ID：8
-2025-09-21 00:20:18,378 [ 1] INFO  Unity: 移除角色ID：4
-2025-09-21 00:20:18,379 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:20:18,379 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-21 00:20:18,380 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-21 00:20:18,406 [ 1] INFO  Unity: 场景不匹配：当前场景2, 目标场景1, 开始切换
-2025-09-21 00:20:18,407 [ 1] INFO  Unity: 进入的场景是MainCity
-2025-09-21 00:20:18,795 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 00:20:18,796 [ 1] INFO  Unity: 消失的玩家：8,位置(2226, 4051, 4)
-2025-09-21 00:20:21,834 [ 1] INFO  Unity: 角色:Alice进入传送门[2:落日森林->利物浦出口
-2025-09-21 00:20:24,056 [ 1] WARN  Unity: No script asset for GameObjectSelectionItem. Check that the definition is in a file of the same name.
-
-2025-09-21 00:20:24,056 [ 1] WARN  Unity: No script asset for GameObjectSelectionItem. Check that the definition is in a file of the same name.
-
-2025-09-21 00:20:25,097 [ 1] INFO  Unity: 消失的玩家：8,位置(1562, 2601, 800)
-2025-09-21 00:20:25,099 [ 1] INFO  Unity: 网络断开
-2025-09-21 00:20:25,100 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-25 21:18:18,568 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-25 21:18:25,775 [ 1] INFO  Unity: 用户名 :zzl123 密码:123
+2025-09-25 21:18:25,777 [ 1] INFO  Unity: 连接成功
+2025-09-25 21:18:25,779 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-25 21:18:25,782 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-25 21:18:25,888 [ 1] INFO  Unity: 收到登录响应
+2025-09-25 21:18:25,889 [ 1] INFO  Unity: 登录成功
+2025-09-25 21:18:26,291 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-25 21:18:27,510 [ 1] INFO  Unity: 网络断开
+2025-09-25 21:18:27,510 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)

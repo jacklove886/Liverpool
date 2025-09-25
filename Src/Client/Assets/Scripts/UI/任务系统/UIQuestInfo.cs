@@ -16,7 +16,6 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
 
     public Text rewardMoney;//奖励金额
     public Text rewardExp;//奖励经验
-    public GameObject image;
     public GameObject guimie;
     public GameObject button1;
     public GameObject button2;
@@ -52,7 +51,6 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
         this.rewardExp.text = "经验值 : " + quest.Define.RewardExp.ToString();
         this.rewardMoney.gameObject.SetActive(true);
         this.rewardExp.gameObject.SetActive(true);
-        image.gameObject.SetActive(true);
         button1.gameObject.SetActive(true);
         button2.gameObject.SetActive(true);
         guimie.gameObject.SetActive(false);
@@ -79,7 +77,6 @@ public class UIQuestInfo : MonoBehaviour//任务信息列表
     {
         rewardMoney.gameObject.SetActive(false);
         rewardExp.gameObject.SetActive(false);
-        image.gameObject.SetActive(false);
         button1.gameObject.SetActive(false);
         button2.gameObject.SetActive(false);
         for (int i = 0; i < rewardItems.Length; i++)

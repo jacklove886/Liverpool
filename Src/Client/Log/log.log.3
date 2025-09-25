@@ -1,45 +1,107 @@
-2025-09-21 17:02:12,136 [ 1] INFO  Unity: DataManager > DataManager()
-2025-09-21 17:02:19,907 [ 1] INFO  Unity: 用户名 :123 密码:123
-2025-09-21 17:02:19,909 [ 1] INFO  Unity: 连接成功
-2025-09-21 17:02:19,910 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
-2025-09-21 17:02:19,914 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
-2025-09-21 17:02:20,646 [ 1] INFO  Unity: 收到登录响应
-2025-09-21 17:02:20,647 [ 1] INFO  Unity: 登录成功
-2025-09-21 17:02:21,013 [ 1] INFO  Unity: 当前角色数量为1
-2025-09-21 17:02:22,586 [ 1] INFO  Unity: 发出进入游戏的响应
-2025-09-21 17:02:22,753 [ 1] INFO  Unity: 角色进入游戏:Success
-2025-09-21 17:02:22,755 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
-2025-09-21 17:02:22,756 [ 1] INFO  Unity: ItemManager初始化道具:[ID:3,Count:5]
-2025-09-21 17:02:22,757 [ 1] INFO  Unity: ItemManager初始化道具:[ID:4,Count:10]
-2025-09-21 17:02:22,757 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1001,Count:1]
-2025-09-21 17:02:22,758 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2001,Count:1]
-2025-09-21 17:02:22,759 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1007,Count:1]
-2025-09-21 17:02:22,761 [ 1] INFO  Unity: 装备槽位0 itemID=1001
-2025-09-21 17:02:22,761 [ 1] INFO  Unity: 装备槽位1 itemID=1002
-2025-09-21 17:02:22,762 [ 1] ERROR UserService: Message handler exception:, The given key was not present in the dictionary., mscorlib,   at System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) [0x000a2] in /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150 
-  at Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) [0x0008a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:37 
-  at Managers.EquipManager.Init (System.Byte[] data) [0x0000a] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Managers\EquipManager.cs:24 
-  at Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) [0x00081] in E:\Unity_code\mmorpg\mmorpg\Src\Client\Assets\Scripts\Services\UserService.cs:271 
-  at Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) [0x00044] in E:\Unity_code\mmorpg\mmorpg\Src\Lib\Common\Network\MessageDistributer.cs:106 
-2025-09-21 17:02:22,763 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{KeyNotFoundException: The given key was not present in the dictionary., System.Collections.Generic.Dictionary`2[System.Int32,Models.Item].get_Item (Int32 key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150)
-Managers.EquipManager.AnalyzeEquipData (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:37)
-Managers.EquipManager.Init (System.Byte[] data) (at Assets/Scripts/Managers/EquipManager.cs:24)
-Services.UserService.OnUserGameEnter (System.Object sender, SkillBridge.Message.UserGameEnterResponse response) (at Assets/Scripts/Services/UserService.cs:271)
-Network.MessageDistributer`1[System.Object].RaiseEvent[UserGameEnterResponse] (System.Object sender, SkillBridge.Message.UserGameEnterResponse msg) (at E:/Unity_code/mmorpg/mmorpg/Src/Lib/Common/Network/MessageDistributer.cs:106)
+2025-09-25 21:20:48,346 [ 1] INFO  Unity: DataManager > DataManager()
+2025-09-25 21:20:55,547 [ 1] INFO  Unity: UserRegisterRequest::user :zzl1 psw:123
+2025-09-25 21:20:55,548 [ 1] INFO  Unity: 连接成功
+2025-09-25 21:20:55,550 [ 1] INFO  Unity: 连接的IP地址为: 127.0.0.1:8000
+2025-09-25 21:20:55,553 [ 1] INFO  UserService: LoadingMesager::OnGameServerConnect :0 reason:Success
+2025-09-25 21:20:55,650 [ 1] INFO  Unity: OnUserRegister:Success [None]
+2025-09-25 21:21:01,662 [ 1] INFO  Unity: 用户名 :zzl1 密码:123
+2025-09-25 21:21:01,686 [ 1] INFO  Unity: 收到登录响应
+2025-09-25 21:21:01,687 [ 1] INFO  Unity: 登录成功
+2025-09-25 21:21:02,051 [ 1] INFO  Unity: 当前角色数量为0
+2025-09-25 21:21:06,994 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UICharacterSelect:OnClickCreateCharater() (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:137)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-25 21:21:06,996 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UICharacterSelect:OnClickCreateCharater() (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:137)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-25 21:21:11,100 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-25 21:21:11,101 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-25 21:21:13,339 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-25 21:21:13,340 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-25 21:21:16,614 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-25 21:21:16,615 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-25 21:21:18,708 [ 1] INFO  Unity: 创建角色 :Cxy
+2025-09-25 21:21:18,744 [ 1] INFO  Unity: 当前角色数量为1
+2025-09-25 21:21:22,415 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UICharacterSelect:OnClickCreateCharater() (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:137)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-25 21:21:22,416 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UICharacterSelect:OnClickCreateCharater() (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:137)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-25 21:21:22,942 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-25 21:21:22,943 [ 1] WARN  Unity: Animator is not playing an AnimatorController
+UnityEngine.Animator:SetTrigger(String)
+UICharacterSelect:OnClickSelectClass(Int32) (at Assets/Scripts/UI/选择角色场景/UICharacterSelect.cs:164)
+UnityEngine.EventSystems.EventSystem:Update()
+
+2025-09-25 21:21:27,046 [ 1] INFO  Unity: 创建角色 :Sansan
+2025-09-25 21:21:27,095 [ 1] INFO  Unity: 当前角色数量为2
+2025-09-25 21:21:31,791 [ 1] INFO  Unity: 发出进入游戏的响应
+2025-09-25 21:21:31,812 [ 1] INFO  Unity: 角色进入游戏:Success
+2025-09-25 21:21:31,814 [ 1] INFO  Unity: ItemManager初始化道具:[ID:1,Count:20]
+2025-09-25 21:21:31,815 [ 1] INFO  Unity: ItemManager初始化道具:[ID:2,Count:20]
+2025-09-25 21:21:31,822 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-25 21:21:31,824 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
+2025-09-25 21:21:31,825 [ 1] INFO  Unity: 加入角色姓名:Cxy,地图:1
+2025-09-25 21:21:31,828 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
+2025-09-25 21:21:31,829 [ 1] INFO  Unity: 进入的场景是MainCity
+2025-09-25 21:21:32,239 [ 1] INFO  Unity: 收到聊天响应,Success
+2025-09-25 21:21:35,199 [ 1] INFO  Unity: Set Channel:Local
+2025-09-25 21:22:42,805 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{UnassignedReferenceException: The variable image of UIQuestInfo has not been assigned.
+You probably need to assign the image variable of the UIQuestInfo script in the inspector., UIQuestInfo.SetQuestInfo (Models.Quest quest) (at Assets/Scripts/UI/任务系统/UIQuestInfo.cs:55)
+UIQuestDialog.UpdateQuest () (at Assets/Scripts/UI/任务系统/UIQuestDialog.cs:51)
+UIQuestDialog.SetQuest (Models.Quest quest) (at Assets/Scripts/UI/任务系统/UIQuestDialog.cs:24)
+Managers.QuestManager.ShowQuestDialog (Models.Quest quest) (at Assets/Scripts/Managers/QuestManager.cs:215)
+Managers.QuestManager.OpenNpcQuest (Int32 npcID) (at Assets/Scripts/Managers/QuestManager.cs:199)
+Managers.NpcManager.DoTaskInteractive (Common.Data.NpcDefine npc) (at Assets/Scripts/Managers/NpcManager.cs:57)
+Managers.NpcManager.Interactive (Common.Data.NpcDefine npc) (at Assets/Scripts/Managers/NpcManager.cs:40)
+NpcController+<DoInteractive>c__Iterator1.MoveNext () (at Assets/Scripts/GameObject/NpcController.cs:94)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at D:/unity/Runtime/Export/Coroutines.cs:17)
 }</args></log4net.Error>
-2025-09-21 17:02:22,774 [ 1] INFO  Unity: 进入了地图:1,当前角色数量:1
-2025-09-21 17:02:22,776 [ 1] INFO  Unity: 加入角色姓名:Alice,地图:1
-2025-09-21 17:02:22,778 [ 1] INFO  Unity: 场景不匹配：当前场景0, 目标场景1, 开始切换
-2025-09-21 17:02:22,779 [ 1] INFO  Unity: 进入的场景是MainCity
-2025-09-21 17:02:23,195 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 17:02:26,359 [ 1] INFO  Unity: Set Channel:Local
-2025-09-21 17:02:27,586 [ 1] INFO  Unity: 发送公会列表的请求
-2025-09-21 17:02:27,625 [ 1] INFO  Unity: OnGuild,[Success][2][利物浦]
-2025-09-21 17:02:27,626 [ 1] INFO  Unity: 收到聊天响应,Success
-2025-09-21 17:02:31,179 [ 1] INFO  Unity: 消失的玩家：1,位置(4478, 3098, 804)
-2025-09-21 17:02:31,186 [ 1] INFO  Unity: 网络断开
-2025-09-21 17:02:31,187 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2025-09-25 21:22:47,733 [ 1] INFO  Unity: 消失的玩家：7,位置(4296, 4697, 805)
+2025-09-25 21:22:47,739 [ 1] INFO  Unity: 网络断开
+2025-09-25 21:22:47,739 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:178)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:173)
