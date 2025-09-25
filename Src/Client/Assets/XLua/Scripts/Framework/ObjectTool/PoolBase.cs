@@ -53,6 +53,7 @@ public class PoolBase : MonoBehaviour
 
     private void Update()
     {
+        //时间到了就检查一次
         if (System.DateTime.Now.Ticks - m_LastReleaseTime >= m_ReleaseTime * 10000000)
         {
             m_LastReleaseTime = System.DateTime.Now.Ticks;

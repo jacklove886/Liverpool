@@ -73,7 +73,7 @@ public class ResourceManager : MonoBehaviour
         BundleData bundle = GetBundle(bundleName);
         if (bundle == null)
         {
-            UnityEngine.Object obj = Manager.Pool.Spawn("AssetBundle", assetName);
+            UnityEngine.Object obj = Manager.Pool.Spawn("AssetBundle", bundleName);
             if (obj != null)
             {
                 AssetBundle ab = obj as AssetBundle;

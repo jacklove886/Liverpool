@@ -65,7 +65,7 @@ function OnOpen()
 
 	pooltest:OnClickSet(
 		function()
-			Manager.UI:OpenUI("Test","UI","ui.TestUI")			
+			Manager.UI:OpenUI("Login/LoginUI","UI","ui.TestUI")			
 		end
 	)
 
@@ -81,5 +81,4 @@ function OnClose()
 end
 
 function Update()
-	print("lua Update")
 end
